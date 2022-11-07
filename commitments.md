@@ -1,5 +1,5 @@
 
-# Gruppkontakt
+# Gruppkontrakt
 
 1.  Schema för träffar samt var och hur? 
 
