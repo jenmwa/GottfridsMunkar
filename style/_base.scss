@@ -1,23 +1,100 @@
 
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
 /* ------------Donuts -------------*/
 
 .donuts{
+    font-family: 'Titillium Web', sans-serif;
     display: flex;
     flex-direction: column;
+
+    h1{
+        text-align: center;
+    }
   
 
-.christmasDonuts{
-    border: 2px solid black;
-}
 .productCard{
     display: flex;
-    flex-direction: wrap;
+    background-color: #C6EBC5;
+    margin: 30px;
+    padding: 30px;
+
+    h2{
+        font-size: 1.2rem;
+        text-align: center;
+    }
+    
+    p{
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    .plusMinusInput{
+        display: flex;
+        flex-direction: row;
+        border: 2px solid black;
+    
+    button{
+        padding: 0;
+        cursor: pointer;
+        width: 35px;
+        height: 25px;
+        border: none;
+        background-color: black;
+        color: white;
+        font-weight: 900;
+        font-size: 1.2rem;
+    }
+    input[type=number]{
+        width: 60%;
+        height: 25px;
+        padding: 0;
+        text-align: center;
+        font-weight: 600;
+        font-size: 1rem;
+        background-color: rgb(255, 255, 255);
+        border: none;
+        color: black;
+
+
+        &:focus{
+            outline: none;
+            background-color: rgb(203, 203, 203);
+            
+        }
+        -moz-appearance: textfield; /* Gör att pilarna från default försvinner i firefox*/
+        /*  Gör att pilarna från default försvinner i Chrome, Safari, Edge, Opera */
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
 }
 
-.donutImg{
-    width: 50%;
-}
-.donutInfo{
-    width: 50%;
+
+   .addToShop{
+        height: 25px;
+        width: 100%;
+        margin-top: 5px;
+        border: none;
+        background-color: black;
+        color: white;
+        font-weight: 700;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    .donutImg{
+        width: 50%;
+    }   
+
+    .donutInfo{
+        width: 50%;
+    }
 }
 }
