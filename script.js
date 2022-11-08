@@ -10,7 +10,7 @@
  * värdet blir en mer 
  */
 
-const minus = document.querySelectorAll('#minusBtn1, #minusBtn2, #minusBtn3');
+const minus = document.querySelector('#minusBtn');
 const plus  = document.querySelector('#plusBtn');
 const currentCount = document.querySelector('#value');
 
