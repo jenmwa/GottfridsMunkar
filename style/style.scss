@@ -5,6 +5,12 @@ $specialBeige: #FBF2CF;
 $specialLightGreen: #C6EBC5;
 $specialGreen: #A1C298;
 
+@mixin getCentered() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 * {
     box-sizing: border-box;
     font-family: 'Teko', sans-serif;
@@ -29,6 +35,7 @@ header {
         width: 45px;
         border: none;
         background-color: transparent;
+        cursor: pointer;
     }
 }
 
@@ -38,8 +45,22 @@ header {
     padding: 0 10px;
 }
 
-.shoppingCart i {
-    font-size: 1.5rem;
+.shoppingCart {
+    position: relative;
+    i {
+        font-size: 1.5rem;
+    }
+    div {
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        margin: 0;
+        top: -5px;
+        left: 30px;
+        background-color: #FBF2CF;
+        border-radius: 50%;
+        @include getCentered;
+    }
 }
 
 .hamburgerMenu {
