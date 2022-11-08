@@ -1,5 +1,39 @@
 
 
+function countFunc(x){
+    if (x == 'minusBtn1'){
+        const currentCount = document.querySelector('#value1');
+        currentCount.value -= 1;
+        value1.style.backgroundColor ='lightgrey';
+    }
+    else if (x == 'plusBtn1'){
+        const currentCount = document.querySelector('#value1');
+        currentCount.value = Number(currentCount.value) +1;
+        value1.style.backgroundColor ='lightgrey';
+    }
+    else if (x == 'minusBtn2'){
+        const currentCount = document.querySelector('#value2');
+        currentCount.value -=1;
+        value2.style.backgroundColor ='lightgrey';
+    }
+    else if (x == 'plusBtn2'){
+        const currentCount = document.querySelector('#value2');
+        currentCount.value = Number(currentCount.value) +1;
+        value1.style.backgroundColor ='lightgrey';
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * Plus --- Minus knappar input
  * 
@@ -8,7 +42,7 @@
  * 
  * när klickar på plus 
  * värdet blir en mer 
- */
+ 
 
 const minus = document.querySelector('#minusBtn');
 const plus  = document.querySelector('#plusBtn');
@@ -28,3 +62,4 @@ function add(){
     currentCount.value = Number(currentCount.value) + 1;
     value.style.backgroundColor ='lightgrey';
 }
+*/
