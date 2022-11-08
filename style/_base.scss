@@ -1,0 +1,23 @@
+
+/* ------------Donuts -------------*/
+
+.donuts{
+    display: flex;
+    flex-direction: column;
+  
+
+.christmasDonuts{
+    border: 2px solid black;
+}
+.productCard{
+    display: flex;
+    flex-direction: wrap;
+}
+
+.donutImg{
+    width: 50%;
+}
+.donutInfo{
+    width: 50%;
+}
+}
