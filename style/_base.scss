@@ -4,7 +4,7 @@
 }
 
 /*************HEADER*************/
-
+/*
 header {
     width: 100%;
     height: 75px;
@@ -84,19 +84,91 @@ header {
 
 .hamburgerMenu span:nth-child(3) {
     top: 5px;
-}
+}*/
 
 /*************VARUKORG*************/
 
 .shoppingContainer {
-    position: fixed;
     top: 0;
     left: 0;
     background-color: rgba(255, 255, 255, 0.75);
     width: 100%;
     height: 100%;
     z-index: 2;
-
     padding-top: 4rem;
-
 }
+.shoppingLabels {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin-top: 1.625rem;
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      
+      li {
+        color: #111;
+        display: inline-block;
+        padding: 0.625rem 0;
+      }
+  }
+
+  .item {
+    width: 55%;
+  }
+  
+  .price,
+  .quantity,
+  .subtotal {
+    width: 15%;
+  }
+
+  .subtotal {
+    text-align: right;
+  }
+  
+  .remove {
+    bottom: 1.125rem;
+    float: right;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    width: 45%;
+  }
+  
+  .remove button {
+    background-color: transparent;
+    color: #777;
+    float: none;
+    text-decoration: underline;
+    text-transform: uppercase;
+  }
+  
+.itemHeading {
+    padding-left: 4.375rem;
+  }
+  
+  .basketProduct {
+    border-bottom: 1px solid #ccc;
+    padding: 1rem 0;
+    position: relative;
+  }
+  
+  .productImage {
+    width: 35%;
+  }
+
+  .productDetails {
+    width: 65%;
+  }
+  
+
+  
+  .productDetails {
+    padding: 0 1.5rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
