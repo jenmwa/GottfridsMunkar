@@ -14,7 +14,6 @@ header {
     display: flex;
     justify-content: space-between;
     border-bottom: 3px solid $specialLightGreen;
-    z-index: 1;
 
     h1 {
         margin: 0;
@@ -90,118 +89,158 @@ header {
 
 /*************VARUKORG*************/
 
-.shoppingOpen{
-  margin: 0;
-  padding: 0;
-  background: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
- }
+.shoppingOpen {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-.shoppingContainer{
-  margin: 5rem 0;
-  width: 70%;
-  background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0px 25px 40px #96969633;
+    .shoppingContainer{
+      margin: 5rem 0;
+      width: 80%;
+      background-color: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0px 25px 40px #96969633;
+    }
+
+    .shoppingHeader{
+      margin: auto;
+      width: 90%;
+      height: 15%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .shoppingHeading{
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .shoppingAction{
+      font-size: 1rem;
+      font-weight: 600;
+      color: $specialRed;
+      cursor: pointer;
+      border-bottom: 1px solid $specialRed;
+    }
+
+    .shoppingCartItems{
+      margin: auto;
+      margin-bottom: 1rem;
+      padding-bottom: 2rem;
+      width: 90%;
+    }
+
+    .shoppingInfo {
+      display: flex;
+    }
+    .shoppingAbout{
+      height: 100%;
+    }
+
+    .shoppingTitle{
+      padding-top: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #202020;
+      margin-bottom: 0;
+    }
+
+    .shoppingSubtitle{
+      width: 75%;
+      line-height: 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #909090;
+    }
+
+    .shoppingImage{
+      margin-right: 1rem;
+    }
+
+    .shoppingCounter{
+      display: flex;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+
+    .shoppingBtn{
+      width: 50px;
+      height: 50px;
+      background-color: #d9d9d9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      font-weight: 900;
+      color: #202020;
+      cursor: pointer;
+    }
+
+    .shoppingNumber {
+      width: 60px;
+      height: 50px;
+    }
+
+    .shoppingRemove{
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 600;
+      color: $specialRed;
+      cursor: pointer;
+    }
+
+    hr{
+      width: 70%;
+    }
+    .shoppingCheckout{
+      margin: auto auto 2rem auto;
+      text-align: center;
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .shoppingTotal{
+      width: 100%;
+    }
+    .shoppingSubtotal{
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #202020;
+    }
+    .shoppingItems{
+      font-size: 1rem;
+      font-weight: 500;
+      color: #909090;
+
+    }
+    .shoppingTotalAmount{
+      font-size: 2rem;
+      font-weight: 900;
+      color: #202020;
+    }
+    .checkoutButton{
+      margin: 1rem 0;
+      width: 90%;
+      height: 50px;
+      border: 2px solid $specialGreen;
+      background: $specialLightGreen;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #202020;
+
+    }
+
 }
-
-.shoppingHeader{
-  margin: auto;
-  width: 90%;
-  height: 15%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
- }
-
-.shoppingHeading{
-  color: #2F3841;
-  font-size: 1rem;
-  font-weight: 700;
- }
-
-.shoppingAction{
-  font-size: 1rem;
-  font-weight: 600;
-  color: $specialRed;
-  cursor: pointer;
-  border-bottom: 1px solid #E44C4C;
- }
-
-.shoppingCartItems{
-  margin: auto;
-  margin-bottom: 1rem;
-  padding-bottom: 2rem;
-  width: 90%;
- }
- 
-.shoppingImageBox{
-  width: 15%;
-  text-align: center;
- }
-
-.shoppingAbout{
-  height: 100%;
-  
- }
-
-.shoppingTitle{
-  padding-top: 0.5rem;
-  line-height: 2rem;
-  font-size: 32px;
-  font-weight: 800;
-  color: #202020;
- }
-
-.shoppingSubtitle{
-  line-height: 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #909090;
- }
-
-.shoppingCounter{
-
-  display: flex;
-  justify-content: space-between;
- }
-
-.shoppingBtn{
-  width: 40px;
-  height: 40px;
-  background-color: #d9d9d9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  font-weight: 900;
-  color: #202020;
-  cursor: pointer;
- }
-
-.shoppingPrices{
-  height: 100%;
- }
-
-.shoppingAmount{
-  margin-top: 1rem;
-  font-size: 1rem;
-  font-weight: 800;
-  color: #202020;
- }
-
-.shoppingRemove{
-  margin-bottom: 2rem;
-  padding-top: 5px;
-  font-size: 14px;
-  font-weight: 600;
-  color: $specialRed;
-  cursor: pointer;
- }
+ /*DONUTS main*/
   
 .donuts {
-  visibility: hidden;
+  /*visibility: hidden;*/
 
 }
