@@ -2,6 +2,9 @@
     box-sizing: border-box;
     font-family: 'Teko', sans-serif;
 }
+body{
+    background-color: $specialBeige;
+}
 
 /*************HEADER*************/
 
@@ -85,3 +88,113 @@ header {
 .hamburgerMenu span:nth-child(3) {
     top: 5px;
 }
+
+/*************PRODUKTKORT*************/
+
+.donuts{
+    display: flex;
+    flex-direction: column;
+  
+
+    .christmasDonuts{
+        margin: auto;
+        width: 90%;
+        background-color: $specialGreen;
+        margin-top: 150px;
+        margin-bottom: 50px;
+        box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+        padding-bottom: 30px;
+        h1{
+            text-align: center;
+        }
+        .products{
+            display: flex;
+            flex-direction: column;
+        }
+        .productCard{
+            display: flex;
+            margin: auto;
+            width: 80%;
+            padding: 10px;
+            background-color: $specialLightGreen;
+            margin-bottom: 10px;
+            box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+
+            .donutImg{
+                width: 50%;
+            }
+            .donutInfo{
+                width: 50%;
+                h2{
+                    font-size: 1rem;
+                }
+                .priceInfo{
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .plusMinusInput{
+                    display: flex;
+
+                    button{
+                        height: 35px;
+                        width: 35px;
+                        border: none;
+                        background-color: $specialRed;
+                        font-size: 1.2rem;
+                        font-weight: 700;
+                    }
+                    input[type=number]{
+                        width: 60%;
+                        background-color: $specialRed;
+                        text-align: center;
+                        border: none;
+                        font-size: 1.2rem;
+                        font-weight: 700;
+                            -moz-appearance: textfield;
+                          
+
+                            &::-webkit-outer-spin-button,
+                            &::-webkit-inner-spin-button {
+                                -webkit-appearance: none;
+                                margin: 0;
+                            }
+                    }
+
+
+                    }
+                    
+                }
+                
+                .addToShop{
+                    background-color: $specialRed;
+                    width: 100%;
+                    border: none;
+                    margin-top: 5px;
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    padding: 3px;
+
+            }
+
+        }
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
