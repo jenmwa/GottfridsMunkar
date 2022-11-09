@@ -4,7 +4,7 @@
 }
 
 /*************HEADER*************/
-/*
+
 header {
     width: 100%;
     height: 75px;
@@ -84,7 +84,7 @@ header {
 
 .hamburgerMenu span:nth-child(3) {
     top: 5px;
-}*/
+}
 
 /*************VARUKORG*************/
 
@@ -115,60 +115,4 @@ header {
       }
   }
 
-  .item {
-    width: 55%;
-  }
   
-  .price,
-  .quantity,
-  .subtotal {
-    width: 15%;
-  }
-
-  .subtotal {
-    text-align: right;
-  }
-  
-  .remove {
-    bottom: 1.125rem;
-    float: right;
-    position: absolute;
-    right: 0;
-    text-align: right;
-    width: 45%;
-  }
-  
-  .remove button {
-    background-color: transparent;
-    color: #777;
-    float: none;
-    text-decoration: underline;
-    text-transform: uppercase;
-  }
-  
-.itemHeading {
-    padding-left: 4.375rem;
-  }
-  
-  .basketProduct {
-    border-bottom: 1px solid #ccc;
-    padding: 1rem 0;
-    position: relative;
-  }
-  
-  .productImage {
-    width: 35%;
-  }
-
-  .productDetails {
-    width: 65%;
-  }
-  
-
-  
-  .productDetails {
-    padding: 0 1.5rem;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
