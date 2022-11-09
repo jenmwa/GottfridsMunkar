@@ -96,12 +96,12 @@ header {
     flex-direction: column;
   
 
-    .christmasDonuts{
+    .christmasDonuts, .classicDonuts, .limitedDonuts{
         margin: auto;
         width: 90%;
         background-color: $specialGreen;
         margin-top: 150px;
-        margin-bottom: 50px;
+        margin-bottom: 20px;
         box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
         padding-bottom: 30px;
         h1{
@@ -132,6 +132,15 @@ header {
                     display: flex;
                     justify-content: space-between;
                 }
+                .donutRating{
+                    font-size: 0.9rem;
+                    @include getCentered;
+                    padding-bottom: 5px;
+                    color: #a89003;
+                    
+                }
+
+                
                 .plusMinusInput{
                     display: flex;
 
@@ -178,6 +187,9 @@ header {
             }
 
         }
+    }
+    .classicDonuts, .limitedDonuts{
+        margin-top: 70px;
     }
     
 }
