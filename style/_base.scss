@@ -120,10 +120,15 @@ header {
             box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
 
             .donutImg{
-                width: 50%;
+                width: 45%;
+                img{
+                    width: 90%;
+                    margin-left: 10px;
+                    box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+                }
             }
             .donutInfo{
-                width: 50%;
+                width: 45%;
                 h2{
                     font-size: 1rem;
                 }
