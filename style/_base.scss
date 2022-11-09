@@ -132,6 +132,13 @@ header {
                     display: flex;
                     justify-content: space-between;
                 }
+                .donutRating{
+                    font-size: 0.9rem;
+                    @include getCentered;
+                    padding-bottom: 5px;
+                    color: #a89003;
+                    
+                }
                 .plusMinusInput{
                     display: flex;
 
