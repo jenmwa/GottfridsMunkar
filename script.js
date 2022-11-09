@@ -1,7 +1,4 @@
 
-
-
-
 /**
  * Plus --- Minus knappar input
  * 
