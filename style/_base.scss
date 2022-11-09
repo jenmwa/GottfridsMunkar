@@ -98,8 +98,8 @@ header {
 
     .shoppingContainer{
       margin: 5rem 0;
-      width: 80%;
-      background-color: #ffffff;
+      width: 90%;
+      background-color: whitesmoke;
       border-radius: 20px;
       box-shadow: 0px 25px 40px #96969633;
     }
@@ -129,23 +129,30 @@ header {
     .shoppingCartItems{
       margin: auto;
       margin-bottom: 1rem;
-      padding-bottom: 2rem;
-      width: 90%;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 10px;
     }
 
-    .shoppingInfo {
+    .shoppingCartHeading {
       display: flex;
-    }
-    .shoppingAbout{
-      height: 100%;
+      justify-content: space-between;
+      align-items: baseline;
     }
 
     .shoppingTitle{
-      padding-top: 0.5rem;
       font-size: 1.5rem;
       font-weight: 800;
       color: #202020;
       margin-bottom: 0;
+    }
+
+    .shoppingInfo {
+      display: flex;
+
+    }
+    .shoppingAbout{
+      height: 100%;
     }
 
     .shoppingSubtitle{
@@ -157,7 +164,7 @@ header {
     }
 
     .shoppingImage{
-      margin-right: 1rem;
+      margin-right: 2rem;
     }
 
     .shoppingCounter{
@@ -192,55 +199,52 @@ header {
       cursor: pointer;
     }
 
-    hr{
-      width: 70%;
-    }
-    .shoppingCheckout{
-      margin: auto auto 2rem auto;
-      text-align: center;
-      width: 90%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+   
+   /*CHECKOUT*/
+      .cartCheckout{
+        margin: auto auto 2rem auto;
+        text-align: center;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-    .shoppingTotal{
-      width: 100%;
-    }
-    .shoppingSubtotal{
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #202020;
-    }
-    .shoppingItems{
-      font-size: 1rem;
-      font-weight: 500;
-      color: #909090;
+      .cartTotal{
+        width: 100%;
+      }
+      .cartSubtotal{
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #202020;
+      }
+      .cartItems{
+        font-size: 1rem;
+        font-weight: 500;
+        color: #909090;
 
-    }
-    .shoppingTotalAmount{
-      font-size: 2rem;
-      font-weight: 900;
-      color: #202020;
-    }
-    .checkoutButton{
-      margin: 1rem 0;
-      width: 90%;
-      height: 50px;
-      border: 2px solid $specialGreen;
-      background: $specialLightGreen;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 600;
-      color: #202020;
+      }
+      .cartTotalAmount{
+        font-size: 2rem;
+        font-weight: 900;
+        color: #202020;
+      }
+      .checkoutButton{
+        margin: 1rem 0;
+        width: 90%;
+        height: 50px;
+        border: 2px solid $specialGreen;
+        background: $specialLightGreen;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #202020;
+      }
 
-    }
-
-}
- /*DONUTS main*/
-  
-.donuts {
-  /*visibility: hidden;*/
+      .checkoutButton:hover {
+        background: $specialGreen;
+      }
 
 }
+

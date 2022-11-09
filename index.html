@@ -8,13 +8,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;0,900;1,300;1,600;1,700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a90d7c3579.js" crossorigin="anonymous"></script> 
+    <script
+      src="https://kit.fontawesome.com/a90d7c3579.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Gottfrids Fantastiskt Goda Munkar</title>
   </head>
   <body>
-
     <header>
-
       <div class="leftHeader">
         <h1>Gottfrids Fantastiskt Goda Munkar</h1>
       </div>
@@ -40,58 +41,126 @@
       </div>
     </header>
 
-        <!--KUNDKORG-->
-      <section class="shoppingOpen">
-        <div class="shoppingContainer">
+    <!--KUNDKORG-->
+    <section class="shoppingOpen">
+      <div class="shoppingContainer">
           <div class="shoppingHeader">
-              <h3 class="shoppingHeading">Varukorg</h3>
-              <h5 class="shoppingAction">Ta bort alla</h5>
+            <h3 class="shoppingHeading">Varukorg</h3>
+            <h5 class="shoppingAction">Ta bort alla</h5>
           </div>
+          <div class="containerMaster">
+            <div class="container1">
             <!--ARTIKEL 1-->
-              <section class="shoppingCartItems">
-                <h2 class="shoppingTitle">White Donut</h2>
-                  <div class="shoppingInfo">
-                    <div class="shoppingAbout">
-                      <h3 class="shoppingSubtitle">I'm dreaming of a white Christmas by Gottfrid</h3>
-                      <p>20:-styck</p>
-                    </div>
-                    <div class="shoppingImage">
-                      <img src="img/donuts_img/white.jpg" width="100" height="100" alt="Gottfrids vita donut">
-                    </div>
-                  </div>
-                  <div class="shoppingCounter">
-                      <span class="shoppingBtn">-</span>
-                      <input type="number" class="shoppingNumber" min="1" placeholder="antal">
-                      <span class="shoppingBtn">+</span>
-                      <p class="shoppingRemove">Ta bort</p>
-                  </div>
-              </section>
-              <hr> 
-              <div class="shoppingCheckout">
-                <div class="shoppingTotal">
-                  <div class="shoppingSubtotal">Totalt</div>
-                    <div class="shoppingItems">20 donuts</div>
-                  </div>
-                  <div class="shoppingTotalAmount">200kr</div>
-                  <button class="checkoutButton">Beställ</button>
+            <section class="shoppingCartItems">
+              <div class="shoppingCartHeading">
+                <h3 class="shoppingTitle">White Donut</h3>
+                <h3 class="shoppingTitle">20:-</h3>
+              </div>
+              <div class="shoppingInfo">
+                <div class="shoppingAbout">
+                  <h4 class="shoppingSubtitle">I'm dreaming of a white Christmas by Gottfrid</h4>
+                  <p>20:-styck</p>
                 </div>
-              </div>  
-      </section>
+                <div >
+                  <img src="img/donuts_img/white.jpg" class="shoppingImage" width="100" height="100" alt="Gottfrids vita donut">
+                </div>
+              </div>
+              <!--antal beställda+ öka/minska-->
+              <div class="shoppingCounter">
+                <span class="shoppingBtn">-</span>
+                <input
+                  type="number"
+                  class="shoppingNumber"
+                  min="1"
+                  placeholder="antal">
+                <span class="shoppingBtn">+</span>
+                <p class="shoppingRemove">Ta bort</p>
+              </div>
+            </section>
+            <!--ARTIKEL 2-->
+            <section class="shoppingCartItems">
+              <div class="shoppingCartHeading">
+                <h3 class="shoppingTitle">Black Donut</h3>
+                <h3 class="shoppingTitle">20:-</h3>
+              </div>
+              <div class="shoppingInfo">
+                <div class="shoppingAbout">
+                  <h4 class="shoppingSubtitle">I'm dreaming of a white Christmas by Gottfrid</h4>
+                  <p>20:-styck</p>
+                </div>
+                <div >
+                  <img src="img/donuts_img/black.jpg" class="shoppingImage" width="100" height="100" alt="Gottfrids vita donut">
+                </div>
+              </div>
+              <!--antal beställda+ öka/minska-->
+              <div class="shoppingCounter">
+                <span class="shoppingBtn">-</span>
+                <input
+                  type="number"
+                  class="shoppingNumber"
+                  min="1"
+                  placeholder="antal">
+                <span class="shoppingBtn">+</span>
+                <p class="shoppingRemove">Ta bort</p>
+              </div>
+            </section>
+            <!--ARTIKEL 3-->
+            <section class="shoppingCartItems">
+              <div class="shoppingCartHeading">
+                <h3 class="shoppingTitle">White Donut</h3>
+                <h3 class="shoppingTitle">20:-</h3>
+              </div>
+              <div class="shoppingInfo">
+                <div class="shoppingAbout">
+                  <h4 class="shoppingSubtitle">I'm dreaming of a white Christmas by Gottfrid</h4>
+                  <p>20:-styck</p>
+                </div>
+                <div >
+                  <img src="img/donuts_img/red.jpg" class="shoppingImage" width="100" height="100" alt="Gottfrids vita donut">
+                </div>
+              </div>
+              <!--antal beställda+ öka/minska-->
+              <div class="shoppingCounter">
+                <span class="shoppingBtn">-</span>
+                <input
+                  type="number"
+                  class="shoppingNumber"
+                  min="1"
+                  placeholder="antal">
+                <span class="shoppingBtn">+</span>
+                <p class="shoppingRemove">Ta bort</p>
+              </div>
+            </section>
+          </div>
+          <!--CHECKOUT-->
+          <div class="cartContainer">
+            <div class="cartCheckout">
+              <div class="cartTotal">
+                <div class="cartSubtotal">Totalt</div>
+                <div class="cartItems">20 donuts</div>
+              </div>
+              <div class="cartTotalAmount">200kr</div>
+              <button class="checkoutButton">Beställ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-           <!-- Donuts -->
-     <section>
-
+    <!-- Donuts -->
+    <section>
       <div class="donuts">
-
         <div class="christmasDonuts">
-
           <h1>Jul-Edition</h1>
           <div class="products">
-
             <div class="productCard">
-
               <div class="donutImg">
-                <img src="" alt="donut" width="100" height="100"><!-- Karusell med 2 bilder-->
+                <img
+                  src=""
+                  alt="donut"
+                  width="100"
+                  height="100"
+                /><!-- Karusell med 2 bilder-->
               </div>
 
               <div class="donutInfo">
@@ -101,9 +170,13 @@
                 </div>
 
                 <div class="plusMinusInput">
-                  <button onClick="countFunc('minusBtn1')" id="minusBtn1">-</button>
-                  <input type="number" id="value1" value="0">
-                  <button onClick="countFunc('plusBtn1')" id="plusBtn1">+</button>
+                  <button onClick="countFunc('minusBtn1')" id="minusBtn1">
+                    -
+                  </button>
+                  <input type="number" id="value1" value="0" />
+                  <button onClick="countFunc('plusBtn1')" id="plusBtn1">
+                    +
+                  </button>
                 </div>
 
                 <div>
@@ -114,7 +187,7 @@
 
             <div class="productCard">
               <div class="donutImg">
-                <img src="" alt="donut" width="100" height="100">
+                <img src="" alt="donut" width="100" height="100" />
               </div>
 
               <div class="donutInfo">
@@ -122,52 +195,58 @@
                   <h2>Nejlika</h2>
                   <p>25kr</p>
                 </div>
-                
+
                 <div class="plusMinusInput">
-                  <button onClick="countFunc('minusBtn2')" id="minusBtn2">-</button>
-                  <input type="number" id="value2" value="0">
-                  <button onClick="countFunc('plusBtn2')" id="plusBtn2">+</button>
+                  <button onClick="countFunc('minusBtn2')" id="minusBtn2">
+                    -
+                  </button>
+                  <input type="number" id="value2" value="0" />
+                  <button onClick="countFunc('plusBtn2')" id="plusBtn2">
+                    +
+                  </button>
                 </div>
 
                 <button class="addToShop">Lägg Till</button>
               </div>
             </div>
 
-            
             <div class="productCard">
               <div class="donutImg">
-                <img src="" alt="donut" width="100" height="100">
+                <img src="" alt="donut" width="100" height="100" />
               </div>
               <div class="donutInfo">
                 <div class="priceInfo">
                   <h2>Ingefära</h2>
                   <p>25kr</p>
                 </div>
-                
+
                 <div class="plusMinusInput">
-                  <button onClick="countFunc('minusBtn3')" id="minusBtn3">-</button>
-                  <input type="number" id="value3" value="0">
-                  <button onClick="countFunc('plusBtn3')" id="plusBtn3">+</button>
+                  <button onClick="countFunc('minusBtn3')" id="minusBtn3">
+                    -
+                  </button>
+                  <input type="number" id="value3" value="0" />
+                  <button onClick="countFunc('plusBtn3')" id="plusBtn3">
+                    +
+                  </button>
                 </div>
 
                 <button class="addToShop">Lägg Till</button>
+              </div>
             </div>
-        
-            </div>
-
           </div>
         </div>
 
-
         <div class="classicDonut">
-
           <h1>Våra Klassiker</h1>
           <div class="products">
-
             <div class="productCard">
-
               <div class="donutImg">
-                <img src="" alt="donut" width="100" height="100"><!-- Karusell med 2 bilder-->
+                <img
+                  src=""
+                  alt="donut"
+                  width="100"
+                  height="100"
+                /><!-- Karusell med 2 bilder-->
               </div>
 
               <div class="donutInfo">
@@ -177,9 +256,13 @@
                 </div>
 
                 <div class="plusMinusInput">
-                  <button onClick="countFunc('minusBtn4')" id="minusBtn4">-</button>
-                  <input type="number" id="value4" value="0">
-                  <button onClick="countFunc('plusBtn4')" id="plusBtn4">+</button>
+                  <button onClick="countFunc('minusBtn4')" id="minusBtn4">
+                    -
+                  </button>
+                  <input type="number" id="value4" value="0" />
+                  <button onClick="countFunc('plusBtn4')" id="plusBtn4">
+                    +
+                  </button>
                 </div>
 
                 <div>
@@ -190,7 +273,7 @@
 
             <div class="productCard">
               <div class="donutImg">
-                <img src="" alt="donut" width="100" height="100">
+                <img src="" alt="donut" width="100" height="100" />
               </div>
 
               <div class="donutInfo">
@@ -198,142 +281,158 @@
                   <h2>Choklad</h2>
                   <p>13kr</p>
                 </div>
-                
+
                 <div class="plusMinusInput">
-                  <button onClick="countFunc('minusBtn5')" id="minusBtn5">-</button>
-                  <input type="number" id="value5" value="0">
-                  <button onClick="countFunc('plusBtn5')" id="plusBtn5">+</button>
+                  <button onClick="countFunc('minusBtn5')" id="minusBtn5">
+                    -
+                  </button>
+                  <input type="number" id="value5" value="0" />
+                  <button onClick="countFunc('plusBtn5')" id="plusBtn5">
+                    +
+                  </button>
                 </div>
 
                 <button class="addToShop">Lägg Till</button>
               </div>
             </div>
 
-            
             <div class="productCard">
               <div class="donutImg">
-                <img src="" alt="donut" width="100" height="100">
+                <img src="" alt="donut" width="100" height="100" />
               </div>
               <div class="donutInfo">
                 <div class="priceInfo">
                   <h2>Jordgubb</h2>
                   <p>13kr</p>
                 </div>
-                
+
                 <div class="plusMinusInput">
-                  <button onClick="countFunc('minusBtn6')" id="minusBtn6">-</button>
-                  <input type="number" id="value6" value="0">
-                  <button onClick="countFunc('plusBtn6')" id="plusBtn6">+</button>
+                  <button onClick="countFunc('minusBtn6')" id="minusBtn6">
+                    -
+                  </button>
+                  <input type="number" id="value6" value="0" />
+                  <button onClick="countFunc('plusBtn6')" id="plusBtn6">
+                    +
+                  </button>
                 </div>
 
                 <button class="addToShop">Lägg Till</button>
+              </div>
             </div>
-        </div>
 
             <div class="productCard">
               <div class="donutImg">
-                <img src="" alt="donut" width="100" height="100">
+                <img src="" alt="donut" width="100" height="100" />
               </div>
               <div class="donutInfo">
                 <div class="priceInfo">
                   <h2>Hallon</h2>
                   <p>13kr</p>
                 </div>
-                
+
                 <div class="plusMinusInput">
-                  <button onClick="countFunc('minusBtn7')" id="minusBtn7">-</button>
-                  <input type="number" id="value7" value="0">
-                  <button onClick="countFunc('plusBtn7')" id="plusBtn7">+</button>
+                  <button onClick="countFunc('minusBtn7')" id="minusBtn7">
+                    -
+                  </button>
+                  <input type="number" id="value7" value="0" />
+                  <button onClick="countFunc('plusBtn7')" id="plusBtn7">
+                    +
+                  </button>
                 </div>
 
                 <button class="addToShop">Lägg Till</button>
+              </div>
             </div>
-        
-          </div>
 
+            <div class="limitedDonuts">
+              <h1>Limited Edition</h1>
+              <div class="products">
+                <div class="productCard">
+                  <div class="donutImg">
+                    <img
+                      src=""
+                      alt="donut"
+                      width="100"
+                      height="100"
+                    /><!-- Karusell med 2 bilder-->
+                  </div>
 
-          <div class="limitedDonuts">
+                  <div class="donutInfo">
+                    <div class="priceInfo">
+                      <h2>Blue Fizz</h2>
+                      <p>32kr</p>
+                    </div>
 
-            <h1>Limited Edition</h1>
-            <div class="products">
-  
-              <div class="productCard">
-  
-                <div class="donutImg">
-                  <img src="" alt="donut" width="100" height="100"><!-- Karusell med 2 bilder-->
+                    <div class="plusMinusInput">
+                      <button onClick="countFunc('minusBtn8')" id="minusBtn8">
+                        -
+                      </button>
+                      <input type="number" id="value8" value="0" />
+                      <button onClick="countFunc('plusBtn8')" id="plusBtn8">
+                        +
+                      </button>
+                    </div>
+
+                    <div>
+                      <button class="addToShop">Lägg Till</button>
+                    </div>
+                  </div>
                 </div>
-  
-                <div class="donutInfo">
-                  <div class="priceInfo">
-                    <h2>Blue Fizz</h2>
-                    <p>32kr</p>
+
+                <div class="productCard">
+                  <div class="donutImg">
+                    <img src="" alt="donut" width="100" height="100" />
                   </div>
-  
-                  <div class="plusMinusInput">
-                    <button onClick="countFunc('minusBtn8')" id="minusBtn8">-</button>
-                    <input type="number" id="value8" value="0">
-                    <button onClick="countFunc('plusBtn8')" id="plusBtn8">+</button>
+
+                  <div class="donutInfo">
+                    <div class="priceInfo">
+                      <h2>Champange</h2>
+                      <p>32kr</p>
+                    </div>
+
+                    <div class="plusMinusInput">
+                      <button onClick="countFunc('minusBtn9')" id="minusBtn9">
+                        -
+                      </button>
+                      <input type="number" id="value9" value="0" />
+                      <button onClick="countFunc('plusBtn9')" id="plusBtn9">
+                        +
+                      </button>
+                    </div>
+
+                    <button class="addToShop">Lägg Till</button>
                   </div>
-  
-                  <div>
+                </div>
+
+                <div class="productCard">
+                  <div class="donutImg">
+                    <img src="" alt="donut" width="100" height="100" />
+                  </div>
+                  <div class="donutInfo">
+                    <div class="priceInfo">
+                      <h2>Baconnater</h2>
+                      <p>32kr</p>
+                    </div>
+
+                    <div class="plusMinusInput">
+                      <button onClick="countFunc('minusBtn10')" id="minusBtn10">
+                        -
+                      </button>
+                      <input type="number" id="value10" value="0" />
+                      <button onClick="countFunc('plusBtn10')" id="plusBtn3¨10">
+                        +
+                      </button>
+                    </div>
+
                     <button class="addToShop">Lägg Till</button>
                   </div>
                 </div>
               </div>
-  
-              <div class="productCard">
-                <div class="donutImg">
-                  <img src="" alt="donut" width="100" height="100">
-                </div>
-  
-                <div class="donutInfo">
-                  <div class="priceInfo">
-                    <h2>Champange</h2>
-                    <p>32kr</p>
-                  </div>
-                  
-                  <div class="plusMinusInput">
-                    <button onClick="countFunc('minusBtn9')" id="minusBtn9">-</button>
-                    <input type="number" id="value9" value="0">
-                    <button onClick="countFunc('plusBtn9')" id="plusBtn9">+</button>
-                  </div>
-  
-                  <button class="addToShop">Lägg Till</button>
-                </div>
-              </div>
-  
-              
-              <div class="productCard">
-                <div class="donutImg">
-                  <img src="" alt="donut" width="100" height="100">
-                </div>
-                <div class="donutInfo">
-                  <div class="priceInfo">
-                    <h2>Baconnater</h2>
-                    <p>32kr</p>
-                  </div>
-                  
-                  <div class="plusMinusInput">
-                    <button onClick="countFunc('minusBtn10')" id="minusBtn10">-</button>
-                    <input type="number" id="value10" value="0">
-                    <button onClick="countFunc('plusBtn10')" id="plusBtn3¨10">+</button>
-                  </div>
-  
-                  <button class="addToShop">Lägg Till</button>
-              </div>
-          
-              </div>
-  
             </div>
           </div>
-  
-          </div>
         </div>
-
-
       </div>
     </section>
     <script src="script.js"></script>
   </body>
 </html>
-
