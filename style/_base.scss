@@ -109,12 +109,11 @@ header {
         }
         .products{
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
         }
         .productCard{
             display: flex;
             margin: auto;
-            width: 80%;
             padding: 10px;
             background-color: $specialLightGreen;
             margin-bottom: 10px;
@@ -151,6 +150,7 @@ header {
                         background-color: $specialRed;
                         font-size: 1.2rem;
                         font-weight: 700;
+                        color: black;
                     }
                     input[type=number]{
                         width: 60%;
@@ -159,6 +159,7 @@ header {
                         border: none;
                         font-size: 1.2rem;
                         font-weight: 700;
+                        
                             -moz-appearance: textfield;
                           
 
@@ -183,6 +184,7 @@ header {
                     font-weight: 600;
                     text-transform: uppercase;
                     padding: 3px;
+                    color: black;
 
             }
 
