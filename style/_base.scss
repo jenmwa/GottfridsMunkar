@@ -2,6 +2,9 @@
     box-sizing: border-box;
     font-family: 'Teko', sans-serif;
 }
+body{
+    background-color: $specialBeige;
+}
 
 /*************HEADER*************/
 
@@ -85,3 +88,36 @@ header {
 .hamburgerMenu span:nth-child(3) {
     top: 5px;
 }
+
+/*************PRODUKTKORT*************/
+
+.donuts{
+    display: flex;
+    flex-direction: column;
+  
+
+    .christmasDonuts{
+        margin-top: 100px;
+        h1{
+            text-align: center;
+        }
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
