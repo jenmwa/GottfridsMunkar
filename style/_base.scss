@@ -103,6 +103,7 @@ header {
         margin-top: 150px;
         margin-bottom: 50px;
         box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+        padding-bottom: 30px;
         h1{
             text-align: center;
         }
@@ -158,8 +159,22 @@ header {
                                 margin: 0;
                             }
                     }
+
+
+                    }
                     
                 }
+                
+                .addToShop{
+                    background-color: $specialRed;
+                    width: 100%;
+                    border: none;
+                    margin-top: 5px;
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    padding: 3px;
+
             }
 
         }
