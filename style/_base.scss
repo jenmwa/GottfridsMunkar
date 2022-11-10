@@ -17,6 +17,7 @@ header {
     display: flex;
     justify-content: space-between;
     border-bottom: 3px solid $specialLightGreen;
+
     h1 {
         margin: 0;
         font-size: 1.5rem;
@@ -89,6 +90,171 @@ header {
     top: 5px;
 }
 
+/*************VARUKORG*************/
+
+.shoppingOpen {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+.shoppingContainer{
+  margin: 5rem 0;
+  width: 90%;
+  background-color: whitesmoke;
+  border-radius: 20px;
+  box-shadow: 0px 25px 40px #96969633;
+}
+
+.shoppingHeader{
+  margin: auto;
+  width: 90%;
+  height: 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shoppingHeading{
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.shoppingAction{
+  font-size: 1rem;
+  font-weight: 600;
+  color: $specialRed;
+  cursor: pointer;
+  border-bottom: 1px solid $specialRed;
+}
+
+.shoppingCartItems{
+  margin: auto;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.shoppingCartHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.shoppingTitle{
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #202020;
+  margin-bottom: 0;
+}
+
+.shoppingInfo {
+  display: flex;
+
+}
+.shoppingAbout{
+  height: 100%;
+}
+
+.shoppingSubtitle{
+  width: 80%;
+  line-height: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #909090;
+}
+
+.shoppingImage{
+  margin-right: 2rem;
+}
+
+.shoppingCounter{
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.shoppingBtn{
+  width: 50px;
+  height: 50px;
+  background-color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #202020;
+  cursor: pointer;
+}
+
+.shoppingNumber {
+  width: 60px;
+  height: 50px;
+}
+
+.shoppingRemove{
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: $specialRed;
+  cursor: pointer;
+}
+
+
+/*CHECKOUT*/
+  .cartCheckout{
+    margin: auto auto 2rem auto;
+    text-align: center;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cartTotal{
+    width: 100%;
+  }
+
+  .cartSubtotal{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #202020;
+  }
+
+  .cartItems{
+    font-size: 1rem;
+    font-weight: 500;
+    color: #909090;
+
+  }
+  .cartTotalAmount{
+    font-size: 2rem;
+    font-weight: 900;
+    color: #202020;
+  }
+
+  .checkoutButton{
+    margin: 1rem 0;
+    width: 90%;
+    height: 50px;
+    border: 2px solid $specialGreen;
+    background: $specialLightGreen;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #202020;
+  }
+
+  .checkoutButton:hover {
+    background: $specialGreen;
+  }
+
+}
+
+
 /*************PRODUKTKORT*************/
 
 .donuts{
@@ -96,12 +262,12 @@ header {
     flex-direction: column;
   
 
-    .christmasDonuts{
+    .christmasDonuts, .classicDonuts, .limitedDonuts{
         margin: auto;
         width: 90%;
         background-color: $specialGreen;
         margin-top: 150px;
-        margin-bottom: 50px;
+        margin-bottom: 20px;
         box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
         padding-bottom: 30px;
         h1{
@@ -109,22 +275,26 @@ header {
         }
         .products{
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
         }
         .productCard{
             display: flex;
             margin: auto;
-            width: 80%;
             padding: 10px;
             background-color: $specialLightGreen;
             margin-bottom: 10px;
             box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
 
             .donutImg{
-                width: 50%;
+                width: 45%;
+                img{
+                    width: 90%;
+                    margin-left: 10px;
+                    box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+                }
             }
             .donutInfo{
-                width: 50%;
+                width: 45%;
                 h2{
                     font-size: 1rem;
                 }
@@ -132,6 +302,15 @@ header {
                     display: flex;
                     justify-content: space-between;
                 }
+                .donutRating{
+                    font-size: 0.9rem;
+                    @include getCentered;
+                    padding-bottom: 5px;
+                    color: #a89003;
+                    
+                }
+
+                
                 .plusMinusInput{
                     display: flex;
 
@@ -142,6 +321,7 @@ header {
                         background-color: $specialRed;
                         font-size: 1.2rem;
                         font-weight: 700;
+                        color: black;
                     }
                     input[type=number]{
                         width: 60%;
@@ -150,6 +330,7 @@ header {
                         border: none;
                         font-size: 1.2rem;
                         font-weight: 700;
+                        
                             -moz-appearance: textfield;
                           
 
@@ -174,10 +355,14 @@ header {
                     font-weight: 600;
                     text-transform: uppercase;
                     padding: 3px;
+                    color: black;
 
             }
 
         }
+    }
+    .classicDonuts, .limitedDonuts{
+        margin-top: 70px;
     }
     
 }
