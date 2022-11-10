@@ -12,11 +12,5 @@ $specialGreen: #A1C298;
 }
 
 @import '_base.scss';
-
-@media screen and (min-width: 768px) {
-    @import '_tablet.scss';
-}
-
-@media screen and (min-width: 1366px) {
-    @import 'desktop';
-}
+@import '_tablet.scss';
+@import 'desktop';
