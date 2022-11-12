@@ -25,6 +25,7 @@ function addCount(e) {
     amountEl.innerHTML = Number(amount) +1;
 
     updateDonutSum(e.currentTarget.parentElement);
+    
 }
 
 
@@ -37,7 +38,6 @@ for (let i = 0; i < minusBtn.length; i++){
 
 function decreaseCount(e) {
     const amountEl = e.currentTarget.parentElement.querySelector('.antal');
-    console.log(amountEl);
     let amount = amountEl.innerText;
 
     if(amount -  1 < 0){
@@ -46,6 +46,7 @@ function decreaseCount(e) {
     amountEl.innerHTML = amount -1;
 
     updateDonutSum(e.currentTarget.parentElement);
+    
 }
 
 
@@ -55,14 +56,43 @@ function updateDonutSum(donutElement) {
     const donutSinglePrice = donutElement.querySelector('.price').innerHTML;
     const orderedAmount = donutElement.querySelector('.antal').innerHTML;
   
-    const sum = donutSinglePrice * orderedAmount;
+    let sum = donutSinglePrice * orderedAmount;
   
     donutElement.querySelector('.sum').innerHTML = sum;
+    
+   // addDonutsToShopCart(sum, orderedAmount, donutSinglePrice);
+
   }
   
 
+  /**
+   * [] När vi trycker på lägg till
+   * [] ska, pris, antal och totalsumma gå till varukorgen
+   */
+
+//  LÄGG TILL - KNAPPAR
+
+const addDonutsToCart = document.querySelectorAll('button[data-operator="addDonutsToCart"]');
 
 
+for (let i = 0; i < addDonutsToCart.length; i++){
+    addDonutsToCart[i].addEventListener('click', addDonutsToShopCart);
+    
+}
+
+function addDonutsToShopCart(e){
+
+        // Kommer åt pris, antal och summa när vi trycker på lägg till
+const donoutSinglePrice = e.currentTarget.parentElement.querySelector('.price').innerHTML;
+const totalAmount = e.currentTarget.parentElement.querySelector('.antal').innerHTML;
+const totalSum = e.currentTarget.parentElement.querySelector('.sum').innerHTML;
+    
+        // Hämtar namnet på Donuten
+const donutName = e.currentTarget.parentElement.parentElement.querySelector('.priceInfo');
+        // Hämtar Img på donut i html
+const donutImg = e.currentTarget.parentElement.parentElement.querySelector('.donutImg');
+   
+    console.log(donutImg, donutName);
 
 
-
+}
