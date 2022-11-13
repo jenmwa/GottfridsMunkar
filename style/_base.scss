@@ -373,126 +373,126 @@ header {
 /*************PRODUKTKORT*************/
 
 .donuts{
-    display: flex;
-    flex-direction: column;
-  
+  display: flex;
+  flex-direction: column;
 
-    .christmasDonuts, .classicDonuts, .limitedDonuts{
-        margin: auto;
-        width: 90%;
-        background-color: $specialGreen;
-        margin-top: 10px;
-        margin-bottom: 20px;
-        box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
-        padding-bottom: 30px;
-        h1{
-            text-align: center;
-        }
-        .products{
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .munk1, .munk2, .munk3, .munk4, .munk5, .munk6, .munk7, .munk8, .munk9, .munk10{
-            width: 400px;
-            display: flex;
-            margin: auto;
-            padding: 20px;
-            background-color: $specialLightGreen;
-            margin-bottom: 10px;
-            box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
 
-            .donutImg{
-                width: 50%;
-                margin-right: 10px;
-                margin-top: 20px;
-                img{
-                    width: 100%;
-                    
-                    box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+  .christmasDonuts, .classicDonuts, .limitedDonuts{
+      margin: auto;
+      width: 90%;
+      background-color: $specialGreen;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+      padding-bottom: 30px;
+      h1{
+          text-align: center;
+      }
+      .products{
+          display: flex;
+          flex-wrap: wrap;
+      }
+      .munk1, .munk2, .munk3, .munk4, .munk5, .munk6, .munk7, .munk8, .munk9, .munk10{
+          width: 400px;
+          display: flex;
+          margin: auto;
+          padding: 20px;
+          background-color: $specialLightGreen;
+          margin-bottom: 10px;
+          box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+
+          .donutImg{
+              width: 50%;
+              margin-right: 10px;
+              margin-top: 20px;
+              img{
+                  width: 100%;
+                  
+                  box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+              }
+              .donutRating{
+                font-size: 0.9rem;
+                padding-bottom: 5px;
+                padding-top: 5px;
+                color: black;
+                margin-left: 25px;
+                
+            }
+          }
+          .donutInfo{
+              width: 50%;
+              margin-left: 10px;
+              h2{
+                  font-size: 1.2rem;
+                  text-align: center;
+              }
+             
+             
+
+              
+              .plusMinusInput{
+        
+                .allAntal, .allSum, .allPrice{
+                  font-size: 1.1rem;
                 }
-                .donutRating{
-                  font-size: 0.9rem;
-                  padding-bottom: 5px;
-                  padding-top: 5px;
-                  color: black;
-                  margin-left: 25px;
+                .allPrice{
+                  margin-right: 65px;
+                }
+                .allAntal{
+                  margin-right: 70px;
+                }
+                .allSum{
+                  margin-right: 50px;
+                }
+                
+                  button{
+                      cursor: pointer;
+                      height: 30px;
+                      width: 35px;
+                      border: none;
+                      background-color: $specialRed;
+                      font-size: 1.2rem;
+                      font-weight: 700;
+                      color: black;
+                      margin-top: 10px;
+                      &:hover{
+                        box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
+                      }
+                  }
+                  .minus{
+                    margin-left: 40px;
+                  }
+                  .plus{
+                    margin-left: 10px;
+                  }
+                  }
                   
               }
-            }
-            .donutInfo{
-                width: 50%;
-                margin-left: 10px;
-                h2{
-                    font-size: 1.2rem;
-                    text-align: center;
-                }
-               
-               
+              
+              .addDonutsToCart{
+                  background-color: $specialRed;
+                  width: 85px;
+                  border: none;
+                  margin-top: 5px;
+                  margin-left: 40px;
+                  font-size: 0.9rem;
+                  font-weight: 600;
+                  text-transform: uppercase;
+                  padding: 3px;
+                  color: black;
+                  cursor: pointer;
+                  &:hover{
+                    box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
+                  }
 
-                
-                .plusMinusInput{
-          
-                  .allAntal, .allSum, .allPrice{
-                    font-size: 1.1rem;
-                  }
-                  .allPrice{
-                    margin-right: 65px;
-                  }
-                  .allAntal{
-                    margin-right: 70px;
-                  }
-                  .allSum{
-                    margin-right: 50px;
-                  }
-                  
-                    button{
-                        cursor: pointer;
-                        height: 30px;
-                        width: 35px;
-                        border: none;
-                        background-color: $specialRed;
-                        font-size: 1.2rem;
-                        font-weight: 700;
-                        color: black;
-                        margin-top: 10px;
-                        &:hover{
-                          box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
-                        }
-                    }
-                    .minus{
-                      margin-left: 40px;
-                    }
-                    .plus{
-                      margin-left: 10px;
-                    }
-                    }
-                    
-                }
-                
-                .addDonutsToCart{
-                    background-color: $specialRed;
-                    width: 85px;
-                    border: none;
-                    margin-top: 5px;
-                    margin-left: 40px;
-                    font-size: 0.9rem;
-                    font-weight: 600;
-                    text-transform: uppercase;
-                    padding: 3px;
-                    color: black;
-                    cursor: pointer;
-                    &:hover{
-                      box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
-                    }
+          }
 
-            }
-
-        }
-    }
-    .classicDonuts, .limitedDonuts{
-        margin-top: 70px;
-    }
-    
+      }
+  }
+  .classicDonuts, .limitedDonuts{
+      margin-top: 70px;
+  }
+  
 }
 
 /***********FOOTER****************/
