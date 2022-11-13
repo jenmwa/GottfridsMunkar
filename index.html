@@ -178,14 +178,30 @@
           <label for="debitKredit">Debit/Kreditkort</label>
           <input type="radio" name="paymentOptions" id="faktura">
           <label for="faktura">Faktura</label>
+
+          <div class="cardPayment">
+            <label for="cardNumber">Kortnummer:</label><br>
+            <input type="number" name="cardNumber" id="cardNumber"></div>
+            <label for="cardDate">Datum/år:</label><br>
+            <input type="number" name="cardDate" id="cardDate"><br>
+            <label for="cardSecurity">CVC:</label><br>
+            <input type="number" name="cardSecurity" id="cardSecurity">
+          </div>
+
+          <div class="fakturaPayment">
+            <label for="personnummer">Personnummer:</label><br>
+            <input type="number" name="personnummer" id="personnummer">
+          </div>
         </fieldset>
 
 
-        <input type="checkbox" id="gdpr" name="gdpr"><br>
+        <input type="checkbox" id="gdpr" name="gdpr">
         <label for="gdpr">Godkännande för behandling av personuppgifter.</label><br>
 
-        <input type="checkbox" id="newsletter" name="newsletter" checked><br>
+        <input type="checkbox" id="newsletter" name="newsletter" checked>
         <label for="newsletter">Få vårat nyhetsbrev en gång i veckan för alla nyheter och erbjudanden.</label><br>
+
+        <input type="submit" value="Skicka order!">
       
       </form>
 
