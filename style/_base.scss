@@ -297,6 +297,9 @@ header {
   bottom: 0;
   padding: 20px 20%;
   overflow: auto;
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
 
   input {
     margin: 5px 0;
@@ -309,6 +312,9 @@ header {
 
 .formOrderOpen {
  z-index: 3;
+ visibility: visible;
+ width: auto;
+ height: auto;
 }
 
 .formCloseBtn {
