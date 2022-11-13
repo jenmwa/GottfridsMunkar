@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;0,900;1,300;1,600;1,700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a90d7c3579.js" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/5bfa57c688.js" crossorigin="anonymous"></script>
+    
     <title>Gottfrids fantastiska munkar</title>
   </head>
   <body>
@@ -143,6 +143,20 @@
         </div>
       </div>
     </section>
+    
+    <!-- SORTERA EFTER-->
+    <section class="sortProducts">
+      <h3 id="sortBy">Sortera efter</h3>
+      <ul aria-labelledby="sortBy">
+          <li><button aria-label="Sortera efter namn"><i class="fa-solid fa-arrow-down-a-z"></i></li></button>
+          <li><button aria-label="Sortera efter betyg"><i class="fa-solid fa-star"></i></li></button>
+          <li><button aria-label="Sortera efter pris fallande"><i class="fa-solid fa-arrow-down-wide-short"></i></li></button>
+          <li><button aria-label="Sortera efter pris stigande"><i class="fa-solid fa-arrow-down-short-wide"></i></li></button>
+          <li><button aria-label="Sortera efter Kategori"><i class="fa-solid fa-up-down"></i></li></button>
+        </ul>
+    </section>
+
+    
 
     <!-- Donuts -->
     <section>
@@ -171,9 +185,11 @@
 
 
                 <div class="plusMinusInput">
+
                   <button id="minusBtn1">-</button>
                   <input type="number" id="value1" value="0">
                   <button id="plusBtn1">+</button>
+
                 </div>
 
                 <div>
