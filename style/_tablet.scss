@@ -1,10 +1,13 @@
+@media screen and (min-width: 768px) {
+
 .shoppingOpen{
     width: 90%;
 }
-.containerMaster{
+.itemsCheckoutWrapper{
     display: flex;
   }
 
-.container1, .cartContainer {
+.itemsContainer, .checkoutContainer {
     width: 50%;
+}
 }
