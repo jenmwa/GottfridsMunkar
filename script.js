@@ -83,16 +83,16 @@ for (let i = 0; i < addDonutsToCart.length; i++){
 function addDonutsToShopCart(e){
 
         // Kommer åt pris, antal och summa när vi trycker på lägg till
-const donoutSinglePrice = e.currentTarget.parentElement.querySelector('.price').innerHTML;
+const donutSinglePrice = e.currentTarget.parentElement.querySelector('.price').innerHTML;
 const totalAmount = e.currentTarget.parentElement.querySelector('.antal').innerHTML;
 const totalSum = e.currentTarget.parentElement.querySelector('.sum').innerHTML;
     
         // Hämtar namnet på Donuten
-const donutName = e.currentTarget.parentElement.parentElement.querySelector('.priceInfo');
+const donutName = e.currentTarget.parentElement.parentElement.querySelector('.priceInfo').innerText;
         // Hämtar Img på donut i html
-const donutImg = e.currentTarget.parentElement.parentElement.querySelector('.donutImg');
+const donutImg = e.currentTarget.parentElement.parentElement.querySelector('.singleDonutImg').innerHTML;
    
-    console.log(donutImg, donutName);
+    console.log(donutImg, donutName, donutSinglePrice, totalAmount, totalSum);
 
 
 }
