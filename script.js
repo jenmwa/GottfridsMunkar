@@ -96,3 +96,15 @@ const donutImg = e.currentTarget.parentElement.parentElement.querySelector('.don
 
 
 }
+
+// ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
+
+const formOpenBtn = document.querySelector('.checkoutButton');
+const formOrder = document.querySelector('.formOrder')
+
+formOpenBtn.addEventListener('click', formOrderOpen)
+
+function formOrderOpen() {
+    formOrder.classList.add("formOrderOpen")
+}
+

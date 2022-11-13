@@ -290,13 +290,14 @@ header {
 .formOrder {
   background-color: $specialBeige;
   position: fixed;
-  z-index: 5;
+  z-index: -1;
   top: 75px;
   left: 0;
   right: 0;
   bottom: 0;
   padding: 20px 20%;
   overflow: auto;
+  
 
   input {
     margin: 5px 0;
@@ -305,6 +306,10 @@ header {
   fieldset {
     margin: 10px 0;
   }
+}
+
+.formOrderOpen {
+ z-index: 3;
 }
 
 
