@@ -284,6 +284,31 @@ header {
   }
 }
 }
+
+/*************CHECKOUT FORM***********/
+
+.formOrder {
+  background-color: $specialBeige;
+  position: fixed;
+  z-index: 5;
+  top: 75px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px 20%;
+  overflow: auto;
+
+  input {
+    margin: 5px 0;
+  }
+
+  fieldset {
+    margin: 10px 0;
+  }
+}
+
+
+
 /*************PRODUKTKORT*************/
 
 .donuts{
