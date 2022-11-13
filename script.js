@@ -101,18 +101,18 @@ const donutImg = e.currentTarget.parentElement.parentElement.querySelector('.don
 
 const formOpenBtn = document.querySelector('.checkoutButton');
 const formOrder = document.querySelector('.formOrder')
-const formOrderCloseBtn = document.querySelector('.formOrderCloseBtn');
+const formCloseBtn = document.querySelector('.formCloseBtn');
 
 formOpenBtn.addEventListener('click', formOrderOpen)
-formOrderCloseBtn.addEventListener('click', formOrderClose)
+formCloseBtn.addEventListener('click', formOrderClose)
 
 function formOrderOpen() {
     formOrder.classList.add("formOrderOpen");
-    formOrderCloseBtn.classList.add("formOrderCloseBtnOpen");
+    formCloseBtn.classList.add("formCloseBtnOpen");
 }
 
 function formOrderClose() {
     formOrder.classList.remove("formOrderOpen");
-    formOrderCloseBtn.classList.remove("formOrderCloseBtnOpen");
+    formCloseBtn.classList.remove("formCloseBtnOpen");
 }
 

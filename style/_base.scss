@@ -290,7 +290,7 @@ header {
 .formOrder {
   background-color: $specialBeige;
   position: fixed;
-  z-index: -1;
+  z-index: -3;
   top: 75px;
   left: 0;
   right: 0;
@@ -311,12 +311,14 @@ header {
  z-index: 3;
 }
 
-.formOrderCloseBtn {
+.formCloseBtn {
   position: absolute;
   right: 20px;
   width: 45px;
   height: 45px;
+  border: none;
   visibility: hidden;
+  background-color: transparent;
 
   i {
     font-size: 2rem;
@@ -324,7 +326,13 @@ header {
 
 }
 
-.formOrderCloseBtnOpen {
+.formCloseBtn:hover {
+  color: $specialRed;
+  text-shadow: 1px 1px 2px black;
+
+}
+
+.formCloseBtnOpen {
   visibility: visible;
 }
 
