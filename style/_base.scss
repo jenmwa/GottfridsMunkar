@@ -93,9 +93,11 @@ header {
 /*************VARUKORG*************/
 
 #sectionShoppingCart {
-
-  background-color: transparent;  
+  background-color: transparent;
   display: none;
+  right: 0;
+  top:0;
+
 }
 
 #sectionShoppingCart.open {
@@ -108,6 +110,8 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: auto;
+  height: auto;
 
 
 .shoppingContainer{
@@ -144,8 +148,8 @@ header {
 
 .shoppingCartItems{
   margin: auto;
-  margin: 1rem;
-  padding: 2rem;
+  margin: 0.5rem;
+  padding: 1rem;
   background-color: $specialGreen;
   border: 1px solid #202020;
   box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
@@ -275,6 +279,7 @@ header {
 /*****SORTERA EFTER*********/
 
 .sortProducts{ 
+  padding-top: 100px;
   h3{
     font-size: 1rem;
     margin: auto;
