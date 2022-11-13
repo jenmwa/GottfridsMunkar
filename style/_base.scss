@@ -284,6 +284,74 @@ header {
   }
 }
 }
+
+/*************CHECKOUT FORM***********/
+
+.formOrder {
+  background-color: $specialBeige;
+  position: fixed;
+  top: 75px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px 20%;
+  overflow: auto;
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+
+  input {
+    margin: 5px 0;
+  }
+
+  fieldset {
+    margin: 10px 0;
+  }
+}
+
+.formOrderOpen {
+ visibility: visible;
+ width: auto;
+ height: auto;
+}
+
+.formCloseBtn {
+  position: absolute;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  border: none;
+  visibility: hidden;
+  background-color: transparent;
+
+  i {
+    font-size: 2rem;
+  }
+
+}
+
+.formCloseBtn:hover {
+  color: $specialRed;
+  text-shadow: 1px 1px 2px black;
+
+}
+
+.formCloseBtnOpen {
+  visibility: visible;
+}
+
+.cardPayment, .fakturaPayment {
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+}
+
+.paymentOpen {
+  visibility: visible;
+  height: auto;
+  width: auto;
+}
+
 /*************PRODUKTKORT*************/
 
 .donuts{

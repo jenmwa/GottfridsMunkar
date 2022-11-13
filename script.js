@@ -96,3 +96,46 @@ const donutImg = e.currentTarget.parentElement.parentElement.querySelector('.don
 
 
 }
+
+// ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
+
+const formOpenBtn = document.querySelector('.checkoutButton');
+const formOrder = document.querySelector('.formOrder')
+const formCloseBtn = document.querySelector('.formCloseBtn');
+
+formOpenBtn.addEventListener('click', formOrderOpen)
+formCloseBtn.addEventListener('click', formOrderClose)
+
+function formOrderOpen() {
+    formOrder.classList.add("formOrderOpen");
+    formCloseBtn.classList.add("formCloseBtnOpen");
+}
+
+function formOrderClose() {
+    formOrder.classList.remove("formOrderOpen");
+    formCloseBtn.classList.remove("formCloseBtnOpen");
+}
+
+// ÖPPNA STÄNGA KORT OCH FAKTURAALTERNATIV
+
+const cardRadio = document.querySelector('#debitKredit');
+const fakturaRadio = document.querySelector('#faktura');
+const cardPayment = document.querySelector('.cardPayment');
+const fakturaPayment = document.querySelector('.fakturaPayment');
+
+cardRadio.addEventListener('change', cardPaymentOpen);
+fakturaRadio.addEventListener('change', fakturaPaymentOpen);
+
+function cardPaymentOpen(e) {
+    if(cardRadio.checked) {
+        cardPayment.classList.add("paymentOpen");
+        fakturaPayment.classList.remove("paymentOpen");
+    }
+    
+}
+function fakturaPaymentOpen(e) {
+    if(fakturaRadio.checked) {
+        fakturaPayment.classList.add("paymentOpen");
+        cardPayment.classList.remove("paymentOpen");
+    }
+}
