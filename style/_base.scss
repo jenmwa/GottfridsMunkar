@@ -42,7 +42,7 @@ header {
     align-items: center;
 }
 
-.shoppingCart {
+#shoppingCart {
     position: relative;
     i {
         font-size: 1.5rem;
@@ -60,7 +60,7 @@ header {
     }
 }
 
-.shoppingCart:hover i {
+#shoppingCart:hover i {
     color: $specialGreen;
     text-shadow: 1px 1px 2px black;
 }
@@ -92,12 +92,23 @@ header {
 
 /*************VARUKORG*************/
 
-.shoppingOpen {
+#sectionShoppingCart {
+
+  background-color: transparent;  
+  display: none;
+}
+
+#sectionShoppingCart.open {
+  display:block;
+}
+
+#shoppingOpen {
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+
 
 .shoppingContainer{
   margin: 5rem 0;
