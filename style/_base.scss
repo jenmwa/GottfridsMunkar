@@ -290,7 +290,6 @@ header {
 .formOrder {
   background-color: $specialBeige;
   position: fixed;
-  z-index: -3;
   top: 75px;
   left: 0;
   right: 0;
@@ -311,7 +310,6 @@ header {
 }
 
 .formOrderOpen {
- z-index: 3;
  visibility: visible;
  width: auto;
  height: auto;
@@ -342,7 +340,17 @@ header {
   visibility: visible;
 }
 
+.cardPayment, .fakturaPayment {
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+}
 
+.paymentOpen {
+  visibility: visible;
+  height: auto;
+  width: auto;
+}
 
 /*************PRODUKTKORT*************/
 

@@ -116,3 +116,26 @@ function formOrderClose() {
     formCloseBtn.classList.remove("formCloseBtnOpen");
 }
 
+// ÖPPNA STÄNGA KORT OCH FAKTURAALTERNATIV
+
+const cardRadio = document.querySelector('#debitKredit');
+const fakturaRadio = document.querySelector('#faktura');
+const cardPayment = document.querySelector('.cardPayment');
+const fakturaPayment = document.querySelector('.fakturaPayment');
+
+cardRadio.addEventListener('change', cardPaymentOpen);
+fakturaRadio.addEventListener('change', fakturaPaymentOpen);
+
+function cardPaymentOpen(e) {
+    if(cardRadio.checked) {
+        cardPayment.classList.add("paymentOpen");
+        fakturaPayment.classList.remove("paymentOpen");
+    }
+    
+}
+function fakturaPaymentOpen(e) {
+    if(fakturaRadio.checked) {
+        fakturaPayment.classList.add("paymentOpen");
+        cardPayment.classList.remove("paymentOpen");
+    }
+}
