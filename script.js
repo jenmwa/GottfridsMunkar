@@ -1,6 +1,6 @@
 
 
-const shopCartList = [];
+
 
 //                 PLUSKNAPPAR - PRODUKTKORT
 
@@ -67,7 +67,9 @@ for (let i = 0; i < addDonutsToCart.length; i++){
     
 }
 
+let addShopCartList = [ ]; // Lista för munkar som ska till varukorgen
 function addDonutsToShopCart(e){
+    
 
         // Kommer åt pris, antal och summa när vi trycker på lägg till
 const donutSinglePrice = e.currentTarget.parentElement.querySelector('.price').innerHTML;
@@ -75,15 +77,13 @@ const totalAmount = e.currentTarget.parentElement.querySelector('.antal').innerH
 const totalSum = e.currentTarget.parentElement.querySelector('.sum').innerHTML;
     
         // Hämtar namnet på Donuten
-const donutInfo = e.currentTarget.parentElement.parentElement.querySelector('.donutInfo');
-
-console.log(donutInfo);
-       // Hämtar Img på donut i html
-//const donutImg = e.currentTarget.parentElement.parentElement.querySelector('.singleDonutImg');
-   
-    
+const donutInfo = e.currentTarget.parentElement.parentElement.querySelector('.priceInfo').innerText;
 
 
+if(addShopCartList.indexOf(donutInfo) == -1){
+    addShopCartList.push(donutInfo);
+}
+console.log(addShopCartList);
 }
 
 
