@@ -1,4 +1,7 @@
 
+
+const shopCartList = [];
+
 //                 PLUSKNAPPAR - PRODUKTKORT
 
 const plusBtn = document.querySelectorAll('button[data-operator="plus"]');
@@ -72,11 +75,13 @@ const totalAmount = e.currentTarget.parentElement.querySelector('.antal').innerH
 const totalSum = e.currentTarget.parentElement.querySelector('.sum').innerHTML;
     
         // Hämtar namnet på Donuten
-const donutName = e.currentTarget.parentElement.parentElement.querySelector('.priceInfo').innerText;
-        // Hämtar Img på donut i html
-const donutImg = e.currentTarget.parentElement.parentElement.querySelector('.singleDonutImg').innerHTML;
+const donutInfo = e.currentTarget.parentElement.parentElement.querySelector('.donutInfo');
+
+console.log(donutInfo);
+       // Hämtar Img på donut i html
+//const donutImg = e.currentTarget.parentElement.parentElement.querySelector('.singleDonutImg');
    
-    console.log(donutImg, donutName, donutSinglePrice, totalAmount, totalSum);
+    
 
 
 }
