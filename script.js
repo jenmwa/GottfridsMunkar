@@ -139,3 +139,65 @@ function fakturaPaymentOpen(e) {
         cardPayment.classList.remove("paymentOpen");
     }
 }
+
+
+// THEME TOGGLE
+const themeBtn = document.querySelector('#themeBtn');
+themeBtn.addEventListener('click', toggleTheme);
+
+function toggleTheme(){
+    themeBtn.classList.toggle('themeBtnMove')
+    
+    if(themeBtn == document.querySelector('.themeBtnMove')){ // DARK MODE - Till mörkt tema
+        document.body.style.backgroundColor = '#302f2a'; // bakgrund
+        document.body.style.color = '#f7f6f2'; // textfärg
+        document.querySelector('#shopCartColorTheme').style.color = 'white'; // shoppingcart
+
+        let header = document.querySelectorAll('.headerColorTheme'); // Header och footer
+        header.forEach(header => {
+            header.style.backgroundColor = '#572525';
+            });
+
+        let links = document.querySelectorAll('.allColorTheme'); // All textinnehåll med denna class
+            links.forEach(link => {
+            link.style.color = 'white';
+            });
+
+        let productCard = document.querySelectorAll('.productCard'); // Alla kategorier med denna class
+            productCard.forEach(card => {
+            card.style.backgroundColor = '#4b5947';
+            });
+
+        let munk = document.querySelectorAll('.munk'); // Alla produktkort med denna class
+            munk.forEach(donut => {
+            donut.style.backgroundColor = '#839183';
+            });
+    }
+    else if(themeBtn != document.querySelector('.themeBtnMove')){ // LIGHT MODE - tillbaka till original
+        document.body.style.backgroundColor = '#FBF2CF'; // bakgrundsfärg 
+        document.body.style.color = 'black'; // Textfärg
+        document.querySelector('#shopCartColorTheme').style.color = 'black'; // shoppingcart
+
+        links = document.querySelectorAll('.allColorTheme'); // Ändrar färg till svart på allt med classen
+            links.forEach(link => {
+            link.style.color = 'black';
+            });
+            
+        header = document.querySelectorAll('.headerColorTheme'); // Header och footer
+            header.forEach(header => {
+            header.style.backgroundColor = '#FA7070';
+            });
+            
+        productCard = document.querySelectorAll('.productCard'); // Alla produktkort med denna class
+            productCard.forEach(card => {
+            card.style.backgroundColor = '#A1C298';
+            });
+
+        munk = document.querySelectorAll('.munk'); // Alla produktkort med denna class
+            munk.forEach(donut => {
+            donut.style.backgroundColor = '#C6EBC5';
+            });
+}
+
+}
+
