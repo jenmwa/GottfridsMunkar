@@ -163,6 +163,11 @@ function toggleTheme(){
         document.body.style.color = '#f7f6f2'; // textfärg
         document.querySelector('#shopCartColorTheme').style.color = 'white'; // shoppingcart
 
+        let menu = document.querySelectorAll('.menuBtnColorTheme'); // Hamburgarmenyn
+        menu.forEach(menu => {
+            menu.style.backgroundColor = 'white';
+            });
+            
         let header = document.querySelectorAll('.headerColorTheme'); // Header och footer
         header.forEach(header => {
             header.style.backgroundColor = '#572525';
@@ -187,6 +192,12 @@ function toggleTheme(){
         document.body.style.backgroundColor = '#FBF2CF'; // bakgrundsfärg 
         document.body.style.color = 'black'; // Textfärg
         document.querySelector('#shopCartColorTheme').style.color = 'black'; // shoppingcart
+
+        let menu = document.querySelectorAll('.menuBtnColorTheme'); // HamnurgarMenyn
+        menu.forEach(menu => {
+            menu.style.backgroundColor = 'black';
+            });
+            
 
         links = document.querySelectorAll('.allColorTheme'); // Ändrar färg till svart på allt med classen
             links.forEach(link => {
