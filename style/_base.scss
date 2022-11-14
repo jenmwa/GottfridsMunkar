@@ -431,6 +431,7 @@ header {
             display: flex;
             flex-wrap: wrap;
         }
+
         .munk{
             width: 400px;
             display: flex;
@@ -441,25 +442,25 @@ header {
             box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
 
             .donutImg{
-                width: 50%;
-                margin-right: 10px;
-                margin-top: 20px;
+                margin: auto;
                 img{
                     width: 100%;
-                    
                     box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
                 }
                 .donutRating{
+                  margin-left: 50px;
                   font-size: 0.9rem;
                   padding-bottom: 5px;
                   padding-top: 5px;
                   color: black;
-                  margin-left: 25px;
+                
                   
               }
             }
             .donutInfo{
-                width: 50%;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
                 margin-left: 10px;
                 h2{
                     font-size: 1.2rem;
@@ -470,7 +471,8 @@ header {
 
                 
                 .plusMinusInput{
-          
+                  margin: auto;
+                  width: 170px;
                   .allAntal, .allSum, .allPrice{
                     font-size: 1.1rem;
                   }
@@ -494,6 +496,7 @@ header {
                         font-weight: 700;
                         color: black;
                         margin-top: 10px;
+                        margin-bottom: 10px;
                         &:hover{
                           box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
                         }
@@ -509,15 +512,14 @@ header {
                 }
                 
                 .addDonutsToCart{
+                  margin: auto;
+                    width: 50%;
                     background-color: $specialRed;
-                    width: 85px;
                     border: none;
-                    margin-top: 5px;
-                    margin-left: 40px;
                     font-size: 0.9rem;
                     font-weight: 600;
                     text-transform: uppercase;
-                    padding: 3px;
+                    padding: 5px;
                     color: black;
                     cursor: pointer;
                     &:hover{
