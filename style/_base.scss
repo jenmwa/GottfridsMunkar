@@ -290,6 +290,7 @@ header {
 .themeToggle{
   display: flex;
   justify-content: right;
+  padding-top: 100px;
 
   .themeToggleContainer{
     position: relative;
@@ -336,7 +337,7 @@ header {
 /*****SORTERA EFTER*********/
 
 .sortProducts{ 
-  padding-top: 100px;
+  padding-top: 20px;
   h3{
     font-size: 1rem;
     margin: auto;
