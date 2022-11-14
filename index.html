@@ -26,10 +26,8 @@
           </ul>
         </nav>
 
-        <button  aria-label="Shopping Cart" class="shoppingCart">
+        <button  aria-label="Shopping Cart" class="shoppingCart" id="shoppingCart">
           <i id="shopCartColorTheme" class="fa-solid fa-cart-shopping"></i>
-        <button id="shoppingCart">
-          <i class="fa-solid fa-cart-shopping"></i>
           <div>10</div>
         </button>
         <button aria-label="Meny knapp" class="hamburgerMenu">
@@ -48,103 +46,7 @@
             <h3 class="shoppingHeading">Varukorg</h3>
             <h5 class="shoppingAction">Ta bort alla</h5>
           </div>
-          <div class="containerMaster">
-            <div class="container1">
-            <!--ARTIKEL 1-->
-            <section class="shoppingCartItems" >
-              <div id="shoppingCartItems"></div>
-              <section class="shoppingCartItems">
-                <div class="shoppingCartHeading">
-                  <h3 class="shoppingTitle">White donut</h3>
-                  <h3 class="shoppingTitle">20:-</h3>
-                </div>
-                <div class="shoppingInfo">
-                  <div class="shoppingAbout">
-                    <h4 class="shoppingSubtitle">I'm dreaming of a white Christmas by Gottfrid</h4>
-                    <p>20:-styck</p>
-                  </div>
-                  <div >
-                    <img src="img/donuts_img/white.jpg" class="shoppingImage" width="100" height="100" alt="Gottfrids vita donut">
-                  </div>
-                </div>
-              <!--antal beställda+ öka/minska-->
-              <div class="shoppingCounter">
-                <span class="shoppingBtn">-</span>
-                <input
-                  type="number"
-                  class="shoppingNumber"
-                  min="1"
-                  placeholder="antal">
-                <span class="shoppingBtn">+</span>
-                <p class="shoppingRemove">Ta bort</p>
-              </div> 
-            </section>
-            <!--ARTIKEL 2-->
-            <section class="shoppingCartItems">
-              <div class="shoppingCartHeading">
-                <h3 class="shoppingTitle">Black Donut</h3>
-                <h3 class="shoppingTitle">20:-</h3>
-              </div>
-              <div class="shoppingInfo">
-                <div class="shoppingAbout">
-                  <h4 class="shoppingSubtitle">I'm dreaming of a white Christmas by Gottfrid</h4>
-                  <p>20:-styck</p>
-                </div>
-                <div >
-                  <img src="img/donuts_img/black.jpg" class="shoppingImage" width="100" height="100" alt="Gottfrids vita donut">
-                </div>
-              </div>
-              <!--antal beställda+ öka/minska-->
-              <div class="shoppingCounter">
-                <span class="shoppingBtn">-</span>
-                <input
-                  type="number"
-                  class="shoppingNumber"
-                  min="1"
-                  placeholder="antal">
-                <span class="shoppingBtn">+</span>
-                <p class="shoppingRemove">Ta bort</p>
-              </div>
-            </section>
-            
-            <!--ARTIKEL 3-->
-            <section class="shoppingCartItems">
-              <div class="shoppingCartHeading">
-                <h3 class="shoppingTitle">White Donut</h3>
-                <h3 class="shoppingTitle">20:-</h3>
-              </div>
-              <div class="shoppingInfo">
-                <div class="shoppingAbout">
-                  <h4 class="shoppingSubtitle">I'm dreaming of a white Christmas by Gottfrid</h4>
-                  <p>20:-styck</p>
-                </div>
-                <div >
-                  <img src="img/donuts_img/red.jpg" class="shoppingImage" width="100" height="100" alt="Gottfrids vita donut">
-                </div>
-              </div>
-              <!--antal beställda+ öka/minska-->
-              <div class="shoppingCounter">
-                <span class="shoppingBtn">-</span>
-                <input
-                  type="number"
-                  class="shoppingNumber"
-                  min="1"
-                  placeholder="antal">
-                <span class="shoppingBtn">+</span>
-                <p class="shoppingRemove">Ta bort</p>
-              </div>
-            </section>
-          </div>
-          <!--CHECKOUT-->
-          <div class="cartContainer">
-            <div class="cartCheckout">
-              <div class="cartTotal">
-                <div class="cartSubtotal">Totalt</div>
-                <div class="cartItems">20 donuts</div>
-              </div>
-              <div class="cartTotalAmount">200kr</div>
-              <button class="checkoutButton">Beställ</button>
-
+          
           <div class="itemsCheckoutWrapper">
             <div class="itemsContainer">
               <!--ARTIKEL 1-->
@@ -244,32 +146,8 @@
         </div>
       </div>
     </section>
-    
-     <!-- THEME TOGGLE -->
-     <div class="themeToggle">
-      <div class="themeToggleContainer">
-        <span><i class="fa-solid fa-lightbulb"></i></span>
-        <button class="themeBtn" id="themeBtn"></button>
-        <span><i class="fa-solid fa-lightbulb"></i></span>
-      </div>
-    </div>
 
-
-    <!-- SORTERA EFTER-->
-    <section class="sortProducts">
-      <h3 id="sortBy">Sortera efter</h3>
-      <ul aria-labelledby="sortBy">
-          <li><button class="allColorTheme" aria-label="Sortera efter namn"><i class="fa-solid fa-arrow-down-a-z"></i></li></button>
-          <li><button class="allColorTheme" aria-label="Sortera efter betyg"><i class="fa-solid fa-star"></i></li></button>
-          <li><button class="allColorTheme" aria-label="Sortera efter pris fallande"><i class="fa-solid fa-arrow-down-wide-short"></i></li></button>
-          <li><button class="allColorTheme" aria-label="Sortera efter pris stigande"><i class="fa-solid fa-arrow-down-short-wide"></i></li></button>
-          <li><button class="allColorTheme" aria-label="Sortera efter Kategori"><i class="fa-solid fa-up-down"></i></li></button>
-        </ul>
-    </section>
-
-
-   
-    <!-- FORMORDER -->
+        <!-- FORMORDER -->
 
   <section class="formOrder">
 
@@ -340,21 +218,33 @@
 
   </section>
     
-    
+     <!-- THEME TOGGLE -->
+     <div class="themeToggle">
+      <div class="themeToggleContainer">
+        <span><i class="fa-solid fa-lightbulb"></i></span>
+        <button class="themeBtn" id="themeBtn"></button>
+        <span><i class="fa-solid fa-lightbulb"></i></span>
+      </div>
+    </div>
+
+
     <!-- SORTERA EFTER-->
     <section class="sortProducts">
       <h3 id="sortBy">Sortera efter</h3>
       <ul aria-labelledby="sortBy">
-          <li><button aria-label="Sortera efter namn"><i class="fa-solid fa-arrow-down-a-z"></i></li></button>
-          <li><button aria-label="Sortera efter betyg"><i class="fa-solid fa-star"></i></li></button>
-          <li><button aria-label="Sortera efter pris fallande"><i class="fa-solid fa-arrow-down-wide-short"></i></li></button>
-          <li><button aria-label="Sortera efter pris stigande"><i class="fa-solid fa-arrow-down-short-wide"></i></li></button>
-          <li><button aria-label="Sortera efter Kategori"><i class="fa-solid fa-up-down"></i></li></button>
+          <li><button class="allColorTheme" aria-label="Sortera efter namn"><i class="fa-solid fa-arrow-down-a-z"></i></li></button>
+          <li><button class="allColorTheme" aria-label="Sortera efter betyg"><i class="fa-solid fa-star"></i></li></button>
+          <li><button class="allColorTheme" aria-label="Sortera efter pris fallande"><i class="fa-solid fa-arrow-down-wide-short"></i></li></button>
+          <li><button class="allColorTheme" aria-label="Sortera efter pris stigande"><i class="fa-solid fa-arrow-down-short-wide"></i></li></button>
+          <li><button class="allColorTheme" aria-label="Sortera efter Kategori"><i class="fa-solid fa-up-down"></i></li></button>
         </ul>
     </section>
 
-    
 
+   
+
+    
+    
     <!-- Donuts -->
     <section>
       <div class="donuts">
