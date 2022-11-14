@@ -13,6 +13,7 @@ header {
     height: 75px;
     position: fixed;
     padding: 0 20px;
+    z-index: 4;
     background-color: $specialRed;
     display: flex;
     justify-content: space-between;
@@ -26,6 +27,9 @@ header {
     }
     nav {
         display: none;
+        a{
+          color: black;
+        }
     }
     button {
         display: block;
@@ -34,6 +38,7 @@ header {
         border: none;
         background-color: transparent;
         cursor: pointer;
+        color: black;
     }
 }
 
@@ -46,6 +51,7 @@ header {
     position: relative;
     i {
         font-size: 1.5rem;
+        color: black;
     }
     div {
         height: 20px;
@@ -254,6 +260,57 @@ header {
 
 }
 
+
+
+/*****THEME TOGGLE**********/
+
+
+.themeToggle{
+  display: flex;
+  justify-content: right;
+
+  .themeToggleContainer{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-around;
+    width: 90px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: rgb(145, 144, 144);
+    margin-right: 30px;
+
+    span{
+      position: relative;
+      z-index: 2;
+      color: rgb(227, 227, 78);
+      
+      margin-top: 3px;
+      &:nth-of-type(2){
+        color: rgb(5, 4, 4);
+      }
+    }
+  
+  .themeBtn{
+    position: absolute;
+    z-index: 3;
+    width: 50px;
+    height: 25px;
+    padding: 10px;
+    margin-left: 40px;
+    outline: none;
+    cursor: grab;
+    border: none;
+    background-color: rgb(223, 220, 220);
+    border-radius: 5px;
+  }
+    
+  button.themeBtnMove{
+    margin-right: 80px;
+  }
+
+}
+}
 /*****SORTERA EFTER*********/
 
 .sortProducts{ 
@@ -359,7 +416,7 @@ header {
     flex-direction: column;
   
 
-    .christmasDonuts, .classicDonuts, .limitedDonuts{
+    .productCard{
         margin: auto;
         width: 90%;
         background-color: $specialGreen;
@@ -374,7 +431,8 @@ header {
             display: flex;
             flex-wrap: wrap;
         }
-        .munk, .munk1, .munk2, .munk3, .munk4, .munk5, .munk6, .munk7, .munk8, .munk9, .munk10{
+
+        .munk{
             width: 400px;
             display: flex;
             margin: auto;

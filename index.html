@@ -13,21 +13,21 @@
     <title>Gottfrids fantastiska munkar</title>
   </head>
   <body>
-    <header>
+    <header class="headerColorTheme">
       <div class="leftHeader">
         <h1>Gottfrids Fantastiskt Goda Munkar</h1>
       </div>
-      <div class="rightHeader">
+      <div class="rightHeader" >
         <nav>
           <ul>
-            <li><a href="#">Hem</a></li>
-            <li><a href="#">Kontakt</a></li>
-            <li><a href="#">Om företaget</a></li>
+            <li><a href="#" class="allColorTheme">Hem</a></li>
+            <li><a href="#" class="allColorTheme">Kontakt</a></li>
+            <li><a href="#" class="allColorTheme">Om företaget</a></li>
           </ul>
         </nav>
 
-        <button aria-label="Shopping Cart" class="shoppingCart">
-          <i class="fa-solid fa-cart-shopping"></i>
+        <button  aria-label="Shopping Cart" class="shoppingCart">
+          <i id="shopCartColorTheme" class="fa-solid fa-cart-shopping"></i>
           <div>10</div>
         </button>
         <button aria-label="Meny knapp" class="hamburgerMenu">
@@ -147,18 +147,30 @@
       </div>
     </section>
     
+     <!-- THEME TOGGLE -->
+     <div class="themeToggle">
+      <div class="themeToggleContainer">
+        <span><i class="fa-solid fa-lightbulb"></i></span>
+        <button class="themeBtn" id="themeBtn"></button>
+        <span><i class="fa-solid fa-lightbulb"></i></span>
+      </div>
+    </div>
+
+
     <!-- SORTERA EFTER-->
     <section class="sortProducts">
       <h3 id="sortBy">Sortera efter</h3>
       <ul aria-labelledby="sortBy">
-          <li><button aria-label="Sortera efter namn"><i class="fa-solid fa-arrow-down-a-z"></i></li></button>
-          <li><button aria-label="Sortera efter betyg"><i class="fa-solid fa-star"></i></li></button>
-          <li><button aria-label="Sortera efter pris fallande"><i class="fa-solid fa-arrow-down-wide-short"></i></li></button>
-          <li><button aria-label="Sortera efter pris stigande"><i class="fa-solid fa-arrow-down-short-wide"></i></li></button>
-          <li><button aria-label="Sortera efter Kategori"><i class="fa-solid fa-up-down"></i></li></button>
+          <li><button class="allColorTheme" aria-label="Sortera efter namn"><i class="fa-solid fa-arrow-down-a-z"></i></li></button>
+          <li><button class="allColorTheme" aria-label="Sortera efter betyg"><i class="fa-solid fa-star"></i></li></button>
+          <li><button class="allColorTheme" aria-label="Sortera efter pris fallande"><i class="fa-solid fa-arrow-down-wide-short"></i></li></button>
+          <li><button class="allColorTheme" aria-label="Sortera efter pris stigande"><i class="fa-solid fa-arrow-down-short-wide"></i></li></button>
+          <li><button class="allColorTheme" aria-label="Sortera efter Kategori"><i class="fa-solid fa-up-down"></i></li></button>
         </ul>
     </section>
 
+
+   
     <!-- FORMORDER -->
 
     <section class="formOrder">
@@ -233,9 +245,10 @@
     <!-- Donuts -->
     <section>
       <div class="donuts">
-        <div class="christmasDonuts">
+        <div class="productCard">
           <h1>Jul-Edition</h1>
           <div class="products">
+
 
 
             <div class="munk" >
@@ -338,7 +351,7 @@
       
 
 
-        <div class="classicDonuts">
+        <div class="productCard">
           <h1>Våra Klassiker</h1>
             <div class="products">
           
@@ -474,7 +487,7 @@
           </div>
       
 
-          <div class="limitedDonuts">
+          <div class="productCard">
 
             <h1>Limited Edition</h1>
             <div class="products">
@@ -582,19 +595,19 @@
       </div>
     </section>
 
-    <footer>
+    <footer class="headerColorTheme">
       <div class="leftFooter">
-        <p>&copy; Gottfrids Fantastiskt Goda Munkar</p>
-        <address>
+        <p class="allColorTheme" >&copy; Gottfrids Fantastiskt Goda Munkar</p>
+        <address class="allColorTheme">
           Konditorigatan 13<br>
           420 69 Munk<br>
         </address>
       </div>
       <nav>
         <ul>
-          <li><a href="#">Hem</a></li>
-          <li><a href="#">Kontakt</a></li>
-          <li><a href="#">Om företaget</a></li>
+          <li><a href="#" class="allColorTheme" >Hem</a></li>
+          <li><a href="#" class="allColorTheme" >Kontakt</a></li>
+          <li><a href="#" class="allColorTheme" >Om företaget</a></li>
         </ul>
       </nav>
     </footer>
