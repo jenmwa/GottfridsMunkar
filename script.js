@@ -1,3 +1,18 @@
+//KUNDKORG öppna - stäng
+/*När klicka på kundkorg
+    kundkorg öppnas
+klick utanför
+    kundkorg stängs */
+
+    const shoppingCart =document.querySelector('#shoppingCart');
+    const sectionShoppingCart = document.querySelector('#sectionShoppingCart');
+    
+    shoppingCart.addEventListener('click', toggleMenuOpenState);
+    sectionShoppingCart.addEventListener('click', toggleMenuOpenState);
+    
+    function toggleMenuOpenState() {
+    sectionShoppingCart.classList.toggle('open');
+    }
 
 
 let addShopCartList = [ ]; // Lista för munkar som ska till varukorgen

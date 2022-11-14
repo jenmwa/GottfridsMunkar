@@ -47,7 +47,7 @@ header {
     align-items: center;
 }
 
-.shoppingCart {
+#shoppingCart {
     position: relative;
     i {
         font-size: 1.5rem;
@@ -66,7 +66,7 @@ header {
     }
 }
 
-.shoppingCart:hover i {
+#shoppingCart:hover i {
     color: $specialGreen;
     text-shadow: 1px 1px 2px black;
 }
@@ -98,19 +98,35 @@ header {
 
 /*************VARUKORG*************/
 
-.shoppingOpen {
+#sectionShoppingCart {
+  background-color: transparent;
+  display: none;
+  right: 0;
+  top:0;
+
+}
+
+#sectionShoppingCart.open {
+  display:block;
+}
+
+#shoppingOpen {
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: auto;
+  height: auto;
+
 
 .shoppingContainer{
   margin: 5rem 0;
   width: 90%;
-  background-color: whitesmoke;
-  border-radius: 20px;
-  box-shadow: 0px 25px 40px #96969633;
+  background-color: $specialLightGreen;
+  border: 4px solid $specialGreen;
+  box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+
 }
 
 .shoppingHeader{
@@ -131,16 +147,19 @@ header {
   font-size: 1rem;
   font-weight: 600;
   color: $specialRed;
+  text-shadow: 0 0 1px rgb(0 0 0 / 0.2);
   cursor: pointer;
   border-bottom: 1px solid $specialRed;
 }
 
 .shoppingCartItems{
   margin: auto;
-  margin-bottom: 1rem;
-  padding: 2rem;
-  background-color: white;
-  border-radius: 10px;
+  margin: 0.5rem;
+  padding: 1rem;
+  background-color: $specialGreen;
+  border: 1px solid #202020;
+  box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+
 }
 
 .shoppingCartHeading {
@@ -169,7 +188,7 @@ header {
   line-height: 1rem;
   font-size: 1rem;
   font-weight: 600;
-  color: #909090;
+  color: #202020;
 }
 
 .shoppingImage{
@@ -245,17 +264,20 @@ header {
     margin: 1rem 0;
     width: 90%;
     height: 50px;
-    border: 2px solid $specialGreen;
-    background: $specialLightGreen;
+    border: 1px solid #202020;
+    box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+    background: $specialBeige;
     border-radius: 20px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
     color: #202020;
-  }
+    text-transform: uppercase;
+    }
 
   .checkoutButton:hover {
-    background: $specialGreen;
+    box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
+    transition: 0.3s ease-in-out;
   }
 
 }
@@ -314,6 +336,7 @@ header {
 /*****SORTERA EFTER*********/
 
 .sortProducts{ 
+  padding-top: 100px;
   h3{
     font-size: 1rem;
     margin: auto;
@@ -412,9 +435,9 @@ header {
 /*************PRODUKTKORT*************/
 
 .donuts{
-    display: flex;
-    flex-direction: column;
-  
+  display: flex;
+  flex-direction: column;
+
 
     .productCard{
         margin: auto;
@@ -526,14 +549,14 @@ header {
                       box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
                     }
 
-            }
+          }
 
-        }
-    }
-    .classicDonuts, .limitedDonuts{
-        margin-top: 70px;
-    }
-    
+      }
+  }
+  .classicDonuts, .limitedDonuts{
+      margin-top: 70px;
+  }
+  
 }
 
 /***********FOOTER****************/
