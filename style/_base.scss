@@ -13,6 +13,7 @@ header {
     height: 75px;
     position: fixed;
     padding: 0 20px;
+    z-index: 4;
     background-color: $specialRed;
     display: flex;
     justify-content: space-between;
@@ -26,6 +27,9 @@ header {
     }
     nav {
         display: none;
+        a{
+          color: black;
+        }
     }
     button {
         display: block;
@@ -34,6 +38,7 @@ header {
         border: none;
         background-color: transparent;
         cursor: pointer;
+        color: black;
     }
 }
 
@@ -46,6 +51,7 @@ header {
     position: relative;
     i {
         font-size: 1.5rem;
+        color: black;
     }
     div {
         height: 20px;
@@ -276,6 +282,57 @@ header {
 
 }
 
+
+
+/*****THEME TOGGLE**********/
+
+
+.themeToggle{
+  display: flex;
+  justify-content: right;
+
+  .themeToggleContainer{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-around;
+    width: 90px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: rgb(145, 144, 144);
+    margin-right: 30px;
+
+    span{
+      position: relative;
+      z-index: 2;
+      color: rgb(227, 227, 78);
+      
+      margin-top: 3px;
+      &:nth-of-type(2){
+        color: rgb(5, 4, 4);
+      }
+    }
+  
+  .themeBtn{
+    position: absolute;
+    z-index: 3;
+    width: 50px;
+    height: 25px;
+    padding: 10px;
+    margin-left: 40px;
+    outline: none;
+    cursor: grab;
+    border: none;
+    background-color: rgb(223, 220, 220);
+    border-radius: 5px;
+  }
+    
+  button.themeBtnMove{
+    margin-right: 80px;
+  }
+
+}
+}
 /*****SORTERA EFTER*********/
 
 .sortProducts{ 
@@ -382,113 +439,115 @@ header {
   flex-direction: column;
 
 
-  .christmasDonuts, .classicDonuts, .limitedDonuts{
-      margin: auto;
-      width: 90%;
-      background-color: $specialGreen;
-      margin-top: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
-      padding-bottom: 30px;
-      h1{
-          text-align: center;
-      }
-      .products{
-          display: flex;
-          flex-wrap: wrap;
-      }
-      .munk1, .munk2, .munk3, .munk4, .munk5, .munk6, .munk7, .munk8, .munk9, .munk10{
-          width: 400px;
-          display: flex;
-          margin: auto;
-          padding: 20px;
-          background-color: $specialLightGreen;
-          margin-bottom: 10px;
-          box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+    .productCard{
+        margin: auto;
+        width: 90%;
+        background-color: $specialGreen;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+        padding-bottom: 30px;
+        h1{
+            text-align: center;
+        }
+        .products{
+            display: flex;
+            flex-wrap: wrap;
+        }
 
-          .donutImg{
-              width: 50%;
-              margin-right: 10px;
-              margin-top: 20px;
-              img{
-                  width: 100%;
-                  
-                  box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
-              }
-              .donutRating{
-                font-size: 0.9rem;
-                padding-bottom: 5px;
-                padding-top: 5px;
-                color: black;
-                margin-left: 25px;
-                
-            }
-          }
-          .donutInfo{
-              width: 50%;
-              margin-left: 10px;
-              h2{
-                  font-size: 1.2rem;
-                  text-align: center;
-              }
-             
-             
+        .munk{
+            width: 400px;
+            display: flex;
+            margin: auto;
+            padding: 20px;
+            background-color: $specialLightGreen;
+            margin-bottom: 10px;
+            box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
 
-              
-              .plusMinusInput{
-        
-                .allAntal, .allSum, .allPrice{
-                  font-size: 1.1rem;
+            .donutImg{
+                margin: auto;
+                img{
+                    width: 100%;
+                    box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
                 }
-                .allPrice{
-                  margin-right: 65px;
-                }
-                .allAntal{
-                  margin-right: 70px;
-                }
-                .allSum{
-                  margin-right: 50px;
-                }
-                
-                  button{
-                      cursor: pointer;
-                      height: 30px;
-                      width: 35px;
-                      border: none;
-                      background-color: $specialRed;
-                      font-size: 1.2rem;
-                      font-weight: 700;
-                      color: black;
-                      margin-top: 10px;
-                      &:hover{
-                        box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
-                      }
-                  }
-                  .minus{
-                    margin-left: 40px;
-                  }
-                  .plus{
-                    margin-left: 10px;
-                  }
-                  }
-                  
-              }
-              
-              .addDonutsToCart{
-                  background-color: $specialRed;
-                  width: 85px;
-                  border: none;
-                  margin-top: 5px;
-                  margin-left: 40px;
+                .donutRating{
+                  margin-left: 50px;
                   font-size: 0.9rem;
-                  font-weight: 600;
-                  text-transform: uppercase;
-                  padding: 3px;
+                  padding-bottom: 5px;
+                  padding-top: 5px;
                   color: black;
-                  cursor: pointer;
-                  &:hover{
-                    box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
+                
+                  
+              }
+            }
+            .donutInfo{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin-left: 10px;
+                h2{
+                    font-size: 1.2rem;
+                    text-align: center;
+                }
+               
+               
+
+                
+                .plusMinusInput{
+                  margin: auto;
+                  width: 170px;
+                  .allAntal, .allSum, .allPrice{
+                    font-size: 1.1rem;
                   }
+                  .allPrice{
+                    margin-right: 65px;
+                  }
+                  .allAntal{
+                    margin-right: 70px;
+                  }
+                  .allSum{
+                    margin-right: 50px;
+                  }
+                  
+                    button{
+                        cursor: pointer;
+                        height: 30px;
+                        width: 35px;
+                        border: none;
+                        background-color: $specialRed;
+                        font-size: 1.2rem;
+                        font-weight: 700;
+                        color: black;
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                        &:hover{
+                          box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
+                        }
+                    }
+                    .minus{
+                      margin-left: 40px;
+                    }
+                    .plus{
+                      margin-left: 10px;
+                    }
+                    }
+                    
+                }
+                
+                .addDonutsToCart{
+                  margin: auto;
+                    width: 50%;
+                    background-color: $specialRed;
+                    border: none;
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    padding: 5px;
+                    color: black;
+                    cursor: pointer;
+                    &:hover{
+                      box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
+                    }
 
           }
 

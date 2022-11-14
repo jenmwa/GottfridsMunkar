@@ -14,18 +14,10 @@ klick utanför
     sectionShoppingCart.classList.toggle('open');
     }
 
-/**
- * Plus --- Minus knappar input
- * 
- *  OM du trycker på knapp(x)
- *      värdet blir en mindre
- * 
- *  OM annars du trycker på knapp(x)
- *      värder blir en mer
-*/
 
+let addShopCartList = [ ]; // Lista för munkar som ska till varukorgen
 
-//                    plusknappar
+//                 PLUSKNAPPAR - PRODUKTKORT
 
 const plusBtn = document.querySelectorAll('button[data-operator="plus"]');
 
@@ -39,12 +31,11 @@ function addCount(e) {
 
     amountEl.innerHTML = Number(amount) +1;
 
+
     updateDonutSum(e.currentTarget.parentElement);
     
 }
-
-
-//                Minusknappar
+//              MINUSKNAPPAR - PRODUKTKORT
 const minusBtn = document.querySelectorAll('button[data-operator="minus"]');
 
 for (let i = 0; i < minusBtn.length; i++){
@@ -64,27 +55,23 @@ function decreaseCount(e) {
     
 }
 
-
-// uppdatera summan
+//  UPPDATERA SUMMAN PRODUKTKORT
 
 function updateDonutSum(donutElement) {
     const donutSinglePrice = donutElement.querySelector('.price').innerHTML;
     const orderedAmount = donutElement.querySelector('.antal').innerHTML;
   
     let sum = donutSinglePrice * orderedAmount;
-  
-    donutElement.querySelector('.sum').innerHTML = sum;
+        // OM mer än 10 av varje st 10% rabatt
+    if(orderedAmount > 10){
+        sum = sum * 0.9;
+    }
+    donutElement.querySelector('.sum').innerHTML = Math.round(sum);
     
-   // addDonutsToShopCart(sum, orderedAmount, donutSinglePrice);
+   addDonutsToShopCart(sum, orderedAmount, donutSinglePrice);
 
   }
   
-
-  /**
-   * [] När vi trycker på lägg till
-   * [] ska, pris, antal och totalsumma gå till varukorgen
-   */
-
 //  LÄGG TILL - KNAPPAR
 
 const addDonutsToCart = document.querySelectorAll('button[data-operator="addDonutsToCart"]');
@@ -95,22 +82,30 @@ for (let i = 0; i < addDonutsToCart.length; i++){
     
 }
 
+
 function addDonutsToShopCart(e){
+    
 
         // Kommer åt pris, antal och summa när vi trycker på lägg till
-const donoutSinglePrice = e.currentTarget.parentElement.querySelector('.price').innerHTML;
+const donutSinglePrice = e.currentTarget.parentElement.querySelector('.price').innerHTML;
 const totalAmount = e.currentTarget.parentElement.querySelector('.antal').innerHTML;
 const totalSum = e.currentTarget.parentElement.querySelector('.sum').innerHTML;
     
         // Hämtar namnet på Donuten
-const donutName = e.currentTarget.parentElement.parentElement.querySelector('.priceInfo');
-        // Hämtar Img på donut i html
-const donutImg = e.currentTarget.parentElement.parentElement.querySelector('.donutImg');
-   
-    console.log(donutImg, donutName);
+const donutInfo = e.currentTarget.parentElement.parentElement.querySelector('.donutInfo');
 
-
+if(addShopCartList.indexOf(donutInfo) == -1){
+    addShopCartList.push(donutInfo);
 }
+console.log(addShopCartList);
+}
+
+
+// LÄGG TILL OBJEKTET I VARUKORGEN
+
+
+
+
 
 // ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
 
@@ -154,3 +149,65 @@ function fakturaPaymentOpen(e) {
         cardPayment.classList.remove("paymentOpen");
     }
 }
+
+
+// THEME TOGGLE
+const themeBtn = document.querySelector('#themeBtn');
+themeBtn.addEventListener('click', toggleTheme);
+
+function toggleTheme(){
+    themeBtn.classList.toggle('themeBtnMove')
+    
+    if(themeBtn == document.querySelector('.themeBtnMove')){ // DARK MODE - Till mörkt tema
+        document.body.style.backgroundColor = '#302f2a'; // bakgrund
+        document.body.style.color = '#f7f6f2'; // textfärg
+        document.querySelector('#shopCartColorTheme').style.color = 'white'; // shoppingcart
+
+        let header = document.querySelectorAll('.headerColorTheme'); // Header och footer
+        header.forEach(header => {
+            header.style.backgroundColor = '#572525';
+            });
+
+        let links = document.querySelectorAll('.allColorTheme'); // All textinnehåll med denna class
+            links.forEach(link => {
+            link.style.color = 'white';
+            });
+
+        let productCard = document.querySelectorAll('.productCard'); // Alla kategorier med denna class
+            productCard.forEach(card => {
+            card.style.backgroundColor = '#4b5947';
+            });
+
+        let munk = document.querySelectorAll('.munk'); // Alla produktkort med denna class
+            munk.forEach(donut => {
+            donut.style.backgroundColor = '#839183';
+            });
+    }
+    else if(themeBtn != document.querySelector('.themeBtnMove')){ // LIGHT MODE - tillbaka till original
+        document.body.style.backgroundColor = '#FBF2CF'; // bakgrundsfärg 
+        document.body.style.color = 'black'; // Textfärg
+        document.querySelector('#shopCartColorTheme').style.color = 'black'; // shoppingcart
+
+        links = document.querySelectorAll('.allColorTheme'); // Ändrar färg till svart på allt med classen
+            links.forEach(link => {
+            link.style.color = 'black';
+            });
+            
+        header = document.querySelectorAll('.headerColorTheme'); // Header och footer
+            header.forEach(header => {
+            header.style.backgroundColor = '#FA7070';
+            });
+            
+        productCard = document.querySelectorAll('.productCard'); // Alla produktkort med denna class
+            productCard.forEach(card => {
+            card.style.backgroundColor = '#A1C298';
+            });
+
+        munk = document.querySelectorAll('.munk'); // Alla produktkort med denna class
+            munk.forEach(donut => {
+            donut.style.backgroundColor = '#C6EBC5';
+            });
+}
+
+}
+
