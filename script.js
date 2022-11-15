@@ -4,14 +4,14 @@
 klick utanför
     kundkorg stängs */
 
-    const shoppingCart =document.querySelector('#shoppingCart');
+    const shoppingCart = document.querySelector('#shoppingCart');
     const sectionShoppingCart = document.querySelector('#sectionShoppingCart');
     
     shoppingCart.addEventListener('click', toggleMenuOpenState);
     sectionShoppingCart.addEventListener('click', toggleMenuOpenState);
     
     function toggleMenuOpenState() {
-    sectionShoppingCart.classList.toggle('open');
+        sectionShoppingCart.classList.toggle('open');
     }
 
 
