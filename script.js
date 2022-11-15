@@ -15,11 +15,10 @@ klick utanför
     }
 
 
-let addShopCartList = [ ]; // Lista för munkar som ska till varukorgen
-
 //                 PLUSKNAPPAR - PRODUKTKORT
 
 const plusBtn = document.querySelectorAll('button[data-operator="plus"]');
+
 
 for (let i = 0; i < plusBtn.length; i++){
     plusBtn[i].addEventListener('click', addCount);
@@ -30,7 +29,6 @@ function addCount(e) {
     let amount = amountEl.innerText;
 
     amountEl.innerHTML = Number(amount) +1;
-
 
     updateDonutSum(e.currentTarget.parentElement);
     
@@ -60,6 +58,7 @@ function decreaseCount(e) {
 function updateDonutSum(donutElement) {
     const donutSinglePrice = donutElement.querySelector('.price').innerHTML;
     const orderedAmount = donutElement.querySelector('.antal').innerHTML;
+    
   
     let sum = donutSinglePrice * orderedAmount;
         // OM mer än 10 av varje st 10% rabatt
@@ -68,41 +67,54 @@ function updateDonutSum(donutElement) {
     }
     donutElement.querySelector('.sum').innerHTML = Math.round(sum);
     
-   addDonutsToShopCart(sum, orderedAmount, donutSinglePrice);
-
   }
   
+
 //  LÄGG TILL - KNAPPAR
 
 const addDonutsToCart = document.querySelectorAll('button[data-operator="addDonutsToCart"]');
-
+let addShopCartList = [ ]; // Lista för munkar som ska till varukorgen
 
 for (let i = 0; i < addDonutsToCart.length; i++){
-    addDonutsToCart[i].addEventListener('click', addDonutsToShopCart);
-    
+    addDonutsToCart[i].addEventListener('click', findElement);
 }
 
 
-function addDonutsToShopCart(e){
-    
+function findElement(e){ // hittar elementen i html och lägger i variabel
+let munk = e.currentTarget.parentElement.parentElement.querySelector('.donutInfo');
 
-        // Kommer åt pris, antal och summa när vi trycker på lägg till
-const donutSinglePrice = e.currentTarget.parentElement.querySelector('.price').innerHTML;
-const totalAmount = e.currentTarget.parentElement.querySelector('.antal').innerHTML;
-const totalSum = e.currentTarget.parentElement.querySelector('.sum').innerHTML;
-    
-        // Hämtar namnet på Donuten
-const donutInfo = e.currentTarget.parentElement.parentElement.querySelector('.donutInfo');
-
-if(addShopCartList.indexOf(donutInfo) == -1){
-    addShopCartList.push(donutInfo);
-}
-console.log(addShopCartList);
+addDonutsToShopCart(munk);
 }
 
 
-// LÄGG TILL OBJEKTET I VARUKORGEN
+function addDonutsToShopCart(munk){
 
+    let price = munk.querySelector('.price').innerText;
+    let img = munk.parentElement.querySelector('.singleDonutImg');
+    let name = munk.parentElement.querySelector('.nameInfo').innerText;
+    let amount = munk.querySelector('.antal').innerText;
+    let totalSum = munk.querySelector('.sum').innerText;
+
+const addedItem = {
+    _price: price,
+    anyName: name,
+    _img: img,
+    anyAmount: amount,
+    _totalSum: totalSum
+}
+
+const index = addShopCartList.find(donut => donut.anyName === name);
+
+if (index > -1) {
+    addShopCartList[index].anyAmount += 1;
+    addShopCartList.push(addedItem);
+}else {
+    addShopCartList.push(addedItem);
+    console.log(addShopCartList);
+    
+}
+
+} 
 
 
 
