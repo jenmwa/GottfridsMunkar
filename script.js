@@ -96,13 +96,13 @@ function addDonutsToShopCart(munk){
     let amount = munk.querySelector('.antal').innerText;
     let totalSum = munk.querySelector('.sum').innerText;
     
-        // Ett objekt och anger kewvalues till objektet från munkarna
+        // Ett objekt och anger key-values till objektet från munkarna
     const addedItem = {
         anyPrice: price,
         anyName: name,
-        _img: img,
+        anyImg: img,
         anyAmount: amount,
-        _totalSum: totalSum
+        anySum: totalSum
     }
 
     if(amount == 0){  // Om antal är 0 - gör ingenting
@@ -111,23 +111,48 @@ function addDonutsToShopCart(munk){
 
         // Jämför om namnet på munken redan finns i listan och hittar och skriver objektet till index-variabel
         const index = addShopCartList.find(element => element.anyName === name); 
+
         // Letar upp vilket index i listan som variablen index ligger på och lägger det i newIndex
         const newIndex = addShopCartList.indexOf(index);
 
-                    // OM neIndex är större än -1 
+                    // OM newIndex är större än -1  ( om objektet med samma namn redan finns)
              if (newIndex > -1){
                     //ta antal munkar i objektet i listan plussa på antal munkar i objektet med samma namn som läggs till i listan.
-                addShopCartList[newIndex].anyAmount = (Number(addShopCartList[newIndex].anyAmount) + Number(amount));
+                let totalAmount = addShopCartList[newIndex].anyAmount = (Number(addShopCartList[newIndex].anyAmount) + Number(amount));
+
+                    // om du har beställt mer än 10 munkar av samma sort får du 10% rabatt på totala summan
+                if(totalAmount > 10){
+                    
+                    addShopCartList[newIndex].anySum = Math.round((Number(addShopCartList[newIndex].anySum) + Number(totalSum)) * 0.9); 
+
+                }else{
                     //ta totala summan  i objektet i listan plussa på summan i objektet med samma namn som läggs till i listan.
-                addShopCartList[newIndex]._totalSum = (Number(addShopCartList[newIndex]._totalSum) + Number(totalSum));
+                    addShopCartList[newIndex].anySum = (Number(addShopCartList[newIndex].anySum) + Number(totalSum));
+                  
+                }
+                 
+
+                            
+                    
+                
+
              }else{ // ANNARS - lägg till i varukorgen
                 addShopCartList.push(addedItem);
                 }
 
+
+                
+        
+        clearValues(munk,amount,totalSum);
+        console.log(addShopCartList);
     }
-} 
+}   // Funktion som raderar valda antal och summa munkar när knappen trycks på 
+    function clearValues(munk, amount, totalSum){
+        munk.querySelector('.antal').innerText = 0;
+        munk.querySelector('.sum').innerText = 0 ;
 
-
+        
+    }
 
 
 // ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
