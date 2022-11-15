@@ -105,17 +105,13 @@ const addedItem = {
 }
 
 const index = addShopCartList.find(element => element.anyName === name);
-//console.log(index);
-const newIndex = addShopCartList.indexOf(index);
-//console.log(newIndex);
 
-//console.log(index);
+const newIndex = addShopCartList.indexOf(index);
+
 
     if (newIndex > -1) {
 
     addShopCartList[newIndex].anyAmount = (Number(addShopCartList[newIndex].anyAmount) + Number(amount));
-    
-    
     } else {
 
         addShopCartList.push(addedItem);
