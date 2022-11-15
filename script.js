@@ -3,10 +3,10 @@
 const shoppingCart = document.querySelector('#shoppingCart');
 const sectionShoppingCart = document.querySelector('#sectionShoppingCart');
     
-shoppingCart.addEventListener('click', toggleMenuOpenState);
-sectionShoppingCart.addEventListener('click', toggleMenuOpenState);
+shoppingCart.addEventListener('click', toggleShoppingCartOpenState);
+sectionShoppingCart.addEventListener('click', toggleShoppingCartOpenState);
     
-function toggleMenuOpenState() {
+function toggleShoppingCartOpenState() {
     sectionShoppingCart.classList.toggle('open');
 }
 
