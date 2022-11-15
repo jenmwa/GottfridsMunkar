@@ -77,6 +77,7 @@ let addShopCartList = [ ]; // Lista för munkar som ska till varukorgen
 
 for (let i = 0; i < addDonutsToCart.length; i++){
     addDonutsToCart[i].addEventListener('click', findElement);
+    
 }
 
 
@@ -95,39 +96,35 @@ function addDonutsToShopCart(munk){
     let amount = munk.querySelector('.antal').innerText;
     let totalSum = munk.querySelector('.sum').innerText;
     
-
-const addedItem = {
-    _price: price,
-    anyName: name,
-    _img: img,
-    anyAmount: amount,
-    _totalSum: totalSum
-}
-
-const index = addShopCartList.find(element => element.anyName === name);
-
-const newIndex = addShopCartList.indexOf(index);
-
-
-    if (newIndex > -1) {
-
-    addShopCartList[newIndex].anyAmount = (Number(addShopCartList[newIndex].anyAmount) + Number(amount));
-    } else {
-
-        addShopCartList.push(addedItem);
-        console.log(addShopCartList);
-    
+        // Ett objekt och anger kewvalues till objektet från munkarna
+    const addedItem = {
+        anyPrice: price,
+        anyName: name,
+        _img: img,
+        anyAmount: amount,
+        _totalSum: totalSum
     }
 
+    if(amount == 0){  // Om antal är 0 - gör ingenting
+        return;
+    }else{ // om antal är annat än 0 = gör nedanstående
 
-/*
-if (index > 0) {
-    addShopCartList[index].anyAmount + amount;
-}else {
-    addShopCartList.push(addedItem);
-    console.log(addShopCartList);
-}*/
+        // Jämför om namnet på munken redan finns i listan och hittar och skriver objektet till index-variabel
+        const index = addShopCartList.find(element => element.anyName === name); 
+        // Letar upp vilket index i listan som variablen index ligger på och lägger det i newIndex
+        const newIndex = addShopCartList.indexOf(index);
 
+                    // OM neIndex är större än -1 
+             if (newIndex > -1){
+                    //ta antal munkar i objektet i listan plussa på antal munkar i objektet med samma namn som läggs till i listan.
+                addShopCartList[newIndex].anyAmount = (Number(addShopCartList[newIndex].anyAmount) + Number(amount));
+                    //ta totala summan  i objektet i listan plussa på summan i objektet med samma namn som läggs till i listan.
+                addShopCartList[newIndex]._totalSum = (Number(addShopCartList[newIndex]._totalSum) + Number(totalSum));
+             }else{ // ANNARS - lägg till i varukorgen
+                addShopCartList.push(addedItem);
+                }
+
+    }
 } 
 
 
