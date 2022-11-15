@@ -94,6 +94,7 @@ function addDonutsToShopCart(munk){
     let name = munk.parentElement.querySelector('.nameInfo').innerText;
     let amount = munk.querySelector('.antal').innerText;
     let totalSum = munk.querySelector('.sum').innerText;
+    
 
 const addedItem = {
     _price: price,
@@ -103,16 +104,33 @@ const addedItem = {
     _totalSum: totalSum
 }
 
-const index = addShopCartList.find(donut => donut.anyName === name);
+const index = addShopCartList.find(element => element.anyName === name);
+//console.log(index);
+const newIndex = addShopCartList.indexOf(index);
+//console.log(newIndex);
 
-if (index > -1) {
-    addShopCartList[index].anyAmount += 1;
-    addShopCartList.push(addedItem);
+//console.log(index);
+
+    if (newIndex > -1) {
+
+    addShopCartList[newIndex].anyAmount = (Number(addShopCartList[newIndex].anyAmount) + Number(amount));
+    
+    
+    } else {
+
+        addShopCartList.push(addedItem);
+        console.log(addShopCartList);
+    
+    }
+
+
+/*
+if (index > 0) {
+    addShopCartList[index].anyAmount + amount;
 }else {
     addShopCartList.push(addedItem);
     console.log(addShopCartList);
-    
-}
+}*/
 
 } 
 
