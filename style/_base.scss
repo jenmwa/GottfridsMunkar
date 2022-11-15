@@ -155,14 +155,16 @@ header {
 .shoppingCartItems{
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 1rem;
   padding: 1rem;
   width: 90%;
   background-color: $specialGreen;
   border: 1px solid #202020;
   box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+  text-align: left;
 
 }
-
+/*
 .shoppingCartHeading {
   display: flex;
   justify-content: space-between;
@@ -227,7 +229,7 @@ header {
   color: $specialRed;
   cursor: pointer;
 }
-
+*/
 
 /*CHECKOUT*/
   .cartCheckout{
@@ -268,7 +270,6 @@ header {
     border: 1px solid #202020;
     box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
     background: $specialBeige;
-    border-radius: 20px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
