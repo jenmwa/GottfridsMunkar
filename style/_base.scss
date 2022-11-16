@@ -117,8 +117,6 @@ header {
   width: 90%;
   z-index: 4;
 
-
-
 .shoppingContainer{
   margin: 75px  0;
   width: 90%;
@@ -142,7 +140,7 @@ header {
   font-weight: 700;
 }
 
-.shoppingAction{
+.shoppingAction , .shoppingRemove{
   background-color: $specialRed;
   font-size: 1rem;
   color: black;
@@ -151,7 +149,14 @@ header {
   border: 1px solid #202020;
 }
 
-.shoppingAction:hover {
+.shoppingRemove {
+  float: right;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  margin-top: -10px;
+}
+
+.shoppingAction:hover, .shoppingRemove:hover {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.8);
 }
 
