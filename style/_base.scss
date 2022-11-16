@@ -103,8 +103,7 @@ header {
 }
 
 #sectionShoppingCart.open {
-  display:block;
-  
+  display:block; 
 }
 
 #shoppingOpen {
@@ -389,6 +388,7 @@ header {
   visibility: hidden;
   width: 1px;
   height: 1px;
+  z-index:6;
 
   input {
     margin: 5px 0;
