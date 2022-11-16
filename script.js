@@ -287,6 +287,7 @@ let isTelephone = false;
 let isEmail = false;
 let isDebitKredit = false;
 let isInvoice = false;
+let isSocialSecurity = false;
 let isGdpr = false;
 
 function checkInputNotEmpty(e) {
@@ -331,13 +332,16 @@ function checkInputNotEmpty(e) {
     }
     if (getId == 'debitKredit' && e.target.checked) {
         isDebitKredit = true;
-    } else if (getId == 'debitKredit' && !e.target.checked) {
-        isDebitKredit = false;
+        isInvoice = false;
     }
     if (getId == 'invoice' && e.target.checked) {
         isInvoice = true;
-    } else if (getId == 'invoice' && !e.target.checked) {
-        isInvoice = false;
+        isDebitKredit = false;
+    }
+    if (getId == 'socialSecurity' && !getValue == '') {
+        isSocialSecurity = true;
+    } else if (getId == 'socialSecurity' && getValue == '') {
+        isSocialSecurity = false;
     }
     if (getId == 'gdpr' && e.target.checked) {
         isGdpr = true;
@@ -351,7 +355,7 @@ function checkInputNotEmpty(e) {
 function checkFormValid() {
     const submitBtn = document.querySelector('#submit');
 
-    if(isFirstname && isLastname && isAdress && isZipcode && isCity && isTelephone && isEmail && (isDebitKredit || isInvoice) && isGdpr) {
+    if(isFirstname && isLastname && isAdress && isZipcode && isCity && isTelephone && isEmail && (isDebitKredit || (isInvoice && isSocialSecurity)) && isGdpr) {
         submitBtn.disabled = false;
     } else {
         submitBtn.disabled = true;
