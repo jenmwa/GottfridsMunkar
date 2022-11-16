@@ -139,3 +139,41 @@ function fakturaPaymentOpen(e) {
         cardPayment.classList.remove("paymentOpen");
     }
 }
+
+// VALIDERING AV FORMULÄR
+
+const fornamn = document.querySelector('#fornamn');
+const efternamn = document.querySelector('#efternamn');
+const adress = document.querySelector('#adress');
+const postnummer = document.querySelector('#postnummer');
+const postort = document.querySelector('#postort');
+const telefon = document.querySelector('#telefon');
+const epost = document.querySelector('#epost');
+const debitKredit = document.querySelector('#debitKredit');
+const faktura = document.querySelector('#faktura');
+const gdpr = document.querySelector('#gdpr');
+
+fornamn.addEventListener('change', checkInputNotEmpty);
+efternamn.addEventListener('change', checkInputNotEmpty);
+adress.addEventListener('change', checkInputNotEmpty);
+postnummer.addEventListener('change', checkInputNotEmpty);
+postort.addEventListener('change', checkInputNotEmpty);
+telefon.addEventListener('change', checkInputNotEmpty);
+epost.addEventListener('change', checkInputNotEmpty);
+debitKredit.addEventListener('change', checkInputNotEmpty);
+faktura.addEventListener('change', checkInputNotEmpty);
+gdpr.addEventListener('change', checkInputNotEmpty);
+
+function checkInputNotEmpty(e) {
+    console.log(e.target.value);
+    if(e.target.value !== '') {
+        console.log(true);
+    } else {
+        console.log(false);
+    }
+}
+
+/*
+if (fornamn.value.length > 0 && efternamn.value.length > 0 && adress.value.length > 0 && postnummer.value > 0);
+*/
+
