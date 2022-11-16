@@ -213,8 +213,8 @@ function toggleTheme(){
 
 
 // VALIDERING AV FORMULÄR
-
-const fornamn = document.querySelector('#fornamn');
+/*
+const firstname = document.querySelector('#firstname');
 const efternamn = document.querySelector('#efternamn');
 const adress = document.querySelector('#adress');
 const postnummer = document.querySelector('#postnummer');
@@ -225,7 +225,7 @@ const debitKredit = document.querySelector('#debitKredit');
 const faktura = document.querySelector('#faktura');
 const gdpr = document.querySelector('#gdpr');
 
-fornamn.addEventListener('change', checkInputNotEmpty);
+firstname.addEventListener('change', checkInputNotEmpty);
 efternamn.addEventListener('change', checkInputNotEmpty);
 adress.addEventListener('change', checkInputNotEmpty);
 postnummer.addEventListener('change', checkInputNotEmpty);
@@ -235,15 +235,88 @@ epost.addEventListener('change', checkInputNotEmpty);
 debitKredit.addEventListener('change', checkInputNotEmpty);
 faktura.addEventListener('change', checkInputNotEmpty);
 gdpr.addEventListener('change', checkInputNotEmpty);
+*/
+
+const formOrderInputs = Array.from(document.querySelector('.formOrder').querySelectorAll('input'));
+
+for (let i = 0; i < formOrderInputs.length; i++) {
+    formOrderInputs[i].addEventListener('change', checkInputNotEmpty);
+}
+
+let isFirstname = false;
+let isLastname = false;
+let isAdress = false;
+let isZipcode = false;
+let isCity = false;
+let isTelephone = false;
+let isEmail = false;
+let isDebitKredit = false;
+let isInvoice = false;
+let isGdpr = false;
 
 function checkInputNotEmpty(e) {
+    console.log(e.target.id);
     console.log(e.target.value);
-    if(e.target.value !== '') {
-        console.log(true);
-    } else {
-        console.log(false);
+    const getId = e.target.id;
+    const getValue = e.target.value;
+
+    if (getId == 'firstname' && getValue !== '') {
+        isFirstname = true;
+    } else if (getId == 'firstname' && getValue == '') {
+        isFirstname = false;
     }
+    if (getId == 'lastname' && getValue !== '') {
+        isLastname = true;
+    } else if (getId == 'lastname' && getValue == '') {
+        isLastname = false;
+    }
+    if (getId == 'adress' && getValue !== '') {
+        isAdress = true;
+    } else if (getId == 'lastname' && getValue == '') {
+        isAdress = false;
+    }
+    if (getId == 'zipcode' && getValue !== '') {
+        isZipcode = true;
+    } else if (getId == 'lastname' && getValue == '') {
+        isZipcode = false;
+    }
+    if (getId == 'city' && getValue !== '') {
+        isCity = true;
+    } else if (getId == 'lastname' && getValue == '') {
+        isCity = false;
+    }
+    if (getId == 'telephone' && getValue !== '') {
+        isTelephone = true;
+    } else if (getId == 'lastname' && getValue == '') {
+        isTelephone = false;
+    }
+    if (getId == 'email' && getValue !== '') {
+        isEmail = true;
+    } else if (getId == 'lastname' && getValue == '') {
+        isEmail = false;
+    }
+    if (getId == 'debitKredit' && getValue !== '') {
+        isDebitKredit = true;
+    } else if (getId == 'lastname' && getValue == '') {
+        isDebitKredit = false;
+    }
+    if (getId == 'invoice' && getValue !== '') {
+        isInvoice = true;
+    } else if (getId == 'lastname' && getValue == '') {
+        isInvoice = false;
+    }
+    if (getId == 'gdpr' && getValue !== '') {
+        isGdpr = true;
+    } else if (getId == 'lastname' && getValue == '') {
+        isGdpr = false;
+    }
+    
+    checkFormValid()
 }
+
+function checkFormValid() {}
+
+
 
 /*
 if (fornamn.value.length > 0 && efternamn.value.length > 0 && adress.value.length > 0 && postnummer.value > 0);
