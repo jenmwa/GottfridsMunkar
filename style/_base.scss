@@ -99,29 +99,27 @@ header {
 /*************VARUKORG*************/
 
 #sectionShoppingCart {
-  background-color: transparent;
   display: none;
-  right: 0;
-  top:0;
-
 }
 
 #sectionShoppingCart.open {
   display:block;
+  
 }
 
 #shoppingOpen {
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  height: auto;
+  justify-content: right;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 90%;
 
 
 .shoppingContainer{
-  margin: 5rem  0 0;
+  margin: 75px  0;
   width: 90%;
   background-color: $specialLightGreen;
   border: 4px solid $specialGreen;
@@ -155,6 +153,7 @@ header {
 .shoppingAction:hover {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.8);
 }
+
 
 .shoppingCartItems{
   margin-left: auto;
