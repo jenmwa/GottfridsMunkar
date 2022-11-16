@@ -15,11 +15,10 @@ klick utanför
     }
 
 
-let addShopCartList = [ ]; // Lista för munkar som ska till varukorgen
-
 //                 PLUSKNAPPAR - PRODUKTKORT
 
 const plusBtn = document.querySelectorAll('button[data-operator="plus"]');
+
 
 for (let i = 0; i < plusBtn.length; i++){
     plusBtn[i].addEventListener('click', addCount);
@@ -30,7 +29,6 @@ function addCount(e) {
     let amount = amountEl.innerText;
 
     amountEl.innerHTML = Number(amount) +1;
-
 
     updateDonutSum(e.currentTarget.parentElement);
     
@@ -60,6 +58,7 @@ function decreaseCount(e) {
 function updateDonutSum(donutElement) {
     const donutSinglePrice = donutElement.querySelector('.price').innerHTML;
     const orderedAmount = donutElement.querySelector('.antal').innerHTML;
+    
   
     let sum = donutSinglePrice * orderedAmount;
         // OM mer än 10 av varje st 10% rabatt
@@ -68,43 +67,92 @@ function updateDonutSum(donutElement) {
     }
     donutElement.querySelector('.sum').innerHTML = Math.round(sum);
     
-   addDonutsToShopCart(sum, orderedAmount, donutSinglePrice);
-
   }
   
+
 //  LÄGG TILL - KNAPPAR
 
 const addDonutsToCart = document.querySelectorAll('button[data-operator="addDonutsToCart"]');
-
+let addShopCartList = [ ]; // Lista för munkar som ska till varukorgen
 
 for (let i = 0; i < addDonutsToCart.length; i++){
-    addDonutsToCart[i].addEventListener('click', addDonutsToShopCart);
+    addDonutsToCart[i].addEventListener('click', findElement);
     
 }
 
 
-function addDonutsToShopCart(e){
-    
+function findElement(e){ // hittar elementen i html och lägger i variabel
+let munk = e.currentTarget.parentElement.parentElement.querySelector('.donutInfo');
 
-        // Kommer åt pris, antal och summa när vi trycker på lägg till
-const donutSinglePrice = e.currentTarget.parentElement.querySelector('.price').innerHTML;
-const totalAmount = e.currentTarget.parentElement.querySelector('.antal').innerHTML;
-const totalSum = e.currentTarget.parentElement.querySelector('.sum').innerHTML;
-    
-        // Hämtar namnet på Donuten
-const donutInfo = e.currentTarget.parentElement.parentElement.querySelector('.donutInfo');
-
-if(addShopCartList.indexOf(donutInfo) == -1){
-    addShopCartList.push(donutInfo);
-}
-console.log(addShopCartList);
+addDonutsToShopCart(munk);
 }
 
 
-// LÄGG TILL OBJEKTET I VARUKORGEN
+function addDonutsToShopCart(munk){
+
+    let price = munk.querySelector('.price').innerText;
+    let img = munk.parentElement.querySelector('.singleDonutImg');
+    let name = munk.parentElement.querySelector('.nameInfo').innerText;
+    let amount = munk.querySelector('.antal').innerText;
+    let totalSum = munk.querySelector('.sum').innerText;
+    
+        // Ett objekt och anger key-values till objektet från munkarna
+    const addedItem = {
+        anyPrice: price,
+        anyName: name,
+        anyImg: img,
+        anyAmount: amount,
+        anySum: totalSum
+    }
+
+    if(amount == 0){  // Om antal är 0 - gör ingenting
+        return;
+    }else{ // om antal är annat än 0 = gör nedanstående
+
+        // Jämför om namnet på munken redan finns i listan och hittar och skriver objektet till index-variabel
+        const index = addShopCartList.find(element => element.anyName === name); 
+
+        // Letar upp vilket index i listan som variablen index ligger på och lägger det i newIndex
+        const newIndex = addShopCartList.indexOf(index);
+
+                    // OM newIndex är större än -1  ( om objektet med samma namn redan finns)
+             if (newIndex > -1){
+                    //ta antal munkar i objektet i listan plussa på antal munkar i objektet med samma namn som läggs till i listan.
+                let totalAmount = addShopCartList[newIndex].anyAmount = (Number(addShopCartList[newIndex].anyAmount) + Number(amount));
+
+                    // om du har beställt mer än 10 munkar av samma sort får du 10% rabatt på totala summan
+                if(totalAmount > 10){
+                    
+                    addShopCartList[newIndex].anySum = Math.round((Number(addShopCartList[newIndex].anySum) + Number(totalSum)) * 0.9); 
+
+                }else{
+                    //ta totala summan  i objektet i listan plussa på summan i objektet med samma namn som läggs till i listan.
+                    addShopCartList[newIndex].anySum = (Number(addShopCartList[newIndex].anySum) + Number(totalSum));
+                  
+                }
+                 
+
+                            
+                    
+                
+
+             }else{ // ANNARS - lägg till i varukorgen
+                addShopCartList.push(addedItem);
+                }
 
 
+                
+        
+        clearValues(munk,amount,totalSum);
+        console.log(addShopCartList);
+    }
+}   // Funktion som raderar valda antal och summa munkar när knappen trycks på 
+    function clearValues(munk, amount, totalSum){
+        munk.querySelector('.antal').innerText = 0;
+        munk.querySelector('.sum').innerText = 0 ;
 
+        
+    }
 
 
 // ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
@@ -163,6 +211,11 @@ function toggleTheme(){
         document.body.style.color = '#f7f6f2'; // textfärg
         document.querySelector('#shopCartColorTheme').style.color = 'white'; // shoppingcart
 
+        let menu = document.querySelectorAll('.menuBtnColorTheme'); // Hamburgarmenyn
+        menu.forEach(menu => {
+            menu.style.backgroundColor = 'white';
+            });
+            
         let header = document.querySelectorAll('.headerColorTheme'); // Header och footer
         header.forEach(header => {
             header.style.backgroundColor = '#572525';
@@ -187,6 +240,12 @@ function toggleTheme(){
         document.body.style.backgroundColor = '#FBF2CF'; // bakgrundsfärg 
         document.body.style.color = 'black'; // Textfärg
         document.querySelector('#shopCartColorTheme').style.color = 'black'; // shoppingcart
+
+        let menu = document.querySelectorAll('.menuBtnColorTheme'); // HamnurgarMenyn
+        menu.forEach(menu => {
+            menu.style.backgroundColor = 'black';
+            });
+            
 
         links = document.querySelectorAll('.allColorTheme'); // Ändrar färg till svart på allt med classen
             links.forEach(link => {
