@@ -211,31 +211,7 @@ function toggleTheme(){
 
 }
 
-
 // VALIDERING AV FORMULÄR
-/*
-const firstname = document.querySelector('#firstname');
-const efternamn = document.querySelector('#efternamn');
-const adress = document.querySelector('#adress');
-const postnummer = document.querySelector('#postnummer');
-const postort = document.querySelector('#postort');
-const telefon = document.querySelector('#telefon');
-const epost = document.querySelector('#epost');
-const debitKredit = document.querySelector('#debitKredit');
-const faktura = document.querySelector('#faktura');
-const gdpr = document.querySelector('#gdpr');
-
-firstname.addEventListener('change', checkInputNotEmpty);
-efternamn.addEventListener('change', checkInputNotEmpty);
-adress.addEventListener('change', checkInputNotEmpty);
-postnummer.addEventListener('change', checkInputNotEmpty);
-postort.addEventListener('change', checkInputNotEmpty);
-telefon.addEventListener('change', checkInputNotEmpty);
-epost.addEventListener('change', checkInputNotEmpty);
-debitKredit.addEventListener('change', checkInputNotEmpty);
-faktura.addEventListener('change', checkInputNotEmpty);
-gdpr.addEventListener('change', checkInputNotEmpty);
-*/
 
 const formOrderInputs = Array.from(document.querySelector('.formOrder').querySelectorAll('input'));
 
@@ -255,11 +231,10 @@ let isInvoice = false;
 let isGdpr = false;
 
 function checkInputNotEmpty(e) {
-    console.log(e.target.id);
-    console.log(e.target.value);
+    
     const getId = e.target.id;
     const getValue = e.target.value;
-
+    
     if (getId == 'firstname' && getValue !== '') {
         isFirstname = true;
     } else if (getId == 'firstname' && getValue == '') {
@@ -272,53 +247,55 @@ function checkInputNotEmpty(e) {
     }
     if (getId == 'adress' && getValue !== '') {
         isAdress = true;
-    } else if (getId == 'lastname' && getValue == '') {
+    } else if (getId == 'adress' && getValue == '') {
         isAdress = false;
     }
     if (getId == 'zipcode' && getValue !== '') {
         isZipcode = true;
-    } else if (getId == 'lastname' && getValue == '') {
+    } else if (getId == 'zipcode' && getValue == '') {
         isZipcode = false;
     }
     if (getId == 'city' && getValue !== '') {
         isCity = true;
-    } else if (getId == 'lastname' && getValue == '') {
+    } else if (getId == 'city' && getValue == '') {
         isCity = false;
     }
     if (getId == 'telephone' && getValue !== '') {
         isTelephone = true;
-    } else if (getId == 'lastname' && getValue == '') {
+    } else if (getId == 'telephone' && getValue == '') {
         isTelephone = false;
     }
     if (getId == 'email' && getValue !== '') {
         isEmail = true;
-    } else if (getId == 'lastname' && getValue == '') {
+    } else if (getId == 'email' && getValue == '') {
         isEmail = false;
     }
     if (getId == 'debitKredit' && getValue !== '') {
         isDebitKredit = true;
-    } else if (getId == 'lastname' && getValue == '') {
+    } else if (getId == 'debitKredit' && getValue == '') {
         isDebitKredit = false;
     }
     if (getId == 'invoice' && getValue !== '') {
         isInvoice = true;
-    } else if (getId == 'lastname' && getValue == '') {
+    } else if (getId == 'invoice' && getValue == '') {
         isInvoice = false;
     }
     if (getId == 'gdpr' && getValue !== '') {
         isGdpr = true;
-    } else if (getId == 'lastname' && getValue == '') {
+    } else if (getId == 'gdpr' && getValue == '') {
         isGdpr = false;
     }
     
-    checkFormValid()
+    checkFormValid();
+    console.log(isEmail);
 }
 
-function checkFormValid() {}
+function checkFormValid() {
+    const submitBtn = document.querySelector('#submit');
 
-
-
-/*
-if (fornamn.value.length > 0 && efternamn.value.length > 0 && adress.value.length > 0 && postnummer.value > 0);
-*/
-
+    if(isFirstname && isLastname && isAdress && isZipcode && isCity && isTelephone && isEmail && (isDebitKredit || isInvoice) && isGdpr) {
+        submitBtn.disabled = false;
+    } else {
+        submitBtn.disabled = true;
+    }
+}
