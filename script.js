@@ -198,11 +198,11 @@ function fakturaPaymentOpen(e) {
     }
 }
 
-
+/*
 // THEME TOGGLE
 const themeBtn = document.querySelector('#themeBtn');
 themeBtn.addEventListener('click', toggleTheme);
-
+*/
 function toggleTheme(){
     themeBtn.classList.toggle('themeBtnMove')
     
@@ -329,24 +329,23 @@ function checkInputNotEmpty(e) {
     } else if (getId == 'email' && getValue == '') {
         isEmail = false;
     }
-    if (getId == 'debitKredit' && getValue !== '') {
+    if (getId == 'debitKredit' && e.target.checked) {
         isDebitKredit = true;
-    } else if (getId == 'debitKredit' && getValue == '') {
+    } else if (getId == 'debitKredit' && !e.target.checked) {
         isDebitKredit = false;
     }
-    if (getId == 'invoice' && getValue !== '') {
+    if (getId == 'invoice' && e.target.checked) {
         isInvoice = true;
-    } else if (getId == 'invoice' && getValue == '') {
+    } else if (getId == 'invoice' && !e.target.checked) {
         isInvoice = false;
     }
-    if (getId == 'gdpr' && getValue !== '') {
+    if (getId == 'gdpr' && e.target.checked) {
         isGdpr = true;
-    } else if (getId == 'gdpr' && getValue == '') {
+    } else if (getId == 'gdpr' && !e.target.checked) {
         isGdpr = false;
     }
     
     checkFormValid();
-    console.log(isEmail);
 }
 
 function checkFormValid() {
