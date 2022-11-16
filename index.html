@@ -10,24 +10,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;0,900;1,300;1,600;1,700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a90d7c3579.js" crossorigin="anonymous"></script>
     
-    <title>Gottfrids fantastiska munkar</title>
+  <title>Gottfrids fantastiska munkar</title>
   </head>
   <body>
-    <header>
+    <header class="headerColorTheme">
       <div class="leftHeader">
         <h1>Gottfrids Fantastiskt Goda Munkar</h1>
       </div>
-      <div class="rightHeader">
+      <div class="rightHeader" >
         <nav>
           <ul>
-            <li><a href="#">Hem</a></li>
-            <li><a href="#">Kontakt</a></li>
-            <li><a href="#">Om företaget</a></li>
+            <li><a href="#" class="allColorTheme">Hem</a></li>
+            <li><a href="#" class="allColorTheme">Kontakt</a></li>
+            <li><a href="#" class="allColorTheme">Om företaget</a></li>
           </ul>
         </nav>
 
-        <button aria-label="Shopping Cart" class="shoppingCart">
-          <i class="fa-solid fa-cart-shopping"></i>
+        <button  aria-label="Shopping Cart" class="shoppingCart" id="shoppingCart">
+          <i id="shopCartColorTheme" class="fa-solid fa-cart-shopping"></i>
           <div>10</div>
         </button>
         <button aria-label="Meny knapp" class="hamburgerMenu">
@@ -38,181 +38,172 @@
       </div>
     </header>
 
-    <!--KUNDKORG-->
-    <section class="shoppingOpen">
-      <div class="shoppingContainer">
+    <section id="sectionShoppingCart">
+      <!--KUNDKORG-->
+      <div id="shoppingOpen">
+        <div class="shoppingContainer">
           <div class="shoppingHeader">
             <h3 class="shoppingHeading">Varukorg</h3>
             <h5 class="shoppingAction">Ta bort alla</h5>
           </div>
-          <div class="containerMaster">
-            <div class="container1">
-            <!--ARTIKEL 1-->
-            <section class="shoppingCartItems">
-              <div class="shoppingCartHeading">
-                <h3 class="shoppingTitle">White Donut</h3>
-                <h3 class="shoppingTitle">20:-</h3>
-              </div>
-              <div class="shoppingInfo">
-                <div class="shoppingAbout">
-                  <h4 class="shoppingSubtitle">I'm dreaming of a white Christmas by Gottfrid</h4>
-                  <p>20:-styck</p>
+          
+          <div class="itemsCheckoutWrapper">
+            <div class="itemsContainer">
+              <!--ARTIKEL 1-->
+              <section class="shoppingCartItems">
+                  <div class="shoppingCartHeading">
+                    <h3 class="shoppingTitle">White Donut</h3>
+                    <h3 class="shoppingTitle">20:-</h3>
+                  </div>
+                  <div class="shoppingInfo">
+                    <div class="shoppingAbout">
+                      <h4 class="shoppingSubtitle">I'm dreaming of a white Christmas by Gottfrid</h4>
+                      <p>20:-styck</p>
+                    </div>
+                    <div >
+                      <img src="img/donuts_img/white.jpg" class="shoppingImage" width="100" height="100" alt="Gottfrids vita donut">
+                    </div>
+                  </div>
+                  <!--antal beställda+ öka/minska-->
+                  <div class="shoppingCounter">
+                    <span class="shoppingBtn">-</span>
+                    <input
+                      type="number"
+                      class="shoppingNumber"
+                      min="1"
+                      placeholder="antal">
+                    <span class="shoppingBtn">+</span>
+                    <button class="shoppingRemove">Ta bort artikeln</button>
+                  </div>
+              </section>
+              <!--ARTIKEL 2-->
+              <section class="shoppingCartItems">
+                  <div class="shoppingCartHeading">
+                    <p class="shoppingTitle">Black Donut</p>
+                    <p class="shoppingTitle">20:-</p>
+                  </div>
+                  <div class="shoppingInfo">
+                    <div class="shoppingAbout">
+                      <p class="shoppingSubtitle">I'm dreaming of a white Christmas by Gottfrid</p>
+                      <p>20:-styck</p>
+                    </div>
+                    <div >
+                      <img src="img/donuts_img/black.jpg" class="shoppingImage" width="100" height="100" alt="Gottfrids vita donut">
+                    </div>
+                  </div>
+                  <!--antal beställda+ öka/minska-->
+                  <div class="shoppingCounter">
+                    <span class="shoppingBtn">-</span>
+                    <input
+                      type="number"
+                      class="shoppingNumber"
+                      min="1"
+                      placeholder="antal">
+                    <span class="shoppingBtn">+</span>
+                    <button class="shoppingRemove">Ta bort artikeln</button>
+                  </div>
+              </section>
+              <!--ARTIKEL 3-->
+              <section class="shoppingCartItems">
+                  <div class="shoppingCartHeading">
+                    <p class="shoppingTitle">White Donut</p>
+                    <p class="shoppingTitle">20:-</p>
+                  </div>
+                  <div class="shoppingInfo">
+                    <div class="shoppingAbout">
+                      <p class="shoppingSubtitle">I'm dreaming of a white Christmas by Gottfrid</p>
+                      <p>20:-styck</p>
+                    </div>
+                    <div >
+                      <img src="img/donuts_img/red.jpg" class="shoppingImage" width="100" height="100" alt="Gottfrids vita donut">
+                    </div>
+                  </div>
+                  <!--antal beställda+ öka/minska-->
+                  <div class="shoppingCounter">
+                    <span class="shoppingBtn">-</span>
+                    <input
+                      type="number"
+                      class="shoppingNumber"
+                      min="1"
+                      placeholder="antal">
+                    <span class="shoppingBtn">+</span>
+                    <button class="shoppingRemove">Ta bort artikeln</button>
+                  </div>
+              </section>
+            </div>
+            <!--CHECKOUT-->
+            <div class="checkoutContainer">
+                <div class="cartCheckout">
+                  <div class="cartTotal">
+                    <div class="cartSubtotal">Totalt</div>
+                    <div class="cartItems">20 donuts</div>
+                  </div>
+                  <div class="cartTotalAmount">200kr</div>
+                  <button class="checkoutButton">Beställ</button>
                 </div>
-                <div >
-                  <img src="img/donuts_img/white.jpg" class="shoppingImage" width="100" height="100" alt="Gottfrids vita donut">
-                </div>
-              </div>
-              <!--antal beställda+ öka/minska-->
-              <div class="shoppingCounter">
-                <span class="shoppingBtn">-</span>
-                <input
-                  type="number"
-                  class="shoppingNumber"
-                  min="1"
-                  placeholder="antal">
-                <span class="shoppingBtn">+</span>
-                <p class="shoppingRemove">Ta bort</p>
-              </div>
-            </section>
-            <!--ARTIKEL 2-->
-            <section class="shoppingCartItems">
-              <div class="shoppingCartHeading">
-                <h3 class="shoppingTitle">Black Donut</h3>
-                <h3 class="shoppingTitle">20:-</h3>
-              </div>
-              <div class="shoppingInfo">
-                <div class="shoppingAbout">
-                  <h4 class="shoppingSubtitle">I'm dreaming of a white Christmas by Gottfrid</h4>
-                  <p>20:-styck</p>
-                </div>
-                <div >
-                  <img src="img/donuts_img/black.jpg" class="shoppingImage" width="100" height="100" alt="Gottfrids vita donut">
-                </div>
-              </div>
-              <!--antal beställda+ öka/minska-->
-              <div class="shoppingCounter">
-                <span class="shoppingBtn">-</span>
-                <input
-                  type="number"
-                  class="shoppingNumber"
-                  min="1"
-                  placeholder="antal">
-                <span class="shoppingBtn">+</span>
-                <p class="shoppingRemove">Ta bort</p>
-              </div>
-            </section>
-            <!--ARTIKEL 3-->
-            <section class="shoppingCartItems">
-              <div class="shoppingCartHeading">
-                <h3 class="shoppingTitle">White Donut</h3>
-                <h3 class="shoppingTitle">20:-</h3>
-              </div>
-              <div class="shoppingInfo">
-                <div class="shoppingAbout">
-                  <h4 class="shoppingSubtitle">I'm dreaming of a white Christmas by Gottfrid</h4>
-                  <p>20:-styck</p>
-                </div>
-                <div >
-                  <img src="img/donuts_img/red.jpg" class="shoppingImage" width="100" height="100" alt="Gottfrids vita donut">
-                </div>
-              </div>
-              <!--antal beställda+ öka/minska-->
-              <div class="shoppingCounter">
-                <span class="shoppingBtn">-</span>
-                <input
-                  type="number"
-                  class="shoppingNumber"
-                  min="1"
-                  placeholder="antal">
-                <span class="shoppingBtn">+</span>
-                <p class="shoppingRemove">Ta bort</p>
-              </div>
-            </section>
-          </div>
-          <!--CHECKOUT-->
-          <div class="cartContainer">
-            <div class="cartCheckout">
-              <div class="cartTotal">
-                <div class="cartSubtotal">Totalt</div>
-                <div class="cartItems">20 donuts</div>
-              </div>
-              <div class="cartTotalAmount">200kr</div>
-              <button class="checkoutButton">Beställ</button>
             </div>
           </div>
         </div>
       </div>
     </section>
-    
-    <!-- SORTERA EFTER-->
-    <section class="sortProducts">
-      <h3 id="sortBy">Sortera efter</h3>
-      <ul aria-labelledby="sortBy">
-          <li><button aria-label="Sortera efter namn"><i class="fa-solid fa-arrow-down-a-z"></i></li></button>
-          <li><button aria-label="Sortera efter betyg"><i class="fa-solid fa-star"></i></li></button>
-          <li><button aria-label="Sortera efter pris fallande"><i class="fa-solid fa-arrow-down-wide-short"></i></li></button>
-          <li><button aria-label="Sortera efter pris stigande"><i class="fa-solid fa-arrow-down-short-wide"></i></li></button>
-          <li><button aria-label="Sortera efter Kategori"><i class="fa-solid fa-up-down"></i></li></button>
-        </ul>
-    </section>
 
-    <!-- FORMORDER -->
+        <!-- FORMORDER -->
 
-    <section class="formOrder">
+  <section class="formOrder">
 
-      <button class="formCloseBtn">
-        <i class="fa-solid fa-x"></i>
-      </button>
+    <button class="formCloseBtn">
+      <i class="fa-solid fa-x"></i>
+    </button>
 
-      <form action="">
-        <label for="fornamn">Förnamn:</label><br>
-        <input type="text" id="fornamn" name="fornamn" required><br>
+    <form action="">
+      <label for="fornamn">Förnamn:</label><br>
+      <input type="text" id="fornamn" name="fornamn" required><br>
 
-        <label for="efternamn">Efternamn:</label><br>
-        <input type="text" id="efternamn" name="efternamn" required><br>
+      <label for="efternamn">Efternamn:</label><br>
+      <input type="text" id="efternamn" name="efternamn" required><br>
 
-        <label for="adress">Adress(gata):</label><br>
-        <input type="text" id="adress" name="adress" required><br>
+      <label for="adress">Adress(gata):</label><br>
+      <input type="text" id="adress" name="adress" required><br>
 
-        <label for="postnummder">Postnummer:</label><br>
-        <input type="number" id="postnummer" name="postnummer" required><br>
+      <label for="postnummder">Postnummer:</label><br>
+      <input type="number" id="postnummer" name="postnummer" required><br>
 
-        <label for="postort">Postort:</label><br>
-        <input type="text" id="postort" name="postort" required><br>
+      <label for="postort">Postort:</label><br>
+      <input type="text" id="postort" name="postort" required><br>
 
-        <label for="portkod">Ev. portkod:</label><br>
-        <input type="text" id="portkod" name="portkod"><br>
+      <label for="portkod">Ev. portkod:</label><br>
+      <input type="text" id="portkod" name="portkod"><br>
 
-        <label for="telefon">Telefon(mobil):</label><br>
-        <input type="tel" id="telefon" name="telefon" required><br>
+      <label for="telefon">Telefon(mobil):</label><br>
+      <input type="tel" id="telefon" name="telefon" required><br>
 
-        <label for="epost">E-post:</label><br>
-        <input type="email" id="epost" name="epost" required><br>
+      <label for="epost">E-post:</label><br>
+      <input type="email" id="epost" name="epost" required><br>
 
-        <fieldset>
-          <legend>Betalalternativ:</legend>
+      <fieldset>
+        <legend>Betalalternativ:</legend>
 
-          <input type="radio" name="paymentOptions" id="debitKredit">
-          <label for="debitKredit">Debit/Kreditkort</label>
-          <input type="radio" name="paymentOptions" id="faktura">
-          <label for="faktura">Faktura</label>
+        <input type="radio" name="paymentOptions" id="debitKredit">
+        <label for="debitKredit">Debit/Kreditkort</label>
+        <input type="radio" name="paymentOptions" id="faktura">
+        <label for="faktura">Faktura</label>
 
-          <div class="cardPayment">
-            <label for="cardNumber">Kortnummer:</label><br>
-            <input type="number" name="cardNumber" id="cardNumber"><br>
+        <div class="cardPayment">
+          <label for="cardNumber">Kortnummer:</label><br>
+          <input type="number" name="cardNumber" id="cardNumber"><br>
 
-            <label for="cardDate">Datum/år:</label><br>
-            <input type="month" name="cardDate" id="cardDate"><br>
+          <label for="cardDate">Datum/år:</label><br>
+          <input type="month" name="cardDate" id="cardDate"><br>
 
-            <label for="cardSecurity">CVC:</label><br>
-            <input type="number" name="cardSecurity" id="cardSecurity">
-          </div>
+          <label for="cardSecurity">CVC:</label><br>
+          <input type="number" name="cardSecurity" id="cardSecurity">
+        </div>
 
-          <div class="fakturaPayment">
-            <label for="personnummer">Personnummer:</label><br>
-            <input type="number" name="personnummer" id="personnummer">
-          </div>
-        </fieldset>
+        <div class="fakturaPayment">
+          <label for="personnummer">Personnummer:</label><br>
+          <input type="number" name="personnummer" id="personnummer">
+        </div>
+      </fieldset>
 
 
         <input type="checkbox" id="gdpr" name="gdpr" required>
@@ -230,15 +221,18 @@
     <!-- Donuts -->
     <section>
       <div class="donuts">
-        <div class="christmasDonuts">
+        <div class="productCard">
           <h1>Jul-Edition</h1>
           <div class="products">
 
 
-            <div class="munk1">
+
+            <div class="munk" >
+              <div class="donutInfo">
               <div class="donutImg">
-                <img src="img/donuts_img/brown.jpg" alt="Vaniljmunk med pepparkakafrosting" width="100" height="150">
-              
+                <div class="singleDonutImg">
+                  <img src="img/donuts_img/brown.jpg" alt="Vaniljmunk med pepparkakafrosting" width="100" height="150">
+                </div>
                 <div class="donutRating">
                   <span><i class="fa-solid fa-star"></i></span>
                   <span><i class="fa-solid fa-star"></i></span>
@@ -248,8 +242,6 @@
                 </div>
               </div>
 
-
-              <div class="donutInfo">
                 <div class="priceInfo">
                   <h2>Pepparkaka</h2>
                 </div>
@@ -267,10 +259,12 @@
                 </div>
               </div>
 
-            <div class="munk2">
+            <div class="munk">
+              <div class="donutInfo">
               <div class="donutImg">
-                <img src="img/donuts_img/red.jpg" alt="Vaniljmunk med röd frosting med smak av nejlika" width="100" height="150">
-              
+                <div class="singleDonutImg">
+                  <img src="img/donuts_img/red.jpg" alt="Vaniljmunk med röd frosting med smak av nejlika" width="100" height="150">
+                </div>
                 <div class="donutRating">
                   <span><i class="fa-solid fa-star"></i></span>
                   <span><i class="fa-solid fa-star"></i></span>
@@ -280,7 +274,7 @@
                 </div>
               </div>
 
-              <div class="donutInfo">
+              
                 <div class="priceInfo">
                   <h2>Julglädje</h2>
                 </div>
@@ -297,10 +291,12 @@
               </div>
             </div>
 
-            <div class="munk3">
+            <div class="munk">
+              <div class="donutInfo">
               <div class="donutImg">
-                <img src="img/donuts_img/yellow.jpg" alt="vaniljmunk med ingefärafrosting" width="100" height="150">
-                
+                <div class="singleDonutImg">
+                  <img src="img/donuts_img/yellow.jpg" alt="vaniljmunk med ingefärafrosting" width="100" height="150">
+                </div>
                 <div class="donutRating">
                   <span><i class="fa-solid fa-star"></i></span>
                   <span><i class="fa-solid fa-star"></i></span>
@@ -310,7 +306,7 @@
                 </div>
               </div>
 
-              <div class="donutInfo">
+              
                 <div class="priceInfo">
                   <h2>Ingefära</h2>
                 </div>
@@ -331,14 +327,17 @@
       
 
 
-        <div class="classicDonuts">
+        <div class="productCard">
           <h1>Våra Klassiker</h1>
             <div class="products">
           
-              <div class="munk4">
+              <div class="munk">
+                <div class="donutInfo">
                 <div class="donutImg">
-                  <img src="img/donuts_img/white.jpg" alt="Vaniljmunk med vaniljfrosting" width="100" height="150">
-                
+                  <div class="singleDonutImg">
+                    <img src="img/donuts_img/white.jpg" alt="Vaniljmunk med vaniljfrosting" width="100" height="150">
+                  </div>
+
                   <div class="donutRating">
                     <span><i class="fa-solid fa-star"></i></span>
                     <span><i class="fa-solid fa-star"></i></span>
@@ -348,7 +347,7 @@
                   </div>
                 </div>
   
-                <div class="donutInfo">
+                
                   <div class="priceInfo">
                     <h2>Vanilj</h2>
                   </div>
@@ -365,10 +364,13 @@
                 </div>
               </div>
 
-            <div class="munk5">
+            <div class="munk">
+              <div class="donutInfo">
               <div class="donutImg">
-                <img src="img/donuts_img/black.jpg" alt="vaniljmunk med lakritsglaze" width="100" height="150">
-              
+                <div class="singleDonutImg">
+                  <img src="img/donuts_img/black.jpg" alt="vaniljmunk med lakritsglaze" width="100" height="150">
+                </div>
+
                 <div class="donutRating">
                   <span><i class="fa-solid fa-star"></i></span>
                   <span><i class="fa-regular fa-star"></i></span>
@@ -378,7 +380,7 @@
                 </div>
               </div>
 
-              <div class="donutInfo">
+              
                 <div class="priceInfo">
                   <h2>Lakrits</h2>
                 </div>
@@ -394,10 +396,13 @@
               </div> 
             </div>
 
-            <div class="munk6">
+            <div class="munk">
+              <div class="donutInfo">
               <div class="donutImg">
-                <img src="img/donuts_img/purple.jpg" alt="vaniljmunk med lavendelglaze" width="100" height="150">
-              
+                <div class="singleDonutImg">
+                  <img src="img/donuts_img/purple.jpg" alt="vaniljmunk med lavendelglaze" width="100" height="150">
+                </div>
+
                 <div class="donutRating">
                   <span><i class="fa-solid fa-star"></i></span>
                   <span><i class="fa-solid fa-star"></i></span>
@@ -407,7 +412,7 @@
                 </div>
               </div>
 
-              <div class="donutInfo">
+              
                 <div class="priceInfo">
                   <h2>Lavendel</h2>
                 </div>
@@ -423,10 +428,13 @@
               </div> 
             </div>
 
-            <div class="munk7">
+            <div class="munk">
+              <div class="donutInfo">
               <div class="donutImg">
-                <img src="img/donuts_img/pink.jpg" alt="vaniljmunk med hallonglaze" width="100" height="150">
-              
+                <div class="singleDonutImg">
+                  <img src="img/donuts_img/pink.jpg" alt="vaniljmunk med hallonglaze" width="100" height="150">
+                </div>
+
                 <div class="donutRating">
                   <span><i class="fa-solid fa-star"></i></span>
                   <span><i class="fa-solid fa-star"></i></span>
@@ -436,7 +444,7 @@
                 </div>
               </div>
 
-              <div class="donutInfo">
+              
                 <div class="priceInfo">
                   <h2>Hallon</h2>
                 </div>
@@ -455,15 +463,17 @@
           </div>
       
 
-          <div class="limitedDonuts">
+          <div class="productCard">
 
             <h1>Limited Edition</h1>
             <div class="products">
   
-              <div class="munk8">
+              <div class="munk">
+                <div class="donutInfo">
                 <div class="donutImg">
-                  <img src="img/donuts_img/blue.jpg" alt="vaniljmunk med bluefizz-godissmak" width="100" height="150">
-                
+                  <div class="singleDonutImg">
+                    <img src="img/donuts_img/blue.jpg" alt="vaniljmunk med bluefizz-godissmak" width="100" height="150">
+                  </div>
                   <div class="donutRating">
                     <span><i class="fa-solid fa-star"></i></span>
                     <span><i class="fa-solid fa-star"></i></span>
@@ -473,7 +483,7 @@
                   </div>
                 </div>
   
-                <div class="donutInfo">
+                
                   <div class="priceInfo">
                     <h2>Blue Fizz</h2>
                   </div>
@@ -489,10 +499,13 @@
                 </div> 
               </div>
   
-              <div class="munk9">
+              <div class="munk">
+                <div class="donutInfo">
                 <div class="donutImg">
-                  <img src="img/donuts_img/lightblue.jpg" alt="vaniljmunk med champagnefrosting" width="100" height="150">
-                
+                  <div class="singleDonutImg">
+                    <img src="img/donuts_img/lightblue.jpg" alt="vaniljmunk med champagnefrosting" width="100" height="150">
+                  </div>
+
                   <div class="donutRating">
                     <span><i class="fa-solid fa-star"></i></span>
                     <span><i class="fa-solid fa-star"></i></span>
@@ -502,7 +515,7 @@
                   </div>
                 </div>
   
-                <div class="donutInfo">
+                
                   <div class="priceInfo">
                     <h2>Champagne</h2>
                   </div>
@@ -519,10 +532,13 @@
               </div>
   
               
-              <div class="munk10">
+              <div class="munk">
+                <div class="donutInfo">
                 <div class="donutImg">
-                  <img src="img/donuts_img/green.jpg" alt="vaniljmunk med päronsplittfrosting" width="100" height="150">
-                
+                  <div class="singleDonutImg">
+                    <img src="img/donuts_img/green.jpg" alt="vaniljmunk med päronsplittfrosting" width="100" height="150">
+                  </div>
+                    
                   <div class="donutRating">
                     <span><i class="fa-solid fa-star"></i></span>
                     <span><i class="fa-solid fa-star"></i></span>
@@ -532,7 +548,7 @@
                   </div>
                 </div>
   
-                <div class="donutInfo">
+                
                   <div class="priceInfo">
                     <h2>Päronsplitt</h2>
                   </div>
@@ -555,19 +571,19 @@
       </div>
     </section>
 
-    <footer>
+    <footer class="headerColorTheme">
       <div class="leftFooter">
-        <p>&copy; Gottfrids Fantastiskt Goda Munkar</p>
-        <address>
+        <p class="allColorTheme" >&copy; Gottfrids Fantastiskt Goda Munkar</p>
+        <address class="allColorTheme">
           Konditorigatan 13<br>
           420 69 Munk<br>
         </address>
       </div>
       <nav>
         <ul>
-          <li><a href="#">Hem</a></li>
-          <li><a href="#">Kontakt</a></li>
-          <li><a href="#">Om företaget</a></li>
+          <li><a href="#" class="allColorTheme" >Hem</a></li>
+          <li><a href="#" class="allColorTheme" >Kontakt</a></li>
+          <li><a href="#" class="allColorTheme" >Om företaget</a></li>
         </ul>
       </nav>
     </footer>

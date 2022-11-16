@@ -13,6 +13,7 @@ header {
     height: 75px;
     position: fixed;
     padding: 0 20px;
+    z-index: 4;
     background-color: $specialRed;
     display: flex;
     justify-content: space-between;
@@ -26,6 +27,9 @@ header {
     }
     nav {
         display: none;
+        a{
+          color: black;
+        }
     }
     button {
         display: block;
@@ -34,6 +38,7 @@ header {
         border: none;
         background-color: transparent;
         cursor: pointer;
+        color: black;
     }
 }
 
@@ -42,10 +47,11 @@ header {
     align-items: center;
 }
 
-.shoppingCart {
+#shoppingCart {
     position: relative;
     i {
         font-size: 1.5rem;
+        color: black;
     }
     div {
         height: 20px;
@@ -60,7 +66,7 @@ header {
     }
 }
 
-.shoppingCart:hover i {
+#shoppingCart:hover i {
     color: $specialGreen;
     text-shadow: 1px 1px 2px black;
 }
@@ -92,19 +98,35 @@ header {
 
 /*************VARUKORG*************/
 
-.shoppingOpen {
+#sectionShoppingCart {
+  background-color: transparent;
+  display: none;
+  right: 0;
+  top:0;
+
+}
+
+#sectionShoppingCart.open {
+  display:block;
+}
+
+#shoppingOpen {
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: auto;
+  height: auto;
+
 
 .shoppingContainer{
   margin: 5rem 0;
   width: 90%;
-  background-color: whitesmoke;
-  border-radius: 20px;
-  box-shadow: 0px 25px 40px #96969633;
+  background-color: $specialLightGreen;
+  border: 4px solid $specialGreen;
+  box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+
 }
 
 .shoppingHeader{
@@ -125,16 +147,19 @@ header {
   font-size: 1rem;
   font-weight: 600;
   color: $specialRed;
+  text-shadow: 0 0 1px rgb(0 0 0 / 0.2);
   cursor: pointer;
   border-bottom: 1px solid $specialRed;
 }
 
 .shoppingCartItems{
   margin: auto;
-  margin-bottom: 1rem;
-  padding: 2rem;
-  background-color: white;
-  border-radius: 10px;
+  margin: 0.5rem;
+  padding: 1rem;
+  background-color: $specialGreen;
+  border: 1px solid #202020;
+  box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+
 }
 
 .shoppingCartHeading {
@@ -163,7 +188,7 @@ header {
   line-height: 1rem;
   font-size: 1rem;
   font-weight: 600;
-  color: #909090;
+  color: #202020;
 }
 
 .shoppingImage{
@@ -239,24 +264,80 @@ header {
     margin: 1rem 0;
     width: 90%;
     height: 50px;
-    border: 2px solid $specialGreen;
-    background: $specialLightGreen;
+    border: 1px solid #202020;
+    box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+    background: $specialBeige;
     border-radius: 20px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
     color: #202020;
-  }
+    text-transform: uppercase;
+    }
 
   .checkoutButton:hover {
-    background: $specialGreen;
+    box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
+    transition: 0.3s ease-in-out;
   }
 
 }
 
+
+
+/*****THEME TOGGLE**********/
+
+
+.themeToggle{
+  display: flex;
+  justify-content: right;
+  padding-top: 100px;
+
+  .themeToggleContainer{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-around;
+    width: 90px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: rgb(145, 144, 144);
+    margin-right: 30px;
+
+    span{
+      position: relative;
+      z-index: 2;
+      color: rgb(227, 227, 78);
+      
+      margin-top: 3px;
+      &:nth-of-type(2){
+        color: rgb(5, 4, 4);
+      }
+    }
+  
+  .themeBtn{
+    position: absolute;
+    z-index: 3;
+    width: 50px;
+    height: 25px;
+    padding: 10px;
+    margin-left: 40px;
+    outline: none;
+    cursor: grab;
+    border: none;
+    background-color: rgb(223, 220, 220);
+    border-radius: 5px;
+  }
+    
+  button.themeBtnMove{
+    margin-right: 80px;
+  }
+
+}
+}
 /*****SORTERA EFTER*********/
 
 .sortProducts{ 
+  padding-top: 20px;
   h3{
     font-size: 1rem;
     margin: auto;
@@ -355,11 +436,11 @@ header {
 /*************PRODUKTKORT*************/
 
 .donuts{
-    display: flex;
-    flex-direction: column;
-  
+  display: flex;
+  flex-direction: column;
 
-    .christmasDonuts, .classicDonuts, .limitedDonuts{
+
+    .productCard{
         margin: auto;
         width: 90%;
         background-color: $specialGreen;
@@ -374,7 +455,8 @@ header {
             display: flex;
             flex-wrap: wrap;
         }
-        .munk1, .munk2, .munk3, .munk4, .munk5, .munk6, .munk7, .munk8, .munk9, .munk10{
+
+        .munk{
             width: 400px;
             display: flex;
             margin: auto;
@@ -384,25 +466,25 @@ header {
             box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
 
             .donutImg{
-                width: 50%;
-                margin-right: 10px;
-                margin-top: 20px;
+                margin: auto;
                 img{
                     width: 100%;
-                    
                     box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
                 }
                 .donutRating{
+                  margin-left: 50px;
                   font-size: 0.9rem;
                   padding-bottom: 5px;
                   padding-top: 5px;
                   color: black;
-                  margin-left: 25px;
+                
                   
               }
             }
             .donutInfo{
-                width: 50%;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
                 margin-left: 10px;
                 h2{
                     font-size: 1.2rem;
@@ -413,7 +495,8 @@ header {
 
                 
                 .plusMinusInput{
-          
+                  margin: auto;
+                  width: 170px;
                   .allAntal, .allSum, .allPrice{
                     font-size: 1.1rem;
                   }
@@ -437,6 +520,7 @@ header {
                         font-weight: 700;
                         color: black;
                         margin-top: 10px;
+                        margin-bottom: 10px;
                         &:hover{
                           box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
                         }
@@ -452,29 +536,28 @@ header {
                 }
                 
                 .addDonutsToCart{
+                  margin: auto;
+                    width: 50%;
                     background-color: $specialRed;
-                    width: 85px;
                     border: none;
-                    margin-top: 5px;
-                    margin-left: 40px;
                     font-size: 0.9rem;
                     font-weight: 600;
                     text-transform: uppercase;
-                    padding: 3px;
+                    padding: 5px;
                     color: black;
                     cursor: pointer;
                     &:hover{
                       box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
                     }
 
-            }
+          }
 
-        }
-    }
-    .classicDonuts, .limitedDonuts{
-        margin-top: 70px;
-    }
-    
+      }
+  }
+  .classicDonuts, .limitedDonuts{
+      margin-top: 70px;
+  }
+  
 }
 
 /***********FOOTER****************/
