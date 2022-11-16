@@ -129,12 +129,12 @@ function formOrderClose() {
 // ÖPPNA STÄNGA KORT OCH FAKTURAALTERNATIV
 
 const cardRadio = document.querySelector('#debitKredit');
-const fakturaRadio = document.querySelector('#faktura');
+const invoiceRadio = document.querySelector('#invoice');
 const cardPayment = document.querySelector('.cardPayment');
 const fakturaPayment = document.querySelector('.fakturaPayment');
 
 cardRadio.addEventListener('change', cardPaymentOpen);
-fakturaRadio.addEventListener('change', fakturaPaymentOpen);
+invoiceRadio.addEventListener('change', fakturaPaymentOpen);
 
 function cardPaymentOpen(e) {
     if(cardRadio.checked) {
@@ -144,7 +144,7 @@ function cardPaymentOpen(e) {
     
 }
 function fakturaPaymentOpen(e) {
-    if(fakturaRadio.checked) {
+    if(invoiceRadio.checked) {
         fakturaPayment.classList.add("paymentOpen");
         cardPayment.classList.remove("paymentOpen");
     }
