@@ -95,16 +95,15 @@ function addDonutsToShopCart(munk){
     if(amount == 0){  // Om antal är 0 - gör ingenting
         return;
     }else{ // om antal är annat än 0 = gör nedanstående
-        const index = addShopCartList.find(element => element.anyName === name);   // Jämför om namnet på munken redan finns i listan och hittar och skriver objektet till index-variabel
-        const newIndex = addShopCartList.indexOf(index); // Letar upp vilket index i listan som variablen index ligger på och lägger det i newIndex
+        const index = addShopCartList.indexOf(addShopCartList.find(element => element.anyName === name)); // Letar upp vilket index i listan som variablen index ligger på och lägger det i newIndex
 
-             if (newIndex > -1){ // OM newIndex är större än -1  ( om objektet med samma namn redan finns)
-                let totalAmount = addShopCartList[newIndex].anyAmount = (Number(addShopCartList[newIndex].anyAmount) + Number(amount));  //ta antal munkar i objektet i listan plussa på antal munkar i objektet med samma namn som läggs till i listan.
+             if (index > -1){ // OM index är större än -1  ( om objektet med samma namn redan finns)
+                let totalAmount = addShopCartList[index].anyAmount = (Number(addShopCartList[index].anyAmount) + Number(amount));  //ta antal munkar i objektet i listan plussa på antal munkar i objektet med samma namn som läggs till i listan.
 
                 if(totalAmount > 10){ // om du har beställt mer än 10 munkar av samma sort får du 10% rabatt på totala summan
-                    addShopCartList[newIndex].anySum = Math.round((Number(addShopCartList[newIndex].anySum) + Number(totalSum)) * 0.9); 
+                    addShopCartList[index].anySum = Math.round((Number(addShopCartList[index].anySum) + Number(totalSum)) * 0.9); 
                 }else{
-                     addShopCartList[newIndex].anySum = (Number(addShopCartList[newIndex].anySum) + Number(totalSum));  //ta totala summan  i objektet i listan plussa på summan i objektet med samma namn som läggs till i listan.
+                     addShopCartList[index].anySum = (Number(addShopCartList[index].anySum) + Number(totalSum));  //ta totala summan  i objektet i listan plussa på summan i objektet med samma namn som läggs till i listan.
                 }
             }else{ // ANNARS - lägg till i varukorgen
                 addShopCartList.push(addedItem);
@@ -118,7 +117,6 @@ function clearValues(munk, amount, totalSum){  // Funktion som raderar valda ant
     munk.querySelector('.antal').innerText = 0;
     munk.querySelector('.sum').innerText = 0 ; 
 }
-
 
 // ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
 
