@@ -272,12 +272,15 @@ function toggleTheme(){
 
 // VALIDERING AV FORMULÄR
 
-const formOrderInputs = Array.from(document.querySelector('.formOrder').querySelectorAll('input'));
+//get form inputs with queryselector
+const formOrderInputs = Array.from(document.querySelector('.formOrder').querySelectorAll('input')); 
 
+// loop form inputs, add event listeners
 for (let i = 0; i < formOrderInputs.length; i++) {
     formOrderInputs[i].addEventListener('change', checkInputNotEmpty);
 }
 
+//declare boolean variables for every validated input
 let isFirstname = false;
 let isLastname = false;
 let isAdress = false;
@@ -290,12 +293,11 @@ let isInvoice = false;
 let isSocialSecurity = false;
 let isGdpr = false;
 
-
+// function to check if specifik input is valid
 function checkInputNotEmpty(e) {
     
     const getId = e.target.id;
     const getValue = e.target.value;
-    
     
     if (getId == 'firstname' && getValue !== '') {
         isFirstname = true;
@@ -372,6 +374,7 @@ function checkInputNotEmpty(e) {
     checkFormValid();
 }
 
+// function to check if all inputs are valid, make submit button enabled
 function checkFormValid() {
     const submitBtn = document.querySelector('#submit');
 
@@ -382,6 +385,7 @@ function checkFormValid() {
     }
 }
 
+// function to add error message to non-valid input
 function addErrorMessage(e, string) {
     const getErrorMessage = e.target.parentElement.querySelector('.errorMessage');
 
@@ -393,6 +397,7 @@ function addErrorMessage(e, string) {
     getErrorMessage.appendChild(addParagraph);
 }
 
+// function to remove error message after input get valid
 function removeError(e) {
     e.target.classList.remove('error');
     e.target.parentElement.querySelector('.errorMessage').innerHTML = "";
