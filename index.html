@@ -149,68 +149,112 @@
 
         <!-- FORMORDER -->
 
-  <section class="formOrder">
+    <section class="formOrder">
 
-    <button class="formCloseBtn">
-      <i class="fa-solid fa-x"></i>
-    </button>
+      <button class="formCloseBtn">
+        <i class="fa-solid fa-x"></i>
+      </button>
 
-    <form action="">
-      <label for="firstname">Förnamn:</label><br>
-      <input type="text" id="firstname" name="firstname" required><br>
+      <form action="">
 
-      <label for="lastname">Efternamn:</label><br>
-      <input type="text" id="lastname" name="lastname" required><br>
+        <p>* = Obligatoriskt fält.</p>
 
-      <label for="adress">Adress(gata):</label><br>
-      <input type="text" id="adress" name="adress" required><br>
+        <label>
+          <div class="errorMessage"></div>
+          <span>Förnamn:*</span><br>
+          <input type="text" id="firstname" name="firstname" required><br>
+        </label>
 
-      <label for="postnumber">Postnummer:</label><br>
-      <input type="number" id="zipcode" name="zipcode" required><br>
+        <label>
+          <div class="errorMessage"></div>
+          <span>Efternamn:*</span><br>
+          <input type="text" id="lastname" name="lastname" required><br>
+        </label>
 
-      <label for="city">Postort:</label><br>
-      <input type="text" id="city" name="city" required><br>
+        <label>
+          <div class="errorMessage"></div>
+          <span>Adress(gata):*</span><br>
+          <input type="text" id="adress" name="adress" required><br>
+        </label>
 
-      <label for="portkod">Ev. portkod:</label><br>
-      <input type="text" id="portkod" name="portkod"><br>
+        <label>
+          <div class="errorMessage"></div>
+          <span>Postnummer:*</span><br>
+          <input type="number" id="zipcode" name="zipcode" required><br>
+        </label>
 
-      <label for="telephone">Telefon(mobil):</label><br>
-      <input type="tel" id="telephone" name="telephone" required><br>
+        <label>
+          <div class="errorMessage"></div>
+          <span>Postort:*</span><br>
+          <input type="text" id="city" name="city" required><br>
+        </label>
 
-      <label for="email">E-post:</label><br>
-      <input type="email" id="email" name="email" placeholder="exempel@exempel.se" required><br>
+        <label>
+          <div class="errorMessage"></div>
+          <span>Ev. portkod:</span><br>
+          <input type="text" id="portkod" name="portkod"><br>
+        </label>
 
-      <fieldset>
-        <legend>Betalalternativ:</legend>
+        <label>
+          <div class="errorMessage"></div>
+          <span>Telefon(mobil):*</span><br>
+          <input type="tel" id="telephone" name="telephone" required><br>
+        </label>
 
-        <input type="radio" name="paymentOptions" id="debitKredit">
-        <label for="debitKredit">Debit/Kreditkort</label>
-        <input type="radio" name="paymentOptions" id="invoice">
-        <label for="invoice">Faktura</label>
+        <label>
+          <div class="errorMessage"></div>
+          <span>E-post:*</span><br>
+          <input type="email" id="email" name="email" placeholder="exempel@exempel.se" required><br>
+        </label>
 
-        <div class="cardPayment">
-          <label for="cardNumber">Kortnummer:</label><br>
-          <input type="number" name="cardNumber" id="cardNumber"><br>
+        <fieldset>
+          <legend>Betalalternativ:*</legend>
 
-          <label for="cardDate">Datum/år:</label><br>
-          <input type="month" name="cardDate" id="cardDate"><br>
+          <label>
+            <input type="radio" name="paymentOptions" id="debitKredit">
+            <span>Debit/Kreditkort</span>
+          </label>
 
-          <label for="cardSecurity">CVC:</label><br>
-          <input type="number" name="cardSecurity" id="cardSecurity">
-        </div>
+          <label>
+            <input type="radio" name="paymentOptions" id="invoice">
+            <span>Faktura</span>
+          </label>
 
-        <div class="fakturaPayment">
-          <label for="socialSecurity">Personnummer:</label><br>
-          <input type="number" name="socialSecurity" id="socialSecurity" pattern="[0-9]{10}" placeholder="ÅÅMMDXXXX">
-        </div>
-      </fieldset>
+          <div class="cardPayment">
+            <label>
+              <span>Kortnummer:</span><br>
+              <input type="number" name="cardNumber" id="cardNumber"><br>
+            </label>
 
+            <label>
+              <span>Datum/år:</span><br>
+              <input type="month" name="cardDate" id="cardDate"><br>
+            </label>
 
-        <input type="checkbox" id="gdpr" name="gdpr" required>
-        <label for="gdpr">Godkännande för behandling av personuppgifter.</label><br>
+            <label>
+              <span>CVC:</span><br>
+              <input type="number" name="cardSecurity" id="cardSecurity">
+            </label>
+          </div>
 
-        <input type="checkbox" id="newsletter" name="newsletter" checked>
-        <label for="newsletter">Få vårat nyhetsbrev en gång i veckan för alla nyheter och erbjudanden.</label><br>
+          <div class="fakturaPayment">
+            <label>
+              <div class="errorMessage"></div>
+              <span>Personnummer:*</span><br>
+              <input type="number" name="socialSecurity" id="socialSecurity" pattern="[0-9]{10}" placeholder="ÅÅMMDXXXX">
+            </label>
+          </div>
+        </fieldset>
+
+        <label>
+          <input type="checkbox" id="gdpr" name="gdpr" required>
+          <span>Godkännande för behandling av personuppgifter.*</span><br>
+        </label>
+
+        <label>
+          <input type="checkbox" id="newsletter" name="newsletter" checked>
+          <span>Få vårat nyhetsbrev en gång i veckan för alla nyheter och erbjudanden.</span><br>
+        </label>
 
         <input type="submit" id="submit" value="Skicka order!" disabled>
       
