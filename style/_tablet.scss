@@ -1,3 +1,14 @@
+@media screen and (min-width: 600px) {
+    .flexForm {
+        display: grid;
+        grid-template-columns: 50% 50%;
+
+        label {
+           flex-basis: 25%;
+        }
+    }
+}
+
 @media screen and (min-width: 768px) {
 
     .shoppingOpen{
@@ -11,12 +22,5 @@
         width: 50%;
     }
 
-    .flexForm {
-        display: grid;
-        grid-template-columns: 50% 50%;
-
-        label {
-           flex-basis: 25%;
-        }
-    }
+    
 }
