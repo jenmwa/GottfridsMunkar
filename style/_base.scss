@@ -435,6 +435,18 @@ header {
   width: auto;
 }
 
+.errorMessage {
+  color: red;
+
+  p {
+    margin: 0;
+  }
+}
+
+input.error {
+  border-color: red;
+}
+
 /*************PRODUKTKORT*************/
 
 .donuts{

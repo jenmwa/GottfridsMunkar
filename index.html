@@ -180,7 +180,7 @@
         <label>
           <div class="errorMessage"></div>
           <span>Postnummer:*</span><br>
-          <input type="number" id="zipcode" name="zipcode" required><br>
+          <input type="text" id="zipcode" name="zipcode" placeholder="ex.12345" minlength="5" maxlength="5" required><br>
         </label>
 
         <label>
@@ -241,7 +241,7 @@
             <label>
               <div class="errorMessage"></div>
               <span>Personnummer:*</span><br>
-              <input type="number" name="socialSecurity" id="socialSecurity" pattern="[0-9]{10}" placeholder="ÅÅMMDXXXX">
+              <input type="text" name="socialSecurity" id="socialSecurity" minlength="10" maxlength="10" placeholder="ÅÅMMDDXXXX">
             </label>
           </div>
         </fieldset>

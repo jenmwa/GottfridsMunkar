@@ -290,58 +290,78 @@ let isInvoice = false;
 let isSocialSecurity = false;
 let isGdpr = false;
 
+
 function checkInputNotEmpty(e) {
     
     const getId = e.target.id;
     const getValue = e.target.value;
     
+    
     if (getId == 'firstname' && getValue !== '') {
         isFirstname = true;
+        removeError(e);
     } else if (getId == 'firstname' && getValue == '') {
         isFirstname = false;
+        addErrorMessage(e, 'Förnamn måste vara ifyllt.');
     }
     if (getId == 'lastname' && getValue !== '') {
         isLastname = true;
+        removeError(e);
     } else if (getId == 'lastname' && getValue == '') {
         isLastname = false;
+        addErrorMessage(e, 'Efternamn måste vara ifyllt.');
     }
     if (getId == 'adress' && getValue !== '') {
         isAdress = true;
+        removeError(e);
     } else if (getId == 'adress' && getValue == '') {
         isAdress = false;
+        addErrorMessage(e, 'Adress måste vara ifyllt.');
     }
     if (getId == 'zipcode' && getValue !== '') {
         isZipcode = true;
+        removeError(e);
     } else if (getId == 'zipcode' && getValue == '') {
         isZipcode = false;
+        addErrorMessage(e, 'Postnummer måste vara ifyllt.');
     }
     if (getId == 'city' && getValue !== '') {
         isCity = true;
+        removeError(e);
     } else if (getId == 'city' && getValue == '') {
         isCity = false;
+        addErrorMessage(e, 'Postort måste vara ifyllt.');
     }
     if (getId == 'telephone' && getValue !== '') {
         isTelephone = true;
+        removeError(e);
     } else if (getId == 'telephone' && getValue == '') {
         isTelephone = false;
+        addErrorMessage(e, 'Telefon måste vara ifyllt.');
     }
     if (getId == 'email' && getValue !== '') {
         isEmail = true;
+        removeError(e);
     } else if (getId == 'email' && getValue == '') {
         isEmail = false;
+        addErrorMessage(e, 'E-post måste vara ifyllt.');
     }
     if (getId == 'debitKredit' && e.target.checked) {
         isDebitKredit = true;
         isInvoice = false;
+        document.querySelector('#socialSecurity').required = false;
     }
     if (getId == 'invoice' && e.target.checked) {
         isInvoice = true;
         isDebitKredit = false;
+        document.querySelector('#socialSecurity').required = true;
     }
     if (getId == 'socialSecurity' && !getValue == '') {
         isSocialSecurity = true;
+        removeError(e);
     } else if (getId == 'socialSecurity' && getValue == '') {
         isSocialSecurity = false;
+        addErrorMessage(e, 'Personnummer måste vara ifyllt.');
     }
     if (getId == 'gdpr' && e.target.checked) {
         isGdpr = true;
@@ -360,4 +380,20 @@ function checkFormValid() {
     } else {
         submitBtn.disabled = true;
     }
+}
+
+function addErrorMessage(e, string) {
+    const getErrorMessage = e.target.parentElement.querySelector('.errorMessage');
+
+    e.target.classList.add('error');
+
+    const addParagraph = document.createElement("p");
+    const addText = document.createTextNode(string);
+    addParagraph.appendChild(addText);
+    getErrorMessage.appendChild(addParagraph);
+}
+
+function removeError(e) {
+    e.target.classList.remove('error');
+    e.target.parentElement.querySelector('.errorMessage').innerHTML = "";
 }
