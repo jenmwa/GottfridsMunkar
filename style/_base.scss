@@ -13,7 +13,7 @@ header {
     height: 75px;
     position: fixed;
     padding: 0 20px;
-    z-index: 4;
+    z-index: 5;
     background-color: $specialRed;
     display: flex;
     justify-content: space-between;
@@ -99,29 +99,28 @@ header {
 /*************VARUKORG*************/
 
 #sectionShoppingCart {
-  background-color: transparent;
   display: none;
-  right: 0;
-  top:0;
-
 }
 
 #sectionShoppingCart.open {
-  display:block;
+  display:block; 
 }
 
 #shoppingOpen {
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  height: auto;
+  justify-content: right;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 90%;
+  z-index: 4;
+
 
 
 .shoppingContainer{
-  margin: 5rem 0;
+  margin: 75px  0;
   width: 90%;
   background-color: $specialLightGreen;
   border: 4px solid $specialGreen;
@@ -144,89 +143,31 @@ header {
 }
 
 .shoppingAction{
+  background-color: $specialRed;
   font-size: 1rem;
-  font-weight: 600;
-  color: $specialRed;
-  text-shadow: 0 0 1px rgb(0 0 0 / 0.2);
+  color: black;
+  padding: 5px 10px;
   cursor: pointer;
-  border-bottom: 1px solid $specialRed;
+  border: 1px solid #202020;
 }
 
+.shoppingAction:hover {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.8);
+}
+
+
 .shoppingCartItems{
-  margin: auto;
-  margin: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
   padding: 1rem;
+  width: 90%;
   background-color: $specialGreen;
   border: 1px solid #202020;
   box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+  text-align: left;
 
 }
-
-.shoppingCartHeading {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-
-.shoppingTitle{
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #202020;
-  margin-bottom: 0;
-}
-
-.shoppingInfo {
-  display: flex;
-
-}
-.shoppingAbout{
-  height: 100%;
-}
-
-.shoppingSubtitle{
-  width: 80%;
-  line-height: 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #202020;
-}
-
-.shoppingImage{
-  margin-right: 2rem;
-}
-
-.shoppingCounter{
-  display: flex;
-  align-items: flex-end;
-  gap: 1rem;
-}
-
-.shoppingBtn{
-  width: 50px;
-  height: 50px;
-  background-color: #d9d9d9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  font-weight: 900;
-  color: #202020;
-  cursor: pointer;
-}
-
-.shoppingNumber {
-  width: 60px;
-  height: 50px;
-}
-
-.shoppingRemove{
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
-  color: $specialRed;
-  cursor: pointer;
-}
-
 
 /*CHECKOUT*/
   .cartCheckout{
@@ -267,7 +208,6 @@ header {
     border: 1px solid #202020;
     box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
     background: $specialBeige;
-    border-radius: 20px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
@@ -382,6 +322,7 @@ header {
   visibility: hidden;
   width: 1px;
   height: 1px;
+  z-index:6;
 
 
   input {

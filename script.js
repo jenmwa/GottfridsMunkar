@@ -1,18 +1,15 @@
-//KUNDKORG öppna - stäng
-/*När klicka på kundkorg
-    kundkorg öppnas
-klick utanför
-    kundkorg stängs */
+//  VARUKORG - öppnas/stängs
 
-    const shoppingCart =document.querySelector('#shoppingCart');
-    const sectionShoppingCart = document.querySelector('#sectionShoppingCart');
+const shoppingCart = document.querySelector('#shoppingCart');
+const sectionShoppingCart = document.querySelector('#sectionShoppingCart');
+const shoppingClose = document.querySelector('.shoppingAction')
     
-    shoppingCart.addEventListener('click', toggleMenuOpenState);
-    sectionShoppingCart.addEventListener('click', toggleMenuOpenState);
+shoppingCart.addEventListener('click', toggleShoppingCartOpenState);
+shoppingClose.addEventListener('click', toggleShoppingCartOpenState);
     
-    function toggleMenuOpenState() {
+function toggleShoppingCartOpenState() {
     sectionShoppingCart.classList.toggle('open');
-    }
+}
 
 
 //                 PLUSKNAPPAR - PRODUKTKORT
@@ -33,7 +30,7 @@ function addCount(e) {
     updateDonutSum(e.currentTarget.parentElement);
     
 }
-//              MINUSKNAPPAR - PRODUKTKORT
+//  MINUSKNAPPAR - PRODUKTKORT
 const minusBtn = document.querySelectorAll('button[data-operator="minus"]');
 
 for (let i = 0; i < minusBtn.length; i++){
