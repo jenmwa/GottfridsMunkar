@@ -54,24 +54,25 @@
               <table class="shoppingCartItems"> <!--rubriker ska gömmas när kundkorg tom-->
                 <thead>
                     <tr>
-                        <th scope="col">img</th>
-                        <th scope="col">smak</th>
-                        <th scope="col">antal</th>
-                        <th scope="col">pris</th>
-                        <th scope="col"></th>
-                    </tr>
-                    <tr>
-                      <td>img</td>
-                      <td>smak</td>
-                      <td>antal</td>
-                      <td>pris</td>
-                      <td span aria-label="ta bort artikel" class="material-symbols-outlined">
-                        delete_forever
-                        </span>
+                      <th scope="col">img</th>
+                      <th scope="col">smak</th>
+                      <th scope="col">antal</th>
+                      <th scope="col">pris</th>
+                      <th scope="col"></th>
                     </tr>
                 </thead>
-                <tbody></tbody>
-            </table>
+                <tbody>
+                  <tr id="shoppingCartItem1">
+                    <td id="shoppingCartImg"></td>
+                    <td id="shoppingCartFlavor"></td>
+                    <td id="shoppingCartAmount"></td>
+                    <td id="shoppingCartPrice"></td>
+                    <td span aria-label="ta bort artikel" class="material-symbols-outlined">
+                      delete_forever
+                      </span>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <!--CHECKOUT-->
             <div class="checkoutContainer">
