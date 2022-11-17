@@ -1,4 +1,4 @@
-let addShopCartList = [ ]; // Lista för munkar som ska till varukorgen
+let addShopCartList = []; // Lista för munkar som ska till varukorgen
 
 //  VARUKORG - öppnas/stängs
 
@@ -77,7 +77,6 @@ function findElement(e){ // hittar elementen i html och lägger i variabel
 }
 
 function addDonutsToShopCart(munk){
-
     let price = munk.querySelector('.price').innerText;
     let img = munk.parentElement.querySelector('.singleDonutImg');
     let name = munk.parentElement.querySelector('.nameInfo').innerText;
@@ -95,7 +94,7 @@ function addDonutsToShopCart(munk){
     if(amount == 0){  // Om antal är 0 - gör ingenting
         return;
     }else{ // om antal är annat än 0 = gör nedanstående
-        const index = addShopCartList.indexOf(addShopCartList.find(element => element.anyName === name)); // Letar upp vilket index i listan som variablen index ligger på och lägger det i newIndex
+        const index = addShopCartList.findIndex(element => element.anyName === name); // Letar upp vilket index i listan som variablen index ligger på och lägger det i newIndex
 
              if (index > -1){ // OM index är större än -1  ( om objektet med samma namn redan finns)
                 let totalAmount = addShopCartList[index].anyAmount = (Number(addShopCartList[index].anyAmount) + Number(amount));  //ta antal munkar i objektet i listan plussa på antal munkar i objektet med samma namn som läggs till i listan.
@@ -108,14 +107,13 @@ function addDonutsToShopCart(munk){
             }else{ // ANNARS - lägg till i varukorgen
                 addShopCartList.push(addedItem);
             }
-        clearValues(munk,amount,totalSum);
-        console.log(addShopCartList);
+        setTimeout(clearValues, 500, munk);
     }
 }  
 
-function clearValues(munk, amount, totalSum){  // Funktion som raderar valda antal och summa munkar när knappen trycks på 
+function clearValues(munk){  // Funktion som raderar valda antal och summa munkar när knappen trycks på 
     munk.querySelector('.antal').innerText = 0;
-    munk.querySelector('.sum').innerText = 0 ; 
+    munk.querySelector('.sum').innerText = 0;
 }
 
 // ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
