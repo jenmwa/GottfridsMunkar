@@ -1,3 +1,5 @@
+let addShopCartList = [ ]; // Lista för munkar som ska till varukorgen
+
 //  VARUKORG - öppnas/stängs
 
 const shoppingCart = document.querySelector('#shoppingCart');
@@ -11,11 +13,9 @@ function toggleShoppingCartOpenState() {
     sectionShoppingCart.classList.toggle('open');
 }
 
-
 //                 PLUSKNAPPAR - PRODUKTKORT
 
 const plusBtn = document.querySelectorAll('button[data-operator="plus"]');
-
 
 for (let i = 0; i < plusBtn.length; i++){
     plusBtn[i].addEventListener('click', addCount);
@@ -28,9 +28,9 @@ function addCount(e) {
     amountEl.innerHTML = Number(amount) +1;
 
     updateDonutSum(e.currentTarget.parentElement);
-    
 }
-//  MINUSKNAPPAR - PRODUKTKORT
+
+//              MINUSKNAPPAR - PRODUKTKORT
 const minusBtn = document.querySelectorAll('button[data-operator="minus"]');
 
 for (let i = 0; i < minusBtn.length; i++){
@@ -47,43 +47,34 @@ function decreaseCount(e) {
     amountEl.innerHTML = amount -1;
 
     updateDonutSum(e.currentTarget.parentElement);
-    
 }
 
 //  UPPDATERA SUMMAN PRODUKTKORT
-
 function updateDonutSum(donutElement) {
     const donutSinglePrice = donutElement.querySelector('.price').innerHTML;
     const orderedAmount = donutElement.querySelector('.antal').innerHTML;
     
-  
     let sum = donutSinglePrice * orderedAmount;
-        // OM mer än 10 av varje st 10% rabatt
-    if(orderedAmount > 10){
+       
+    if(orderedAmount > 10){  // OM mer än 10 av varje st 10% rabatt
         sum = sum * 0.9;
     }
     donutElement.querySelector('.sum').innerHTML = Math.round(sum);
-    
   }
-  
 
 //  LÄGG TILL - KNAPPAR
-
 const addDonutsToCart = document.querySelectorAll('button[data-operator="addDonutsToCart"]');
-let addShopCartList = [ ]; // Lista för munkar som ska till varukorgen
 
 for (let i = 0; i < addDonutsToCart.length; i++){
     addDonutsToCart[i].addEventListener('click', findElement);
     
 }
 
-
 function findElement(e){ // hittar elementen i html och lägger i variabel
-let munk = e.currentTarget.parentElement.parentElement.querySelector('.donutInfo');
+    let munk = e.currentTarget.parentElement.parentElement.querySelector('.donutInfo');
 
-addDonutsToShopCart(munk);
+    addDonutsToShopCart(munk);
 }
-
 
 function addDonutsToShopCart(munk){
 
@@ -93,8 +84,7 @@ function addDonutsToShopCart(munk){
     let amount = munk.querySelector('.antal').innerText;
     let totalSum = munk.querySelector('.sum').innerText;
     
-        // Ett objekt och anger key-values till objektet från munkarna
-    const addedItem = {
+    const addedItem = {  // Ett objekt och anger key-values till objektet från munkarna
         anyPrice: price,
         anyName: name,
         anyImg: img,
@@ -105,51 +95,29 @@ function addDonutsToShopCart(munk){
     if(amount == 0){  // Om antal är 0 - gör ingenting
         return;
     }else{ // om antal är annat än 0 = gör nedanstående
+        const index = addShopCartList.find(element => element.anyName === name);   // Jämför om namnet på munken redan finns i listan och hittar och skriver objektet till index-variabel
+        const newIndex = addShopCartList.indexOf(index); // Letar upp vilket index i listan som variablen index ligger på och lägger det i newIndex
 
-        // Jämför om namnet på munken redan finns i listan och hittar och skriver objektet till index-variabel
-        const index = addShopCartList.find(element => element.anyName === name); 
+             if (newIndex > -1){ // OM newIndex är större än -1  ( om objektet med samma namn redan finns)
+                let totalAmount = addShopCartList[newIndex].anyAmount = (Number(addShopCartList[newIndex].anyAmount) + Number(amount));  //ta antal munkar i objektet i listan plussa på antal munkar i objektet med samma namn som läggs till i listan.
 
-        // Letar upp vilket index i listan som variablen index ligger på och lägger det i newIndex
-        const newIndex = addShopCartList.indexOf(index);
-
-                    // OM newIndex är större än -1  ( om objektet med samma namn redan finns)
-             if (newIndex > -1){
-                    //ta antal munkar i objektet i listan plussa på antal munkar i objektet med samma namn som läggs till i listan.
-                let totalAmount = addShopCartList[newIndex].anyAmount = (Number(addShopCartList[newIndex].anyAmount) + Number(amount));
-
-                    // om du har beställt mer än 10 munkar av samma sort får du 10% rabatt på totala summan
-                if(totalAmount > 10){
-                    
+                if(totalAmount > 10){ // om du har beställt mer än 10 munkar av samma sort får du 10% rabatt på totala summan
                     addShopCartList[newIndex].anySum = Math.round((Number(addShopCartList[newIndex].anySum) + Number(totalSum)) * 0.9); 
-
                 }else{
-                    //ta totala summan  i objektet i listan plussa på summan i objektet med samma namn som läggs till i listan.
-                    addShopCartList[newIndex].anySum = (Number(addShopCartList[newIndex].anySum) + Number(totalSum));
-                  
+                     addShopCartList[newIndex].anySum = (Number(addShopCartList[newIndex].anySum) + Number(totalSum));  //ta totala summan  i objektet i listan plussa på summan i objektet med samma namn som läggs till i listan.
                 }
-                 
-
-                            
-                    
-                
-
-             }else{ // ANNARS - lägg till i varukorgen
+            }else{ // ANNARS - lägg till i varukorgen
                 addShopCartList.push(addedItem);
-                }
-
-
-                
-        
+            }
         clearValues(munk,amount,totalSum);
         console.log(addShopCartList);
     }
-}   // Funktion som raderar valda antal och summa munkar när knappen trycks på 
-    function clearValues(munk, amount, totalSum){
-        munk.querySelector('.antal').innerText = 0;
-        munk.querySelector('.sum').innerText = 0 ;
+}  
 
-        
-    }
+function clearValues(munk, amount, totalSum){  // Funktion som raderar valda antal och summa munkar när knappen trycks på 
+    munk.querySelector('.antal').innerText = 0;
+    munk.querySelector('.sum').innerText = 0 ; 
+}
 
 
 // ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
@@ -219,17 +187,17 @@ function toggleTheme(){
             });
 
         let links = document.querySelectorAll('.allColorTheme'); // All textinnehåll med denna class
-            links.forEach(link => {
+        links.forEach(link => {
             link.style.color = 'white';
             });
 
         let productCard = document.querySelectorAll('.productCard'); // Alla kategorier med denna class
-            productCard.forEach(card => {
+        productCard.forEach(card => {
             card.style.backgroundColor = '#4b5947';
             });
 
         let munk = document.querySelectorAll('.munk'); // Alla produktkort med denna class
-            munk.forEach(donut => {
+        munk.forEach(donut => {
             donut.style.backgroundColor = '#839183';
             });
     }
@@ -243,7 +211,6 @@ function toggleTheme(){
             menu.style.backgroundColor = 'black';
             });
             
-
         links = document.querySelectorAll('.allColorTheme'); // Ändrar färg till svart på allt med classen
             links.forEach(link => {
             link.style.color = 'black';
@@ -264,6 +231,5 @@ function toggleTheme(){
             donut.style.backgroundColor = '#C6EBC5';
             });
 }
-
 }
 
