@@ -64,7 +64,7 @@
                 <tbody>
                   <tr id="shoppingCartItem">
                     <td id="shoppingCartImg"></td>
-                    <td id="shoppingCartFlavor"></td>
+                    <td id="shoppingCartFlavor"><div id="test"></div></td>
                     <td id="shoppingCartAmount"></td>
                     <td id="shoppingCartPrice"></td>
                     <td span aria-label="ta bort artikel" class="material-symbols-outlined">
@@ -79,9 +79,11 @@
                 <div class="cartCheckout">
                   <div class="cartTotal">
                     <div class="cartSubtotal">Totalt</div>
-                    <div class="cartItems">20 donuts</div>
+                    <span class="cartItems" id="shoppingCartTotalItems">0</span><span> donuts</span>
                   </div>
-                  <div class="cartTotalAmount">totalpris</div>
+                  <div class="cartTotalAmount">
+                  <span id="shoppingCartTotalAmount">0</span><span> kr</span>
+                </div>
                   <button class="checkoutButton">Beställ</button>
                 </div>
             </div>

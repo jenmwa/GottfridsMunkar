@@ -84,8 +84,10 @@ function addDonutsToShopCart(munk){
     let totalSum = munk.querySelector('.sum').innerText;
     let amountChoosen = document.querySelector('#amountChoosen');
     let sumAmount = amountChoosen.innerText;
-    
-    
+    let shoppingCartTotalItems = document.querySelector('#shoppingCartTotalItems');
+    let shoppingCartItemSum = shoppingCartTotalItems.innerText;
+    let shoppingCartTotalAmount = document.querySelector('#shoppingCartTotalAmount');
+    let shoppingCartAmountSum = shoppingCartTotalAmount.innerText;
     
     const addedItem = {  // Ett objekt och anger key-values till objektet från munkarna
         anyPrice: price,
@@ -94,8 +96,6 @@ function addDonutsToShopCart(munk){
         anyAmount: amount,
         anySum: totalSum
     }
-
-        
        
     if(amount == 0){  // Om antal är 0 - gör ingenting
         return;
@@ -115,11 +115,15 @@ function addDonutsToShopCart(munk){
             }
             
             if (amountChoosen.innerText == 0){
-            amountChoosen.innerText = Number(amount); 
-            amountChoosen.style.backgroundColor = '#A1C298';
-            amountChoosen.style.fontWeight = '900';
+                shoppingCartTotalAmount.innerText = Number(totalSum);
+                shoppingCartTotalItems.innerText = Number(amount);  
+                amountChoosen.innerText = Number(amount);
+                amountChoosen.style.backgroundColor = '#A1C298';
+                amountChoosen.style.fontWeight = '900';
             }else if (amountChoosen.innerText > 1 ){
-                amountChoosen.innerText = Number(sumAmount) + Number(amount); 
+                amountChoosen.innerText = Number(sumAmount) + Number(amount);
+                shoppingCartTotalItems.innerText = Number(shoppingCartItemSum) + Number(amount);
+                shoppingCartTotalAmount.innerText = Number(shoppingCartAmountSum) + Number(totalSum);
             }
         setTimeout(clearValues, 500, munk);
     }
