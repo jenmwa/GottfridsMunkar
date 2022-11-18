@@ -92,6 +92,7 @@ function addDonutsToShopCart(munk){
     let name = munk.parentElement.querySelector('.nameInfo').innerText;
     let amount = munk.querySelector('.antal').innerText;
     let totalSum = munk.querySelector('.sum').innerText;
+
     
         // Ett objekt och anger key-values till objektet från munkarna
     const addedItem = {
