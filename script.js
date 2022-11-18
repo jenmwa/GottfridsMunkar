@@ -152,12 +152,12 @@ function formOrderClose() {
 // ÖPPNA STÄNGA KORT OCH FAKTURAALTERNATIV
 
 const cardRadio = document.querySelector('#debitKredit');
-const fakturaRadio = document.querySelector('#faktura');
+const invoiceRadio = document.querySelector('#invoice');
 const cardPayment = document.querySelector('.cardPayment');
 const fakturaPayment = document.querySelector('.fakturaPayment');
 
 cardRadio.addEventListener('change', cardPaymentOpen);
-fakturaRadio.addEventListener('change', fakturaPaymentOpen);
+invoiceRadio.addEventListener('change', fakturaPaymentOpen);
 
 function cardPaymentOpen(e) {
     if(cardRadio.checked) {
@@ -167,7 +167,7 @@ function cardPaymentOpen(e) {
     
 }
 function fakturaPaymentOpen(e) {
-    if(fakturaRadio.checked) {
+    if(invoiceRadio.checked) {
         fakturaPayment.classList.add("paymentOpen");
         cardPayment.classList.remove("paymentOpen");
     }
@@ -243,3 +243,135 @@ function toggleTheme(){
 }
 }
 
+// VALIDERING AV FORMULÄR
+
+//get form inputs with queryselector
+const formOrderInputs = Array.from(document.querySelector('.formOrder').querySelectorAll('input')); 
+
+// loop form inputs, add event listeners
+for (let i = 0; i < formOrderInputs.length; i++) {
+    formOrderInputs[i].addEventListener('change', checkInputNotEmpty);
+}
+
+//declare boolean variables for every validated input
+let isFirstname = false;
+let isLastname = false;
+let isAdress = false;
+let isZipcode = false;
+let isCity = false;
+let isTelephone = false;
+let isEmail = false;
+let isDebitKredit = false;
+let isInvoice = false;
+let isSocialSecurity = false;
+let isGdpr = false;
+
+// function to check if specifik input is valid
+function checkInputNotEmpty(e) {
+    
+    const getId = e.target.id;
+    const getValue = e.target.value;
+    
+    if (getId == 'firstname' && getValue !== '') {
+        isFirstname = true;
+        removeError(e);
+    } else if (getId == 'firstname' && getValue == '') {
+        isFirstname = false;
+        addErrorMessage(e, 'Förnamn måste vara ifyllt.');
+    }
+    if (getId == 'lastname' && getValue !== '') {
+        isLastname = true;
+        removeError(e);
+    } else if (getId == 'lastname' && getValue == '') {
+        isLastname = false;
+        addErrorMessage(e, 'Efternamn måste vara ifyllt.');
+    }
+    if (getId == 'adress' && getValue !== '') {
+        isAdress = true;
+        removeError(e);
+    } else if (getId == 'adress' && getValue == '') {
+        isAdress = false;
+        addErrorMessage(e, 'Adress måste vara ifyllt.');
+    }
+    if (getId == 'zipcode' && getValue !== '') {
+        isZipcode = true;
+        removeError(e);
+    } else if (getId == 'zipcode' && getValue == '') {
+        isZipcode = false;
+        addErrorMessage(e, 'Postnummer måste vara ifyllt.');
+    }
+    if (getId == 'city' && getValue !== '') {
+        isCity = true;
+        removeError(e);
+    } else if (getId == 'city' && getValue == '') {
+        isCity = false;
+        addErrorMessage(e, 'Postort måste vara ifyllt.');
+    }
+    if (getId == 'telephone' && getValue !== '') {
+        isTelephone = true;
+        removeError(e);
+    } else if (getId == 'telephone' && getValue == '') {
+        isTelephone = false;
+        addErrorMessage(e, 'Telefon måste vara ifyllt.');
+    }
+    if (getId == 'email' && getValue !== '') {
+        isEmail = true;
+        removeError(e);
+    } else if (getId == 'email' && getValue == '') {
+        isEmail = false;
+        addErrorMessage(e, 'E-post måste vara ifyllt.');
+    }
+    if (getId == 'debitKredit' && e.target.checked) {
+        isDebitKredit = true;
+        isInvoice = false;
+        document.querySelector('#socialSecurity').required = false;
+    }
+    if (getId == 'invoice' && e.target.checked) {
+        isInvoice = true;
+        isDebitKredit = false;
+        document.querySelector('#socialSecurity').required = true;
+    }
+    if (getId == 'socialSecurity' && !getValue == '') {
+        isSocialSecurity = true;
+        removeError(e);
+    } else if (getId == 'socialSecurity' && getValue == '') {
+        isSocialSecurity = false;
+        addErrorMessage(e, 'Personnummer måste vara ifyllt.');
+    }
+    if (getId == 'gdpr' && e.target.checked) {
+        isGdpr = true;
+    } else if (getId == 'gdpr' && !e.target.checked) {
+        isGdpr = false;
+    }
+    
+    checkFormValid();
+}
+
+// function to check if all inputs are valid, make submit button enabled
+function checkFormValid() {
+    const submitBtn = document.querySelector('#submit');
+
+    if(isFirstname && isLastname && isAdress && isZipcode && isCity && isTelephone && isEmail && (isDebitKredit || (isInvoice && isSocialSecurity)) && isGdpr) {
+        submitBtn.disabled = false;
+    } else {
+        submitBtn.disabled = true;
+    }
+}
+
+// function to add error message to non-valid input
+function addErrorMessage(e, string) {
+    const getErrorMessage = e.target.parentElement.querySelector('.errorMessage');
+
+    e.target.classList.add('error');
+
+    const addParagraph = document.createElement("p");
+    const addText = document.createTextNode(string);
+    addParagraph.appendChild(addText);
+    getErrorMessage.appendChild(addParagraph);
+}
+
+// function to remove error message after input get valid
+function removeError(e) {
+    e.target.classList.remove('error');
+    e.target.parentElement.querySelector('.errorMessage').innerHTML = "";
+}
