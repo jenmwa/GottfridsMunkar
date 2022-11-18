@@ -82,6 +82,10 @@ function addDonutsToShopCart(munk){
     let name = munk.parentElement.querySelector('.nameInfo').innerText;
     let amount = munk.querySelector('.antal').innerText;
     let totalSum = munk.querySelector('.sum').innerText;
+    let amountChoosen = document.querySelector('#amountChoosen');
+    let sumAmount = amountChoosen.innerText;
+    
+    
     
     const addedItem = {  // Ett objekt och anger key-values till objektet från munkarna
         anyPrice: price,
@@ -91,14 +95,16 @@ function addDonutsToShopCart(munk){
         anySum: totalSum
     }
 
+        
+       
     if(amount == 0){  // Om antal är 0 - gör ingenting
         return;
     }else{ // om antal är annat än 0 = gör nedanstående
         const index = addShopCartList.findIndex(element => element.anyName === name); // Letar upp vilket index i listan som variablen index ligger på och lägger det i newIndex
-
+        
              if (index > -1){ // OM index är större än -1  ( om objektet med samma namn redan finns)
                 let totalAmount = addShopCartList[index].anyAmount = (Number(addShopCartList[index].anyAmount) + Number(amount));  //ta antal munkar i objektet i listan plussa på antal munkar i objektet med samma namn som läggs till i listan.
-
+                
                 if(totalAmount > 10){ // om du har beställt mer än 10 munkar av samma sort får du 10% rabatt på totala summan
                     addShopCartList[index].anySum = Math.round((Number(addShopCartList[index].anySum) + Number(totalSum)) * 0.9); 
                 }else{
@@ -106,6 +112,14 @@ function addDonutsToShopCart(munk){
                 }
             }else{ // ANNARS - lägg till i varukorgen
                 addShopCartList.push(addedItem);
+            }
+            
+            if (amountChoosen.innerText == 0){
+            amountChoosen.innerText = Number(amount); 
+            amountChoosen.style.backgroundColor = '#A1C298';
+            amountChoosen.style.fontWeight = '900';
+            }else if (amountChoosen.innerText > 1 ){
+                amountChoosen.innerText = Number(sumAmount) + Number(amount); 
             }
         setTimeout(clearValues, 500, munk);
     }
