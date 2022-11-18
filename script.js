@@ -195,11 +195,11 @@ function fakturaPaymentOpen(e) {
     }
 }
 
-/*
+
 // THEME TOGGLE
 const themeBtn = document.querySelector('#themeBtn');
 themeBtn.addEventListener('click', toggleTheme);
-*/
+
 function toggleTheme(){
     themeBtn.classList.toggle('themeBtnMove')
     
