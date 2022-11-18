@@ -329,6 +329,7 @@ header {
   height: 1px;
   z-index:6;
 
+
   input {
     margin: 5px 0;
   }
@@ -349,9 +350,9 @@ header {
   right: 20px;
   width: 45px;
   height: 45px;
-  border: none;
+  border: 3px solid $specialRed;
   visibility: hidden;
-  background-color: transparent;
+  background-color: $specialLightGreen;
 
   i {
     font-size: 2rem;
@@ -369,6 +370,11 @@ header {
   visibility: visible;
 }
 
+form {
+  max-width: 550px;
+  margin: 0 auto;
+}
+
 .cardPayment, .fakturaPayment {
   visibility: hidden;
   width: 1px;
@@ -379,6 +385,18 @@ header {
   visibility: visible;
   height: auto;
   width: auto;
+}
+
+.errorMessage {
+  color: red;
+
+  p {
+    margin: 0;
+  }
+}
+
+input.error {
+  border-color: red;
 }
 
 /*************PRODUKTKORT*************/
