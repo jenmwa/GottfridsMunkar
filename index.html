@@ -45,42 +45,45 @@
         <div class="shoppingContainer">
           <div class="shoppingHeader">
             <h3 class="shoppingHeading">Varukorg</h3>
-            <button class="shoppingAction">Ta bort alla</button>
+            <button aria-label="Stäng varukorg" class="shoppingAction">Stäng</button>
           </div>
-          
           <div class="itemsCheckoutWrapper">
             <div class="itemsContainer">
+          <button aria-label="Töm varukorg" class="shoppingRemove">Töm varukorgen</button>
 
               <table class="shoppingCartItems"> <!--rubriker ska gömmas när kundkorg tom-->
                 <thead>
                     <tr>
-                        <th scope="col">img</th>
-                        <th scope="col">smak</th>
-                        <th scope="col">antal</th>
-                        <th scope="col">pris</th>
-                        <th scope="col"></th>
-                    </tr>
-                    <tr>
-                      <td>img</td>
-                      <td>smak</td>
-                      <td>antal</td>
-                      <td>pris</td>
-                      <td span aria-label="ta bort artikel" class="material-symbols-outlined">
-                        delete_forever
-                        </span>
+                      <th scope="col">img</th>
+                      <th scope="col">smak</th>
+                      <th scope="col">antal</th>
+                      <th scope="col">pris</th>
+                      <th scope="col"></th>
                     </tr>
                 </thead>
-                <tbody></tbody>
-            </table>
+                <tbody>
+                  <tr id="shoppingCartItem">
+                    <td id="shoppingCartImg"></td>
+                    <td id="shoppingCartFlavor"><div id="test"></div></td>
+                    <td id="shoppingCartAmount"></td>
+                    <td id="shoppingCartPrice"></td>
+                    <td span aria-label="ta bort artikel" class="material-symbols-outlined">
+                      delete_forever
+                      </span>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <!--CHECKOUT-->
             <div class="checkoutContainer">
                 <div class="cartCheckout">
                   <div class="cartTotal">
                     <div class="cartSubtotal">Totalt</div>
-                    <div class="cartItems">20 donuts</div>
+                    <span class="cartItems" id="shoppingCartTotalItems">0</span><span> donuts</span>
                   </div>
-                  <div class="cartTotalAmount">totalpris</div>
+                  <div class="cartTotalAmount">
+                  <span id="shoppingCartTotalAmount">0</span><span> kr</span>
+                </div>
                   <button class="checkoutButton">Beställ</button>
                 </div>
             </div>
