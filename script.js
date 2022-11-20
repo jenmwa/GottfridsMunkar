@@ -1,4 +1,10 @@
 let addShopCartList = []; // Lista för munkar som ska till varukorgen
+console.log([addShopCartList])
+
+
+
+
+
 
 //  VARUKORG - öppnas/stängs
 
@@ -95,6 +101,7 @@ function addDonutsToShopCart(munk){
         anyImg: img,
         anyAmount: amount,
         anySum: totalSum
+        
     }
        
     if(amount == 0){  // Om antal är 0 - gör ingenting
@@ -125,9 +132,64 @@ function addDonutsToShopCart(munk){
                 shoppingCartTotalItems.innerText = Number(shoppingCartItemSum) + Number(amount);
                 shoppingCartTotalAmount.innerText = Number(shoppingCartAmountSum) + Number(totalSum);
             }
+
         setTimeout(clearValues, 500, munk);
+        printAddedDonutShoppingCart(munk);
     }
+
 }  
+
+// ARTIKLAR I KUNDKORG VISAS
+const ShoppingCartAdded = document.querySelector('#test'); //vart
+
+function printAddedDonutShoppingCart(){
+    ShoppingCartAdded.innerHTML = '';
+
+    for(let i = 0; i < addShopCartList.length; i++) {
+        //console.log(addShopCartList[i]);
+       /*
+        const donutName = addShopCartList[i];
+        const donutNode = document.createElement('li'); //skapa HTMLelement
+        const donutTextNode = document.createTextNode(donutName);
+
+        donutNode.appendChild(donutTextNode); //metod , adds node end list children of spec parent node.
+
+        ShoppingCartAdded.appendChild(donutNode);*/
+
+        const cartHeading = document.querySelector('#shoppingCartItems');
+        const donutName = addShopCartList[i].anyName;
+        const donutNode = document.createElement('h4');
+        const donutTextNode = document.createTextNode(donutName);
+
+        donutNode.appendChild(donutTextNode);
+        ShoppingCartAdded.appendChild(donutNode);
+
+        const cartAmount = document.querySelector('#shoppingCartItems');
+        const donutAmount = addShopCartList[i].anyAmount;
+        const donutAmountNode = document.createElement('p');
+        const donutAmountTextNode = document.createTextNode(donutAmount);
+
+        donutAmountNode.appendChild(donutAmountTextNode);
+        ShoppingCartAdded.appendChild(donutAmountNode);
+        
+        const cartPrice = document.querySelector('#shoppingCartItems');
+        const donutPrice = addShopCartList[i].anyPrice;
+        const donutPriceNode = document.createElement('p');
+        const donutPriceTextNode = document.createTextNode(donutPrice);
+
+        donutPriceNode.appendChild(donutPriceTextNode);
+        ShoppingCartAdded.appendChild(donutPriceNode);
+
+        const cartTotalSum = document.querySelector('#shoppingCartItems');
+        const donutTotalSum = addShopCartList[i].anySum;
+        const donutTotalSumNode = document.createElement('p');
+        const donutTotalSumTextNode = document.createTextNode(donutTotalSum);
+
+        donutPriceNode.appendChild(donutTotalSumTextNode);
+        ShoppingCartAdded.appendChild(donutTotalSumNode);
+    }
+
+}
 
 function clearValues(munk){  // Funktion som raderar valda antal och summa munkar när knappen trycks på 
     munk.querySelector('.antal').innerText = 0;

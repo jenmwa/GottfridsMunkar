@@ -104,25 +104,19 @@ header {
 
 #sectionShoppingCart.open {
   display:block; 
-}
-
-#shoppingOpen {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: right;
-  position: fixed;
   top: 0;
   right: 0;
-  width: 90%;
   z-index: 4;
+  position: fixed;
+  width: 75%;
+}
 
 .shoppingContainer{
-  margin: 75px  0;
-  width: 90%;
+  margin: 75px  0 0 0;
   background-color: $specialLightGreen;
   border: 4px solid $specialGreen;
   box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+  padding: 0 1rem 1rem 1rem;
 }
 
 .shoppingHeader{
@@ -146,30 +140,31 @@ header {
   padding: 5px 10px;
   cursor: pointer;
   border: 1px solid #202020;
+  margin: 0;
 }
 
 .shoppingRemove {
-  float: right;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  margin-top: -10px;
+display: block;
+margin-left: 1.5rem;
+margin-bottom: 1rem;;
+
 }
 
 .shoppingAction:hover, .shoppingRemove:hover {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.8);
 }
 
-
 .shoppingCartItems{
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 1rem;
-  padding: 1rem;
+  padding: 2rem;
   width: 90%;
   background-color: $specialGreen;
   border: 1px solid #202020;
   box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
   text-align: left;
+ 
 }
 
 /*CHECKOUT*/
@@ -222,9 +217,6 @@ header {
     box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
     transition: 0.3s ease-in-out;
   }
-
-}
-
 
 
 /*****THEME TOGGLE**********/
