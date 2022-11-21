@@ -186,6 +186,7 @@ function writeOutDonuts() { // Funktion som skriver ut alla munkarna i HTML
             <img id="img1" class="img-1" src="${donuts[i].src1}" alt="" width="150" height="200" />
             <img id="img2" class="img-2" src="${donuts[i].src2}" alt="" width="150" height="200" />
         </div>
+        <div class="indicator" id="indicatorDots"></div>
         <div class="controls">
         <button class="left" id="prevImage">
           <span class="material-symbols-outlined">chevron_left</span>
@@ -194,7 +195,8 @@ function writeOutDonuts() { // Funktion som skriver ut alla munkarna i HTML
         <button class="right" id="nextImage">
           <span class="material-symbols-outlined">chevron_right</span>
         </button>
-        <div class="indicator" id="indicatorDots"></div>
+        </div>
+        
         
         <div class="donutInfo">
             <h2>${donuts[i].name}</h2>
@@ -205,10 +207,12 @@ function writeOutDonuts() { // Funktion som skriver ut alla munkarna i HTML
             <button class="plus" data-id="${i}">+</button>
             <button class="addToCart" data-id="${i}">Köp</button><br>
             
-            </div>
+        </div>
+        
         </article>    
         `;
   }
+  
   // Minusknapp
   document.querySelectorAll('button.minus').forEach(btn => {
     btn.addEventListener('click', updateDonutAmountMinus);
@@ -267,7 +271,7 @@ function sendToCart(e) { // funktion som när vi trcyker på köp så lägger vi
       addShopCartList.push(addedItem); // om inte munken redan finns så läggs den till på nytt
     }
   }
-  printOutShopCartSymbol(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
+  
   printOutShopCart(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
   setTimeout(clearValues, 500); // efter tryck på köp rensas värdena
 }
@@ -279,15 +283,6 @@ function clearValues() {
   }
   writeOutDonuts();
 }
- function printOutShopCartSymbol(index){
-  let amountChoosen = document.querySelector('#amountChoosen').innerHTML;
-  
-  if (amountChoosen) {
-  document.querySelector('#amountChoosen').innerHTML = `
-  <span>${addShopCartList[index].anyAmount}</span>`;
-  }
- }
-
 
 
 
@@ -329,6 +324,18 @@ function printOutShopCart(index){
        
     }
 writeOutDonuts();
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
 
