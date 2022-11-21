@@ -267,6 +267,7 @@ function sendToCart(e) { // funktion som när vi trcyker på köp så lägger vi
       addShopCartList.push(addedItem); // om inte munken redan finns så läggs den till på nytt
     }
   }
+  printOutShopCartSymbol(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
   printOutShopCart(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
   setTimeout(clearValues, 500); // efter tryck på köp rensas värdena
 }
@@ -278,6 +279,18 @@ function clearValues() {
   }
   writeOutDonuts();
 }
+ function printOutShopCartSymbol(index){
+  let amountChoosen = document.querySelector('#amountChoosen').innerHTML;
+  
+  if (amountChoosen) {
+  document.querySelector('#amountChoosen').innerHTML = `
+  <span>${addShopCartList[index].anyAmount}</span>`;
+  }
+ }
+
+
+
+
   writeOutDonuts();
 
 
