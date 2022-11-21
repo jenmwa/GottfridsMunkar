@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="sv">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <link rel="stylesheet" type="text/css" href="style/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;0,900;1,300;1,600;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" type="text/css" href="style/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;0,900;1,300;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
     <script src="https://kit.fontawesome.com/a90d7c3579.js" crossorigin="anonymous"></script>
-    
-  <title>Gottfrids fantastiska munkar</title>
+
+    <title>Gottfrids fantastiska munkar</title>
   </head>
   <body>
     <header class="headerColorTheme">
       <div class="leftHeader">
         <h1>Gottfrids Fantastiskt Goda Munkar</h1>
       </div>
-      <div class="rightHeader" >
+      <div class="rightHeader">
         <nav>
           <ul>
             <li><a href="#" class="allColorTheme">Hem</a></li>
@@ -27,7 +33,7 @@
           </ul>
         </nav>
 
-        <button  aria-label="Kundkorg" class="shoppingCart" id="shoppingCart">
+        <button aria-label="Kundkorg" class="shoppingCart" id="shoppingCart">
           <i id="shopCartColorTheme" class="fa-solid fa-cart-shopping"></i>
           <div id="amountChoosen">0</div>
         </button>
@@ -49,17 +55,18 @@
           </div>
           <div class="itemsCheckoutWrapper">
             <div class="itemsContainer">
-          <button aria-label="Töm varukorg" class="shoppingRemove">Töm varukorgen</button>
+              <button aria-label="Töm varukorg" class="shoppingRemove">Töm varukorgen</button>
 
-              <table class="shoppingCartItems"> <!--rubriker ska gömmas när kundkorg tom-->
+              <table class="shoppingCartItems">
+                <!--rubriker ska gömmas när kundkorg tom-->
                 <thead>
-                    <tr>
-                      <th scope="col">img</th>
-                      <th scope="col">smak</th>
-                      <th scope="col">antal</th>
-                      <th scope="col">pris</th>
-                      <th scope="col"></th>
-                    </tr>
+                  <tr>
+                    <th scope="col">img</th>
+                    <th scope="col">smak</th>
+                    <th scope="col">antal</th>
+                    <th scope="col">pris</th>
+                    <th scope="col"></th>
+                  </tr>
                 </thead>
                 <tbody>
                   <tr id="shoppingCartItem">
@@ -67,90 +74,92 @@
                     <td id="shoppingCartFlavor"><div id="test"></div></td>
                     <td id="shoppingCartAmount"></td>
                     <td id="shoppingCartPrice"></td>
-                    <td span aria-label="ta bort artikel" class="material-symbols-outlined">
-                      delete_forever
-                      </span>
+                    <td span aria-label="ta bort artikel" class="material-symbols-outlined">delete_forever</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <!--CHECKOUT-->
             <div class="checkoutContainer">
-                <div class="cartCheckout">
-                  <div class="cartTotal">
-                    <div class="cartSubtotal">Totalt</div>
-                    <span class="cartItems" id="shoppingCartTotalItems">0</span><span> donuts</span>
-                  </div>
-                  <div class="cartTotalAmount">
-                  <span id="shoppingCartTotalAmount">0</span><span> kr</span>
+              <div class="cartCheckout">
+                <div class="cartTotal">
+                  <div class="cartSubtotal">Totalt</div>
+                  <span class="cartItems" id="shoppingCartTotalItems">0</span><span> donuts</span>
                 </div>
-                  <button class="checkoutButton">Beställ</button>
-                </div>
+                <div class="cartTotalAmount"><span id="shoppingCartTotalAmount">0</span><span> kr</span></div>
+                <button class="checkoutButton">Beställ</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-        <!-- FORMORDER -->
+    <!-- FORMORDER -->
 
     <section class="formOrder">
-
       <button class="formCloseBtn">
         <i class="fa-solid fa-x"></i>
       </button>
 
       <form>
-
         <p>* = Obligatoriskt fält.</p>
 
         <div class="flexForm">
           <label>
             <div class="errorMessage"></div>
-            <span>Förnamn:*</span><br>
-            <input type="text" id="firstname" name="firstname" required><br>
+            <span>Förnamn:*</span><br />
+            <input type="text" id="firstname" name="firstname" required /><br />
           </label>
 
           <label>
             <div class="errorMessage"></div>
-            <span>Efternamn:*</span><br>
-            <input type="text" id="lastname" name="lastname" required><br>
+            <span>Efternamn:*</span><br />
+            <input type="text" id="lastname" name="lastname" required /><br />
           </label>
 
           <label>
             <div class="errorMessage"></div>
-            <span>Adress(gata):*</span><br>
-            <input type="text" id="adress" name="adress" required><br>
+            <span>Adress(gata):*</span><br />
+            <input type="text" id="adress" name="adress" required /><br />
           </label>
 
           <label>
             <div class="errorMessage"></div>
-            <span>Postnummer:*</span><br>
-            <input type="text" id="zipcode" name="zipcode" placeholder="ex.12345" minlength="5" maxlength="5" required><br>
+            <span>Postnummer:*</span><br />
+            <input
+              type="text"
+              id="zipcode"
+              name="zipcode"
+              placeholder="ex.12345"
+              minlength="5"
+              maxlength="5"
+              required
+            /><br />
           </label>
 
           <label>
             <div class="errorMessage"></div>
-            <span>Postort:*</span><br>
-            <input type="text" id="city" name="city" required><br>
+            <span>Postort:*</span><br />
+            <input type="text" id="city" name="city" required /><br />
           </label>
 
           <label>
             <div class="errorMessage"></div>
-            <span>Ev. portkod:</span><br>
-            <input type="text" id="portkod" name="portkod"><br>
+            <span>Ev. portkod:</span><br />
+            <input type="text" id="portkod" name="portkod" /><br />
           </label>
 
           <label>
             <div class="errorMessage"></div>
-            <span>Telefon(mobil):*</span><br>
-            <input type="tel" id="telephone" name="telephone" required><br>
+            <span>Telefon(mobil):*</span><br />
+            <input type="tel" id="telephone" name="telephone" required /><br />
           </label>
 
           <label>
             <div class="errorMessage"></div>
-            <span>E-post:*</span><br>
-            <input type="email" id="email" name="email" placeholder="exempel@exempel.se" required><br>
+            <span>E-post:*</span><br />
+            <input type="email" id="email" name="email" placeholder="exempel@exempel.se" required /><br />
           </label>
         </div>
 
@@ -158,58 +167,63 @@
           <legend>Betalalternativ:*</legend>
 
           <label>
-            <input type="radio" name="paymentOptions" id="debitKredit">
+            <input type="radio" name="paymentOptions" id="debitKredit" />
             <span>Debit/Kreditkort</span>
           </label>
 
           <label>
-            <input type="radio" name="paymentOptions" id="invoice">
+            <input type="radio" name="paymentOptions" id="invoice" />
             <span>Faktura</span>
           </label>
 
           <div class="cardPayment">
             <label>
-              <span>Kortnummer:</span><br>
-              <input type="number" name="cardNumber" id="cardNumber"><br>
+              <span>Kortnummer:</span><br />
+              <input type="number" name="cardNumber" id="cardNumber" /><br />
             </label>
 
             <label>
-              <span>Datum/år:</span><br>
-              <input type="month" name="cardDate" id="cardDate"><br>
+              <span>Datum/år:</span><br />
+              <input type="month" name="cardDate" id="cardDate" /><br />
             </label>
 
             <label>
-              <span>CVC:</span><br>
-              <input type="number" name="cardSecurity" id="cardSecurity">
+              <span>CVC:</span><br />
+              <input type="number" name="cardSecurity" id="cardSecurity" />
             </label>
           </div>
 
           <div class="fakturaPayment">
             <label>
               <div class="errorMessage"></div>
-              <span>Personnummer:*</span><br>
-              <input type="text" name="socialSecurity" id="socialSecurity" minlength="10" maxlength="10" placeholder="ÅÅMMDDXXXX">
+              <span>Personnummer:*</span><br />
+              <input
+                type="text"
+                name="socialSecurity"
+                id="socialSecurity"
+                minlength="10"
+                maxlength="10"
+                placeholder="ÅÅMMDDXXXX"
+              />
             </label>
           </div>
         </fieldset>
 
         <label>
-          <input type="checkbox" id="gdpr" name="gdpr" required>
-          <span>Godkännande för behandling av personuppgifter.*</span><br>
+          <input type="checkbox" id="gdpr" name="gdpr" required />
+          <span>Godkännande för behandling av personuppgifter.*</span><br />
         </label>
 
         <label>
-          <input type="checkbox" id="newsletter" name="newsletter" checked>
-          <span>Få vårat nyhetsbrev en gång i veckan för alla nyheter och erbjudanden.</span><br>
+          <input type="checkbox" id="newsletter" name="newsletter" checked />
+          <span>Få vårat nyhetsbrev en gång i veckan för alla nyheter och erbjudanden.</span><br />
         </label>
 
-        <input type="submit" id="submit" value="Skicka order!" disabled>
-      
+        <input type="submit" id="submit" value="Skicka order!" disabled />
       </form>
-
     </section>
 
-      <!-- THEME TOGGLE -->
+    <!-- THEME TOGGLE -->
     <div class="themeToggle">
       <div class="themeToggleContainer">
         <span><i class="fa-solid fa-lightbulb"></i></span>
@@ -217,17 +231,32 @@
         <span><i class="fa-solid fa-lightbulb"></i></span>
       </div>
     </div>
-    
-    
-        <!-- SORTERA EFTER-->
+
+    <!-- SORTERA EFTER-->
     <section class="sortProducts">
       <h3 id="sortBy">Sortera efter</h3>
       <ul aria-labelledby="sortBy">
-        <li><button class="allColorTheme" aria-label="Sortera efter namn"><i class="fa-solid fa-arrow-down-a-z"></i></li></button>
-        <li><button class="allColorTheme" aria-label="Sortera efter betyg"><i class="fa-solid fa-star"></i></li></button>
-        <li><button class="allColorTheme" aria-label="Sortera efter pris fallande"><i class="fa-solid fa-arrow-down-wide-short"></i></li></button>
-        <li><button class="allColorTheme" aria-label="Sortera efter pris stigande"><i class="fa-solid fa-arrow-down-short-wide"></i></li></button>
-        <li><button class="allColorTheme" aria-label="Sortera efter Kategori"><i class="fa-solid fa-up-down"></i></li></button>
+        <li>
+          <button class="allColorTheme" aria-label="Sortera efter namn">
+            <i class="fa-solid fa-arrow-down-a-z"></i>
+          </button>
+        </li>
+        <li>
+          <button class="allColorTheme" aria-label="Sortera efter betyg"><i class="fa-solid fa-star"></i></button>
+        </li>
+        <li>
+          <button class="allColorTheme" aria-label="Sortera efter pris fallande">
+            <i class="fa-solid fa-arrow-down-wide-short"></i>
+          </button>
+        </li>
+        <li>
+          <button class="allColorTheme" aria-label="Sortera efter pris stigande">
+            <i class="fa-solid fa-arrow-down-short-wide"></i>
+          </button>
+        </li>
+        <li>
+          <button class="allColorTheme" aria-label="Sortera efter Kategori"><i class="fa-solid fa-up-down"></i></button>
+        </li>
       </ul>
     </section>
 
@@ -237,96 +266,107 @@
         <div class="productCard">
           <h1>Jul-Edition</h1>
           <div class="products">
-
-            <div class="munk" >
-              <div class="donutInfo">
-              <div class="donutImg">
-                <div class="singleDonutImg">
-                  <img src="img/donuts_img/brown.jpg" alt="Vaniljmunk med pepparkakafrosting" width="100" height="150">
-                </div>
-                <div class="donutRating">
-                  <span><i class="fa-solid fa-star"></i></span>
-                  <span><i class="fa-solid fa-star"></i></span>
-                  <span><i class="fa-solid fa-star"></i></span>
-                  <span><i class="fa-regular fa-star"></i></span>
-                  <span><i class="fa-regular fa-star"></i></span>
-                </div>
-              </div>
-
-                <div  class="nameInfo">
-                  <h2>Pepparkaka</h2>
-                </div>
-                  <div class="plusMinusInput">
-                      <span class="allPrice">Pris/st:</span><span class="price">23</span><span>kr</span><br>
-                      <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br>
-                      <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br>
-                      <button class="minus" data-operator="minus">-</button>
-                      <button class="plus" data-operator="plus">+</button><br>
-                  </div>
-     
-                      <button data-operator="addDonutsToCart" class="addDonutsToCart">Lägg Till</button>
-                    
-                </div>
-              </div>
-
             <div class="munk">
               <div class="donutInfo">
-              <div class="donutImg">
-                <div class="singleDonutImg">
-                  <img src="img/donuts_img/red.jpg" alt="Vaniljmunk med röd frosting med smak av nejlika" width="100" height="150">
+                <div class="donutImg">
+                  <div class="singleDonutImg">
+                    <img
+                      src="img/donuts_img/brown.jpg"
+                      alt="Vaniljmunk med pepparkakafrosting"
+                      width="100"
+                      height="150"
+                    />
+                  </div>
+                  <div class="donutRating">
+                    <span><i class="fa-solid fa-star"></i></span>
+                    <span><i class="fa-solid fa-star"></i></span>
+                    <span><i class="fa-solid fa-star"></i></span>
+                    <span><i class="fa-regular fa-star"></i></span>
+                    <span><i class="fa-regular fa-star"></i></span>
+                  </div>
                 </div>
-                <div class="donutRating">
-                  <span><i class="fa-solid fa-star"></i></span>
-                  <span><i class="fa-solid fa-star"></i></span>
-                  <span><i class="fa-solid fa-star"></i></span>
-                  <span><i class="fa-solid fa-star"></i></span>
-                  <span><i class="fa-regular fa-star"></i></span>
-                </div>
-              </div>
 
-              
                 <div class="nameInfo">
-                  <h2>Julglädje</h2>
+                  <h2>Pepparkaka</h2>
+                </div>
+                <div class="plusMinusInput">
+                  <span class="allPrice">Pris/st:</span><span class="price">23</span><span>kr</span><br />
+                  <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br />
+                  <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br />
+                  <button class="minus" data-operator="minus">-</button>
+                  <button class="plus" data-operator="plus">+</button><br />
                 </div>
 
-                  <div class="plusMinusInput">
-                      <span class="allPrice">Pris/st:</span><span class="price">25</span><span>kr</span><br>
-                      <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br>
-                      <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br>
-                      <button class="minus" data-operator="minus">-</button>
-                      <button class="plus" data-operator="plus">+</button><br>
-                    </div>
-
-                    <button data-operator="addDonutsToCart" class="addDonutsToCart">Lägg Till</button>
+                <button data-operator="addDonutsToCart" class="addDonutsToCart">Lägg Till</button>
               </div>
             </div>
 
             <div class="munk">
               <div class="donutInfo">
-              <div class="donutImg">
-                <div class="singleDonutImg">
-                  <img src="img/donuts_img/yellow.jpg" alt="vaniljmunk med ingefärafrosting" width="100" height="150">
+                <div class="donutImg">
+                  <div class="singleDonutImg">
+                    <img
+                      src="img/donuts_img/red.jpg"
+                      alt="Vaniljmunk med röd frosting med smak av nejlika"
+                      width="100"
+                      height="150"
+                    />
+                  </div>
+                  <div class="donutRating">
+                    <span><i class="fa-solid fa-star"></i></span>
+                    <span><i class="fa-solid fa-star"></i></span>
+                    <span><i class="fa-solid fa-star"></i></span>
+                    <span><i class="fa-solid fa-star"></i></span>
+                    <span><i class="fa-regular fa-star"></i></span>
+                  </div>
                 </div>
-                <div class="donutRating">
-                  <span><i class="fa-solid fa-star"></i></span>
-                  <span><i class="fa-solid fa-star"></i></span>
-                  <span><i class="fa-regular fa-star"></i></span>
-                  <span><i class="fa-regular fa-star"></i></span>
-                  <span><i class="fa-regular fa-star"></i></span>
-                </div>
-              </div>
 
-              
+                <div class="nameInfo">
+                  <h2>Julglädje</h2>
+                </div>
+
+                <div class="plusMinusInput">
+                  <span class="allPrice">Pris/st:</span><span class="price">25</span><span>kr</span><br />
+                  <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br />
+                  <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br />
+                  <button class="minus" data-operator="minus">-</button>
+                  <button class="plus" data-operator="plus">+</button><br />
+                </div>
+
+                <button data-operator="addDonutsToCart" class="addDonutsToCart">Lägg Till</button>
+              </div>
+            </div>
+
+            <div class="munk">
+              <div class="donutInfo">
+                <div class="donutImg">
+                  <div class="singleDonutImg">
+                    <img
+                      src="img/donuts_img/yellow.jpg"
+                      alt="vaniljmunk med ingefärafrosting"
+                      width="100"
+                      height="150"
+                    />
+                  </div>
+                  <div class="donutRating">
+                    <span><i class="fa-solid fa-star"></i></span>
+                    <span><i class="fa-solid fa-star"></i></span>
+                    <span><i class="fa-regular fa-star"></i></span>
+                    <span><i class="fa-regular fa-star"></i></span>
+                    <span><i class="fa-regular fa-star"></i></span>
+                  </div>
+                </div>
+
                 <div class="nameInfo">
                   <h2>Ingefära</h2>
                 </div>
 
                 <div class="plusMinusInput">
-                  <span class="allPrice">Pris/st:</span><span class="price">20</span><span>kr</span><br>
-                  <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br>
-                  <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br>
+                  <span class="allPrice">Pris/st:</span><span class="price">20</span><span>kr</span><br />
+                  <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br />
+                  <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br />
                   <button class="minus" data-operator="minus">-</button>
-                  <button class="plus" data-operator="plus">+</button><br>
+                  <button class="plus" data-operator="plus">+</button><br />
                 </div>
 
                 <button data-operator="addDonutsToCart" class="addDonutsToCart">Lägg Till</button>
@@ -334,18 +374,15 @@
             </div>
           </div>
         </div>
-      
-
 
         <div class="productCard">
           <h1>Våra Klassiker</h1>
-            <div class="products">
-          
-              <div class="munk">
-                <div class="donutInfo">
+          <div class="products">
+            <div class="munk">
+              <div class="donutInfo">
                 <div class="donutImg">
                   <div class="singleDonutImg">
-                    <img src="img/donuts_img/white.jpg" alt="Vaniljmunk med vaniljfrosting" width="100" height="150">
+                    <img src="img/donuts_img/white.jpg" alt="Vaniljmunk med vaniljfrosting" width="100" height="150" />
                   </div>
 
                   <div class="donutRating">
@@ -356,133 +393,131 @@
                     <span><i class="fa-solid fa-star"></i></span>
                   </div>
                 </div>
-  
-                
-                  <div class="nameInfo">
-                    <h2>Vanilj</h2>
-                  </div>
-  
-                    <div class="plusMinusInput">
-                        <span class="allPrice">Pris/st:</span><span class="price">25</span><span>kr</span><br>
-                        <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br>
-                        <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br>
-                        <button class="minus" data-operator="minus">-</button>
-                        <button class="plus" data-operator="plus">+</button><br>
-                      </div>
-  
-                      <button data-operator="addDonutsToCart" class="addDonutsToCart">Lägg Till</button>
+
+                <div class="nameInfo">
+                  <h2>Vanilj</h2>
                 </div>
+
+                <div class="plusMinusInput">
+                  <span class="allPrice">Pris/st:</span><span class="price">25</span><span>kr</span><br />
+                  <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br />
+                  <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br />
+                  <button class="minus" data-operator="minus">-</button>
+                  <button class="plus" data-operator="plus">+</button><br />
+                </div>
+
+                <button data-operator="addDonutsToCart" class="addDonutsToCart">Lägg Till</button>
               </div>
+            </div>
 
             <div class="munk">
               <div class="donutInfo">
-              <div class="donutImg">
-                <div class="singleDonutImg">
-                  <img src="img/donuts_img/black.jpg" alt="vaniljmunk med lakritsglaze" width="100" height="150">
+                <div class="donutImg">
+                  <div class="singleDonutImg">
+                    <img src="img/donuts_img/black.jpg" alt="vaniljmunk med lakritsglaze" width="100" height="150" />
+                  </div>
+
+                  <div class="donutRating">
+                    <span><i class="fa-solid fa-star"></i></span>
+                    <span><i class="fa-regular fa-star"></i></span>
+                    <span><i class="fa-regular fa-star"></i></span>
+                    <span><i class="fa-regular fa-star"></i></span>
+                    <span><i class="fa-regular fa-star"></i></span>
+                  </div>
                 </div>
 
-                <div class="donutRating">
-                  <span><i class="fa-solid fa-star"></i></span>
-                  <span><i class="fa-regular fa-star"></i></span>
-                  <span><i class="fa-regular fa-star"></i></span>
-                  <span><i class="fa-regular fa-star"></i></span>
-                  <span><i class="fa-regular fa-star"></i></span>
-                </div>
-              </div>
-
-              
                 <div class="nameInfo">
                   <h2>Lakrits</h2>
                 </div>
-                  
+
                 <div class="plusMinusInput">
-                  <span class="allPrice">Pris/st:</span><span class="price">13</span><span>kr</span><br>
-                  <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br>
-                  <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br>
+                  <span class="allPrice">Pris/st:</span><span class="price">13</span><span>kr</span><br />
+                  <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br />
+                  <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br />
                   <button class="minus" data-operator="minus">-</button>
-                  <button class="plus" data-operator="plus">+</button><br>
+                  <button class="plus" data-operator="plus">+</button><br />
                 </div>
                 <button data-operator="addDonutsToCart" class="addDonutsToCart">Lägg Till</button>
-              </div> 
+              </div>
             </div>
 
             <div class="munk">
               <div class="donutInfo">
-              <div class="donutImg">
-                <div class="singleDonutImg">
-                  <img src="img/donuts_img/purple.jpg" alt="vaniljmunk med lavendelglaze" width="100" height="150">
+                <div class="donutImg">
+                  <div class="singleDonutImg">
+                    <img src="img/donuts_img/purple.jpg" alt="vaniljmunk med lavendelglaze" width="100" height="150" />
+                  </div>
+
+                  <div class="donutRating">
+                    <span><i class="fa-solid fa-star"></i></span>
+                    <span><i class="fa-solid fa-star"></i></span>
+                    <span><i class="fa-solid fa-star"></i></span>
+                    <span><i class="fa-solid fa-star"></i></span>
+                    <span><i class="fa-regular fa-star"></i></span>
+                  </div>
                 </div>
 
-                <div class="donutRating">
-                  <span><i class="fa-solid fa-star"></i></span>
-                  <span><i class="fa-solid fa-star"></i></span>
-                  <span><i class="fa-solid fa-star"></i></span>
-                  <span><i class="fa-solid fa-star"></i></span>
-                  <span><i class="fa-regular fa-star"></i></span>
-                </div>
-              </div>
-
-              
                 <div class="nameInfo">
                   <h2>Lavendel</h2>
                 </div>
-                  
+
                 <div class="plusMinusInput">
-                  <span class="allPrice">Pris/st:</span><span class="price">19</span><span>kr</span><br>
-                  <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br>
-                  <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br>
+                  <span class="allPrice">Pris/st:</span><span class="price">19</span><span>kr</span><br />
+                  <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br />
+                  <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br />
                   <button class="minus" data-operator="minus">-</button>
-                  <button class="plus" data-operator="plus">+</button><br>
+                  <button class="plus" data-operator="plus">+</button><br />
                 </div>
                 <button data-operator="addDonutsToCart" class="addDonutsToCart">Lägg Till</button>
-              </div> 
+              </div>
             </div>
 
             <div class="munk">
               <div class="donutInfo">
-              <div class="donutImg">
-                <div class="singleDonutImg">
-                  <img src="img/donuts_img/pink.jpg" alt="vaniljmunk med hallonglaze" width="100" height="150">
+                <div class="donutImg">
+                  <div class="singleDonutImg">
+                    <img src="img/donuts_img/pink.jpg" alt="vaniljmunk med hallonglaze" width="100" height="150" />
+                  </div>
+
+                  <div class="donutRating">
+                    <span><i class="fa-solid fa-star"></i></span>
+                    <span><i class="fa-solid fa-star"></i></span>
+                    <span><i class="fa-solid fa-star"></i></span>
+                    <span><i class="fa-solid fa-star"></i></span>
+                    <span><i class="fa-regular fa-star"></i></span>
+                  </div>
                 </div>
 
-                <div class="donutRating">
-                  <span><i class="fa-solid fa-star"></i></span>
-                  <span><i class="fa-solid fa-star"></i></span>
-                  <span><i class="fa-solid fa-star"></i></span>
-                  <span><i class="fa-solid fa-star"></i></span>
-                  <span><i class="fa-regular fa-star"></i></span>
-                </div>
-              </div>
-
-              
                 <div class="nameInfo">
                   <h2>Hallon</h2>
                 </div>
-                  
+
                 <div class="plusMinusInput">
-                  <span class="allPrice">Pris/st:</span><span class="price">27</span><span>kr</span><br>
-                  <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br>
-                  <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br>
+                  <span class="allPrice">Pris/st:</span><span class="price">27</span><span>kr</span><br />
+                  <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br />
+                  <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br />
                   <button class="minus" data-operator="minus">-</button>
-                  <button class="plus" data-operator="plus">+</button><br>
+                  <button class="plus" data-operator="plus">+</button><br />
                 </div>
                 <button data-operator="addDonutsToCart" class="addDonutsToCart">Lägg Till</button>
-              </div> 
+              </div>
             </div>
           </div>
-          </div>
-      
+        </div>
 
-          <div class="productCard">
-
-            <h1>Limited Edition</h1>
-            <div class="products">
-  
-              <div class="munk">
-                <div class="donutInfo">
+        <div class="productCard">
+          <h1>Limited Edition</h1>
+          <div class="products">
+            <div class="munk">
+              <div class="donutInfo">
                 <div class="donutImg">
                   <div class="singleDonutImg">
-                    <img src="img/donuts_img/blue.jpg" alt="vaniljmunk med bluefizz-godissmak" width="100" height="150">
+                    <img
+                      src="img/donuts_img/blue.jpg"
+                      alt="vaniljmunk med bluefizz-godissmak"
+                      width="100"
+                      height="150"
+                    />
                   </div>
                   <div class="donutRating">
                     <span><i class="fa-solid fa-star"></i></span>
@@ -492,28 +527,32 @@
                     <span><i class="fa-regular fa-star"></i></span>
                   </div>
                 </div>
-  
-                
-                  <div class="nameInfo">
-                    <h2>Blue Fizz</h2>
-                  </div>
-                    
-                  <div class="plusMinusInput">
-                    <span class="allPrice">Pris/st:</span><span class="price">32</span><span>kr</span><br>
-                    <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br>
-                    <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br>
-                    <button class="minus" data-operator="minus">-</button>
-                    <button class="plus" data-operator="plus">+</button><br>
-                  </div>
-                  <button data-operator="addDonutsToCart" class="addDonutsToCart">Lägg Till</button>
-                </div> 
+
+                <div class="nameInfo">
+                  <h2>Blue Fizz</h2>
+                </div>
+
+                <div class="plusMinusInput">
+                  <span class="allPrice">Pris/st:</span><span class="price">32</span><span>kr</span><br />
+                  <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br />
+                  <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br />
+                  <button class="minus" data-operator="minus">-</button>
+                  <button class="plus" data-operator="plus">+</button><br />
+                </div>
+                <button data-operator="addDonutsToCart" class="addDonutsToCart">Lägg Till</button>
               </div>
-  
-              <div class="munk">
-                <div class="donutInfo">
+            </div>
+
+            <div class="munk">
+              <div class="donutInfo">
                 <div class="donutImg">
                   <div class="singleDonutImg">
-                    <img src="img/donuts_img/lightblue.jpg" alt="vaniljmunk med champagnefrosting" width="100" height="150">
+                    <img
+                      src="img/donuts_img/lightblue.jpg"
+                      alt="vaniljmunk med champagnefrosting"
+                      width="100"
+                      height="150"
+                    />
                   </div>
 
                   <div class="donutRating">
@@ -524,31 +563,34 @@
                     <span><i class="fa-solid fa-star"></i></span>
                   </div>
                 </div>
-  
-                
-                  <div class="nameInfo">
-                    <h2>Champagne</h2>
-                  </div>
-                    
-                  <div class="plusMinusInput">
-                    <span class="allPrice">Pris/st:</span><span class="price">38</span><span>kr</span><br>
-                    <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br>
-                    <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br>
-                    <button class="minus" data-operator="minus">-</button>
-                    <button class="plus" data-operator="plus">+</button><br>
-                  </div>
-                  <button data-operator="addDonutsToCart" class="addDonutsToCart">Lägg Till</button>
-                </div> 
+
+                <div class="nameInfo">
+                  <h2>Champagne</h2>
+                </div>
+
+                <div class="plusMinusInput">
+                  <span class="allPrice">Pris/st:</span><span class="price">38</span><span>kr</span><br />
+                  <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br />
+                  <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br />
+                  <button class="minus" data-operator="minus">-</button>
+                  <button class="plus" data-operator="plus">+</button><br />
+                </div>
+                <button data-operator="addDonutsToCart" class="addDonutsToCart">Lägg Till</button>
               </div>
-  
-              
-              <div class="munk">
-                <div class="donutInfo">
+            </div>
+
+            <div class="munk">
+              <div class="donutInfo">
                 <div class="donutImg">
                   <div class="singleDonutImg">
-                    <img src="img/donuts_img/green.jpg" alt="vaniljmunk med päronsplittfrosting" width="100" height="150">
+                    <img
+                      src="img/donuts_img/green.jpg"
+                      alt="vaniljmunk med päronsplittfrosting"
+                      width="100"
+                      height="150"
+                    />
                   </div>
-                    
+
                   <div class="donutRating">
                     <span><i class="fa-solid fa-star"></i></span>
                     <span><i class="fa-solid fa-star"></i></span>
@@ -557,23 +599,19 @@
                     <span><i class="fa-regular fa-star"></i></span>
                   </div>
                 </div>
-  
-                
-                  <div>
-                    <h2  class="nameInfo">Päronsplitt</h2>
-                  </div>
-                    
-                  <div class="plusMinusInput">
-                    <span class="allPrice">Pris/st:</span><span class="price">38</span><span>kr</span><br>
-                    <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br>
-                    <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br>
-                    <button class="minus" data-operator="minus">-</button>
-                    <button class="plus" data-operator="plus">+</button><br>
-                  </div>
-                  <button data-operator="addDonutsToCart" class="addDonutsToCart">Lägg Till</button>
-                </div> 
-              </div>
 
+                <div>
+                  <h2 class="nameInfo">Päronsplitt</h2>
+                </div>
+
+                <div class="plusMinusInput">
+                  <span class="allPrice">Pris/st:</span><span class="price">38</span><span>kr</span><br />
+                  <span class="allAntal">Antal: </span><span class="antal">0 </span><span>st</span><br />
+                  <span class="allSum">Summa: </span><span class="sum">0</span><span>kr</span><br />
+                  <button class="minus" data-operator="minus">-</button>
+                  <button class="plus" data-operator="plus">+</button><br />
+                </div>
+                <button data-operator="addDonutsToCart" class="addDonutsToCart">Lägg Till</button>
               </div>
             </div>
           </div>
@@ -583,17 +621,17 @@
 
     <footer class="headerColorTheme">
       <div class="leftFooter">
-        <p class="allColorTheme" >&copy; Gottfrids Fantastiskt Goda Munkar</p>
+        <p class="allColorTheme">&copy; Gottfrids Fantastiskt Goda Munkar</p>
         <address class="allColorTheme">
-          Konditorigatan 13<br>
-          420 69 Munk<br>
+          Konditorigatan 13<br />
+          420 69 Munk<br />
         </address>
       </div>
       <nav>
         <ul>
-          <li><a href="#" class="allColorTheme" >Hem</a></li>
-          <li><a href="#" class="allColorTheme" >Kontakt</a></li>
-          <li><a href="#" class="allColorTheme" >Om företaget</a></li>
+          <li><a href="#" class="allColorTheme">Hem</a></li>
+          <li><a href="#" class="allColorTheme">Kontakt</a></li>
+          <li><a href="#" class="allColorTheme">Om företaget</a></li>
         </ul>
       </nav>
     </footer>
