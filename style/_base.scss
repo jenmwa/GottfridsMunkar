@@ -104,36 +104,31 @@ header {
 }
 
 #sectionShoppingCart.open {
-  display: block;
-}
-
-#shoppingOpen {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: right;
-  position: fixed;
+  display:block; 
   top: 0;
   right: 0;
-  width: 90%;
   z-index: 4;
+  position: fixed;
+  width: 75%;
+}
 
-  .shoppingContainer {
-    margin: 75px 0;
-    width: 90%;
-    background-color: $specialLightGreen;
-    border: 4px solid $specialGreen;
-    box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
-  }
+.shoppingContainer{
+  margin: 75px 0 0 0;
+  background-color: $specialLightGreen;
+  border: 4px solid $specialGreen;
+  box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+  padding: 0 1rem 1rem 1rem;
+  margin-bottom: 1rem;
+}
 
-  .shoppingHeader {
-    margin: auto;
-    width: 90%;
-    height: 15%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+.shoppingHeader{
+  margin: auto;
+  width: 90%;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
   .shoppingHeading {
     font-size: 2rem;
@@ -150,33 +145,55 @@ header {
     border: 1px solid #202020;
   }
 
-  .shoppingRemove {
-    float: right;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    margin-top: -10px;
-  }
+.shoppingRemove {
+margin-left: 1.1rem;
+margin-bottom: 1rem;
+}
 
   .shoppingAction:hover,
   .shoppingRemove:hover {
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.8);
   }
 
-  .shoppingCartItems {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 1rem;
-    padding: 1rem;
-    width: 90%;
-    background-color: $specialGreen;
-    border: 1px solid #202020;
-    box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
-    text-align: left;
+.shoppingCartItems{
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  width: 90%;
+  background-color: $specialGreen;
+  border: 1px solid #202020;
+  box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+ 
+}
+
+#shoppingCartContent div{
+display: grid; 
+grid-template-columns: 25% 10% 15% 15% 30%;
+gap: 10px;
+align-items: baseline;
+
+  img {
+    width: 100px;
+    height: auto;
   }
 
-  /*CHECKOUT*/
-  .cartCheckout {
-    margin: auto auto 2rem auto;
+  h4 {
+    text-align: left;
+  }
+  p {
+    text-align: right;
+  }
+ 
+  button {
+    width: 40px;
+    margin: 0;
+  }
+}
+
+/*CHECKOUT*/
+  .cartCheckout{
+    margin: 0 auto 2rem auto;
     text-align: center;
     width: 90%;
     display: flex;
@@ -199,10 +216,22 @@ header {
     font-weight: 500;
     color: #202020;
   }
-  .cartTotalAmount {
+
+  .shoppingCartTotalAmount{
     font-size: 2rem;
     font-weight: 900;
     color: #202020;
+  }
+  .checkoutLabel {
+    margin-top: 1rem;
+
+    input {
+      margin: 0.5rem;
+    }
+
+    button {
+      cursor: pointer;
+    }
   }
 
   .checkoutButton {
@@ -223,7 +252,7 @@ header {
     box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
     transition: 0.3s ease-in-out;
   }
-}
+
 
 /*****THEME TOGGLE**********/
 

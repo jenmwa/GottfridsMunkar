@@ -1,4 +1,5 @@
 let addShopCartList = []; // Lista för munkar som ska till varukorgen
+//console.log([addShopCartList])
 
 //  VARUKORG - öppnas/stängs
 
@@ -97,6 +98,7 @@ function addDonutsToShopCart(munk) {
     anyImg: img,
     anyAmount: amount,
     anySum: totalSum,
+        
   };
 
   if (amount == 0) {
@@ -132,9 +134,36 @@ function addDonutsToShopCart(munk) {
       shoppingCartTotalItems.innerText = Number(shoppingCartItemSum) + Number(amount);
       shoppingCartTotalAmount.innerText = Number(shoppingCartAmountSum) + Number(totalSum);
     }
+
     setTimeout(clearValues, 500, munk);
+        printAddedDonutShoppingCart(munk);
   }
+
 }
+
+// ARTIKLAR I KUNDKORG VISAS
+
+function printAddedDonutShoppingCart(){
+    document.querySelector('#shoppingCartContent').innerHTML = '';
+    
+    for(let i =0; i < addShopCartList.length; i++) {
+        document.querySelector('#shoppingCartContent').innerHTML +=`<div><h4>${addShopCartList[i].anyName}</h4><p>${addShopCartList[i].anyAmount}st</p><p>${addShopCartList[i].anyPrice}kr/st</p><p>${addShopCartList[i].anySum}kr</p><button class="material-symbols-outlined">
+        delete_forever
+        </button></div>`;
+    }
+    const munkar = Array.from(document.querySelectorAll('#shoppingCartContent div'));
+    munkar.forEach((item) => {
+        item.addEventListener('click', removeAddedDonut);
+    });
+}
+    function removeAddedDonut(e) { //working on it TBC
+        console.log(e.target.innerHTML);
+        const i2 = addShopCartList.indexOf(e.target.innerHTML);
+        if (i2 > -1) {
+            addShopCartList.splice(i2, 1);
+            printAddedDonutShoppingCart();
+        }
+    }
 
 function clearValues(munk) {
   // Funktion som raderar valda antal och summa munkar när knappen trycks på
