@@ -50,9 +50,8 @@
           <button aria-label="Töm varukorg" class="shoppingRemove">Töm varukorgen</button>
           <div class="itemsCheckoutWrapper">
             <div class="itemsContainer" id="itemsContainer">
-
               <div class="shoppingCartItems" id="shoppingCartItems"> 
-               <div id="test">varukorgen är tom.</div>
+               <div id="test">varukorgen är tom.<br></div>
               </div>
               
             </div>
@@ -63,10 +62,13 @@
                     <div class="cartSubtotal">Totalt</div>
                     <span class="cartItems" id="shoppingCartTotalItems">0</span><span> donuts</span>
                   </div>
-                  <div class="cartTotalAmount">
+                  <div class="shoppingCartTotalAmount">
                   <span id="shoppingCartTotalAmount">0</span><span> kr</span>
                 </div>
-                  <button class="checkoutButton">Beställ</button>
+                <label class="checkoutLabel">Har du en rabattkod?
+                  <input type="text" placeholder="Rabattkod"><button>aktivera</button>
+                </label>
+                  <button class="checkoutButton">Beställ</button> 
                 </div>
             </div>
           </div>
