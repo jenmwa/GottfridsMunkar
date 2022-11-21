@@ -144,15 +144,26 @@ function addDonutsToShopCart(munk) {
 // ARTIKLAR I KUNDKORG VISAS
 
 function printAddedDonutShoppingCart(){
-    document.querySelector('#test').innerHTML = ''; //<img url:'img/donuts_img/' width:100px height 100px>${addShopCartList[i].anyImg}</img>
-
+    document.querySelector('#shoppingCartContent').innerHTML = '';
+    
     for(let i =0; i < addShopCartList.length; i++) {
-        document.querySelector('#test').innerHTML +=`<div><h4>${addShopCartList[i].anyName}</h4><p>${addShopCartList[i].anyAmount}st</p><p>${addShopCartList[i].anyPrice}kr/st</p><p>${addShopCartList[i].anySum}kr</p><button class="material-symbols-outlined">
+        document.querySelector('#shoppingCartContent').innerHTML +=`<div><h4>${addShopCartList[i].anyName}</h4><p>${addShopCartList[i].anyAmount}st</p><p>${addShopCartList[i].anyPrice}kr/st</p><p>${addShopCartList[i].anySum}kr</p><button class="material-symbols-outlined">
         delete_forever
         </button></div>`;
-        
     }
+    const munkar = Array.from(document.querySelectorAll('#shoppingCartContent div'));
+    munkar.forEach((item) => {
+        item.addEventListener('click', removeAddedDonut);
+    });
 }
+    function removeAddedDonut(e) { //working on it TBC
+        console.log(e.target.innerHTML);
+        const i2 = addShopCartList.indexOf(e.target.innerHTML);
+        if (i2 > -1) {
+            addShopCartList.splice(i2, 1);
+            printAddedDonutShoppingCart();
+        }
+    }
 
 function clearValues(munk) {
   // Funktion som raderar valda antal och summa munkar när knappen trycks på
