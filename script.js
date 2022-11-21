@@ -1,4 +1,5 @@
-
+let addShopCartList = []; // Lista för munkar som ska till varukorgen
+//console.log([addShopCartList])
 
 //  VARUKORG - öppnas/stängs
 
@@ -280,29 +281,34 @@ function clearValues() {
   writeOutDonuts();
 }
 
-function printOutShopCart(index) {
-  document.querySelector('#itemsContainer').innerHTML = '';
+// ARTIKLAR I KUNDKORG VISAS
 
-  if (addShopCartList[index].anyAmount > 10) {
-    addShopCartList[index].anySum = Math.round(addShopCartList[index].anySum * 0.9);
-  }
-//<img class="imgInCart" src="${sendToCartList[i].anyImg}" alt="${sendToCartList[i].anyAlt}"  width="100" height="150"></img>
+function printAddedDonutShoppingCart(){
+    document.querySelector('#shoppingCartContent').innerHTML = '';
+    
+    for(let i =0; i < addShopCartList.length; i++) {
+        document.querySelector('#shoppingCartContent').innerHTML +=`<div><h4>${addShopCartList[i].anyName}</h4><p>${addShopCartList[i].anyAmount}st</p><p>${addShopCartList[i].anyPrice}kr/st</p><p>${addShopCartList[i].anySum}kr</p><button class="material-symbols-outlined">
+        delete_forever
+        </button></div>`;
+    }
+    const munkar = Array.from(document.querySelectorAll('#shoppingCartContent div'));
+    munkar.forEach((item) => {
+        item.addEventListener('click', removeAddedDonut);
+    });
+}
+    function removeAddedDonut(e) { //working on it TBC
+        console.log(e.target.innerHTML);
+        const i2 = addShopCartList.indexOf(e.target.innerHTML);
+        if (i2 > -1) {
+            addShopCartList.splice(i2, 1);
+            printAddedDonutShoppingCart();
+        }
+    }
 
-
-/*  -- jennys varukorg
-  for (let i = 0; i < sendToCartList.length; i++) {
-    document.querySelector('#itemsContainer').innerHTML += ` 
-              <article class="donutInCart">
-              <h2>${sendToCartList[i].anyName}</h2>
-              
-              <span class="priceInCart">${sendToCartList[i].anyPrice} kr/st</span>
-              <span class="amountInCart" id="amountInCart">Antal: ${sendToCartList[i].anyAmount} <span> st</span></span>
-              <button class="minusinCart" data-id="${i}">-</button>
-              <button class="plusinCart" data-id="${i}">+</button>
-              <button class="addToCartInCart" data-id="${i}">Köp</button>
-              Summa: <span class="sumInCart">${sendToCartList[i].anySum}</span><span> kr</span>
-          </article>`;
-  }*/
+function clearValues(munk) {
+  // Funktion som raderar valda antal och summa munkar när knappen trycks på
+  munk.querySelector('.antal').innerText = 0;
+  munk.querySelector('.sum').innerText = 0;
 }
 
 writeOutDonuts();
