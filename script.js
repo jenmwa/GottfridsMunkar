@@ -174,7 +174,7 @@ const donuts = [
 ];
 const donutContainer = document.querySelector('#donutContainer');
 
-function writeOutDonuts() {
+function writeOutDonuts() { // Funktion som skriver ut alla munkarna i HTML
   donutContainer.innerHTML = '';
 
   for (let i = 0; i < donuts.length; i++) {
@@ -223,7 +223,7 @@ function writeOutDonuts() {
   });
 }
 
-function updateDonutAmountPlus(e) {
+function updateDonutAmountPlus(e) { // funktion som plussar på munkar varje gånr vi trycker +
   const btnPlus = e.currentTarget.dataset.id;
   donuts[btnPlus].amount += 1;
 
@@ -232,7 +232,7 @@ function updateDonutAmountPlus(e) {
   writeOutDonuts();
 }
 
-function updateDonutAmountMinus(e) {
+function updateDonutAmountMinus(e) { // funktion som t på munkar varje gånr vi trycker +
   const btnMinus = e.currentTarget.dataset.id;
 
   if (donuts[btnMinus].amount > 0) {
@@ -244,11 +244,11 @@ function updateDonutAmountMinus(e) {
 }
 
 
-function sendToCart(e) {
+function sendToCart(e) { // funktion som när vi trcyker på köp så lägger vi till objekter från donut-listan till vår shoppingcart lista
   const addToCartBtn = e.currentTarget.dataset.id;
   const index = addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name);
 
-  const addedItem = {
+  const addedItem = { // objektet som läggs till i vår shoppinglista med värdena från vår donutlista
     anyPrice: donuts[addToCartBtn].price,
     anyImg: donuts[addToCartBtn].src1,
     anyAlt: donuts[addToCartBtn].alt1,
@@ -256,19 +256,19 @@ function sendToCart(e) {
     anyAmount: donuts[addToCartBtn].amount,
     anySum: donuts[addToCartBtn].sum,
   };
-  if (donuts[addToCartBtn].amount == 0) {
+  if (donuts[addToCartBtn].amount == 0) { // kollar så vi inte kan lägga till munkar med antal 0
     return;
   } else {
-    if (index > -1) {
+    if (index > -1) { // om munken redan finns i shoppingkart så läggs värdet och summan på
       addShopCartList[index].anyAmount += donuts[addToCartBtn].amount;
       addShopCartList[index].anySum += donuts[addToCartBtn].sum;
       
     } else {
-      addShopCartList.push(addedItem);
+      addShopCartList.push(addedItem); // om inte munken redan finns så läggs den till på nytt
     }
   }
   printOutShopCart(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
-  setTimeout(clearValues, 500);
+  setTimeout(clearValues, 500); // efter tryck på köp rensas värdena
 }
 
 function clearValues() {
@@ -276,9 +276,8 @@ function clearValues() {
     donuts[i].amount = 0;
     donuts[i].sum = 0;
   }
-  writeOutDonuts();
 }
-
+  writeOutDonuts()
 
 
 // ARTIKLAR I KUNDKORG VISAS
