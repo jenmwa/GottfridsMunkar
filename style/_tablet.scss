@@ -1,23 +1,22 @@
 @media screen and (min-width: 600px) {
-    .flexForm {
-        display: grid;
-        grid-template-columns: 50% 50%;
+  .flexForm {
+    display: grid;
+    grid-template-columns: 50% 50%;
 
-        label {
-           flex-basis: 25%;
-        }
+    label {
+      flex-basis: 25%;
     }
+  }
 }
 
 @media screen and (min-width: 768px) {
 
 .itemsCheckoutWrapper{
     display: flex;
-  
-}
-.itemsContainer, .checkoutContainer {
-        width: 50%;
-    }
+  }
 
-    
+  .itemsContainer,
+  .checkoutContainer {
+    width: 50%;
+  }
 }
