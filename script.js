@@ -1,5 +1,5 @@
 let addShopCartList = []; // Lista för munkar som ska till varukorgen
-//console.log([addShopCartList])
+
 
 //  VARUKORG - öppnas/stängs
 
@@ -243,7 +243,6 @@ function updateDonutAmountMinus(e) {
   writeOutDonuts();
 }
 
-const addShopCartList = [];
 
 function sendToCart(e) {
   const addToCartBtn = e.currentTarget.dataset.id;
@@ -268,7 +267,6 @@ function sendToCart(e) {
       addShopCartList.push(addedItem);
     }
   }
-  //printOutShopCartValue();
   printOutShopCart(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
   setTimeout(clearValues, 500);
 }
@@ -281,13 +279,25 @@ function clearValues() {
   writeOutDonuts();
 }
 
+
+
 // ARTIKLAR I KUNDKORG VISAS
 
-function printAddedDonutShoppingCart(){
+function printOutShopCart(index){
     document.querySelector('#shoppingCartContent').innerHTML = '';
     
+  if (addShopCartList[index].anyAmount > 10) { // om du beställer mer än 10 munkar får du 10% rabatt
+    addShopCartList[index].anySum = Math.round(addShopCartList[index].anySum * 0.9);
+  }
+
     for(let i =0; i < addShopCartList.length; i++) {
-        document.querySelector('#shoppingCartContent').innerHTML +=`<div><h4>${addShopCartList[i].anyName}</h4><p>${addShopCartList[i].anyAmount}st</p><p>${addShopCartList[i].anyPrice}kr/st</p><p>${addShopCartList[i].anySum}kr</p><button class="material-symbols-outlined">
+        document.querySelector('#shoppingCartContent').innerHTML +=`
+        <div><h4>${addShopCartList[i].anyName}</h4>
+        <img class="imgInCart" src="${addShopCartList[i].anyImg}" alt="${addShopCartList[i].anyAlt}"  width="100" height="150"></img>
+        <p>${addShopCartList[i].anyAmount}st</p>
+        <p>${addShopCartList[i].anyPrice}kr/st</p>
+        <p>${addShopCartList[i].anySum}kr</p>
+        <button class="material-symbols-outlined">
         delete_forever
         </button></div>`;
     }
@@ -301,16 +311,10 @@ function printAddedDonutShoppingCart(){
         const i2 = addShopCartList.indexOf(e.target.innerHTML);
         if (i2 > -1) {
             addShopCartList.splice(i2, 1);
-            printAddedDonutShoppingCart();
+            printOutShopCart();
         }
+       
     }
-
-function clearValues(munk) {
-  // Funktion som raderar valda antal och summa munkar när knappen trycks på
-  munk.querySelector('.antal').innerText = 0;
-  munk.querySelector('.sum').innerText = 0;
-}
-
 writeOutDonuts();
 
 // ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
