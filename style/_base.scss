@@ -109,6 +109,7 @@ header {
   right: 0;
   z-index: 4;
   position: fixed;
+  min-height: 100vh;
   width: 75%;
 }
 
@@ -168,27 +169,38 @@ margin-bottom: 1rem;
 }
 
 #shoppingCartContent div{
-display: grid; 
-grid-template-columns: 25% 10% 15% 15% 30%;
-gap: 10px;
-align-items: baseline;
+width: 100%;
+font-size: 1rem;
+display: flex;
+align-items: flex-start;
+justify-content: space-between;
 
-  img {
-    width: 100px;
-    height: auto;
+.imgInCart {
+  background-size: cover;
+  outline: 1px solid black;
+  margin-right: 15px;
+  margin-bottom: 15px;
   }
-
-  h4 {
-    text-align: left;
-  }
-  p {
-    text-align: right;
+  .text {
+    width: 70%;
+      h4 {
+        margin: 0;
+        font-size: 1.2rem;
+      }
+      p {
+        display: inline;
+        margin-right: 5px;
+      }
+      button {
+        width: 44px;
+        height: 44px;
+        margin: 0;
+        position: absolute;
+        right: 3.5rem;
+    
+      }
   }
  
-  button {
-    width: 40px;
-    margin: 0;
-  }
 }
 
 /*CHECKOUT*/

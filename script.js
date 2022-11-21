@@ -288,9 +288,6 @@ function clearValues() {
   }
  }
 
-
-
-
   writeOutDonuts();
 
 
@@ -305,11 +302,11 @@ function printOutShopCart(index){
 
     for(let i =0; i < addShopCartList.length; i++) {
         document.querySelector('#shoppingCartContent').innerHTML +=`
-        <div><h4>${addShopCartList[i].anyName}</h4>
-        <img class="imgInCart" src="${addShopCartList[i].anyImg}" alt="${addShopCartList[i].anyAlt}"  width="100" height="150"></img>
+        <div><img class="imgInCart" src="${addShopCartList[i].anyImg}" alt="${addShopCartList[i].anyAlt}"  width="75" height="75"></img>
+        <span class="text"><h4>${addShopCartList[i].anyName}</h4><br>
         <p>${addShopCartList[i].anyAmount}st</p>
         <p>${addShopCartList[i].anyPrice}kr/st</p>
-        <p>${addShopCartList[i].anySum}kr</p>
+        <p>${addShopCartList[i].anySum}kr</p></span>
         <button class="material-symbols-outlined">
         delete_forever
         </button></div>`;
@@ -328,6 +325,17 @@ function printOutShopCart(index){
         printAddedDonutShoppingCart();
     }
 writeOutDonuts();
+
+
+function printOutShopCartSymbol(index){
+    let amountChoosen = document.querySelector('#amountChoosen').innerHTML;
+    
+    if (amountChoosen) {
+    document.querySelector('#amountChoosen').innerHTML = `
+    <span>${addShopCartList[index].anyAmount}</span>`;
+    }
+   }
+
 
 // ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
 
