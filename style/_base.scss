@@ -164,9 +164,31 @@ margin-bottom: 1rem;
   background-color: $specialGreen;
   border: 1px solid #202020;
   box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+ 
+}
+
+#test div{
+display: grid; 
+grid-template-columns: 25% 10% 15% 15% 30%;
+gap: 10px;
+align-items: baseline;
+
+  img {
+    width: 100px;
+    height: auto;
+  }
+
+  h4 {
+    text-align: left;
+  }
+  p {
+    text-align: right;
+  }
+ 
+  button {
+    width: 40px;
+    margin: 0;
+  }
 }
 
 /*CHECKOUT*/

@@ -144,38 +144,13 @@ function addDonutsToShopCart(munk) {
 // ARTIKLAR I KUNDKORG VISAS
 
 function printAddedDonutShoppingCart(){
-    const shoppingCartAdded = document.querySelector('#shoppingCartItems'); //vart
-    shoppingCartAdded.innerHTML = '';
+    document.querySelector('#test').innerHTML = ''; //<img url:'img/donuts_img/' width:100px height 100px>${addShopCartList[i].anyImg}</img>
 
-    for(let i = 0; i < addShopCartList.length; i++) { console.log(addShopCartList[i]);
-
-        const donutName = addShopCartList[i].anyName;
-        const donutNode = document.createElement('h4');
-        const donutTextNode = document.createTextNode(donutName);
-        donutNode.appendChild(donutTextNode);
-
-        shoppingCartAdded.appendChild(donutNode);
-
-        const donutAmount = addShopCartList[i].anyAmount;
-        const donutAmountNode = document.createElement('p');
-        const donutAmountTextNode = document.createTextNode(donutAmount);
-        donutAmountNode.appendChild(donutAmountTextNode); //metod , adds node end list children of spec parent node.
-
-        shoppingCartAdded.appendChild(donutAmountNode);
-      
-        const donutPrice = addShopCartList[i].anyPrice;
-        const donutPriceNode = document.createElement('p');
-        const donutPriceTextNode = document.createTextNode(donutPrice);
-        donutPriceNode.appendChild(donutPriceTextNode);
-
-        shoppingCartAdded.appendChild(donutPriceNode);
-
-        const donutTotalSum = addShopCartList[i].anySum;
-        const donutTotalSumNode = document.createElement('p');
-        const donutTotalSumTextNode = document.createTextNode(donutTotalSum);
-        donutTotalSumNode.appendChild(donutTotalSumTextNode);
-
-        shoppingCartAdded.appendChild(donutTotalSumNode);
+    for(let i =0; i < addShopCartList.length; i++) {
+        document.querySelector('#test').innerHTML +=`<div><h4>${addShopCartList[i].anyName}</h4><p>${addShopCartList[i].anyAmount}st</p><p>${addShopCartList[i].anyPrice}kr/st</p><p>${addShopCartList[i].anySum}kr</p><button class="material-symbols-outlined">
+        delete_forever
+        </button></div>`;
+        
     }
 }
 
