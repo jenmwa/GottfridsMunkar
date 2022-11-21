@@ -276,8 +276,9 @@ function clearValues() {
     donuts[i].amount = 0;
     donuts[i].sum = 0;
   }
+  writeOutDonuts();
 }
-  writeOutDonuts()
+  writeOutDonuts();
 
 
 // ARTIKLAR I KUNDKORG VISAS
