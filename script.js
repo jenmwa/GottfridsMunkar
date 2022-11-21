@@ -161,8 +161,8 @@ function printAddedDonutShoppingCart(){
         const i2 = addShopCartList.indexOf(e.target.innerHTML);
         if (i2 > -1) {
             addShopCartList.splice(i2, 1);
-            printAddedDonutShoppingCart();
         }
+        printAddedDonutShoppingCart();
     }
 
 function clearValues(munk) {
