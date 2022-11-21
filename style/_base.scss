@@ -421,121 +421,58 @@ input.error {
 
 /*************PRODUKTKORT*************/
 
-.donuts {
+.donutContainer {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 50px;
+  background-color: $specialGreen;
 
-  .productCard {
-    margin: auto;
-    width: 90%;
-    background-color: $specialGreen;
-    margin-top: 10px;
+  .images {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .donut {
+    display: flex;
+    flex-direction: row;
+    background-color: $specialLightGreen;
+    margin-top: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
-    padding-bottom: 30px;
-    h1 {
+    padding: 20px;
+
+    .donutInfo {
       text-align: center;
-    }
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-    }
 
-    .munk {
-      width: 400px;
-      display: flex;
-      margin: auto;
-      padding: 20px;
-      background-color: $specialLightGreen;
-      margin-bottom: 10px;
-      box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
-
-      .donutImg {
-        margin: auto;
-        img {
-          width: 100%;
-          box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
-        }
-        .donutRating {
-          margin-left: 50px;
-          font-size: 0.9rem;
-          padding-bottom: 5px;
-          padding-top: 5px;
-          color: black;
-        }
-      }
-      .donutInfo {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        margin-left: 10px;
-        h2 {
-          font-size: 1.2rem;
-          text-align: center;
-        }
-
-        .plusMinusInput {
-          margin: auto;
-          width: 170px;
-          .allAntal,
-          .allSum,
-          .allPrice {
-            font-size: 1.1rem;
-          }
-          .allPrice {
-            margin-right: 65px;
-          }
-          .allAntal {
-            margin-right: 70px;
-          }
-          .allSum {
-            margin-right: 50px;
-          }
-
-          button {
-            cursor: pointer;
-            height: 30px;
-            width: 35px;
-            border: none;
-            background-color: $specialRed;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: black;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            &:hover {
-              box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
-            }
-          }
-          .minus {
-            margin-left: 40px;
-          }
-          .plus {
-            margin-left: 10px;
-          }
-        }
+      span {
+        font-size: 1.2rem;
       }
 
-      .addDonutsToCart {
-        margin: auto;
-        width: 50%;
+      .plus,
+      .minus {
+        height: 35px;
+        width: 35px;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        background-color: $specialRed;
+        &:hover {
+          box-shadow: 0 3px 15px rgba(0, 0, 0, 0.9);
+        }
+      }
+      .addToCart {
+        width: 90px;
+        height: 35px;
+        cursor: pointer;
         background-color: $specialRed;
         border: none;
-        font-size: 0.9rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        padding: 5px;
-        color: black;
-        cursor: pointer;
         &:hover {
-          box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
+          box-shadow: 0 3px 15px rgba(0, 0, 0, 0.9);
         }
       }
     }
-  }
-  .classicDonuts,
-  .limitedDonuts {
-    margin-top: 70px;
   }
 }
 

@@ -1,5 +1,5 @@
 let addShopCartList = []; // Lista för munkar som ska till varukorgen
-//console.log([addShopCartList])
+
 
 //  VARUKORG - öppnas/stängs
 
@@ -14,140 +14,290 @@ function toggleShoppingCartOpenState() {
   sectionShoppingCart.classList.toggle('open');
 }
 
-//                 PLUSKNAPPAR - PRODUKTKORT
+// DONUTS
 
-const plusBtn = document.querySelectorAll('button[data-operator="plus"]');
+const donuts = [
+  {
+    name: 'Pepparkaka',
+    price: 24,
+    rating: 4,
+    amount: 0,
+    category: 'Julglädje',
+    sum: 0,
+    totalAmount: 0,
+    totalSum: 0,
+    src1: 'img/donuts_img/brown.jpg',
+    alt1: 'vaniljmunk med chokladforsting',
+    src2: 'img/smaker_img/pepparkaka.jpg',
+    alt2: 'pepparkaka',
+  },
+  {
+    name: 'Julglädje',
+    price: 20,
+    rating: 3,
+    amount: 0,
+    category: 'Julglädje',
+    sum: 0,
+    totalAmount: 0,
+    totalSum: 0,
+    src1: 'img/donuts_img/red.jpg',
+    alt1: 'vaniljmunk med frosting med smak av nejlika',
+    src2: 'img/smaker_img/nejlika.jpg',
+    alt2: 'Kryddnejlikor',
+  },
+  {
+    name: 'Ingefära',
+    price: 20,
+    rating: 4,
+    amount: 0,
+    category: 'Julglädje',
+    sum: 0,
+    totalAmount: 0,
+    totalSum: 0,
+    src1: 'img/donuts_img/yellow.jpg',
+    alt1: 'vaniljmunk med ingefärsfrosting',
+    src2: 'img/smaker_img/ingefara.jpg',
+    alt2: 'ingefära',
+  },
+  {
+    name: 'Vanilj',
+    price: 13,
+    rating: 5,
+    amount: 0,
+    category: 'Klassiker',
+    sum: 0,
+    totalAmount: 0,
+    totalSum: 0,
+    src1: 'img/donuts_img/white.jpg',
+    alt: 'vaniljmunk med vaniljfrosting',
+    src2: 'img/smaker_img/vanilj.jpg',
+    alt2: 'vaniljstång',
+  },
+  {
+    name: 'Choklad',
+    price: 13,
+    rating: 4,
+    amount: 0,
+    category: 'Klassiker',
+    sum: 0,
+    totalAmount: 0,
+    totalSum: 0,
+    src1: 'img/donuts_img/brown.jpg',
+    alt1: 'vaniljmunk med chokladglaze',
+    src2: 'img/smaker_img/choklad.jpg',
+    alt2: 'choklad',
+  },
+  {
+    name: 'Lakrits',
+    price: 20,
+    rating: 4,
+    amount: 0,
+    category: 'Klassiker',
+    sum: 0,
+    totalAmount: 0,
+    totalSum: 0,
+    src1: 'img/donuts_img/black.jpg',
+    alt1: 'vaniljmunk med lakritsfrosting',
+    src2: 'img/smaker_img/lakrits.jpg',
+    alt2: 'sötlakrits',
+  },
+  {
+    name: 'Apelsin',
+    price: 20,
+    rating: 3,
+    amount: 0,
+    category: 'Klassiker',
+    sum: 0,
+    totalAmount: 0,
+    totalSum: 0,
+    src1: 'img/donuts_img/orange.jpg',
+    alt1: 'vaniljmunk med apelsinsmak',
+    src2: 'img/smaker_img/apelsin.jpg',
+    alt2: 'apelsiner',
+  },
+  {
+    name: 'Hallon',
+    price: 18,
+    rating: 5,
+    amount: 0,
+    category: 'Klassiker',
+    sum: 0,
+    totalAmount: 0,
+    totalSum: 0,
+    src1: 'img/donuts_img/pink.jpg',
+    alt1: 'vaniljmunk med hallonfrosting',
+    src2: 'img/smaker_img/hallon.jpg',
+    alt2: 'hallon i skål',
+  },
+  {
+    name: 'Champagne',
+    price: 25,
+    rating: 5,
+    amount: 0,
+    category: 'Limited Edition',
+    sum: 0,
+    totalAmount: 0,
+    totalSum: 0,
+    src1: 'img/donuts_img/purple.jpg',
+    alt1: 'vaniljmunk med champagnefrosting',
+    src2: 'img/smaker_img/champagne.jpg',
+    alt2: 'flaska med champagne',
+  },
+  {
+    name: 'Fizzypop',
+    price: 26,
+    rating: 4,
+    amount: 0,
+    category: 'Limited Edition',
+    sum: 0,
+    totalAmount: 0,
+    totalSum: 0,
+    src1: 'img/donuts_img/blue.jpg',
+    alt1: 'vaniljmunk med frosting med smak av godiset fizzypop',
+    src2: 'img/smaker_img/fizzypop.jpg',
+    alt2: 'godiset fizzypop',
+  },
+  {
+    name: 'Päronsplitt',
+    price: 29,
+    rating: 5,
+    amount: 0,
+    totalAmount: 0,
+    totalSum: 0,
+    category: 'Limited Edition',
+    sum: 0,
+    src1: 'img/donuts_img/green2.jpg',
+    alt1: 'vaniljmunk med päronsplitt-frosting',
+    src2: 'img/smaker_img/paronsplitt.jpg',
+    alt2: 'ekologisk päronsplitt',
+  },
+];
+const donutContainer = document.querySelector('#donutContainer');
 
-for (let i = 0; i < plusBtn.length; i++) {
-  plusBtn[i].addEventListener('click', addCount);
-}
+function writeOutDonuts() {
+  donutContainer.innerHTML = '';
 
-function addCount(e) {
-  const amountEl = e.currentTarget.parentElement.querySelector('.antal');
-  let amount = amountEl.innerText;
+  for (let i = 0; i < donuts.length; i++) {
+    donutContainer.innerHTML += `
 
-  amountEl.innerHTML = Number(amount) + 1;
+        <article class="donut">
+        <div class="slideshow">
+        <div class="images">
+            <img id="img1" class="img-1" src="${donuts[i].src1}" alt="" width="150" height="200" />
+            <img id="img2" class="img-2" src="${donuts[i].src2}" alt="" width="150" height="200" />
+        </div>
+        <div class="controls">
+        <button class="left" id="prevImage">
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
 
-  updateDonutSum(e.currentTarget.parentElement);
-}
-
-//              MINUSKNAPPAR - PRODUKTKORT
-const minusBtn = document.querySelectorAll('button[data-operator="minus"]');
-
-for (let i = 0; i < minusBtn.length; i++) {
-  minusBtn[i].addEventListener('click', decreaseCount);
-}
-
-function decreaseCount(e) {
-  const amountEl = e.currentTarget.parentElement.querySelector('.antal');
-  let amount = amountEl.innerText;
-
-  if (amount - 1 < 0) {
-    return;
+        <button class="right" id="nextImage">
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+        <div class="indicator" id="indicatorDots"></div>
+        
+        <div class="donutInfo">
+            <h2>${donuts[i].name}</h2>
+            <span class="price">${donuts[i].price} kr/st</span><br>
+            <span>Antal:</span> <span class="amount">${donuts[i].amount} st</span><br>
+            <span>Summa:</span> <span class="sum">${donuts[i].sum} kr</span><br>
+            <button class="minus" data-id="${i}">-</button>
+            <button class="plus" data-id="${i}">+</button>
+            <button class="addToCart" data-id="${i}">Köp</button><br>
+            
+            </div>
+        </article>    
+        `;
   }
-  amountEl.innerHTML = amount - 1;
-
-  updateDonutSum(e.currentTarget.parentElement);
+  // Minusknapp
+  document.querySelectorAll('button.minus').forEach(btn => {
+    btn.addEventListener('click', updateDonutAmountMinus);
+  });
+  // Plusknapp
+  document.querySelectorAll('button.plus').forEach(btn => {
+    btn.addEventListener('click', updateDonutAmountPlus);
+  });
+  // Köp-Knapp
+  document.querySelectorAll('button.addToCart').forEach(btn => {
+    btn.addEventListener('click', sendToCart);
+  });
 }
 
-//  UPPDATERA SUMMAN PRODUKTKORT
-function updateDonutSum(donutElement) {
-  const donutSinglePrice = donutElement.querySelector('.price').innerHTML;
-  const orderedAmount = donutElement.querySelector('.antal').innerHTML;
+function updateDonutAmountPlus(e) {
+  const btnPlus = e.currentTarget.dataset.id;
+  donuts[btnPlus].amount += 1;
 
-  let sum = donutSinglePrice * orderedAmount;
+  donuts[btnPlus].sum = donuts[btnPlus].amount * donuts[btnPlus].price;
 
-  if (orderedAmount > 10) {
-    // OM mer än 10 av varje st 10% rabatt
-    sum = sum * 0.9;
+  writeOutDonuts();
+}
+
+function updateDonutAmountMinus(e) {
+  const btnMinus = e.currentTarget.dataset.id;
+
+  if (donuts[btnMinus].amount > 0) {
+    donuts[btnMinus].amount = donuts[btnMinus].amount - 1;
   }
-  donutElement.querySelector('.sum').innerHTML = Math.round(sum);
+  donuts[btnMinus].sum = donuts[btnMinus].amount * donuts[btnMinus].price;
+
+  writeOutDonuts();
 }
 
-//  LÄGG TILL - KNAPPAR
-const addDonutsToCart = document.querySelectorAll('button[data-operator="addDonutsToCart"]');
 
-for (let i = 0; i < addDonutsToCart.length; i++) {
-  addDonutsToCart[i].addEventListener('click', findElement);
-}
-
-function findElement(e) {
-  // hittar elementen i html och lägger i variabel
-  let munk = e.currentTarget.parentElement.parentElement.querySelector('.donutInfo');
-
-  addDonutsToShopCart(munk);
-}
-
-function addDonutsToShopCart(munk) {
-  let price = munk.querySelector('.price').innerText;
-  let img = munk.parentElement.querySelector('.singleDonutImg');
-  let name = munk.parentElement.querySelector('.nameInfo').innerText;
-  let amount = munk.querySelector('.antal').innerText;
-  let totalSum = munk.querySelector('.sum').innerText;
-  let amountChoosen = document.querySelector('#amountChoosen');
-  let sumAmount = amountChoosen.innerText;
-  let shoppingCartTotalItems = document.querySelector('#shoppingCartTotalItems');
-  let shoppingCartItemSum = shoppingCartTotalItems.innerText;
-  let shoppingCartTotalAmount = document.querySelector('#shoppingCartTotalAmount');
-  let shoppingCartAmountSum = shoppingCartTotalAmount.innerText;
+function sendToCart(e) {
+  const addToCartBtn = e.currentTarget.dataset.id;
+  const index = addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name);
 
   const addedItem = {
-    // Ett objekt och anger key-values till objektet från munkarna
-    anyPrice: price,
-    anyName: name,
-    anyImg: img,
-    anyAmount: amount,
-    anySum: totalSum,
-        
+    anyPrice: donuts[addToCartBtn].price,
+    anyImg: donuts[addToCartBtn].src1,
+    anyAlt: donuts[addToCartBtn].alt1,
+    anyName: donuts[addToCartBtn].name,
+    anyAmount: donuts[addToCartBtn].amount,
+    anySum: donuts[addToCartBtn].sum,
   };
-
-  if (amount == 0) {
-    // Om antal är 0 - gör ingenting
+  if (donuts[addToCartBtn].amount == 0) {
     return;
   } else {
-    // om antal är annat än 0 = gör nedanstående
-    const index = addShopCartList.findIndex(element => element.anyName === name); // Letar upp vilket index i listan som variablen index ligger på och lägger det i newIndex
-
     if (index > -1) {
-      // OM index är större än -1  ( om objektet med samma namn redan finns)
-      let totalAmount = (addShopCartList[index].anyAmount = Number(addShopCartList[index].anyAmount) + Number(amount)); //ta antal munkar i objektet i listan plussa på antal munkar i objektet med samma namn som läggs till i listan.
-
-      if (totalAmount > 10) {
-        // om du har beställt mer än 10 munkar av samma sort får du 10% rabatt på totala summan
-        addShopCartList[index].anySum = Math.round((Number(addShopCartList[index].anySum) + Number(totalSum)) * 0.9);
-      } else {
-        addShopCartList[index].anySum = Number(addShopCartList[index].anySum) + Number(totalSum); //ta totala summan  i objektet i listan plussa på summan i objektet med samma namn som läggs till i listan.
-      }
+      addShopCartList[index].anyAmount += donuts[addToCartBtn].amount;
+      addShopCartList[index].anySum += donuts[addToCartBtn].sum;
+      
     } else {
-      // ANNARS - lägg till i varukorgen
       addShopCartList.push(addedItem);
     }
-
-    if (amountChoosen.innerText == 0) {
-      shoppingCartTotalAmount.innerText = Number(totalSum);
-      shoppingCartTotalItems.innerText = Number(amount);
-      amountChoosen.innerText = Number(amount);
-      amountChoosen.style.backgroundColor = '#A1C298';
-      amountChoosen.style.fontWeight = '900';
-    } else if (amountChoosen.innerText > 1) {
-      amountChoosen.innerText = Number(sumAmount) + Number(amount);
-      shoppingCartTotalItems.innerText = Number(shoppingCartItemSum) + Number(amount);
-      shoppingCartTotalAmount.innerText = Number(shoppingCartAmountSum) + Number(totalSum);
-    }
-
-    setTimeout(clearValues, 500, munk);
-        printAddedDonutShoppingCart(munk);
   }
-
+  printOutShopCart(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
+  setTimeout(clearValues, 500);
 }
+
+function clearValues() {
+  for (i = 0; i < donuts.length; i++) {
+    donuts[i].amount = 0;
+    donuts[i].sum = 0;
+  }
+  writeOutDonuts();
+}
+
+
 
 // ARTIKLAR I KUNDKORG VISAS
 
-function printAddedDonutShoppingCart(){
+function printOutShopCart(index){
     document.querySelector('#shoppingCartContent').innerHTML = '';
     
+  if (addShopCartList[index].anyAmount > 10) { // om du beställer mer än 10 munkar får du 10% rabatt
+    addShopCartList[index].anySum = Math.round(addShopCartList[index].anySum * 0.9);
+  }
+
     for(let i =0; i < addShopCartList.length; i++) {
-        document.querySelector('#shoppingCartContent').innerHTML +=`<div><h4>${addShopCartList[i].anyName}</h4><p>${addShopCartList[i].anyAmount}st</p><p>${addShopCartList[i].anyPrice}kr/st</p><p>${addShopCartList[i].anySum}kr</p><button class="material-symbols-outlined">
+        document.querySelector('#shoppingCartContent').innerHTML +=`
+        <div><h4>${addShopCartList[i].anyName}</h4>
+        <img class="imgInCart" src="${addShopCartList[i].anyImg}" alt="${addShopCartList[i].anyAlt}"  width="100" height="150"></img>
+        <p>${addShopCartList[i].anyAmount}st</p>
+        <p>${addShopCartList[i].anyPrice}kr/st</p>
+        <p>${addShopCartList[i].anySum}kr</p>
+        <button class="material-symbols-outlined">
         delete_forever
         </button></div>`;
     }
@@ -164,12 +314,7 @@ function printAddedDonutShoppingCart(){
         }
         printAddedDonutShoppingCart();
     }
-
-function clearValues(munk) {
-  // Funktion som raderar valda antal och summa munkar när knappen trycks på
-  munk.querySelector('.antal').innerText = 0;
-  munk.querySelector('.sum').innerText = 0;
-}
+writeOutDonuts();
 
 // ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
 
