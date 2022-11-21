@@ -1,31 +1,27 @@
 @media only screen and (min-width: 960px) {
-    header {
-        padding: 0 20px;
-        nav {
-            display: block;
-            ul {
-                display: flex;
-                list-style-type: none;
-            }
-            li {
-                padding: 0 10px;
-            }
-            a {
-                color: black;
-                text-decoration: none;
-            }
-            a:hover {
-                color: $specialGreen;
-                text-shadow: 1px 1px 2px black;
-            }
+  header {
+    padding: 0 20px;
+    nav {
+      display: block;
+      ul {
+        display: flex;
+        list-style-type: none;
+      }
+      li {
+        padding: 0 10px;
+      }
+      a {
+        color: black;
+        text-decoration: none;
+      }
+      a:hover {
+        color: $specialGreen;
+        text-shadow: 1px 1px 2px black;
+      }
     }
-    }
-
-    .hamburgerMenu {
-        display: none;
-    }
-
-    
-    
-
   }
+
+  .hamburgerMenu {
+    display: none;
+  }
+}

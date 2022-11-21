@@ -18,7 +18,7 @@ module.exports = {
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'no-unused-vars': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
     'no-unreachable': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
-    'no-undef': process.env.NODE_ENV === 'production' ? 'error' : 'warn',    
+    'no-undef': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
     'vue/max-len': [
       'error',
       {
@@ -37,9 +37,13 @@ module.exports = {
         },
       },
     ],
-    'vue/singleline-html-element-content-newline': ['off', {
-      ignoreWhenNoAttributes: true,
-      ignoreWhenEmpty: true,
-      ignores: ['pre', 'textarea'],
-    }],
+    'vue/singleline-html-element-content-newline': [
+      'off',
+      {
+        ignoreWhenNoAttributes: true,
+        ignoreWhenEmpty: true,
+        ignores: ['pre', 'textarea'],
+      },
+    ],
+  },
 };
