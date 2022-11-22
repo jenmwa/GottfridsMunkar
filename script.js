@@ -325,8 +325,12 @@ function printOutShopCart(index){
             addShopCartList.splice(i2, 1);
         }
         printOutShopCart();
-    }
-}
+          if (addShopCartList == 0) {
+            document.querySelector('#shopCartContent').innerHTML = 'Varukorgen är tom.';
+          }
+        }
+        
+} 
     
 writeOutDonuts();
 
