@@ -167,7 +167,6 @@ margin-bottom: 1rem;
   background-color: $specialGreen;
   border: 1px solid #202020;
   box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
- 
 }
 
 #shopCartContent div{
@@ -207,14 +206,14 @@ justify-content: space-between;
 
 
 /*CHECKOUT*/
-/*
+
 .checkoutContainer {
   display: none;
 }
 
 .checkoutContainer.open {
   display: block;
-}*/
+
   .cartCheckout{
     margin: 0 auto 2rem auto;
     text-align: center;
@@ -275,7 +274,7 @@ justify-content: space-between;
     box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
     transition: 0.3s ease-in-out;
   }
-
+}
 
 /*****THEME TOGGLE**********/
 

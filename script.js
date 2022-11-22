@@ -1,5 +1,5 @@
 let addShopCartList = []; // Lista för munkar som ska till varukorgen
-emptyCart();
+
 
 //  VARUKORG - öppnas/stängs
 
@@ -12,6 +12,7 @@ shoppingClose.addEventListener('click', toggleShoppingCartOpenState);
 
 function toggleShoppingCartOpenState() {
   sectionShoppingCart.classList.toggle('open');
+  emptyCart();
 }
 
 // DONUTS
@@ -219,7 +220,7 @@ function writeOutDonuts() { // Funktion som skriver ut alla munkarna i HTML
   });
   // Köp-Knapp
   document.querySelectorAll('button.addToCart').forEach(btn => {
-    btn.addEventListener('click', sendToCart);
+    btn.addEventListener('click', (sendToCart));
   });
 }
 
@@ -270,6 +271,7 @@ function sendToCart(e) { // funktion som när vi trcyker på köp så lägger vi
   printOutShopCartSymbol(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
   printOutShopCart(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
   setTimeout(clearValues, 500); // efter tryck på köp rensas värdena
+  activateCheckoutSection();
 }
 
 function clearValues() {
@@ -290,14 +292,23 @@ function clearValues() {
 
   writeOutDonuts();
 
-
-// ARTIKLAR I KUNDKORG VISAS
+//VARUKORG
+// FUNKTION när varukorg är tom
 
 function emptyCart() {
   if (addShopCartList == 0) {
     document.querySelector('#shopCartContent').innerHTML = 'Varukorgen är tom.';
   } 
 }
+
+// FUNKTION aktivera checkoutsektion NÄR artiklar läggs till
+
+function activateCheckoutSection() {
+  const checkoutContainer = document.querySelector('#checkoutContainer');
+  checkoutContainer.classList.add('open');
+}
+
+// ARTIKLAR I KUNDKORG VISAS
 
 function printOutShopCart(index){
     document.querySelector('#shopCartContent').innerHTML = '';
