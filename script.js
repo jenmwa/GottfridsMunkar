@@ -1,5 +1,5 @@
 let addShopCartList = []; // Lista för munkar som ska till varukorgen
-
+emptyCart();
 
 //  VARUKORG - öppnas/stängs
 
@@ -293,6 +293,12 @@ function clearValues() {
 
 // ARTIKLAR I KUNDKORG VISAS
 
+function emptyCart() {
+  if (addShopCartList == 0) {
+    document.querySelector('#shopCartContent').innerHTML = 'Varukorgen är tom.';
+  } 
+}
+
 function printOutShopCart(index){
     document.querySelector('#shopCartContent').innerHTML = '';
     
@@ -325,10 +331,8 @@ function printOutShopCart(index){
             addShopCartList.splice(i2, 1);
         }
         printOutShopCart();
-          if (addShopCartList == 0) {
-            document.querySelector('#shopCartContent').innerHTML = 'Varukorgen är tom.';
-          }
-        }
+        emptyCart()
+    }
         
 } 
     
