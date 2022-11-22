@@ -297,9 +297,9 @@ function clearValues() {
 // ARTIKLAR I KUNDKORG VISAS
 
 function printOutShopCart(index){
-    document.querySelector('#shoppingCartContent').innerHTML = '';
+  document.querySelector('#shopCartContent').innerHTML = '';
     
-  if (addShopCartList[index].anyAmount > 10) { // om du beställer mer än 10 munkar får du 10% rabatt
+  /*if (addShopCartList[index].anyAmount > 10) { // om du beställer mer än 10 munkar får du 10% rabatt
     addShopCartList[index].anySum = Math.round(addShopCartList[index].anySum * 0.9);
   }
 
@@ -325,9 +325,14 @@ function printOutShopCart(index){
         if (i2 > -1) {
             addShopCartList.splice(i2, 1);
             printOutShopCart();
-        }
-       
-    }
+
+            if (addShopCartList == 0) {
+              document.querySelector('#shopCartContent').innerHTML = 'Varukorgen är tom.';
+            }
+          }
+  
+} 
+
 writeOutDonuts();
 
 // ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
