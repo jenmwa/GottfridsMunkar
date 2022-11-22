@@ -11,13 +11,21 @@
 
 @media screen and (min-width: 768px) {
 
+  #sectionShoppingCart.open {
+    bottom:unset;
+    overflow-y:hidden;
+    overflow-x:hidden;
+  }
+
 .itemsCheckoutWrapper{
     display: flex;
   }
 
-  .itemsContainer,
+  .itemsContainer {
+    width: 60%;
+  }
   .checkoutContainer {
-    width: 50%;
+    width: 40%;
   }
 
   
