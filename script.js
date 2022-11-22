@@ -304,15 +304,15 @@ function printOutShopCart(index){
   }
 
     for(let i =0; i < addShopCartList.length; i++) {
-        document.querySelector('#shoppingCartContent').innerHTML +=`
-        <div><h4>${addShopCartList[i].anyName}</h4>
-        <img class="imgInCart" src="${addShopCartList[i].anyImg}" alt="${addShopCartList[i].anyAlt}"  width="100" height="150"></img>
-        <p>${addShopCartList[i].anyAmount}st</p>
-        <p>${addShopCartList[i].anyPrice}kr/st</p>
-        <p>${addShopCartList[i].anySum}kr</p>
-        <button class="material-symbols-outlined">
-        delete_forever
-        </button></div>`;
+      document.querySelector('#shopCartContent').innerHTML +=`
+      <div id="shopCartAddedDiv"><img class="imgInCart" src="${addShopCartList[i].anyImg}" alt="${addShopCartList[i].anyAlt}"  width="75" height="75"></img>
+      <span class="text"><h4>${addShopCartList[i].anyName}</h4><br>
+      <p>${addShopCartList[i].anyAmount}st</p>
+      <p>${addShopCartList[i].anyPrice}kr/st</p>
+      <p>${addShopCartList[i].anySum}kr</p></span>
+      <button class="material-symbols-outlined" data-id="${i}">
+      delete_forever
+      </div>`;
     }
     const munkar = Array.from(document.querySelectorAll('#shoppingCartContent div'));
     munkar.forEach((item) => {
