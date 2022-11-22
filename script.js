@@ -27,7 +27,7 @@ const donuts = [
     totalAmount: 0,
     totalSum: 0,
     src1: 'img/donuts_img/brown.jpg',
-    alt1: 'vaniljmunk med chokladforsting',
+    alt1: 'vaniljmunk med pepparkakafrosting',
     src2: 'img/smaker_img/pepparkaka.jpg',
     alt2: 'pepparkaka',
   },
@@ -288,46 +288,50 @@ function clearValues() {
   }
  }
 
-
-
-
   writeOutDonuts();
 
 
 // ARTIKLAR I KUNDKORG VISAS
 
 function printOutShopCart(index){
-    document.querySelector('#shoppingCartContent').innerHTML = '';
+    document.querySelector('#shopCartContent').innerHTML = '';
     
-  if (addShopCartList[index].anyAmount > 10) { // om du beställer mer än 10 munkar får du 10% rabatt
+  /*if (addShopCartList[index].anyAmount > 10) { // om du beställer mer än 10 munkar får du 10% rabatt
     addShopCartList[index].anySum = Math.round(addShopCartList[index].anySum * 0.9);
-  }
+  }*/
 
     for(let i =0; i < addShopCartList.length; i++) {
-        document.querySelector('#shoppingCartContent').innerHTML +=`
-        <div><h4>${addShopCartList[i].anyName}</h4>
-        <img class="imgInCart" src="${addShopCartList[i].anyImg}" alt="${addShopCartList[i].anyAlt}"  width="100" height="150"></img>
+        document.querySelector('#shopCartContent').innerHTML +=`
+        <div id="shopCartAddedDiv"><img class="imgInCart" src="${addShopCartList[i].anyImg}" alt="${addShopCartList[i].anyAlt}"  width="75" height="75"></img>
+        <span class="text"><h4>${addShopCartList[i].anyName}</h4><br>
         <p>${addShopCartList[i].anyAmount}st</p>
         <p>${addShopCartList[i].anyPrice}kr/st</p>
-        <p>${addShopCartList[i].anySum}kr</p>
-        <button class="material-symbols-outlined">
+        <p>${addShopCartList[i].anySum}kr</p></span>
+        <button class="material-symbols-outlined" data-id="${i}">
         delete_forever
-        </button></div>`;
+        </div>`;
     }
-    const munkar = Array.from(document.querySelectorAll('#shoppingCartContent div'));
-    munkar.forEach((item) => {
+
+    //TA BORT MUNKAR 
+    const removeDonuts = Array.from(document.querySelectorAll('#shopCartContent button'));
+    removeDonuts.forEach((item) => {
         item.addEventListener('click', removeAddedDonut);
     });
-}
-    function removeAddedDonut(e) { //working on it TBC
-        console.log(e.target.innerHTML);
-        const i2 = addShopCartList.indexOf(e.target.innerHTML);
-        if (i2 > -1) {
+    
+    //FUNKTION TA BORT MUNKAR PAPPERSKORG PER ARTIKEL 
+    function removeAddedDonut(e) { 
+        const i2 = e.currentTarget.dataset.id;
+        if (i > -1) {
             addShopCartList.splice(i2, 1);
-            printOutShopCart();
         }
-       
-    }
+        printOutShopCart();
+          if (addShopCartList == 0) {
+            document.querySelector('#shopCartContent').innerHTML = 'Varukorgen är tom.';
+          }
+        }
+        
+} 
+    
 writeOutDonuts();
 
 // ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
