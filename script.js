@@ -181,18 +181,17 @@ function writeOutDonuts() { // Funktion som skriver ut alla munkarna i HTML
     donutContainer.innerHTML += `
 
         <article class="donut">
-        <div class="slideshow">
+        <div class="slideshow" id="slideshow">
         <div class="images">
-            <img id="img1" class="img-1" src="${donuts[i].src1}" alt="" width="150" height="200" />
-            <img id="img2" class="img-2" src="${donuts[i].src2}" alt="" width="150" height="200" />
+            <img id="img1" class="img-1" src="" alt="" width="100" height="150" />
+            <img id="img2" class="img-2" src="" alt="" width="100" height="150" />
         </div>
-        <div class="indicator" id="indicatorDots"></div>
         <div class="controls">
-        <button class="left" id="prevImage">
-          <span class="material-symbols-outlined">chevron_left</span>
+        <button data-id="${i}" class="left" id="prevImage">
+          <span  class="material-symbols-outlined">chevron_left</span>
         </button>
 
-        <button class="right" id="nextImage">
+        <button data-id="${i}" class="right" id="nextImage">
           <span class="material-symbols-outlined">chevron_right</span>
         </button>
         </div>
@@ -212,6 +211,8 @@ function writeOutDonuts() { // Funktion som skriver ut alla munkarna i HTML
         </article>    
         `;
   }
+
+
   
   // Minusknapp
   document.querySelectorAll('button.minus').forEach(btn => {
@@ -225,7 +226,12 @@ function writeOutDonuts() { // Funktion som skriver ut alla munkarna i HTML
   document.querySelectorAll('button.addToCart').forEach(btn => {
     btn.addEventListener('click', sendToCart);
   });
+
+ 
+
 }
+
+
 
 function updateDonutAmountPlus(e) { // funktion som plussar på munkar varje gånr vi trycker +
   const btnPlus = e.currentTarget.dataset.id;
@@ -243,7 +249,7 @@ function updateDonutAmountMinus(e) { // funktion som t på munkar varje gånr vi
     donuts[btnMinus].amount = donuts[btnMinus].amount - 1;
   }
   donuts[btnMinus].sum = donuts[btnMinus].amount * donuts[btnMinus].price;
-
+  
   writeOutDonuts();
 }
 
@@ -271,7 +277,6 @@ function sendToCart(e) { // funktion som när vi trcyker på köp så lägger vi
       addShopCartList.push(addedItem); // om inte munken redan finns så läggs den till på nytt
     }
   }
-  
   printOutShopCart(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
   setTimeout(clearValues, 500); // efter tryck på köp rensas värdena
 }
@@ -285,8 +290,7 @@ function clearValues() {
 }
 
 
-
-  writeOutDonuts();
+ 
 
 
 // ARTIKLAR I KUNDKORG VISAS
@@ -319,9 +323,9 @@ function printOutShopCart(index){
         const i2 = addShopCartList.indexOf(e.target.innerHTML);
         if (i2 > -1) {
             addShopCartList.splice(i2, 1);
-            printOutShopCart();
+            
         }
-       
+        printOutShopCart();
     }
 writeOutDonuts();
 
