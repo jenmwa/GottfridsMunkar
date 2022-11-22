@@ -107,8 +107,11 @@ header {
   display:block; 
   top: 0;
   right: 0;
+  bottom:0;
   z-index: 4;
-  position: fixed;
+  position:fixed;
+  overflow-y:scroll;
+  overflow-x:hidden;
   width: 75%;
 }
 
@@ -119,11 +122,11 @@ header {
   box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
   padding: 0 0.5rem 1rem 0.5rem;
   margin-bottom: 1rem;
+  overflow: auto; 
 }
 
 .shoppingHeader{
   margin: auto;
-  width: 90%;
   height: 4rem;
   display: flex;
   justify-content: space-between;
