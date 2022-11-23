@@ -308,9 +308,9 @@ function clearValues() {
   document.querySelector('#amountChoosen').innerHTML = `
   <span>${addShopCartList[index].anyAmount}</span>`;
   }
- }*/
+ }
 
-  writeOutDonuts();
+  writeOutDonuts();*/
 
 //VARUKORG
 
