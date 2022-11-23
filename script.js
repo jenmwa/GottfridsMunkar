@@ -184,8 +184,8 @@ function writeOutDonuts() {
     <article class="donut">
         <div class="slideshow" id="slideshow">
         <div class="images">
-            <img id="img1" class="img-1 donutImg-1-${i}"  src="${donuts[i].src1}" alt="" width="100" height="150" />
-            <img id="img2" class="img-2 donutImg-2-${i}" src="${donuts[i].src2}" alt="" width="100" height="150" />
+            <img id="img1" class="img-1 donutImg-1-${i}"  src="${donuts[i].src1}" alt="${donuts[i].alt1}" width="100" height="150" />
+            <img id="img2" class="img-2 donutImg-2-${i}" src="${donuts[i].src2}" alt="${donuts[i].alt2}" width="100" height="150" />
         </div>
             <div class="controls">
         <button class="left" id="prevImage" data-id="${i}">
@@ -254,16 +254,16 @@ function nextImageBtn(e) {
 
 function nextImage(nxtBtn) {
   
-  console.log(`.donutImg-1-${nxtBtn}`);
-  const donutImg1 = document.querySelector(`.donutImg-1-${nxtBtn}`); // du måste lägga till ett id på resp. bild i din loop
-  const donutImg2 = document.querySelector(`.donutImg-2-${nxtBtn}`);
+ 
+  const donutImg1 = document.querySelectorAll(`.donutImg-1-${nxtBtn}`); // du måste lägga till ett id på resp. bild i din loop
+  const donutImg2 = document.querySelectorAll(`.donutImg-2-${nxtBtn}`);
+
+
+  console.log(donutImg1);
+
+  if (donutImg2.style.opacity === 0) {
   
-  if ( donutImg1 == null ){
-    return;
-  }
-  if (donutImg1.style.opacity === 0) {
-  
-  console.log('bild1');
+  donutImg2.style.opacity = '1';
   
   } else {
   
@@ -717,7 +717,7 @@ function writeOutSortProducts() {
   const sortByPrice = document.querySelector('#sortByPrice');
   const sortByCategory = document.querySelector('#sortByCategory');
 
-  const sortByHeading = document.querySelector('#sortByheading');
+  let sortByHeading = document.querySelector('#sortByheading');
 
   // Lägger till knapptryck på knapparna
   sortByName.addEventListener('click', sortByNameBtn);
