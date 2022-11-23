@@ -232,7 +232,7 @@ function writeOutDonuts() {
  
     // Bildknappar
     document.querySelectorAll('button.right').forEach(nextBtn =>{
-      nextBtn.addEventListener('click', nextImage)
+      nextBtn.addEventListener('click', nextImageBtn)
     });
     document.querySelectorAll('button.left').forEach(prevBtn => {
       prevBtn.addEventListener('click', prevImage);
@@ -244,28 +244,33 @@ function writeOutDonuts() {
 
 let currentImageIndex = 0;
 
+function nextImageBtn(e){
+  const nxtBtn = e.currentTarget.dataset.id;
+  nextImage(nxtBtn);
+ 
+}
 
-function nextImage(){
+
+
+function nextImage(nxtBtn){
+ console.log(nxtBtn, );
 
   if ( currentImageIndex +1 > donuts.length -1){
     currentImageIndex = 0;
   }else{
   currentImageIndex += 1;
   }
-  
 
-  console.log('nextImage', currentImageIndex);
+  //console.log('nextImage', currentImageIndex);
 
  document.querySelectorAll('.img-1').forEach(img1 =>{
   img1.setAttribute('src', donuts[currentImageIndex].src1);
   img1.setAttribute('alt', donuts[currentImageIndex].alt1);
-
  });
 
-
-
-
 }
+
+
 
 function prevImage(){
 
@@ -277,9 +282,10 @@ function prevImage(){
 
   console.log('prevImage', currentImageIndex);
 
-  document.querySelectorAll('.img-1').forEach(img2 =>{
-    img2.setAttribute('src', donuts[currentImageIndex].src2);
-    img2.setAttribute('alt', donuts[currentImageIndex].alt2);
+  document.querySelectorAll('.img-1').forEach(img1 =>{
+    img1.setAttribute('src', donuts[currentImageIndex].src2);
+    img1.setAttribute('alt', donuts[currentImageIndex].alt2);
+  
   
    });
 
