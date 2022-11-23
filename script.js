@@ -301,17 +301,7 @@ function clearValues() {
     donuts[i].sum = 0;
   }
   writeOutDonuts();
-} /*
- function printOutShopCartSymbol(index){
-  let amountChoosen = document.querySelector('#amountChoosen').innerHTML;
-  
-  if (amountChoosen) {
-  document.querySelector('#amountChoosen').innerHTML = `
-  <span>${addShopCartList[index].anyAmount}</span>`;
-  }
- }
-
-  writeOutDonuts();*/
+} 
 
 //VARUKORG
 
@@ -356,13 +346,27 @@ function printOutShopCart(index) {
 
   //FUNKTION TA BORT MUNKAR PAPPERSKORG PER ARTIKEL
   function removeAddedDonut(e) {
-    const i2 = e.currentTarget.dataset.id;
+    const j = e.currentTarget.dataset.id;
     if (i > -1) {
-      addShopCartList.splice(i2, 1);
-    }
+      addShopCartList.splice(j, 1);
+      //KODUPPREPNING från rad 285-295
+      const donutAmountSubShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
+        return addShopCartList.anyAmount + previousValue;
+      }, 0);
+      document.querySelector('#shoppingCartTotalItems').innerHTML = donutAmountSubShopCart;
+      document.querySelector('#amountChoosen').innerHTML = donutAmountSubShopCart;
+
+      const donutSumSubShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
+        return addShopCartList.anySum + previousValue;
+      }, 0);
+      document.querySelector('#shoppingCartTotalAmount').innerHTML = donutSumSubShopCart;
+    } 
+    
+    writeOutDonuts();
     printOutShopCart();
     emptyCart();
   }
+  
 }
 
 writeOutDonuts();
