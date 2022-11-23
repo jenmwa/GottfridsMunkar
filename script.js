@@ -186,7 +186,7 @@ function writeOutDonuts() {
         <div class="images">
             <img id="img1" class="img-1 donutImg-1-${i}"  src="${donuts[i].src1}" alt="" width="100" height="150" />
             <img id="img2" class="img-2 donutImg-2-${i}" src="${donuts[i].src2}" alt="" width="100" height="150" />
-        
+        </div>
             <div class="controls">
         <button class="left" id="prevImage" data-id="${i}">
           <span  class="material-symbols-outlined">chevron_left</span>
