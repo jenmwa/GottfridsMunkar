@@ -35,7 +35,7 @@
 
         <button aria-label="Kundkorg" class="shoppingCart" id="shoppingCart">
           <i id="shopCartColorTheme" class="fa-solid fa-cart-shopping"></i>
-          <div id="amountChoosen">0</div>
+          <div class="cartItems" id="amountChoosen">0</div>
         </button>
         <button aria-label="Meny knapp" class="hamburgerMenu">
           <span class="menuBtnColorTheme"></span>
@@ -66,10 +66,10 @@
                 <div class="cartCheckout">
                   <div class="cartTotal">
                     <div class="cartSubtotal">Totalt</div>
-                    <span class="cartItems" id="shoppingCartTotalItems">0</span><span> donuts</span>
+                    <div class="cartItems" id="shoppingCartTotalItems"></div><span> donuts</span>
                   </div>
                   <div class="shoppingCartTotalAmount">
-                  <span id="shoppingCartTotalAmount">0</span><span> kr</span>
+                  <span id="shoppingCartTotalAmount"></span><span> kr</span>
                 </div>
                 <label class="checkoutLabel">Har du en rabattkod?
                   <input type="text" placeholder="Rabattkod"><button>aktivera</button>

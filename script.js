@@ -268,10 +268,30 @@ function sendToCart(e) { // funktion som när vi trcyker på köp så lägger vi
       addShopCartList.push(addedItem); // om inte munken redan finns så läggs den till på nytt
     }
   }
-  printOutShopCartSymbol(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
+  /*printOutShopCartSymbol(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));*/
   printOutShopCart(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
   setTimeout(clearValues, 500); // efter tryck på köp rensas värdena
   activateCheckoutSection();
+
+  //UPPDATERAR totalt antal adderade donuts i varukorgen
+  const donutAmountAddedShopCart = addShopCartList.reduce(
+    (previousValue, addShopCartList) => {
+      return addShopCartList.anyAmount + previousValue;
+    },
+    0
+    );
+    document.querySelector('#shoppingCartTotalItems').innerHTML = donutAmountAddedShopCart;
+    document.querySelector('#amountChoosen').innerHTML = donutAmountAddedShopCart;
+
+
+  //UPPDATERAR total summa kr adderade donuts i varukorgen
+  const donutSumAddedShopCart = addShopCartList.reduce(
+    (previousValue, addShopCartList) => {
+      return addShopCartList.anySum + previousValue;
+    },
+    0
+    );
+    document.querySelector('#shoppingCartTotalAmount').innerHTML = donutSumAddedShopCart;
 }
 
 function clearValues() {
@@ -280,7 +300,7 @@ function clearValues() {
     donuts[i].sum = 0;
   }
   writeOutDonuts();
-}
+}/*
  function printOutShopCartSymbol(index){
   let amountChoosen = document.querySelector('#amountChoosen').innerHTML;
   
@@ -288,13 +308,13 @@ function clearValues() {
   document.querySelector('#amountChoosen').innerHTML = `
   <span>${addShopCartList[index].anyAmount}</span>`;
   }
- }
+ }*/
 
   writeOutDonuts();
 
 //VARUKORG
-// FUNKTION när varukorg är tom
 
+// FUNKTION när varukorg är tom
 function emptyCart() {
   if (addShopCartList == 0) {
     document.querySelector('#shopCartContent').innerHTML = 'Varukorgen är tom.';
@@ -302,14 +322,12 @@ function emptyCart() {
 }
 
 // FUNKTION aktivera checkoutsektion NÄR artiklar läggs till
-
 function activateCheckoutSection() {
   const checkoutContainer = document.querySelector('#checkoutContainer');
   checkoutContainer.classList.add('open');
 }
 
 // ARTIKLAR I KUNDKORG VISAS
-
 function printOutShopCart(index){
     document.querySelector('#shopCartContent').innerHTML = '';
     
