@@ -11,6 +11,7 @@ shoppingClose.addEventListener('click', toggleShoppingCartOpenState);
 
 function toggleShoppingCartOpenState() {
   sectionShoppingCart.classList.toggle('open');
+  emptyCart();
 }
 
 // DONUTS
@@ -19,7 +20,7 @@ const donuts = [
   {
     name: 'Pepparkaka',
     price: 24,
-    rating: 4,
+    rating: 3,
     amount: 0,
     category: 'Julglädje',
     sum: 0,
@@ -33,7 +34,7 @@ const donuts = [
   {
     name: 'Julglädje',
     price: 20,
-    rating: 3,
+    rating: 2.5,
     amount: 0,
     category: 'Julglädje',
     sum: 0,
@@ -47,7 +48,7 @@ const donuts = [
   {
     name: 'Ingefära',
     price: 20,
-    rating: 4,
+    rating: 1,
     amount: 0,
     category: 'Julglädje',
     sum: 0,
@@ -75,7 +76,7 @@ const donuts = [
   {
     name: 'Choklad',
     price: 13,
-    rating: 4,
+    rating: 4.5,
     amount: 0,
     category: 'Klassiker',
     sum: 0,
@@ -89,7 +90,7 @@ const donuts = [
   {
     name: 'Lakrits',
     price: 20,
-    rating: 4,
+    rating: 3,
     amount: 0,
     category: 'Klassiker',
     sum: 0,
@@ -145,7 +146,7 @@ const donuts = [
   {
     name: 'Fizzypop',
     price: 26,
-    rating: 4,
+    rating: 2,
     amount: 0,
     category: 'Limited Edition',
     sum: 0,
@@ -200,7 +201,9 @@ function writeOutDonuts() {
         </div>
         
         
+       
         <div class="donutInfo">
+            
             <h2>${donuts[i].name}</h2>
             <span class="price">${donuts[i].price} kr/st</span><br>
             <span>Antal:</span> <span class="amount">${donuts[i].amount} st</span><br>
@@ -208,6 +211,7 @@ function writeOutDonuts() {
             <button class="minus" data-id="${i}">-</button>
             <button class="plus" data-id="${i}">+</button>
             <button class="addToCart" data-id="${i}">Köp</button><br>
+            <span class="category" >Kategori: <span class="category">${donuts[i].category}</span></span>
             
         </div>
         
@@ -332,8 +336,23 @@ function sendToCart(e) {
       addShopCartList.push(addedItem); // om inte munken redan finns så läggs den till på nytt
     }
   }
+  /*printOutShopCartSymbol(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));*/
   printOutShopCart(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
   setTimeout(clearValues, 500); // efter tryck på köp rensas värdena
+  activateCheckoutSection();
+
+  //UPPDATERAR totalt antal adderade donuts i varukorgen
+  const donutAmountAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
+    return addShopCartList.anyAmount + previousValue;
+  }, 0);
+  document.querySelector('#shoppingCartTotalItems').innerHTML = donutAmountAddedShopCart;
+  document.querySelector('#amountChoosen').innerHTML = donutAmountAddedShopCart;
+
+  //UPPDATERAR total summa kr adderade donuts i varukorgen
+  const donutSumAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
+    return addShopCartList.anySum + previousValue;
+  }, 0);
+  document.querySelector('#shoppingCartTotalAmount').innerHTML = donutSumAddedShopCart;
 }
 
 function clearValues() {
@@ -342,10 +361,34 @@ function clearValues() {
     donuts[i].sum = 0;
   }
   writeOutDonuts();
+} /*
+ function printOutShopCartSymbol(index){
+  let amountChoosen = document.querySelector('#amountChoosen').innerHTML;
+  
+  if (amountChoosen) {
+  document.querySelector('#amountChoosen').innerHTML = `
+  <span>${addShopCartList[index].anyAmount}</span>`;
+  }
+ }
+
+  writeOutDonuts();*/
+
+//VARUKORG
+
+// FUNKTION när varukorg är tom
+function emptyCart() {
+  if (addShopCartList == 0) {
+    document.querySelector('#shopCartContent').innerHTML = 'Varukorgen är tom.';
+  }
+}
+
+// FUNKTION aktivera checkoutsektion NÄR artiklar läggs till
+function activateCheckoutSection() {
+  const checkoutContainer = document.querySelector('#checkoutContainer');
+  checkoutContainer.classList.add('open');
 }
 
 // ARTIKLAR I KUNDKORG VISAS
-
 function printOutShopCart(index) {
   document.querySelector('#shopCartContent').innerHTML = '';
 
@@ -355,7 +398,7 @@ function printOutShopCart(index) {
 
   for (let i = 0; i < addShopCartList.length; i++) {
     document.querySelector('#shopCartContent').innerHTML += `
-        <div id="shopCartAddedDiv"><img class="imgInCart" src="${addShopCartList[i].anyImg}" alt="${addShopCartList[i].anyAlt}"  width="75" height="75"></img>
+        <div id="shopCartAddedDiv"><img class="imgInCart" src="${addShopCartList[i].anyImg}" alt="${addShopCartList[i].anyAlt}"  width="55" height="55"></img>
         <span class="text"><h4>${addShopCartList[i].anyName}</h4><br>
         <p>${addShopCartList[i].anyAmount}st</p>
         <p>${addShopCartList[i].anyPrice}kr/st</p>
@@ -378,9 +421,7 @@ function printOutShopCart(index) {
       addShopCartList.splice(i2, 1);
     }
     printOutShopCart();
-    if (addShopCartList == 0) {
-      document.querySelector('#shopCartContent').innerHTML = 'Varukorgen är tom.';
-    }
+    emptyCart();
   }
 }
 
@@ -639,3 +680,124 @@ function removeError(e) {
   e.target.classList.remove('error');
   e.target.parentElement.querySelector('.errorMessage').innerHTML = '';
 }
+
+/// SORTERA EFTER
+/**
+ * När vi trycker på symbol
+ * Ska munkarna sorteras
+ */
+
+function writeOutSortProducts() {
+  let sortContainer = document.querySelector('#sortProducts');
+
+  sortContainer.innerHTML += `
+  <h3 id="sortBy">Sortera efter</h3>
+  <ul aria-labelledby="sortBy">
+    <li>
+      <button id="sortByName" class="allColorTheme" aria-label="Sortera efter namn">
+        <i class="fa-solid fa-arrow-down-a-z"></i>
+      </button>
+    </li>
+    <li>
+      <button id="sortByGrade" class="allColorTheme" aria-label="Sortera efter betyg"><i class="fa-solid fa-star"></i></button>
+    </li>
+    <li>
+      <button id="sortByPrice"class="allColorTheme" aria-label="Sortera efter pris fallande eller stigande">
+        <i class="fa-solid fa-arrow-down-wide-short"></i>
+      </button>
+    </li>
+    <li>
+      <button id="sortByCategory" class="allColorTheme" aria-label="Sortera efter Kategori"><i class="fa-solid fa-up-down"></i></button>
+    </li>
+  </ul>
+  <div id="sortByHeading"></div>`;
+
+  // Deklarerar variablar för sortera
+  const sortByName = document.querySelector('#sortByName');
+  const sortByGrade = document.querySelector('#sortByGrade');
+  const sortByPrice = document.querySelector('#sortByPrice');
+  const sortByCategory = document.querySelector('#sortByCategory');
+
+  const sortByHeading = document.querySelector('#sortByheading');
+
+  // Lägger till knapptryck på knapparna
+  sortByName.addEventListener('click', sortByNameBtn);
+  sortByGrade.addEventListener('click', sortByGradeBtn);
+  sortByPrice.addEventListener('click', sortByPriceBtn);
+  sortByCategory.addEventListener('click', sortByCategoryBtn);
+}
+writeOutSortProducts();
+
+let nameSort = true;
+let gradeSort = true;
+let priceSort = true;
+let categorySort = true;
+
+// funktioner för sortera efter
+
+function sortByNameBtn() {
+  sortByHeading.innerHTML = `
+  <p>Sorterar efter Namn</p>
+  `;
+
+  if (nameSort) {
+    donuts.sort((a, b) => a.name < b.name);
+    nameSort = false;
+
+    writeOutDonuts();
+  } else if (nameSort == false) {
+    donuts.sort((a, b) => a.name > b.name);
+    nameSort = true;
+    writeOutDonuts();
+  }
+}
+
+function sortByGradeBtn() {
+  sortByHeading.innerHTML = `
+  <p>Sorterar efter Betyg</p>
+  `;
+  if (gradeSort) {
+    donuts.sort((a, b) => a.rating - b.rating);
+    gradeSort = false;
+    writeOutDonuts();
+  } else if (gradeSort == false) {
+    donuts.sort((a, b) => b.rating - a.rating);
+    gradeSort = true;
+    writeOutDonuts();
+  }
+}
+
+function sortByPriceBtn() {
+  if (priceSort) {
+    sortByHeading.innerHTML = `
+    <p>Sorterar efter Pris stigande</p>
+    `;
+    donuts.sort((a, b) => a.price - b.price);
+    priceSort = false;
+    writeOutDonuts();
+  } else if (priceSort == false) {
+    sortByHeading.innerHTML = `
+      <p>Sorterar efter Pris fallande</p>
+      `;
+    donuts.sort((a, b) => b.price - a.price);
+    priceSort = true;
+    writeOutDonuts();
+  }
+}
+
+function sortByCategoryBtn() {
+  sortByHeading.innerHTML = `
+  <p>Sorterar efter Kategori</p>
+  `;
+
+  if (categorySort) {
+    donuts.sort((a, b) => a.category < b.category);
+    categorySort = false;
+    writeOutDonuts();
+  } else if (categorySort == false) {
+    donuts.reverse();
+    writeOutDonuts();
+  }
+}
+
+writeOutDonuts();

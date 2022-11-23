@@ -326,7 +326,13 @@ header button {
   position: absolute;
   right: 3.5rem;
 }
-.cartCheckout {
+.checkoutContainer {
+  display: none;
+}
+.checkoutContainer.open {
+  display: block;
+}
+.checkoutContainer.open .cartCheckout {
   margin: 0 auto 2rem auto;
   text-align: center;
   width: 90%;
@@ -334,34 +340,34 @@ header button {
   flex-direction: column;
   align-items: center;
 }
-.cartTotal {
+.checkoutContainer.open .cartTotal {
   width: 100%;
 }
-.cartSubtotal {
+.checkoutContainer.open .cartSubtotal {
   font-size: 1.5rem;
   font-weight: 700;
   color: #202020;
 }
-.cartItems {
+.checkoutContainer.open .cartItems {
   font-size: 1rem;
   font-weight: 500;
   color: #202020;
 }
-.shoppingCartTotalAmount {
+.checkoutContainer.open .shoppingCartTotalAmount {
   font-size: 2rem;
   font-weight: 900;
   color: #202020;
 }
-.checkoutLabel {
+.checkoutContainer.open .checkoutLabel {
   margin-top: 1rem;
 }
-.checkoutLabel input {
+.checkoutContainer.open .checkoutLabel input {
   margin: 0.5rem;
 }
-.checkoutLabel button {
+.checkoutContainer.open .checkoutLabel button {
   cursor: pointer;
 }
-.checkoutButton {
+.checkoutContainer.open .checkoutButton {
   margin: 1rem 0;
   width: 90%;
   height: 50px;
@@ -374,7 +380,7 @@ header button {
   color: #202020;
   text-transform: uppercase;
 }
-.checkoutButton:hover {
+.checkoutContainer.open .checkoutButton:hover {
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.8);
   transition: 0.3s ease-in-out;
 }
@@ -521,79 +527,27 @@ input.error {
 .donutContainer {
   display: flex;
   flex-wrap: wrap;
-  margin: auto;
-  width: 90%;
+  width: 100%;
   padding: 50px;
   background-color: #a1c298;
 }
-.donutContainer h2 {
-  margin: 3px;
-}
-.donutContainer .slideshow {
-  width: 100%;
-}
 .donutContainer .images {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-}
-.donutContainer .images img {
-  width: 100%;
-  height: 260px;
-  -o-object-fit: cover;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: opacity 1s ease;
-  outline: 1px solid #000;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-}
-.donutContainer .images .img-2 {
-  opacity: 0;
-}
-.donutContainer .left,
-.donutContainer .right {
-  min-width: 35px;
-  min-height: 35px;
-  cursor: pointer;
-  position: relative;
-  top: 100px;
-  transform: translateY(-50%);
-  border: 0;
-  background: rgba(0, 0, 0, 0);
-  color: rgba(0, 0, 0, 0.7);
-  transition: color 0.3s ease-in-out;
-}
-.donutContainer .left:hover,
-.donutContainer .right:hover {
-  color: #000;
-}
-.donutContainer .left.left,
-.donutContainer .right.left {
-  left: 0;
-}
-.donutContainer .left.right,
-.donutContainer .right.right {
-  right: -190px;
+  display: flex;
+  flex-direction: row;
 }
 .donutContainer .donut {
   display: flex;
   flex-direction: row;
-  width: 300px;
-  height: 500px;
   background-color: #c6ebc5;
-  margin: auto;
-  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 20px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 }
 .donutContainer .donut .donutInfo {
   text-align: center;
-  position: relative;
-  top: 250px;
+}
+.donutContainer .donut .donutInfo .category {
+  font-size: 0.9rem;
 }
 .donutContainer .donut .donutInfo span {
   font-size: 1.2rem;

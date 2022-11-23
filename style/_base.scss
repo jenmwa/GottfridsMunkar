@@ -202,14 +202,22 @@ header {
 }
 
 /*CHECKOUT*/
-.cartCheckout {
-  margin: 0 auto 2rem auto;
-  text-align: center;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.checkoutContainer {
+  display: none;
 }
+
+.checkoutContainer.open {
+  display: block;
+
+  .cartCheckout {
+    margin: 0 auto 2rem auto;
+    text-align: center;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
 .cartTotal {
   width: 100%;
@@ -227,13 +235,13 @@ header {
   color: #202020;
 }
 
-.shoppingCartTotalAmount {
-  font-size: 2rem;
-  font-weight: 900;
-  color: #202020;
-}
-.checkoutLabel {
-  margin-top: 1rem;
+  .shoppingCartTotalAmount {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #202020;
+  }
+  .checkoutLabel {
+    margin-top: 1rem;
 
   input {
     margin: 0.5rem;
@@ -258,9 +266,10 @@ header {
   text-transform: uppercase;
 }
 
-.checkoutButton:hover {
-  box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
-  transition: 0.3s ease-in-out;
+  .checkoutButton:hover {
+    box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
+    transition: 0.3s ease-in-out;
+  }
 }
 
 /*****THEME TOGGLE**********/
@@ -506,8 +515,10 @@ input.error {
 
     .donutInfo {
       text-align: center;
-      position: relative;
-      top: 250px;
+
+      .category {
+        font-size: 0.9rem;
+      }
 
       span {
         font-size: 1.2rem;
