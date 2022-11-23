@@ -620,3 +620,68 @@ function removeError(e) {
   e.target.classList.remove('error');
   e.target.parentElement.querySelector('.errorMessage').innerHTML = '';
 }
+
+/// SORTERA EFTER
+/**
+ * När vi trycker på symbol
+ * Ska munkarna sorteras
+ */
+
+
+
+ function writeOutSortProducts(){
+  const sortContainer = document.querySelector('#sortProducts');
+
+  sortContainer.innerHTML +=`
+  <h3 id="sortBy">Sortera efter</h3>
+  <ul aria-labelledby="sortBy">
+    <li>
+      <button id="sortByName" class="allColorTheme" aria-label="Sortera efter namn">
+        <i class="fa-solid fa-arrow-down-a-z"></i>
+      </button>
+    </li>
+    <li>
+      <button id="stortByGrade" class="allColorTheme" aria-label="Sortera efter betyg"><i class="fa-solid fa-star"></i></button>
+    </li>
+    <li>
+      <button id="sortByPrideDown"class="allColorTheme" aria-label="Sortera efter pris fallande">
+        <i class="fa-solid fa-arrow-down-wide-short"></i>
+      </button>
+    </li>
+    <li>
+      <button id="sortByPriceUp" class="allColorTheme" aria-label="Sortera efter pris stigande">
+        <i class="fa-solid fa-arrow-down-short-wide"></i>
+      </button>
+    </li>
+    <li>
+      <button id="sortByCategory" class="allColorTheme" aria-label="Sortera efter Kategori"><i class="fa-solid fa-up-down"></i></button>
+    </li>
+  </ul>`
+
+  
+const sortByName = document.querySelector('#sortByName');
+const sortByGrade = document.querySelector('#sortByGrade');
+const sortByPriceDown = document.querySelector('#sortByPriceDown');
+const sortByPriceUp = document.querySelector('#sortByPriceUp');
+const sortByCategory = document.querySelector('#sortByCategory');
+
+
+sortByName.addEventListener('click', sortByNameBtn);
+
+
+
+console.log(sortByCategory, sortByGrade, sortByName, sortByPriceDown, sortByPriceUp);
+writeOutSortProducts();
+ }
+
+
+
+ function sortByNameBtn(){
+  console.log('namn');
+}
+
+
+
+
+
+ writeOutSortProducts();
