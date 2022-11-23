@@ -454,6 +454,7 @@ input.error {
   }
   .slideshow {
     width: 100%;
+    height: auto;
   }
 
   .images {
@@ -515,6 +516,8 @@ input.error {
 
     .donutInfo {
       text-align: center;
+      position: relative;
+      top: 240px;
 
       .category {
         font-size: 0.9rem;
