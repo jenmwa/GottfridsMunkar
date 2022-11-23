@@ -183,8 +183,8 @@ function writeOutDonuts() {
     <article class="donut">
         <div class="slideshow" id="slideshow">
         <div class="images">
-            <img id="img1" class="img-1" src="" alt="" width="100" height="150" />
-            <img id="img2" class="img-2" src="$" alt="" width="100" height="150" />
+            <img id="img1" class="img-1" data-id="donutImg-1-${nxtBtn}" src="${donuts[i].src1}" alt="" width="100" height="150" />
+            <img id="img2" class="img-2" data-id="donutImg-2-${nxtBtn}" src="${donuts[i].src2}" alt="" width="100" height="150" />
         
             <div class="controls">
         <button class="left" id="prevImage" data-id="${i}">
@@ -241,28 +241,37 @@ function writeOutDonuts() {
 
 let currentImageIndex = 0;
 
+
 function nextImageBtn(e) {
   const nxtBtn = e.currentTarget.dataset.id;
   nextImage(nxtBtn);
 }
 
-function nextImage(nxtBtn) {
-  console.log(nxtBtn);
 
-  if (currentImageIndex + 1 > donuts.length - 1) {
-    currentImageIndex = 0;
-  } else {
-    currentImageIndex += 1;
-  }
+  function nextImage(nxtBtn) {
 
-  //console.log('nextImage', currentImageIndex);
+    const donutImg1 = document.querySelector('.donutImg-1-${nxtBtn}'); // du måste lägga till ett id på resp. bild i din loop 
+    const donutImg2 = document.querySelector('.donutImg-2-${nxtBtn}');
+    
+    
+    
+    if (donutImg1.style.opacity === 0) {
+    
+    // växla till bild2
+    
+    } else {
+    
+    // växla till bild1
+    
+    }
+    
+    }
 
-  document.querySelectorAll('.img-1').forEach(img1 => {
-    img1.setAttribute('src', donuts[currentImageIndex].src1);
-    img1.setAttribute('alt', donuts[currentImageIndex].alt1);
-  });
-}
 
+
+
+
+writeOutDonuts();
 function prevImage() {
   if (currentImageIndex - 1 < 0) {
     currentImageIndex = donuts.length - 1;
@@ -271,11 +280,6 @@ function prevImage() {
   }
 
   console.log('prevImage', currentImageIndex);
-
-  document.querySelectorAll('.img-1').forEach(img1 => {
-    img1.setAttribute('src', donuts[currentImageIndex].src2);
-    img1.setAttribute('alt', donuts[currentImageIndex].alt2);
-  });
 }
 
 writeOutDonuts();
