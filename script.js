@@ -213,9 +213,8 @@ function writeOutDonuts() {
         
         </article>    
         `;
-        
- 
-        nextImage();
+
+    nextImage();
   }
 
   // Minusknapp
@@ -229,72 +228,57 @@ function writeOutDonuts() {
   // Köp-Knapp
   document.querySelectorAll('button.addToCart').forEach(btn => {
     btn.addEventListener('click', sendToCart);
- 
+
     // Bildknappar
-    document.querySelectorAll('button.right').forEach(nextBtn =>{
-      nextBtn.addEventListener('click', nextImageBtn)
+    document.querySelectorAll('button.right').forEach(nextBtn => {
+      nextBtn.addEventListener('click', nextImageBtn);
     });
     document.querySelectorAll('button.left').forEach(prevBtn => {
       prevBtn.addEventListener('click', prevImage);
-      
     });
   });
-
 }
 
 let currentImageIndex = 0;
 
-function nextImageBtn(e){
+function nextImageBtn(e) {
   const nxtBtn = e.currentTarget.dataset.id;
   nextImage(nxtBtn);
- 
 }
 
+function nextImage(nxtBtn) {
+  console.log(nxtBtn);
 
-
-function nextImage(nxtBtn){
- console.log(nxtBtn, );
-
-  if ( currentImageIndex +1 > donuts.length -1){
+  if (currentImageIndex + 1 > donuts.length - 1) {
     currentImageIndex = 0;
-  }else{
-  currentImageIndex += 1;
+  } else {
+    currentImageIndex += 1;
   }
 
   //console.log('nextImage', currentImageIndex);
 
- document.querySelectorAll('.img-1').forEach(img1 =>{
-  img1.setAttribute('src', donuts[currentImageIndex].src1);
-  img1.setAttribute('alt', donuts[currentImageIndex].alt1);
- });
-
+  document.querySelectorAll('.img-1').forEach(img1 => {
+    img1.setAttribute('src', donuts[currentImageIndex].src1);
+    img1.setAttribute('alt', donuts[currentImageIndex].alt1);
+  });
 }
 
-
-
-function prevImage(){
-
-  if (currentImageIndex - 1 <0) {
-    currentImageIndex = donuts.length -1;
-  }else {
-  currentImageIndex -=1;
+function prevImage() {
+  if (currentImageIndex - 1 < 0) {
+    currentImageIndex = donuts.length - 1;
+  } else {
+    currentImageIndex -= 1;
   }
 
   console.log('prevImage', currentImageIndex);
 
-  document.querySelectorAll('.img-1').forEach(img1 =>{
+  document.querySelectorAll('.img-1').forEach(img1 => {
     img1.setAttribute('src', donuts[currentImageIndex].src2);
     img1.setAttribute('alt', donuts[currentImageIndex].alt2);
-  
-  
-   });
-
-  
-
+  });
 }
 
 writeOutDonuts();
-
 
 function updateDonutAmountPlus(e) {
   // funktion som plussar på munkar varje gånr vi trycker +
@@ -317,7 +301,6 @@ function updateDonutAmountMinus(e) {
 
   writeOutDonuts();
 }
-
 
 function sendToCart(e) {
   // funktion som när vi trcyker på köp så lägger vi till objekter från donut-listan till vår shoppingcart lista
@@ -356,8 +339,6 @@ function clearValues() {
   }
   writeOutDonuts();
 }
-
-
 
 // ARTIKLAR I KUNDKORG VISAS
 
