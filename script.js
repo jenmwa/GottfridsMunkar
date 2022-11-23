@@ -184,8 +184,8 @@ function writeOutDonuts() {
     <article class="donut">
         <div class="slideshow" id="slideshow">
         <div class="images">
-            <img id="img1" class="img-1" data-id="donutImg-1-${nxtBtn}" src="${donuts[i].src1}" alt="" width="100" height="150" />
-            <img id="img2" class="img-2" data-id="donutImg-2-${nxtBtn}" src="${donuts[i].src2}" alt="" width="100" height="150" />
+            <img id="img1" class="img-1 donutImg-1-${i}"  src="${donuts[i].src1}" alt="" width="100" height="150" />
+            <img id="img2" class="img-2 donutImg-2-${i}" src="${donuts[i].src2}" alt="" width="100" height="150" />
         
             <div class="controls">
         <button class="left" id="prevImage" data-id="${i}">
@@ -218,7 +218,7 @@ function writeOutDonuts() {
         </article>    
         `;
 
-    nextImage();
+  
   }
 
   // Minusknapp
@@ -252,27 +252,26 @@ function nextImageBtn(e) {
 }
 
 
-  function nextImage(nxtBtn) {
-
-    const donutImg1 = document.querySelector('.donutImg-1-${nxtBtn}'); // du måste lägga till ett id på resp. bild i din loop 
-    const donutImg2 = document.querySelector('.donutImg-2-${nxtBtn}');
-    
-    
-    
-    if (donutImg1.style.opacity === 0) {
-    
-    // växla till bild2
-    
-    } else {
-    
-    // växla till bild1
-    
-    }
-    
-    }
-
-
-
+function nextImage(nxtBtn) {
+  
+  console.log(`.donutImg-1-${nxtBtn}`);
+  const donutImg1 = document.querySelector(`.donutImg-1-${nxtBtn}`); // du måste lägga till ett id på resp. bild i din loop
+  const donutImg2 = document.querySelector(`.donutImg-2-${nxtBtn}`);
+  
+  if ( donutImg1 == null ){
+    return;
+  }
+  if (donutImg1.style.opacity === 0) {
+  
+  console.log('bild1');
+  
+  } else {
+  
+  // växla till bild1
+  
+  }
+  
+  }
 
 
 writeOutDonuts();
