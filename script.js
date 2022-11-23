@@ -1,6 +1,5 @@
 let addShopCartList = []; // Lista för munkar som ska till varukorgen
 
-
 //  VARUKORG - öppnas/stängs
 
 const shoppingCart = document.querySelector('#shoppingCart');
@@ -174,26 +173,30 @@ const donuts = [
 ];
 const donutContainer = document.querySelector('#donutContainer');
 
-function writeOutDonuts() { // Funktion som skriver ut alla munkarna i HTML
+function writeOutDonuts() {
+  // Funktion som skriver ut alla munkarna i HTML
   donutContainer.innerHTML = '';
 
   for (let i = 0; i < donuts.length; i++) {
     donutContainer.innerHTML += `
 
-        <article class="donut">
+    <article class="donut">
         <div class="slideshow" id="slideshow">
         <div class="images">
             <img id="img1" class="img-1" src="" alt="" width="100" height="150" />
-            <img id="img2" class="img-2" src="" alt="" width="100" height="150" />
-        </div>
-        <div class="controls">
-        <button data-id="${i}" class="left" id="prevImage">
+            <img id="img2" class="img-2" src="$" alt="" width="100" height="150" />
+        
+            <div class="controls">
+        <button class="left" id="prevImage" data-id="${i}">
           <span  class="material-symbols-outlined">chevron_left</span>
         </button>
 
-        <button data-id="${i}" class="right" id="nextImage">
+        <button class="right" id="nextImage" data-id="${i}">
           <span class="material-symbols-outlined">chevron_right</span>
         </button>
+      
+        
+        <div class="indicator" id="indicatorDots"></div>
         </div>
         
         
@@ -210,10 +213,11 @@ function writeOutDonuts() { // Funktion som skriver ut alla munkarna i HTML
         
         </article>    
         `;
+        
+ 
+        nextImage();
   }
 
-
-  
   // Minusknapp
   document.querySelectorAll('button.minus').forEach(btn => {
     btn.addEventListener('click', updateDonutAmountMinus);
@@ -225,15 +229,69 @@ function writeOutDonuts() { // Funktion som skriver ut alla munkarna i HTML
   // Köp-Knapp
   document.querySelectorAll('button.addToCart').forEach(btn => {
     btn.addEventListener('click', sendToCart);
-  });
-
  
+    // Bildknappar
+    document.querySelectorAll('button.right').forEach(nextBtn =>{
+      nextBtn.addEventListener('click', nextImage)
+    });
+    document.querySelectorAll('button.left').forEach(prevBtn => {
+      prevBtn.addEventListener('click', prevImage);
+      
+    });
+  });
 
 }
 
+let currentImageIndex = 0;
 
 
-function updateDonutAmountPlus(e) { // funktion som plussar på munkar varje gånr vi trycker +
+function nextImage(){
+
+  if ( currentImageIndex +1 > donuts.length -1){
+    currentImageIndex = 0;
+  }else{
+  currentImageIndex += 1;
+  }
+  
+
+  console.log('nextImage', currentImageIndex);
+
+ document.querySelectorAll('.img-1').forEach(img1 =>{
+  img1.setAttribute('src', donuts[currentImageIndex].src1);
+  img1.setAttribute('alt', donuts[currentImageIndex].alt1);
+
+ });
+
+
+
+
+}
+
+function prevImage(){
+
+  if (currentImageIndex - 1 <0) {
+    currentImageIndex = donuts.length -1;
+  }else {
+  currentImageIndex -=1;
+  }
+
+  console.log('prevImage', currentImageIndex);
+
+  document.querySelectorAll('.img-1').forEach(img2 =>{
+    img2.setAttribute('src', donuts[currentImageIndex].src2);
+    img2.setAttribute('alt', donuts[currentImageIndex].alt2);
+  
+   });
+
+  
+
+}
+
+writeOutDonuts();
+
+
+function updateDonutAmountPlus(e) {
+  // funktion som plussar på munkar varje gånr vi trycker +
   const btnPlus = e.currentTarget.dataset.id;
   donuts[btnPlus].amount += 1;
 
@@ -242,23 +300,26 @@ function updateDonutAmountPlus(e) { // funktion som plussar på munkar varje gå
   writeOutDonuts();
 }
 
-function updateDonutAmountMinus(e) { // funktion som t på munkar varje gånr vi trycker +
+function updateDonutAmountMinus(e) {
+  // funktion som t på munkar varje gånr vi trycker +
   const btnMinus = e.currentTarget.dataset.id;
 
   if (donuts[btnMinus].amount > 0) {
     donuts[btnMinus].amount = donuts[btnMinus].amount - 1;
   }
   donuts[btnMinus].sum = donuts[btnMinus].amount * donuts[btnMinus].price;
-  
+
   writeOutDonuts();
 }
 
 
-function sendToCart(e) { // funktion som när vi trcyker på köp så lägger vi till objekter från donut-listan till vår shoppingcart lista
+function sendToCart(e) {
+  // funktion som när vi trcyker på köp så lägger vi till objekter från donut-listan till vår shoppingcart lista
   const addToCartBtn = e.currentTarget.dataset.id;
   const index = addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name);
 
-  const addedItem = { // objektet som läggs till i vår shoppinglista med värdena från vår donutlista
+  const addedItem = {
+    // objektet som läggs till i vår shoppinglista med värdena från vår donutlista
     anyPrice: donuts[addToCartBtn].price,
     anyImg: donuts[addToCartBtn].src1,
     anyAlt: donuts[addToCartBtn].alt1,
@@ -266,13 +327,14 @@ function sendToCart(e) { // funktion som när vi trcyker på köp så lägger vi
     anyAmount: donuts[addToCartBtn].amount,
     anySum: donuts[addToCartBtn].sum,
   };
-  if (donuts[addToCartBtn].amount == 0) { // kollar så vi inte kan lägga till munkar med antal 0
+  if (donuts[addToCartBtn].amount == 0) {
+    // kollar så vi inte kan lägga till munkar med antal 0
     return;
   } else {
-    if (index > -1) { // om munken redan finns i shoppingkart så läggs värdet och summan på
+    if (index > -1) {
+      // om munken redan finns i shoppingkart så läggs värdet och summan på
       addShopCartList[index].anyAmount += donuts[addToCartBtn].amount;
       addShopCartList[index].anySum += donuts[addToCartBtn].sum;
-      
     } else {
       addShopCartList.push(addedItem); // om inte munken redan finns så läggs den till på nytt
     }
@@ -290,20 +352,18 @@ function clearValues() {
 }
 
 
-  writeOutDonuts();
-
 
 // ARTIKLAR I KUNDKORG VISAS
 
-function printOutShopCart(index){
-    document.querySelector('#shopCartContent').innerHTML = '';
-    
+function printOutShopCart(index) {
+  document.querySelector('#shopCartContent').innerHTML = '';
+
   /*if (addShopCartList[index].anyAmount > 10) { // om du beställer mer än 10 munkar får du 10% rabatt
     addShopCartList[index].anySum = Math.round(addShopCartList[index].anySum * 0.9);
   }*/
 
-    for(let i =0; i < addShopCartList.length; i++) {
-        document.querySelector('#shopCartContent').innerHTML +=`
+  for (let i = 0; i < addShopCartList.length; i++) {
+    document.querySelector('#shopCartContent').innerHTML += `
         <div id="shopCartAddedDiv"><img class="imgInCart" src="${addShopCartList[i].anyImg}" alt="${addShopCartList[i].anyAlt}"  width="75" height="75"></img>
         <span class="text"><h4>${addShopCartList[i].anyName}</h4><br>
         <p>${addShopCartList[i].anyAmount}st</p>
@@ -312,42 +372,29 @@ function printOutShopCart(index){
         <button class="material-symbols-outlined" data-id="${i}">
         delete_forever
         </div>`;
+  }
+
+  //TA BORT MUNKAR
+  const removeDonuts = Array.from(document.querySelectorAll('#shopCartContent button'));
+  removeDonuts.forEach(item => {
+    item.addEventListener('click', removeAddedDonut);
+  });
+
+  //FUNKTION TA BORT MUNKAR PAPPERSKORG PER ARTIKEL
+  function removeAddedDonut(e) {
+    const i2 = e.currentTarget.dataset.id;
+    if (i > -1) {
+      addShopCartList.splice(i2, 1);
     }
+    printOutShopCart();
+    if (addShopCartList == 0) {
+      document.querySelector('#shopCartContent').innerHTML = 'Varukorgen är tom.';
+    }
+  }
+}
 
-    //TA BORT MUNKAR 
-    const removeDonuts = Array.from(document.querySelectorAll('#shopCartContent button'));
-    removeDonuts.forEach((item) => {
-        item.addEventListener('click', removeAddedDonut);
-    });
-    
-    //FUNKTION TA BORT MUNKAR PAPPERSKORG PER ARTIKEL 
-    function removeAddedDonut(e) { 
-        const i2 = e.currentTarget.dataset.id;
-        if (i > -1) {
-            addShopCartList.splice(i2, 1);
-        }
-        printOutShopCart();
-          if (addShopCartList == 0) {
-            document.querySelector('#shopCartContent').innerHTML = 'Varukorgen är tom.';
-          }
-        }
-        
-} 
-    
 writeOutDonuts();
-
-
-
-
-
-
-
-
-
-
-
-
-
+nextImage();
 // ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
 
 const formOpenBtn = document.querySelector('.checkoutButton');

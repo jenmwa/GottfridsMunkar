@@ -104,28 +104,28 @@ header {
 }
 
 #sectionShoppingCart.open {
-  display:block; 
+  display: block;
   top: 0;
   right: 0;
-  bottom:0;
+  bottom: 0;
   z-index: 4;
-  position:fixed;
-  overflow-y:scroll;
-  overflow-x:hidden;
+  position: fixed;
+  overflow-y: scroll;
+  overflow-x: hidden;
   width: 75%;
 }
 
-.shoppingContainer{
+.shoppingContainer {
   margin: 75px 0 0 0;
   background-color: $specialLightGreen;
   border: 4px solid $specialGreen;
   box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
   padding: 0 0.5rem 1rem 0.5rem;
   margin-bottom: 1rem;
-  overflow: auto; 
+  overflow: auto;
 }
 
-.shoppingHeader{
+.shoppingHeader {
   margin: auto;
   height: 4rem;
   display: flex;
@@ -133,32 +133,32 @@ header {
   align-items: center;
 }
 
-  .shoppingHeading {
-    font-size: 2rem;
-    font-weight: 700;
-  }
-
-  .shoppingAction,
-  .shoppingRemove {
-    background-color: $specialRed;
-    font-size: 1rem;
-    color: black;
-    padding: 5px 10px;
-    cursor: pointer;
-    border: 1px solid #202020;
-  }
-
-.shoppingRemove {
-margin-left: 1.1rem;
-margin-bottom: 1rem;
+.shoppingHeading {
+  font-size: 2rem;
+  font-weight: 700;
 }
 
-  .shoppingAction:hover,
-  .shoppingRemove:hover {
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.8);
-  }
+.shoppingAction,
+.shoppingRemove {
+  background-color: $specialRed;
+  font-size: 1rem;
+  color: black;
+  padding: 5px 10px;
+  cursor: pointer;
+  border: 1px solid #202020;
+}
 
-.shoppingCartItems{
+.shoppingRemove {
+  margin-left: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.shoppingAction:hover,
+.shoppingRemove:hover {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.8);
+}
+
+.shoppingCartItems {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2rem;
@@ -167,106 +167,101 @@ margin-bottom: 1rem;
   background-color: $specialGreen;
   border: 1px solid #202020;
   box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
- 
 }
 
-#shopCartContent div{
-font-size: 1rem;
-display: flex;
-align-items: flex-start;
-justify-content: space-between;
+#shopCartContent div {
+  font-size: 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 
-.imgInCart {
-  background-size: cover;
-  outline: 1px solid black;
-  margin-right: 15px;
-  margin-bottom: 15px;
+  .imgInCart {
+    background-size: cover;
+    outline: 1px solid black;
+    margin-right: 15px;
+    margin-bottom: 15px;
   }
   .text {
     width: 90%;
-      h4 {
-        margin: 0;
-        font-size: 1rem;
-      }
-      p {
-        display: inline;
-        margin-right: 8px;
-      }
-      button {
-        width: 44px;
-        height: 44px;
-        margin: 0;
-        position: absolute;
-        right: 3.5rem;
-    
-      }
-
+    h4 {
+      margin: 0;
+      font-size: 1rem;
+    }
+    p {
+      display: inline;
+      margin-right: 8px;
+    }
+    button {
+      width: 44px;
+      height: 44px;
+      margin: 0;
+      position: absolute;
+      right: 3.5rem;
+    }
   }
- 
 }
 
 /*CHECKOUT*/
-  .cartCheckout{
-    margin: 0 auto 2rem auto;
-    text-align: center;
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.cartCheckout {
+  margin: 0 auto 2rem auto;
+  text-align: center;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cartTotal {
+  width: 100%;
+}
+
+.cartSubtotal {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #202020;
+}
+
+.cartItems {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #202020;
+}
+
+.shoppingCartTotalAmount {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #202020;
+}
+.checkoutLabel {
+  margin-top: 1rem;
+
+  input {
+    margin: 0.5rem;
   }
 
-  .cartTotal {
-    width: 100%;
-  }
-
-  .cartSubtotal {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #202020;
-  }
-
-  .cartItems {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #202020;
-  }
-
-  .shoppingCartTotalAmount{
-    font-size: 2rem;
-    font-weight: 900;
-    color: #202020;
-  }
-  .checkoutLabel {
-    margin-top: 1rem;
-
-    input {
-      margin: 0.5rem;
-    }
-
-    button {
-      cursor: pointer;
-    }
-  }
-
-  .checkoutButton {
-    margin: 1rem 0;
-    width: 90%;
-    height: 50px;
-    border: 1px solid #202020;
-    box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
-    background: $specialBeige;
+  button {
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #202020;
-    text-transform: uppercase;
   }
+}
 
-  .checkoutButton:hover {
-    box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
-    transition: 0.3s ease-in-out;
-  }
+.checkoutButton {
+  margin: 1rem 0;
+  width: 90%;
+  height: 50px;
+  border: 1px solid #202020;
+  box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+  background: $specialBeige;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #202020;
+  text-transform: uppercase;
+}
 
+.checkoutButton:hover {
+  box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
+  transition: 0.3s ease-in-out;
+}
 
 /*****THEME TOGGLE**********/
 
@@ -435,7 +430,33 @@ input.error {
 
 /*************PRODUKTKORT*************/
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .donutContainer {
+  $padding: 8px;
+
   display: flex;
   flex-wrap: wrap;
   margin: auto;
@@ -443,10 +464,61 @@ input.error {
   padding: 50px;
   background-color: $specialGreen;
 
-  h2{
+  h2 {
     margin: 3px;
   }
+  .slideshow{
+    width: 100%;
 
+  
+  }
+
+  .images {
+    position:relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+   
+    img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: opacity 1s ease;
+      outline: 1px solid black;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .img-2 {
+      opacity: 0;
+    }
+  }
+   .left, .right {
+    min-width: 35px;
+    min-height: 35px;
+    cursor: pointer;
+    position: relative;
+    top: 100px;
+    transform: translateY(-50%);
+    border: 0;
+    background: transparent;
+    color: transparentize(#000000, 0.3);
+    transition: color 0.3s ease-in-out;
+    &:hover {
+      color: #000;
+    }
+    &.left {
+      left: 0;
+    }
+    &.right {
+      right: -190px;
+    }
+  }
+
+  
   .donut {
     display: flex;
     flex-direction: row;
@@ -458,8 +530,13 @@ input.error {
     padding: 20px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 
+  
+    
+    
     .donutInfo {
       text-align: center;
+      position: relative;
+      top: 250px;
 
       span {
         font-size: 1.2rem;
@@ -492,7 +569,6 @@ input.error {
     }
   }
 }
-
 
 /***********FOOTER****************/
 
