@@ -1,6 +1,5 @@
 let addShopCartList = []; // Lista för munkar som ska till varukorgen
 
-
 //  VARUKORG - öppnas/stängs
 
 const shoppingCart = document.querySelector('#shoppingCart');
@@ -21,7 +20,7 @@ const donuts = [
   {
     name: 'Pepparkaka',
     price: 24,
-    rating: 4,
+    rating: 3,
     amount: 0,
     category: 'Julglädje',
     sum: 0,
@@ -35,7 +34,7 @@ const donuts = [
   {
     name: 'Julglädje',
     price: 20,
-    rating: 3,
+    rating: 2.5,
     amount: 0,
     category: 'Julglädje',
     sum: 0,
@@ -49,7 +48,7 @@ const donuts = [
   {
     name: 'Ingefära',
     price: 20,
-    rating: 4,
+    rating: 1,
     amount: 0,
     category: 'Julglädje',
     sum: 0,
@@ -77,7 +76,7 @@ const donuts = [
   {
     name: 'Choklad',
     price: 13,
-    rating: 4,
+    rating: 4.5,
     amount: 0,
     category: 'Klassiker',
     sum: 0,
@@ -91,7 +90,7 @@ const donuts = [
   {
     name: 'Lakrits',
     price: 20,
-    rating: 4,
+    rating: 3,
     amount: 0,
     category: 'Klassiker',
     sum: 0,
@@ -147,7 +146,7 @@ const donuts = [
   {
     name: 'Fizzypop',
     price: 26,
-    rating: 4,
+    rating: 2,
     amount: 0,
     category: 'Limited Edition',
     sum: 0,
@@ -175,7 +174,8 @@ const donuts = [
 ];
 const donutContainer = document.querySelector('#donutContainer');
 
-function writeOutDonuts() { // Funktion som skriver ut alla munkarna i HTML
+function writeOutDonuts() {
+  // Funktion som skriver ut alla munkarna i HTML
   donutContainer.innerHTML = '';
 
   for (let i = 0; i < donuts.length; i++) {
@@ -197,7 +197,9 @@ function writeOutDonuts() { // Funktion som skriver ut alla munkarna i HTML
         </button>
         <div class="indicator" id="indicatorDots"></div>
         
+       
         <div class="donutInfo">
+            
             <h2>${donuts[i].name}</h2>
             <span class="price">${donuts[i].price} kr/st</span><br>
             <span>Antal:</span> <span class="amount">${donuts[i].amount} st</span><br>
@@ -205,11 +207,13 @@ function writeOutDonuts() { // Funktion som skriver ut alla munkarna i HTML
             <button class="minus" data-id="${i}">-</button>
             <button class="plus" data-id="${i}">+</button>
             <button class="addToCart" data-id="${i}">Köp</button><br>
+            <span class="category" >Kategori: <span class="category">${donuts[i].category}</span></span>
             
             </div>
         </article>    
         `;
   }
+
   // Minusknapp
   document.querySelectorAll('button.minus').forEach(btn => {
     btn.addEventListener('click', updateDonutAmountMinus);
@@ -220,11 +224,12 @@ function writeOutDonuts() { // Funktion som skriver ut alla munkarna i HTML
   });
   // Köp-Knapp
   document.querySelectorAll('button.addToCart').forEach(btn => {
-    btn.addEventListener('click', (sendToCart));
+    btn.addEventListener('click', sendToCart);
   });
 }
 
-function updateDonutAmountPlus(e) { // funktion som plussar på munkar varje gånr vi trycker +
+function updateDonutAmountPlus(e) {
+  // funktion som plussar på munkar varje gånr vi trycker +
   const btnPlus = e.currentTarget.dataset.id;
   donuts[btnPlus].amount += 1;
 
@@ -233,7 +238,8 @@ function updateDonutAmountPlus(e) { // funktion som plussar på munkar varje gå
   writeOutDonuts();
 }
 
-function updateDonutAmountMinus(e) { // funktion som t på munkar varje gånr vi trycker +
+function updateDonutAmountMinus(e) {
+  // funktion som t på munkar varje gånr vi trycker +
   const btnMinus = e.currentTarget.dataset.id;
 
   if (donuts[btnMinus].amount > 0) {
@@ -244,12 +250,13 @@ function updateDonutAmountMinus(e) { // funktion som t på munkar varje gånr vi
   writeOutDonuts();
 }
 
-
-function sendToCart(e) { // funktion som när vi trcyker på köp så lägger vi till objekter från donut-listan till vår shoppingcart lista
+function sendToCart(e) {
+  // funktion som när vi trcyker på köp så lägger vi till objekter från donut-listan till vår shoppingcart lista
   const addToCartBtn = e.currentTarget.dataset.id;
   const index = addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name);
 
-  const addedItem = { // objektet som läggs till i vår shoppinglista med värdena från vår donutlista
+  const addedItem = {
+    // objektet som läggs till i vår shoppinglista med värdena från vår donutlista
     anyPrice: donuts[addToCartBtn].price,
     anyImg: donuts[addToCartBtn].src1,
     anyAlt: donuts[addToCartBtn].alt1,
@@ -257,13 +264,14 @@ function sendToCart(e) { // funktion som när vi trcyker på köp så lägger vi
     anyAmount: donuts[addToCartBtn].amount,
     anySum: donuts[addToCartBtn].sum,
   };
-  if (donuts[addToCartBtn].amount == 0) { // kollar så vi inte kan lägga till munkar med antal 0
+  if (donuts[addToCartBtn].amount == 0) {
+    // kollar så vi inte kan lägga till munkar med antal 0
     return;
   } else {
-    if (index > -1) { // om munken redan finns i shoppingkart så läggs värdet och summan på
+    if (index > -1) {
+      // om munken redan finns i shoppingkart så läggs värdet och summan på
       addShopCartList[index].anyAmount += donuts[addToCartBtn].amount;
       addShopCartList[index].anySum += donuts[addToCartBtn].sum;
-      
     } else {
       addShopCartList.push(addedItem); // om inte munken redan finns så läggs den till på nytt
     }
@@ -274,24 +282,17 @@ function sendToCart(e) { // funktion som när vi trcyker på köp så lägger vi
   activateCheckoutSection();
 
   //UPPDATERAR totalt antal adderade donuts i varukorgen
-  const donutAmountAddedShopCart = addShopCartList.reduce(
-    (previousValue, addShopCartList) => {
-      return addShopCartList.anyAmount + previousValue;
-    },
-    0
-    );
-    document.querySelector('#shoppingCartTotalItems').innerHTML = donutAmountAddedShopCart;
-    document.querySelector('#amountChoosen').innerHTML = donutAmountAddedShopCart;
-
+  const donutAmountAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
+    return addShopCartList.anyAmount + previousValue;
+  }, 0);
+  document.querySelector('#shoppingCartTotalItems').innerHTML = donutAmountAddedShopCart;
+  document.querySelector('#amountChoosen').innerHTML = donutAmountAddedShopCart;
 
   //UPPDATERAR total summa kr adderade donuts i varukorgen
-  const donutSumAddedShopCart = addShopCartList.reduce(
-    (previousValue, addShopCartList) => {
-      return addShopCartList.anySum + previousValue;
-    },
-    0
-    );
-    document.querySelector('#shoppingCartTotalAmount').innerHTML = donutSumAddedShopCart;
+  const donutSumAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
+    return addShopCartList.anySum + previousValue;
+  }, 0);
+  document.querySelector('#shoppingCartTotalAmount').innerHTML = donutSumAddedShopCart;
 }
 
 function clearValues() {
@@ -300,7 +301,7 @@ function clearValues() {
     donuts[i].sum = 0;
   }
   writeOutDonuts();
-}/*
+} /*
  function printOutShopCartSymbol(index){
   let amountChoosen = document.querySelector('#amountChoosen').innerHTML;
   
@@ -318,7 +319,7 @@ function clearValues() {
 function emptyCart() {
   if (addShopCartList == 0) {
     document.querySelector('#shopCartContent').innerHTML = 'Varukorgen är tom.';
-  } 
+  }
 }
 
 // FUNKTION aktivera checkoutsektion NÄR artiklar läggs till
@@ -328,15 +329,15 @@ function activateCheckoutSection() {
 }
 
 // ARTIKLAR I KUNDKORG VISAS
-function printOutShopCart(index){
-    document.querySelector('#shopCartContent').innerHTML = '';
-    
+function printOutShopCart(index) {
+  document.querySelector('#shopCartContent').innerHTML = '';
+
   /*if (addShopCartList[index].anyAmount > 10) { // om du beställer mer än 10 munkar får du 10% rabatt
     addShopCartList[index].anySum = Math.round(addShopCartList[index].anySum * 0.9);
   }*/
 
-    for(let i =0; i < addShopCartList.length; i++) {
-        document.querySelector('#shopCartContent').innerHTML +=`
+  for (let i = 0; i < addShopCartList.length; i++) {
+    document.querySelector('#shopCartContent').innerHTML += `
         <div id="shopCartAddedDiv"><img class="imgInCart" src="${addShopCartList[i].anyImg}" alt="${addShopCartList[i].anyAlt}"  width="55" height="55"></img>
         <span class="text"><h4>${addShopCartList[i].anyName}</h4><br>
         <p>${addShopCartList[i].anyAmount}st</p>
@@ -345,26 +346,25 @@ function printOutShopCart(index){
         <button class="material-symbols-outlined" data-id="${i}">
         delete_forever
         </div>`;
-    }
+  }
 
-    //TA BORT MUNKAR 
-    const removeDonuts = Array.from(document.querySelectorAll('#shopCartContent button'));
-    removeDonuts.forEach((item) => {
-        item.addEventListener('click', removeAddedDonut);
-    });
-    
-    //FUNKTION TA BORT MUNKAR PAPPERSKORG PER ARTIKEL 
-    function removeAddedDonut(e) { 
-        const i2 = e.currentTarget.dataset.id;
-        if (i > -1) {
-            addShopCartList.splice(i2, 1);
-        }
-        printOutShopCart();
-        emptyCart()
+  //TA BORT MUNKAR
+  const removeDonuts = Array.from(document.querySelectorAll('#shopCartContent button'));
+  removeDonuts.forEach(item => {
+    item.addEventListener('click', removeAddedDonut);
+  });
+
+  //FUNKTION TA BORT MUNKAR PAPPERSKORG PER ARTIKEL
+  function removeAddedDonut(e) {
+    const i2 = e.currentTarget.dataset.id;
+    if (i > -1) {
+      addShopCartList.splice(i2, 1);
     }
-        
-} 
-    
+    printOutShopCart();
+    emptyCart();
+  }
+}
+
 writeOutDonuts();
 
 // ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
@@ -627,12 +627,10 @@ function removeError(e) {
  * Ska munkarna sorteras
  */
 
+function writeOutSortProducts() {
+  let sortContainer = document.querySelector('#sortProducts');
 
-
- function writeOutSortProducts(){
-  const sortContainer = document.querySelector('#sortProducts');
-
-  sortContainer.innerHTML +=`
+  sortContainer.innerHTML += `
   <h3 id="sortBy">Sortera efter</h3>
   <ul aria-labelledby="sortBy">
     <li>
@@ -641,47 +639,105 @@ function removeError(e) {
       </button>
     </li>
     <li>
-      <button id="stortByGrade" class="allColorTheme" aria-label="Sortera efter betyg"><i class="fa-solid fa-star"></i></button>
+      <button id="sortByGrade" class="allColorTheme" aria-label="Sortera efter betyg"><i class="fa-solid fa-star"></i></button>
     </li>
     <li>
-      <button id="sortByPrideDown"class="allColorTheme" aria-label="Sortera efter pris fallande">
+      <button id="sortByPrice"class="allColorTheme" aria-label="Sortera efter pris fallande eller stigande">
         <i class="fa-solid fa-arrow-down-wide-short"></i>
-      </button>
-    </li>
-    <li>
-      <button id="sortByPriceUp" class="allColorTheme" aria-label="Sortera efter pris stigande">
-        <i class="fa-solid fa-arrow-down-short-wide"></i>
       </button>
     </li>
     <li>
       <button id="sortByCategory" class="allColorTheme" aria-label="Sortera efter Kategori"><i class="fa-solid fa-up-down"></i></button>
     </li>
-  </ul>`
+  </ul>
+  <div id="sortByHeading"></div>`;
 
-  
-const sortByName = document.querySelector('#sortByName');
-const sortByGrade = document.querySelector('#sortByGrade');
-const sortByPriceDown = document.querySelector('#sortByPriceDown');
-const sortByPriceUp = document.querySelector('#sortByPriceUp');
-const sortByCategory = document.querySelector('#sortByCategory');
+  // Deklarerar variablar för sortera
+  const sortByName = document.querySelector('#sortByName');
+  const sortByGrade = document.querySelector('#sortByGrade');
+  const sortByPrice = document.querySelector('#sortByPrice');
+  const sortByCategory = document.querySelector('#sortByCategory');
 
+  const sortByHeading = document.querySelector('#sortByheading');
 
-sortByName.addEventListener('click', sortByNameBtn);
-
-
-
-console.log(sortByCategory, sortByGrade, sortByName, sortByPriceDown, sortByPriceUp);
+  // Lägger till knapptryck på knapparna
+  sortByName.addEventListener('click', sortByNameBtn);
+  sortByGrade.addEventListener('click', sortByGradeBtn);
+  sortByPrice.addEventListener('click', sortByPriceBtn);
+  sortByCategory.addEventListener('click', sortByCategoryBtn);
+}
 writeOutSortProducts();
- }
 
+let nameSort = true;
+let gradeSort = true;
+let priceSort = true;
+let categorySort = true;
 
+// funktioner för sortera efter
 
- function sortByNameBtn(){
-  console.log('namn');
+function sortByNameBtn() {
+  sortByHeading.innerHTML = `
+  <p>Sorterar efter Namn</p>
+  `;
+
+  if (nameSort) {
+    donuts.sort((a, b) => a.name < b.name);
+    nameSort = false;
+
+    writeOutDonuts();
+  } else if (nameSort == false) {
+    donuts.sort((a, b) => a.name > b.name);
+    nameSort = true;
+    writeOutDonuts();
+  }
 }
 
+function sortByGradeBtn() {
+  sortByHeading.innerHTML = `
+  <p>Sorterar efter Betyg</p>
+  `;
+  if (gradeSort) {
+    donuts.sort((a, b) => a.rating - b.rating);
+    gradeSort = false;
+    writeOutDonuts();
+  } else if (gradeSort == false) {
+    donuts.sort((a, b) => b.rating - a.rating);
+    gradeSort = true;
+    writeOutDonuts();
+  }
+}
 
+function sortByPriceBtn() {
+  if (priceSort) {
+    sortByHeading.innerHTML = `
+    <p>Sorterar efter Pris stigande</p>
+    `;
+    donuts.sort((a, b) => a.price - b.price);
+    priceSort = false;
+    writeOutDonuts();
+  } else if (priceSort == false) {
+    sortByHeading.innerHTML = `
+      <p>Sorterar efter Pris fallande</p>
+      `;
+    donuts.sort((a, b) => b.price - a.price);
+    priceSort = true;
+    writeOutDonuts();
+  }
+}
 
+function sortByCategoryBtn() {
+  sortByHeading.innerHTML = `
+  <p>Sorterar efter Kategori</p>
+  `;
 
+  if (categorySort) {
+    donuts.sort((a, b) => a.category < b.category);
+    categorySort = false;
+    writeOutDonuts();
+  } else if (categorySort == false) {
+    donuts.reverse();
+    writeOutDonuts();
+  }
+}
 
- writeOutSortProducts();
+writeOutDonuts();
