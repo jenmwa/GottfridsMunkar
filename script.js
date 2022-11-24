@@ -805,5 +805,6 @@ function sortByCategoryBtn() {
   }
 }
 writeOutDonuts();
+writeOutSortProducts();
 
 
