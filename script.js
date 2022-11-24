@@ -21,8 +21,7 @@ const donuts = [
     category: 'Julglädje',
     sum: 0,
     images: ['img/donuts_img/brown.jpg', 'img/smaker_img/pepparkaka.jpg'],
-    alt1: 'vaniljmunk med pepparkakafrosting',
-    alt2: 'pepparkaka',
+    alt: ['vaniljmunk med pepparkakafrosting','pepparkaka'],
   },
   {
     name: 'Julglädje',
@@ -32,8 +31,7 @@ const donuts = [
     category: 'Julglädje',
     sum: 0,
     images: ['img/donuts_img/red.jpg', 'img/smaker_img/nejlika.jpg'],
-    alt1: 'vaniljmunk med frosting med smak av nejlika',
-    alt2: 'Kryddnejlikor',
+    alt: ['vaniljmunk med frosting med smak av nejlika', 'Kryddnejlikor'],
   },
   {
     name: 'Ingefära',
@@ -43,8 +41,7 @@ const donuts = [
     category: 'Julglädje',
     sum: 0,
     images: ['img/donuts_img/yellow.jpg', 'img/smaker_img/ingefara.jpg'],
-    alt1: 'vaniljmunk med ingefärsfrosting',
-    alt2: 'ingefära',
+    alt: ['vaniljmunk med ingefärsfrosting', 'ingefära'],
   },
   {
     name: 'Vanilj',
@@ -54,8 +51,7 @@ const donuts = [
     category: 'Klassiker',
     sum: 0,
     images: ['img/donuts_img/white.jpg', 'img/smaker_img/vanilj.jpg'],
-    alt: 'vaniljmunk med vaniljfrosting',
-    alt2: 'vaniljstång',
+    alt: ['vaniljmunk med vaniljfrosting', 'vaniljstång'],
   },
   {
     name: 'Choklad',
@@ -65,8 +61,7 @@ const donuts = [
     category: 'Klassiker',
     sum: 0,
     images: ['img/donuts_img/brown.jpg', 'img/smaker_img/choklad.jpg'],
-    alt1: 'vaniljmunk med chokladglaze',
-    alt2: 'choklad',
+    alt: ['sötlakrits', 'choklad',],
   },
   {
     name: 'Lakrits',
@@ -76,8 +71,7 @@ const donuts = [
     category: 'Klassiker',
     sum: 0,
     images: ['img/donuts_img/black.jpg', 'img/smaker_img/lakrits.jpg'],
-    alt1: 'vaniljmunk med lakritsfrosting',
-    alt2: 'sötlakrits',
+    alt: ['vaniljmunk med lakritsfrosting', 'sötlakrits'],
   },
   {
     name: 'Apelsin',
@@ -87,8 +81,7 @@ const donuts = [
     category: 'Klassiker',
     sum: 0,
     images: ['img/donuts_img/orange.jpg', 'img/smaker_img/apelsin.jpg'],
-    alt1: 'vaniljmunk med apelsinsmak',
-    alt2: 'apelsiner',
+    alt: ['vaniljmunk med apelsinsmak', 'apelsiner'],
   },
   {
     name: 'Hallon',
@@ -98,8 +91,7 @@ const donuts = [
     category: 'Klassiker',
     sum: 0,
     images: ['img/donuts_img/pink.jpg', 'img/smaker_img/hallon.jpg'],
-    alt1: 'vaniljmunk med hallonfrosting',
-    alt2: 'hallon i skål',
+    alt: ['vaniljmunk med hallonfrosting', 'hallon i skål'],
   },
   {
     name: 'Champagne',
@@ -109,10 +101,7 @@ const donuts = [
     category: 'Limited Edition',
     sum: 0,
     images: ['img/donuts_img/purple.jpg', 'img/smaker_img/champagne.jpg'],
-    // src1:
-    alt1: 'vaniljmunk med champagnefrosting',
-    //src2: ,
-    alt2: 'flaska med champagne',
+    alt: ['vaniljmunk med champagnefrosting', 'flaska med champagne'],
   },
   {
     name: 'Fizzypop',
@@ -122,8 +111,7 @@ const donuts = [
     category: 'Limited Edition',
     sum: 0,
     images: ['img/donuts_img/blue.jpg', 'img/smaker_img/fizzypop.jpg'],
-    alt1: 'vaniljmunk med frosting med smak av godiset fizzypop',
-    alt2: 'godiset fizzypop',
+    alt: ['vaniljmunk med frosting med smak av godiset fizzypop', 'godiset fizzypop'],
   },
   {
     name: 'Päronsplitt',
@@ -133,8 +121,7 @@ const donuts = [
     category: 'Limited Edition',
     sum: 0,
     images: ['img/donuts_img/green2.jpg', 'img/smaker_img/paronsplitt.jpg'],
-    alt1: 'vaniljmunk med päronsplitt-frosting',
-    alt2: 'ekologisk päronsplitt',
+    alt: ['vaniljmunk med päronsplitt-frosting', 'ekologisk päronsplitt'],
   },
 ];
 
@@ -148,7 +135,7 @@ function writeOutDonuts() {
     <article class="donut">
         <div class="slideshow" id="slideshow">
         <div class="images">
-            <img id="img1" class="img-1 donutImg-1-${i}"  src="${donuts[i].images[0]}" alt="${donuts[i].alt1}" width="100" height="150" />
+            <img id="img1" class="img-1 donutImg-1-${i}"  src="${donuts[i].images[0]}" alt="${donuts[i].alt[0]}" width="100" height="150" />
             
         </div>
             <div class="controls">
@@ -256,7 +243,7 @@ function sendToCart(e) {
       // ELSE - add the donut to the list
       addShopCartList.push({
         anyPrice: donuts[addToCartBtn].price,
-        anyImg: donuts[addToCartBtn].src1,
+        anyImg: donuts[addToCartBtn].images[0],
         anyAlt: donuts[addToCartBtn].alt1,
         anyName: donuts[addToCartBtn].name,
         anyAmount: donuts[addToCartBtn].amount,
@@ -292,11 +279,15 @@ function nextImage(e) {
   const picContainer = document.querySelector(`.donutImg-1-${index}`);
 
   const donutImgs = donuts[index].images;
+  const altImg = donuts[index].alt;
+  console.log(altImg)
 
   if (picContainer.getAttribute('src') === donutImgs[0]) {
     picContainer.setAttribute('src', donutImgs[1]);
+    picContainer.setAttribute('alt', altImg[1]);
   } else {
     picContainer.setAttribute('src', donutImgs[0]);
+    picContainer.setAttribute('alt', altImg[0]);
   }
 }
 
@@ -307,11 +298,14 @@ function prevImage(e) {
   const picContainer = document.querySelector(`.donutImg-1-${index}`);
 
   const donutImgs = donuts[index].images;
+  const altImg = donuts[index].alt;
 
   if (picContainer.getAttribute('src') === donutImgs[1]) {
     picContainer.setAttribute('src', donutImgs[0]);
+    picContainer.setAttribute('alt', altImg[0]);
   } else {
     picContainer.setAttribute('src', donutImgs[1]);
+    picContainer.setAttribute('alt', altImg[1]);
   }
 }
 
