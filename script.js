@@ -372,14 +372,14 @@ writeOutDonuts(); // Calling the functions to write out the donuts
  ******************************************************************************
  */
 
- const moving = document.querySelector('.themeBtnMove');
 const themeBtn = document.querySelector('#themeBtn');
 themeBtn.addEventListener('click', toggleTheme);
 
 function toggleTheme() {
+
   themeBtn.classList.toggle('themeBtnMove');
 
-  if (themeBtn == moving) {
+  if (themeBtn == document.querySelector('.themeBtnMove')) {
     // DARK MODE - Till mörkt tema
     document.body.style.backgroundColor = '#302f2a'; // bakgrund
     document.body.style.color = '#f7f6f2'; // textfärg
@@ -391,19 +391,16 @@ function toggleTheme() {
     document.querySelectorAll('.headerColorTheme').forEach(header => { // header och footer
       header.style.backgroundColor = '#572525';
     });
-
     document.querySelectorAll('.allColorTheme').forEach(link => { // All textinnehåll med denna class
       link.style.color = 'white';
     });
-
     document.querySelectorAll('.productCard').forEach(card => { // Alla kategorier med denna class
       card.style.backgroundColor = '#4b5947';
     });
-
     document.querySelectorAll('.donut').forEach(donut => {  // Alla produktkort med denna class
       donut.style.backgroundColor = '#839183';
     });
-  } else if (themeBtn != moving) {
+  } else if (themeBtn != document.querySelector('.themeBtnMove')) {
     // LIGHT MODE - tillbaka till original
     document.body.style.backgroundColor = '#FBF2CF'; // bakgrundsfärg
     document.body.style.color = 'black'; // Textfärg
@@ -412,19 +409,15 @@ function toggleTheme() {
     document.querySelectorAll('.menuBtnColorTheme').forEach(menu => { // HamnurgarMenyn
       menu.style.backgroundColor = 'black';
     });
-
     document.querySelectorAll('.allColorTheme').forEach(link => {// Ändrar färg till svart på allt med classen
       link.style.color = 'black';
     });
-
     document.querySelectorAll('.headerColorTheme').forEach(header => {// Header och footer
       header.style.backgroundColor = '#FA7070';
     });
-
     document.querySelectorAll('.productCard').forEach(card => {  // Alla produktkort med denna class
       card.style.backgroundColor = '#A1C298';
     });
-
     munk = document.querySelectorAll('.donut').forEach(donut => { // Alla produktkort med denna class
       donut.style.backgroundColor = '#C6EBC5';
     });
@@ -479,10 +472,10 @@ function activateCheckoutSection() {
   document.querySelector('#shoppingCartTotalItems').innerHTML = donutAmountAddedShopCart;
   document.querySelector('#amountChoosen').innerHTML = donutAmountAddedShopCart;
   if (donutAmountAddedShopCart == 0){ // Added - IF there is product background color changes.
-    document.querySelector('#amountChoosen').classList.remove('colorsOn')
+    document.querySelector('#amountChoosen').classList.remove('colorsOn');
    
   } else {
-    document.querySelector('#amountChoosen').classList.add('colorsOn')
+    document.querySelector('#amountChoosen').classList.add('colorsOn');
    
   }
 
