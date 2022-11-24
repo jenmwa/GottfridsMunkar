@@ -151,6 +151,10 @@ header {
 .shoppingRemove {
   margin-left: 1.1rem;
   margin-bottom: 1rem;
+  display: none;
+}
+#shoppingRemove.open {
+display: block;
 }
 
 .shoppingAction:hover,

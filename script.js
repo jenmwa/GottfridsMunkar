@@ -309,6 +309,11 @@ function clearValues() {
 function emptyCart() {
   if (addShopCartList == 0) {
     document.querySelector('#shopCartContent').innerHTML = 'Varukorgen är tom.';
+    //rad 313-316 + 322-325 går att förenkla och kombinera?
+    const checkoutContainer = document.querySelector('#checkoutContainer');
+    checkoutContainer.classList.remove('open');
+    const removeAllBtn = document.querySelector('#shoppingRemove');
+    removeAllBtn.classList.remove('open');
   }
 }
 
@@ -316,7 +321,19 @@ function emptyCart() {
 function activateCheckoutSection() {
   const checkoutContainer = document.querySelector('#checkoutContainer');
   checkoutContainer.classList.add('open');
+  const removeAllBtn = document.querySelector('#shoppingRemove');
+  removeAllBtn.classList.add('open');
 }
+/*
+const removeShoppingCart = document.querySelector('#shoppingRemove');
+removeShoppingCart.addEventListener('click', emptyShoppingCart);
+function emptyShoppingCart() {
+  addShopCartList = '';
+
+emptyCart();
+}*/
+
+
 
 // ARTIKLAR I KUNDKORG VISAS
 function printOutShopCart(index) {
@@ -342,15 +359,15 @@ function printOutShopCart(index) {
   const removeDonuts = Array.from(document.querySelectorAll('#shopCartContent button'));
   removeDonuts.forEach(item => {
     item.addEventListener('click', removeAddedDonut);
-  });
+    });
 
   //FUNKTION TA BORT MUNKAR PAPPERSKORG PER ARTIKEL
   function removeAddedDonut(e) {
     const j = e.currentTarget.dataset.id;
     if (i > -1) {
       addShopCartList.splice(j, 1);
-      //KODUPPREPNING från rad 285-295
-      const donutAmountSubShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
+      //KODUPPREPNING från rad 285-295 varför funkar detta? varför fungerar det inte med att skriva ut addshoplist på rad 371 på nytt?
+      /*const donutAmountSubShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
         return addShopCartList.anyAmount + previousValue;
       }, 0);
       document.querySelector('#shoppingCartTotalItems').innerHTML = donutAmountSubShopCart;
@@ -359,11 +376,16 @@ function printOutShopCart(index) {
       const donutSumSubShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
         return addShopCartList.anySum + previousValue;
       }, 0);
-      document.querySelector('#shoppingCartTotalAmount').innerHTML = donutSumSubShopCart;
+      document.querySelector('#shoppingCartTotalAmount').innerHTML = donutSumSubShopCart;*/
+     
+      }
+      for (let i = 0; i < addShopCartList.length; i++) {
+        console.log(addShopCartList);
+        //skriv ut lista på nytt addshopcart list
+        printOutShopCart();
     } 
     
-    writeOutDonuts();
-    printOutShopCart();
+    
     emptyCart();
   }
   
