@@ -460,7 +460,7 @@ input.error {
   .slideshow {
     width: 100%;
     height: auto;
-  }
+  
 
   .images {
     position: relative;
@@ -484,6 +484,16 @@ input.error {
       opacity: 0;
     }
   }
+  
+  }
+
+    
+    .indicator {
+      display: inline-block;
+    position: relative;
+    top: 250px;
+    padding-bottom: $padding;
+    }
 
   .left,
   .right {
@@ -526,6 +536,7 @@ input.error {
 
       .category {
         font-size: 0.9rem;
+        
       }
 
       span {
