@@ -282,14 +282,14 @@ function sendToCart(e) {
   setTimeout(clearValues, 500); 
   activateCheckoutSection();
 
-  //UPPDATERAR totalt antal adderade donuts i varukorgen
+  //Updates total amount in shopCart & shopcartIcon
   const donutAmountAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
     return addShopCartList.anyAmount + previousValue;
   }, 0);
   document.querySelector('#shoppingCartTotalItems').innerHTML = donutAmountAddedShopCart;
   document.querySelector('#amountChoosen').innerHTML = donutAmountAddedShopCart;
 
-  //UPPDATERAR total summa kr adderade donuts i varukorgen
+  //Updates total sum in shopCart
   const donutSumAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
     return addShopCartList.anySum + previousValue;
   }, 0);
@@ -431,7 +431,7 @@ writeOutDonuts(); // Calling the functions to write out the donuts
  ******************************************************************************
  */
 
- //  shoppingCart open-close 
+ // shoppingCart open-close 
 const shoppingCart = document.querySelector('#shoppingCart');
 const sectionShoppingCart = document.querySelector('#sectionShoppingCart');
 const shoppingClose = document.querySelector('.shoppingAction');
@@ -439,12 +439,13 @@ const shoppingClose = document.querySelector('.shoppingAction');
 shoppingCart.addEventListener('click', toggleShoppingCartOpenState);
 shoppingClose.addEventListener('click', toggleShoppingCartOpenState);
 
+// Function open shoppingCart
 function toggleShoppingCartOpenState() {
   sectionShoppingCart.classList.toggle('open');
   emptyCart();
 }
 
-// FUNKTION när varukorg är tom
+// Function empty shoppingCart
 function emptyCart() {
   if (addShopCartList == 0) {
     document.querySelector('#shopCartContent').innerHTML = 'Varukorgen är tom.';
@@ -456,24 +457,18 @@ function emptyCart() {
   }
 }
 
-// FUNKTION aktivera checkoutsektion NÄR artiklar läggs till
+// Function activate checkout section
 function activateCheckoutSection() {
   const checkoutContainer = document.querySelector('#checkoutContainer');
   checkoutContainer.classList.add('open');
   const removeAllBtn = document.querySelector('#shoppingRemove');
   removeAllBtn.classList.add('open');
 }
-/*
-const removeShoppingCart = document.querySelector('#shoppingRemove');
-removeShoppingCart.addEventListener('click', emptyShoppingCart);
-function emptyShoppingCart() {
-  addShopCartList = '';
-emptyCart();
-}*/
 
 
 
-// ARTIKLAR I KUNDKORG VISAS
+
+// Function print items shoppingCart
 function printOutShopCart(index) {
   document.querySelector('#shopCartContent').innerHTML = '';
 
@@ -499,7 +494,7 @@ function printOutShopCart(index) {
     item.addEventListener('click', removeAddedDonut);
     });
 
-  //FUNKTION TA BORT MUNKAR PAPPERSKORG PER ARTIKEL
+  // Function remove donuts per article shopCart
   function removeAddedDonut(e) {
     const j = e.currentTarget.dataset.id;
     if (i > -1) {
@@ -521,9 +516,6 @@ function printOutShopCart(index) {
   }
 
 }
-
-
-
 
 
 /******************************************************************************
