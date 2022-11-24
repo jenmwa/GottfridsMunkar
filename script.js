@@ -5,8 +5,7 @@ let addShopCartList = []; // Lista för munkar som ska till varukorgen
  ******************************************************************************
  */
 
-
- // List with objects of the donuts
+// List with objects of the donuts
 const donuts = [
   {
     name: 'Pepparkaka',
@@ -228,7 +227,6 @@ function writeOutDonuts() {
   });
 }
 
-
 // Function that uppdates increase amount
 function updateDonutAmountPlus(e) {
   const btnPlus = e.currentTarget.dataset.id;
@@ -239,7 +237,7 @@ function updateDonutAmountPlus(e) {
   writeOutDonuts();
 }
 
-// Function that uppdates decrease amount 
+// Function that uppdates decrease amount
 function updateDonutAmountMinus(e) {
   const btnMinus = e.currentTarget.dataset.id;
 
@@ -269,32 +267,22 @@ function sendToCart(e) {
   if (donuts[addToCartBtn].amount == 0) {
     return;
   } else {
-      // IF- the donut already exist in the shopcartlist - add amount and sum
+    // IF- the donut already exist in the shopcartlist - add amount and sum
     if (index > -1) {
       addShopCartList[index].anyAmount += donuts[addToCartBtn].amount;
       addShopCartList[index].anySum += donuts[addToCartBtn].sum;
-    } else { // ELSE - add the donut to the list
-      addShopCartList.push(addedItem); 
+    } else {
+      // ELSE - add the donut to the list
+      addShopCartList.push(addedItem);
     }
   }
 
   printOutShopCart(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
-  setTimeout(clearValues, 500); 
+  setTimeout(clearValues, 500);
   activateCheckoutSection();
-
-  //Updates total amount in shopCart & shopcartIcon
-  const donutAmountAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
-    return addShopCartList.anyAmount + previousValue;
-  }, 0);
-  document.querySelector('#shoppingCartTotalItems').innerHTML = donutAmountAddedShopCart;
-  document.querySelector('#amountChoosen').innerHTML = donutAmountAddedShopCart;
-
-  //Updates total sum in shopCart
-  const donutSumAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
-    return addShopCartList.anySum + previousValue;
-  }, 0);
-  document.querySelector('#shoppingCartTotalAmount').innerHTML = donutSumAddedShopCart;
+  updateShopCartTotal();
 }
+
 
 // Function that clears the values for the donuts when clicking the buy-button
 function clearValues() {
@@ -303,8 +291,7 @@ function clearValues() {
     donuts[i].sum = 0;
   }
   writeOutDonuts();
-} 
-
+}
 
 /******************************************************************************
  ******************************** SLIDESHOW **************************************
@@ -325,16 +312,12 @@ function nextImage(nxtBtn) {
   console.log(donutImg1);
 
   if (donutImg2.style.opacity === 0) {
-  
-  donutImg2.style.opacity = '1';
-  
+    donutImg2.style.opacity = '1';
   } else {
-  
-  // växla till bild1
-  
+    // växla till bild1
   }
-  }
-  
+}
+
 // Function that swaps images Previous image
 function prevImage() {
   if (currentImageIndex - 1 < 0) {
@@ -348,90 +331,86 @@ function prevImage() {
 
 writeOutDonuts(); // Calling the functions to write out the donuts
 
-
-
 /******************************************************************************
  ***************************THEME-TOGGLE***************************************
  ******************************************************************************
  */
 
- const themeBtn = document.querySelector('#themeBtn');
- themeBtn.addEventListener('click', toggleTheme);
- 
- function toggleTheme() {
-   themeBtn.classList.toggle('themeBtnMove');
- 
-   if (themeBtn == document.querySelector('.themeBtnMove')) {
-     // DARK MODE - Till mörkt tema
-     document.body.style.backgroundColor = '#302f2a'; // bakgrund
-     document.body.style.color = '#f7f6f2'; // textfärg
-     document.querySelector('#shopCartColorTheme').style.color = 'white'; // shoppingcart
- 
-     let menu = document.querySelectorAll('.menuBtnColorTheme'); // Hamburgarmenyn
-     menu.forEach(menu => {
-       menu.style.backgroundColor = 'white';
-     });
- 
-     let header = document.querySelectorAll('.headerColorTheme'); // Header och footer
-     header.forEach(header => {
-       header.style.backgroundColor = '#572525';
-     });
- 
-     let links = document.querySelectorAll('.allColorTheme'); // All textinnehåll med denna class
-     links.forEach(link => {
-       link.style.color = 'white';
-     });
- 
-     let productCard = document.querySelectorAll('.productCard'); // Alla kategorier med denna class
-     productCard.forEach(card => {
-       card.style.backgroundColor = '#4b5947';
-     });
- 
-     let munk = document.querySelectorAll('.munk'); // Alla produktkort med denna class
-     munk.forEach(donut => {
-       donut.style.backgroundColor = '#839183';
-     });
-   } else if (themeBtn != document.querySelector('.themeBtnMove')) {
-     // LIGHT MODE - tillbaka till original
-     document.body.style.backgroundColor = '#FBF2CF'; // bakgrundsfärg
-     document.body.style.color = 'black'; // Textfärg
-     document.querySelector('#shopCartColorTheme').style.color = 'black'; // shoppingcart
- 
-     let menu = document.querySelectorAll('.menuBtnColorTheme'); // HamnurgarMenyn
-     menu.forEach(menu => {
-       menu.style.backgroundColor = 'black';
-     });
- 
-     links = document.querySelectorAll('.allColorTheme'); // Ändrar färg till svart på allt med classen
-     links.forEach(link => {
-       link.style.color = 'black';
-     });
- 
-     header = document.querySelectorAll('.headerColorTheme'); // Header och footer
-     header.forEach(header => {
-       header.style.backgroundColor = '#FA7070';
-     });
- 
-     productCard = document.querySelectorAll('.productCard'); // Alla produktkort med denna class
-     productCard.forEach(card => {
-       card.style.backgroundColor = '#A1C298';
-     });
- 
-     munk = document.querySelectorAll('.munk'); // Alla produktkort med denna class
-     munk.forEach(donut => {
-       donut.style.backgroundColor = '#C6EBC5';
-     });
-   }
- }
+const themeBtn = document.querySelector('#themeBtn');
+themeBtn.addEventListener('click', toggleTheme);
 
+function toggleTheme() {
+  themeBtn.classList.toggle('themeBtnMove');
 
+  if (themeBtn == document.querySelector('.themeBtnMove')) {
+    // DARK MODE - Till mörkt tema
+    document.body.style.backgroundColor = '#302f2a'; // bakgrund
+    document.body.style.color = '#f7f6f2'; // textfärg
+    document.querySelector('#shopCartColorTheme').style.color = 'white'; // shoppingcart
+
+    let menu = document.querySelectorAll('.menuBtnColorTheme'); // Hamburgarmenyn
+    menu.forEach(menu => {
+      menu.style.backgroundColor = 'white';
+    });
+
+    let header = document.querySelectorAll('.headerColorTheme'); // Header och footer
+    header.forEach(header => {
+      header.style.backgroundColor = '#572525';
+    });
+
+    let links = document.querySelectorAll('.allColorTheme'); // All textinnehåll med denna class
+    links.forEach(link => {
+      link.style.color = 'white';
+    });
+
+    let productCard = document.querySelectorAll('.productCard'); // Alla kategorier med denna class
+    productCard.forEach(card => {
+      card.style.backgroundColor = '#4b5947';
+    });
+
+    let munk = document.querySelectorAll('.munk'); // Alla produktkort med denna class
+    munk.forEach(donut => {
+      donut.style.backgroundColor = '#839183';
+    });
+  } else if (themeBtn != document.querySelector('.themeBtnMove')) {
+    // LIGHT MODE - tillbaka till original
+    document.body.style.backgroundColor = '#FBF2CF'; // bakgrundsfärg
+    document.body.style.color = 'black'; // Textfärg
+    document.querySelector('#shopCartColorTheme').style.color = 'black'; // shoppingcart
+
+    let menu = document.querySelectorAll('.menuBtnColorTheme'); // HamnurgarMenyn
+    menu.forEach(menu => {
+      menu.style.backgroundColor = 'black';
+    });
+
+    links = document.querySelectorAll('.allColorTheme'); // Ändrar färg till svart på allt med classen
+    links.forEach(link => {
+      link.style.color = 'black';
+    });
+
+    header = document.querySelectorAll('.headerColorTheme'); // Header och footer
+    header.forEach(header => {
+      header.style.backgroundColor = '#FA7070';
+    });
+
+    productCard = document.querySelectorAll('.productCard'); // Alla produktkort med denna class
+    productCard.forEach(card => {
+      card.style.backgroundColor = '#A1C298';
+    });
+
+    munk = document.querySelectorAll('.munk'); // Alla produktkort med denna class
+    munk.forEach(donut => {
+      donut.style.backgroundColor = '#C6EBC5';
+    });
+  }
+}
 
 /******************************************************************************
  ******************************** SHOPPINGCART ********************************
  ******************************************************************************
  */
 
- // shoppingCart open-close 
+// shoppingCart open-close
 const shoppingCart = document.querySelector('#shoppingCart');
 const sectionShoppingCart = document.querySelector('#sectionShoppingCart');
 const shoppingClose = document.querySelector('.shoppingAction');
@@ -465,6 +444,21 @@ function activateCheckoutSection() {
   removeAllBtn.classList.add('open');
 }
 
+ //Updates total amount in shopCart & shopcartIcon
+ function updateShopCartTotal() {
+
+  const donutAmountAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
+    return addShopCartList.anyAmount + previousValue;
+  }, 0);
+  document.querySelector('#shoppingCartTotalItems').innerHTML = donutAmountAddedShopCart;
+  document.querySelector('#amountChoosen').innerHTML = donutAmountAddedShopCart;
+
+  //Updates total sum in shopCart
+  const donutSumAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
+    return addShopCartList.anySum + previousValue;
+  }, 0);
+  document.querySelector('#shoppingCartTotalAmount').innerHTML = donutSumAddedShopCart;
+}
 
 // Function print items shoppingCart
 function printOutShopCart(index) {
@@ -486,41 +480,38 @@ function printOutShopCart(index) {
         </div>`;
   }
 
-  //TA BORT MUNKAR
+  //Remove donuts per article ShopCart
   const removeDonuts = Array.from(document.querySelectorAll('#shopCartContent button'));
   removeDonuts.forEach(item => {
     item.addEventListener('click', removeAddedDonut);
-    });
+  });
 
   // Function remove donuts per article shopCart
   function removeAddedDonut(e) {
     const j = e.currentTarget.dataset.id;
     if (i > -1) {
       addShopCartList.splice(j, 1);
-      //KODUPPREPNING från rad 285-295
-      const donutAmountSubShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
-        return addShopCartList.anyAmount + previousValue;
-      }, 0);
-      document.querySelector('#shoppingCartTotalItems').innerHTML = donutAmountSubShopCart;
-      document.querySelector('#amountChoosen').innerHTML = donutAmountSubShopCart;
-
-      const donutSumSubShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
-        return addShopCartList.anySum + previousValue;
-      }, 0);
-      document.querySelector('#shoppingCartTotalAmount').innerHTML = donutSumSubShopCart;
-    } 
+      updateShopCartTotal();
+    }
     printOutShopCart();
     emptyCart();
   }
-
 }
 
+// Remove everything in ShoppingCart
+const removeShoppingCart = document.querySelector('#shoppingRemove');
+removeShoppingCart.addEventListener('click', emptyShoppingCart);
+
+function emptyShoppingCart() {
+  addShopCartList.length = 0;
+  updateShopCartTotal();
+  emptyCart();
+}
 
 /******************************************************************************
  ******************************INPUT-FORM**************************************
  ******************************************************************************
  */
-
 
 // ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
 
@@ -704,13 +695,12 @@ function removeError(e) {
   e.target.parentElement.querySelector('.errorMessage').innerHTML = '';
 }
 
-
 /******************************************************************************
  ********************************SORT-BY***************************************
  ******************************************************************************
  */
 
- // Function that writes out the HTML
+// Function that writes out the HTML
 
 function writeOutSortProducts() {
   let sortContainer = document.querySelector('#sortProducts');
@@ -737,7 +727,7 @@ function writeOutSortProducts() {
   </ul>
   <div id="sortByHeading"></div>`;
 
-  // Declare variables for the HTML 
+  // Declare variables for the HTML
   const sortByName = document.querySelector('#sortByName');
   const sortByGrade = document.querySelector('#sortByGrade');
   const sortByPrice = document.querySelector('#sortByPrice');
@@ -824,5 +814,3 @@ function sortByCategoryBtn() {
 }
 writeOutDonuts();
 writeOutSortProducts();
-
-
