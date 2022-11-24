@@ -193,6 +193,7 @@ function writeOutDonuts() {
             <img id="img1" class="img-1 donutImg-1-${i}"  src="${donuts[i].src1}" alt="${donuts[i].alt1}" width="100" height="150" />
             <img id="img2" class="img-2 donutImg-2-${i}" src="${donuts[i].src2}" alt="${donuts[i].alt2}" width="100" height="150" />
         </div>
+        
             <div class="controls">
         <button class="left" id="prevImage" data-id="${i}">
           <span  class="material-symbols-outlined">chevron_left</span>
@@ -201,8 +202,10 @@ function writeOutDonuts() {
         <button class="right" id="nextImage" data-id="${i}">
           <span class="material-symbols-outlined">chevron_right</span>
         </button>
+        <div class="indicator" id="indicatorDots">
+        </div>
     
-        <div class="indicator" id="indicatorDots"></div>
+        
         </div>
         <div class="donutInfo">
             
@@ -234,7 +237,7 @@ function writeOutDonuts() {
 
     // Slideshow buttons
     document.querySelectorAll('button.right').forEach(nextBtn => {
-      nextBtn.addEventListener('click', nextImageBtn);
+      nextBtn.addEventListener('click', nextImage);
     });
     document.querySelectorAll('button.left').forEach(prevBtn => {
       prevBtn.addEventListener('click', prevImage);
@@ -325,20 +328,34 @@ function clearValues() {
  ******************************************************************************
  */
 
-// Function that collects the Next image buttons-index
-function nextImageBtn(e) {
-  const nxtBtn = e.currentTarget.dataset.id;
-  nextImage(nxtBtn);
-}
-
 // Function that swaps images to the Next image
-function nextImage(nxtBtn) {
+function nextImage(e) {
+  const nxtBtn = e.currentTarget.dataset.id;
+  // Collecting img from HTML document with nxtBtn-index
   const donutImg1 = document.querySelectorAll(`.donutImg-1-${nxtBtn}`);
   const donutImg2 = document.querySelectorAll(`.donutImg-2-${nxtBtn}`);
+  
+  
+  if (donutImg2.style.opacity == 0) {
+  
+  donutImg1.style.opacity = '1';
+  
+  } else {
+  // växla till bild1
+  }
 
-  console.log(donutImg1);
-
-  if (donutImg2.style.opacity === 0) {
+writeOutDonuts();
+}
+  
+// Function that swaps images Previous image
+function prevImage(e) {
+  const prevBtn = e.currentTarget.dataset.id;
+  // Collecting img from HTML document with nxtBtn-index
+  const donutImg1 = document.querySelectorAll(`.donutImg-1-${prevBtn}`);
+  const donutImg2 = document.querySelectorAll(`.donutImg-2-${prevBtn}`);
+  console.log(prevBtn)
+  
+  if (donutImg1.style.opacity === 0) {
   
   donutImg2.style.opacity = '1';
   
@@ -347,18 +364,20 @@ function nextImage(nxtBtn) {
   // växla till bild1
   
   }
-  }
   
-// Function that swaps images Previous image
-function prevImage() {
-  if (currentImageIndex - 1 < 0) {
-    currentImageIndex = donuts.length - 1;
-  } else {
-    currentImageIndex -= 1;
-  }
-
-  console.log('prevImage', currentImageIndex);
 }
+
+function createDots() {
+  document.querySelectorAll('.indicator').forEach(rating => {
+    for (let i = 0; i < donuts[i].rating; ){
+    rating.innerHTML += `
+    <i class="fa-solid fa-star"></i>`;
+    }
+  });
+
+  
+}
+
 
 writeOutDonuts(); // Calling the functions to write out the donuts
 
@@ -806,5 +825,5 @@ function sortByCategoryBtn() {
 }
 writeOutDonuts();
 writeOutSortProducts();
-
+createDots();
 
