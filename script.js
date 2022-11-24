@@ -167,7 +167,7 @@ function writeOutDonuts() {
 
   // Adding Evenlisternes on BTN's
   addEvenlisternes();
-
+  createDots();
  
 }
 
@@ -795,4 +795,3 @@ function sortByCategoryBtn() {
 
 writeOutDonuts();
 writeOutSortProducts();
-createDots();
