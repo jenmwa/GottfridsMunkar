@@ -1,21 +1,12 @@
 let addShopCartList = []; // Lista för munkar som ska till varukorgen
 
-//  VARUKORG - öppnas/stängs
+/******************************************************************************
+ ******************************** DONUTS **************************************
+ ******************************************************************************
+ */
 
-const shoppingCart = document.querySelector('#shoppingCart');
-const sectionShoppingCart = document.querySelector('#sectionShoppingCart');
-const shoppingClose = document.querySelector('.shoppingAction');
 
-shoppingCart.addEventListener('click', toggleShoppingCartOpenState);
-shoppingClose.addEventListener('click', toggleShoppingCartOpenState);
-
-function toggleShoppingCartOpenState() {
-  sectionShoppingCart.classList.toggle('open');
-  emptyCart();
-}
-
-// DONUTS
-
+ // List with objects of the donuts
 const donuts = [
   {
     name: 'Pepparkaka',
@@ -172,32 +163,33 @@ const donuts = [
     alt2: 'ekologisk päronsplitt',
   },
 ];
+// Grabbing the container from HTML to write out the donuts in.
 const donutContainer = document.querySelector('#donutContainer');
 
+// Function that writes out the donuts in HTML
 function writeOutDonuts() {
-  // Funktion som skriver ut alla munkarna i HTML
   donutContainer.innerHTML = '';
 
   for (let i = 0; i < donuts.length; i++) {
     donutContainer.innerHTML += `
 
-        <article class="donut">
-        <div class="slideshow">
+    <article class="donut">
+        <div class="slideshow" id="slideshow">
         <div class="images">
-            <img id="img1" class="img-1" src="${donuts[i].src1}" alt="" width="150" height="200" />
-            <img id="img2" class="img-2" src="${donuts[i].src2}" alt="" width="150" height="200" />
+            <img id="img1" class="img-1 donutImg-1-${i}"  src="${donuts[i].src1}" alt="${donuts[i].alt1}" width="100" height="150" />
+            <img id="img2" class="img-2 donutImg-2-${i}" src="${donuts[i].src2}" alt="${donuts[i].alt2}" width="100" height="150" />
         </div>
-        <div class="controls">
-        <button class="left" id="prevImage">
-          <span class="material-symbols-outlined">chevron_left</span>
+            <div class="controls">
+        <button class="left" id="prevImage" data-id="${i}">
+          <span  class="material-symbols-outlined">chevron_left</span>
         </button>
 
-        <button class="right" id="nextImage">
+        <button class="right" id="nextImage" data-id="${i}">
           <span class="material-symbols-outlined">chevron_right</span>
         </button>
+    
         <div class="indicator" id="indicatorDots"></div>
-        
-       
+        </div>
         <div class="donutInfo">
             
             <h2>${donuts[i].name}</h2>
@@ -209,27 +201,36 @@ function writeOutDonuts() {
             <button class="addToCart" data-id="${i}">Köp</button><br>
             <span class="category" >Kategori: <span class="category">${donuts[i].category}</span></span>
             
-            </div>
+        </div>
         </article>    
         `;
   }
 
-  // Minusknapp
+  // Decrese button
   document.querySelectorAll('button.minus').forEach(btn => {
     btn.addEventListener('click', updateDonutAmountMinus);
   });
-  // Plusknapp
+  // Increase button
   document.querySelectorAll('button.plus').forEach(btn => {
     btn.addEventListener('click', updateDonutAmountPlus);
   });
-  // Köp-Knapp
+  // Buy Button
   document.querySelectorAll('button.addToCart').forEach(btn => {
     btn.addEventListener('click', sendToCart);
+
+    // Slideshow buttons
+    document.querySelectorAll('button.right').forEach(nextBtn => {
+      nextBtn.addEventListener('click', nextImageBtn);
+    });
+    document.querySelectorAll('button.left').forEach(prevBtn => {
+      prevBtn.addEventListener('click', prevImage);
+    });
   });
 }
 
+
+// Function that uppdates increase amount
 function updateDonutAmountPlus(e) {
-  // funktion som plussar på munkar varje gånr vi trycker +
   const btnPlus = e.currentTarget.dataset.id;
   donuts[btnPlus].amount += 1;
 
@@ -238,8 +239,8 @@ function updateDonutAmountPlus(e) {
   writeOutDonuts();
 }
 
+// Function that uppdates decrease amount 
 function updateDonutAmountMinus(e) {
-  // funktion som t på munkar varje gånr vi trycker +
   const btnMinus = e.currentTarget.dataset.id;
 
   if (donuts[btnMinus].amount > 0) {
@@ -250,13 +251,13 @@ function updateDonutAmountMinus(e) {
   writeOutDonuts();
 }
 
+// Function that pushes the donut-object to a Shopcartlist
 function sendToCart(e) {
-  // funktion som när vi trcyker på köp så lägger vi till objekter från donut-listan till vår shoppingcart lista
   const addToCartBtn = e.currentTarget.dataset.id;
   const index = addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name);
 
+  // Object that pushes in to shopcartlist with the donut values
   const addedItem = {
-    // objektet som läggs till i vår shoppinglista med värdena från vår donutlista
     anyPrice: donuts[addToCartBtn].price,
     anyImg: donuts[addToCartBtn].src1,
     anyAlt: donuts[addToCartBtn].alt1,
@@ -264,21 +265,21 @@ function sendToCart(e) {
     anyAmount: donuts[addToCartBtn].amount,
     anySum: donuts[addToCartBtn].sum,
   };
+  // IF - the amount is 0 - do nothing
   if (donuts[addToCartBtn].amount == 0) {
-    // kollar så vi inte kan lägga till munkar med antal 0
     return;
   } else {
+      // IF- the donut already exist in the shopcartlist - add amount and sum
     if (index > -1) {
-      // om munken redan finns i shoppingkart så läggs värdet och summan på
       addShopCartList[index].anyAmount += donuts[addToCartBtn].amount;
       addShopCartList[index].anySum += donuts[addToCartBtn].sum;
-    } else {
-      addShopCartList.push(addedItem); // om inte munken redan finns så läggs den till på nytt
+    } else { // ELSE - add the donut to the list
+      addShopCartList.push(addedItem); 
     }
   }
-  /*printOutShopCartSymbol(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));*/
+
   printOutShopCart(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
-  setTimeout(clearValues, 500); // efter tryck på köp rensas värdena
+  setTimeout(clearValues, 500); 
   activateCheckoutSection();
 
   //UPPDATERAR totalt antal adderade donuts i varukorgen
@@ -295,6 +296,7 @@ function sendToCart(e) {
   document.querySelector('#shoppingCartTotalAmount').innerHTML = donutSumAddedShopCart;
 }
 
+// Function that clears the values for the donuts when clicking the buy-button
 function clearValues() {
   for (i = 0; i < donuts.length; i++) {
     donuts[i].amount = 0;
@@ -303,7 +305,144 @@ function clearValues() {
   writeOutDonuts();
 } 
 
-//VARUKORG
+
+/******************************************************************************
+ ******************************** SLIDESHOW **************************************
+ ******************************************************************************
+ */
+
+// Function that collects the Next image buttons-index
+function nextImageBtn(e) {
+  const nxtBtn = e.currentTarget.dataset.id;
+  nextImage(nxtBtn);
+}
+
+// Function that swaps images to the Next image
+function nextImage(nxtBtn) {
+  const donutImg1 = document.querySelectorAll(`.donutImg-1-${nxtBtn}`);
+  const donutImg2 = document.querySelectorAll(`.donutImg-2-${nxtBtn}`);
+
+  console.log(donutImg1);
+
+  if (donutImg2.style.opacity === 0) {
+  
+  donutImg2.style.opacity = '1';
+  
+  } else {
+  
+  // växla till bild1
+  
+  }
+  }
+  
+// Function that swaps images Previous image
+function prevImage() {
+  if (currentImageIndex - 1 < 0) {
+    currentImageIndex = donuts.length - 1;
+  } else {
+    currentImageIndex -= 1;
+  }
+
+  console.log('prevImage', currentImageIndex);
+}
+
+writeOutDonuts(); // Calling the functions to write out the donuts
+
+
+
+/******************************************************************************
+ ***************************THEME-TOGGLE***************************************
+ ******************************************************************************
+ */
+
+ const themeBtn = document.querySelector('#themeBtn');
+ themeBtn.addEventListener('click', toggleTheme);
+ 
+ function toggleTheme() {
+   themeBtn.classList.toggle('themeBtnMove');
+ 
+   if (themeBtn == document.querySelector('.themeBtnMove')) {
+     // DARK MODE - Till mörkt tema
+     document.body.style.backgroundColor = '#302f2a'; // bakgrund
+     document.body.style.color = '#f7f6f2'; // textfärg
+     document.querySelector('#shopCartColorTheme').style.color = 'white'; // shoppingcart
+ 
+     let menu = document.querySelectorAll('.menuBtnColorTheme'); // Hamburgarmenyn
+     menu.forEach(menu => {
+       menu.style.backgroundColor = 'white';
+     });
+ 
+     let header = document.querySelectorAll('.headerColorTheme'); // Header och footer
+     header.forEach(header => {
+       header.style.backgroundColor = '#572525';
+     });
+ 
+     let links = document.querySelectorAll('.allColorTheme'); // All textinnehåll med denna class
+     links.forEach(link => {
+       link.style.color = 'white';
+     });
+ 
+     let productCard = document.querySelectorAll('.productCard'); // Alla kategorier med denna class
+     productCard.forEach(card => {
+       card.style.backgroundColor = '#4b5947';
+     });
+ 
+     let munk = document.querySelectorAll('.munk'); // Alla produktkort med denna class
+     munk.forEach(donut => {
+       donut.style.backgroundColor = '#839183';
+     });
+   } else if (themeBtn != document.querySelector('.themeBtnMove')) {
+     // LIGHT MODE - tillbaka till original
+     document.body.style.backgroundColor = '#FBF2CF'; // bakgrundsfärg
+     document.body.style.color = 'black'; // Textfärg
+     document.querySelector('#shopCartColorTheme').style.color = 'black'; // shoppingcart
+ 
+     let menu = document.querySelectorAll('.menuBtnColorTheme'); // HamnurgarMenyn
+     menu.forEach(menu => {
+       menu.style.backgroundColor = 'black';
+     });
+ 
+     links = document.querySelectorAll('.allColorTheme'); // Ändrar färg till svart på allt med classen
+     links.forEach(link => {
+       link.style.color = 'black';
+     });
+ 
+     header = document.querySelectorAll('.headerColorTheme'); // Header och footer
+     header.forEach(header => {
+       header.style.backgroundColor = '#FA7070';
+     });
+ 
+     productCard = document.querySelectorAll('.productCard'); // Alla produktkort med denna class
+     productCard.forEach(card => {
+       card.style.backgroundColor = '#A1C298';
+     });
+ 
+     munk = document.querySelectorAll('.munk'); // Alla produktkort med denna class
+     munk.forEach(donut => {
+       donut.style.backgroundColor = '#C6EBC5';
+     });
+   }
+ }
+
+
+
+/******************************************************************************
+ ******************************** SHOPPINGCART ********************************
+ ******************************************************************************
+ */
+
+ //  shoppingCart open-close 
+const shoppingCart = document.querySelector('#shoppingCart');
+const sectionShoppingCart = document.querySelector('#sectionShoppingCart');
+const shoppingClose = document.querySelector('.shoppingAction');
+
+shoppingCart.addEventListener('click', toggleShoppingCartOpenState);
+shoppingClose.addEventListener('click', toggleShoppingCartOpenState);
+
+function toggleShoppingCartOpenState() {
+  sectionShoppingCart.classList.toggle('open');
+  emptyCart();
+}
 
 // FUNKTION när varukorg är tom
 function emptyCart() {
@@ -329,7 +468,6 @@ const removeShoppingCart = document.querySelector('#shoppingRemove');
 removeShoppingCart.addEventListener('click', emptyShoppingCart);
 function emptyShoppingCart() {
   addShopCartList = '';
-
 emptyCart();
 }*/
 
@@ -366,8 +504,8 @@ function printOutShopCart(index) {
     const j = e.currentTarget.dataset.id;
     if (i > -1) {
       addShopCartList.splice(j, 1);
-      //KODUPPREPNING från rad 285-295 varför funkar detta? varför fungerar det inte med att skriva ut addshoplist på rad 371 på nytt?
-      /*const donutAmountSubShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
+      //KODUPPREPNING från rad 285-295
+      const donutAmountSubShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
         return addShopCartList.anyAmount + previousValue;
       }, 0);
       document.querySelector('#shoppingCartTotalItems').innerHTML = donutAmountSubShopCart;
@@ -376,22 +514,23 @@ function printOutShopCart(index) {
       const donutSumSubShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
         return addShopCartList.anySum + previousValue;
       }, 0);
-      document.querySelector('#shoppingCartTotalAmount').innerHTML = donutSumSubShopCart;*/
-     
-      }
-      for (let i = 0; i < addShopCartList.length; i++) {
-        console.log(addShopCartList);
-        //skriv ut lista på nytt addshopcart list
-        printOutShopCart();
+      document.querySelector('#shoppingCartTotalAmount').innerHTML = donutSumSubShopCart;
     } 
-    
-    
+    printOutShopCart();
     emptyCart();
   }
-  
+
 }
 
-writeOutDonuts();
+
+
+
+
+/******************************************************************************
+ ******************************INPUT-FORM**************************************
+ ******************************************************************************
+ */
+
 
 // ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
 
@@ -434,78 +573,6 @@ function fakturaPaymentOpen(e) {
     cardPayment.classList.remove('paymentOpen');
   }
 }
-
-// THEME TOGGLE
-const themeBtn = document.querySelector('#themeBtn');
-themeBtn.addEventListener('click', toggleTheme);
-
-function toggleTheme() {
-  themeBtn.classList.toggle('themeBtnMove');
-
-  if (themeBtn == document.querySelector('.themeBtnMove')) {
-    // DARK MODE - Till mörkt tema
-    document.body.style.backgroundColor = '#302f2a'; // bakgrund
-    document.body.style.color = '#f7f6f2'; // textfärg
-    document.querySelector('#shopCartColorTheme').style.color = 'white'; // shoppingcart
-
-    let menu = document.querySelectorAll('.menuBtnColorTheme'); // Hamburgarmenyn
-    menu.forEach(menu => {
-      menu.style.backgroundColor = 'white';
-    });
-
-    let header = document.querySelectorAll('.headerColorTheme'); // Header och footer
-    header.forEach(header => {
-      header.style.backgroundColor = '#572525';
-    });
-
-    let links = document.querySelectorAll('.allColorTheme'); // All textinnehåll med denna class
-    links.forEach(link => {
-      link.style.color = 'white';
-    });
-
-    let productCard = document.querySelectorAll('.productCard'); // Alla kategorier med denna class
-    productCard.forEach(card => {
-      card.style.backgroundColor = '#4b5947';
-    });
-
-    let munk = document.querySelectorAll('.munk'); // Alla produktkort med denna class
-    munk.forEach(donut => {
-      donut.style.backgroundColor = '#839183';
-    });
-  } else if (themeBtn != document.querySelector('.themeBtnMove')) {
-    // LIGHT MODE - tillbaka till original
-    document.body.style.backgroundColor = '#FBF2CF'; // bakgrundsfärg
-    document.body.style.color = 'black'; // Textfärg
-    document.querySelector('#shopCartColorTheme').style.color = 'black'; // shoppingcart
-
-    let menu = document.querySelectorAll('.menuBtnColorTheme'); // HamnurgarMenyn
-    menu.forEach(menu => {
-      menu.style.backgroundColor = 'black';
-    });
-
-    links = document.querySelectorAll('.allColorTheme'); // Ändrar färg till svart på allt med classen
-    links.forEach(link => {
-      link.style.color = 'black';
-    });
-
-    header = document.querySelectorAll('.headerColorTheme'); // Header och footer
-    header.forEach(header => {
-      header.style.backgroundColor = '#FA7070';
-    });
-
-    productCard = document.querySelectorAll('.productCard'); // Alla produktkort med denna class
-    productCard.forEach(card => {
-      card.style.backgroundColor = '#A1C298';
-    });
-
-    munk = document.querySelectorAll('.munk'); // Alla produktkort med denna class
-    munk.forEach(donut => {
-      donut.style.backgroundColor = '#C6EBC5';
-    });
-  }
-}
-
-// VALIDERING AV FORMULÄR
 
 //get form inputs with queryselector
 const formOrderInputs = Array.from(document.querySelector('.formOrder').querySelectorAll('input'));
@@ -647,11 +714,13 @@ function removeError(e) {
   e.target.parentElement.querySelector('.errorMessage').innerHTML = '';
 }
 
-/// SORTERA EFTER
-/**
- * När vi trycker på symbol
- * Ska munkarna sorteras
+
+/******************************************************************************
+ ********************************SORT-BY***************************************
+ ******************************************************************************
  */
+
+ // Function that writes out the HTML
 
 function writeOutSortProducts() {
   let sortContainer = document.querySelector('#sortProducts');
@@ -678,34 +747,32 @@ function writeOutSortProducts() {
   </ul>
   <div id="sortByHeading"></div>`;
 
-  // Deklarerar variablar för sortera
+  // Declare variables for the HTML 
   const sortByName = document.querySelector('#sortByName');
   const sortByGrade = document.querySelector('#sortByGrade');
   const sortByPrice = document.querySelector('#sortByPrice');
   const sortByCategory = document.querySelector('#sortByCategory');
 
-  const sortByHeading = document.querySelector('#sortByheading');
+  let sortByHeading = document.querySelector('#sortByheading');
 
-  // Lägger till knapptryck på knapparna
+  //  Adding eventlisteners to buttons
   sortByName.addEventListener('click', sortByNameBtn);
   sortByGrade.addEventListener('click', sortByGradeBtn);
   sortByPrice.addEventListener('click', sortByPriceBtn);
   sortByCategory.addEventListener('click', sortByCategoryBtn);
 }
-writeOutSortProducts();
 
 let nameSort = true;
 let gradeSort = true;
 let priceSort = true;
 let categorySort = true;
 
-// funktioner för sortera efter
+// Functions for Sort-by
 
 function sortByNameBtn() {
   sortByHeading.innerHTML = `
   <p>Sorterar efter Namn</p>
   `;
-
   if (nameSort) {
     donuts.sort((a, b) => a.name < b.name);
     nameSort = false;
@@ -765,5 +832,7 @@ function sortByCategoryBtn() {
     writeOutDonuts();
   }
 }
-
 writeOutDonuts();
+writeOutSortProducts();
+
+

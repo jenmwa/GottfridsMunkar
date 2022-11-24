@@ -153,7 +153,8 @@ header {
   margin-bottom: 1rem;
   display: none;
 }
-#shoppingRemove.open {
+
+.shoppingRemove.open {
 display: block;
 }
 
@@ -223,21 +224,21 @@ display: block;
     align-items: center;
   }
 
-  .cartTotal {
-    width: 100%;
-  }
+.cartTotal {
+  width: 100%;
+}
 
-  .cartSubtotal {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #202020;
-  }
+.cartSubtotal {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #202020;
+}
 
-  .cartItems {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #202020;
-  }
+.cartItems {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #202020;
+}
 
   .shoppingCartTotalAmount {
     font-size: 2rem;
@@ -247,28 +248,28 @@ display: block;
   .checkoutLabel {
     margin-top: 1rem;
 
-    input {
-      margin: 0.5rem;
-    }
-
-    button {
-      cursor: pointer;
-    }
+  input {
+    margin: 0.5rem;
   }
 
-  .checkoutButton {
-    margin: 1rem 0;
-    width: 90%;
-    height: 50px;
-    border: 1px solid #202020;
-    box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
-    background: $specialBeige;
+  button {
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #202020;
-    text-transform: uppercase;
   }
+}
+
+.checkoutButton {
+  margin: 1rem 0;
+  width: 90%;
+  height: 50px;
+  border: 1px solid #202020;
+  box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+  background: $specialBeige;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #202020;
+  text-transform: uppercase;
+}
 
   .checkoutButton:hover {
     box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
@@ -444,27 +445,84 @@ input.error {
 /*************PRODUKTKORT*************/
 
 .donutContainer {
+  $padding: 8px;
+
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  margin: auto;
+  width: 90%;
   padding: 50px;
   background-color: $specialGreen;
 
+  h2 {
+    margin: 3px;
+  }
+  .slideshow {
+    width: 100%;
+    height: auto;
+  }
+
   .images {
-    display: flex;
-    flex-direction: row;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+
+    img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: opacity 1s ease;
+      outline: 1px solid black;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    .img-2{
+      opacity: 0;
+    }
+  }
+  
+  .left,
+  .right {
+    min-width: 35px;
+    min-height: 35px;
+    cursor: pointer;
+    position: relative;
+    top: 100px;
+    transform: translateY(-50%);
+    border: 0;
+    background: transparent;
+    color: transparentize(#000000, 0.3);
+    transition: color 0.3s ease-in-out;
+    &:hover {
+      color: #000;
+    }
+    &.left {
+      left: 0;
+    }
+    &.right {
+      right: -190px;
+    }
   }
 
   .donut {
     display: flex;
     flex-direction: row;
+    width: 300px;
+    height: 500px;
     background-color: $specialLightGreen;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: auto;
+    margin-bottom: 40px;
     padding: 20px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 
     .donutInfo {
       text-align: center;
+      position: relative;
+      top: 240px;
 
       .category {
         font-size: 0.9rem;
