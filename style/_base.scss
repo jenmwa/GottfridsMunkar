@@ -151,6 +151,11 @@ header {
 .shoppingRemove {
   margin-left: 1.1rem;
   margin-bottom: 1rem;
+  display: none;
+}
+
+.shoppingRemove.open {
+  display: block;
 }
 
 .shoppingAction:hover,
@@ -219,21 +224,21 @@ header {
     align-items: center;
   }
 
-.cartTotal {
-  width: 100%;
-}
+  .cartTotal {
+    width: 100%;
+  }
 
-.cartSubtotal {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #202020;
-}
+  .cartSubtotal {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #202020;
+  }
 
-.cartItems {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #202020;
-}
+  .cartItems {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #202020;
+  }
 
   .shoppingCartTotalAmount {
     font-size: 2rem;
@@ -243,28 +248,28 @@ header {
   .checkoutLabel {
     margin-top: 1rem;
 
-  input {
-    margin: 0.5rem;
+    input {
+      margin: 0.5rem;
+    }
+
+    button {
+      cursor: pointer;
+    }
   }
 
-  button {
+  .checkoutButton {
+    margin: 1rem 0;
+    width: 90%;
+    height: 50px;
+    border: 1px solid #202020;
+    box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+    background: $specialBeige;
     cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #202020;
+    text-transform: uppercase;
   }
-}
-
-.checkoutButton {
-  margin: 1rem 0;
-  width: 90%;
-  height: 50px;
-  border: 1px solid #202020;
-  box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
-  background: $specialBeige;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #202020;
-  text-transform: uppercase;
-}
 
   .checkoutButton:hover {
     box-shadow: 0 3px 15px rgb(0 0 0 / 0.8);
@@ -475,11 +480,11 @@ input.error {
       outline: 1px solid black;
       box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
     }
-    .img-2{
+    .img-2 {
       opacity: 0;
     }
   }
-  
+
   .left,
   .right {
     min-width: 35px;
