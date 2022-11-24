@@ -509,7 +509,9 @@ input.error {
     position: relative;
     top: 250px;
     color: black;
-    padding-bottom: $padding;
+    padding-bottom: $padding *2;
+    margin-left: 70px;
+    
   }
 
   .left,
@@ -540,7 +542,7 @@ input.error {
     display: flex;
     flex-direction: row;
     width: 300px;
-    height: 500px;
+    height: 550px;
     background-color: $specialLightGreen;
     margin: auto;
     margin-bottom: 40px;

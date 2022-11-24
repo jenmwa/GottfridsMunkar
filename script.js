@@ -21,7 +21,7 @@ const donuts = [
     category: 'Julglädje',
     sum: 0,
     images: ['img/donuts_img/brown.jpg', 'img/smaker_img/pepparkaka.jpg'],
-    alt: ['vaniljmunk med pepparkakafrosting','pepparkaka'],
+    alt: ['vaniljmunk med pepparkakafrosting', 'pepparkaka'],
   },
   {
     name: 'Julglädje',
@@ -61,7 +61,7 @@ const donuts = [
     category: 'Klassiker',
     sum: 0,
     images: ['img/donuts_img/brown.jpg', 'img/smaker_img/choklad.jpg'],
-    alt: ['sötlakrits', 'choklad',],
+    alt: ['sötlakrits', 'choklad'],
   },
   {
     name: 'Lakrits',
@@ -162,13 +162,11 @@ function writeOutDonuts() {
         </div>
         </article>    
         `;
-       
   }
 
   // Adding Evenlisternes on BTN's
   addEvenlisternes();
   createDots();
- 
 }
 
 function addEvenlisternes() {
@@ -194,20 +192,18 @@ function addEvenlisternes() {
   });
 }
 
-
-
 // Function for writing out star rating
 function createDots() {
+  // Collecting all html in one list
   const dotsContainer = document.querySelectorAll('.indicator');
-  dotsContainer.forEach(dot => {
-  for (let i = 0; i < donuts.length; i++)
   
+  for (let i = 0; i < donuts.length; i++) {
+    const ratingNumber = donuts[i].rating;  // variable for donutrating
+    const stars = '<span class="dot" ><i class="fa-solid fa-star"></i></span>'; // variable for stars
 
-      dot.innerHTML += `<span class="dot" ><i class="fa-solid fa-star"></i></span>`;
-
-});
+    dotsContainer[i].innerHTML += stars.repeat(ratingNumber); // repeating amount of stars in rating.
+  }
 }
-
 
 // Function that uppdates increase amount
 function updateDonutAmountPlus(e) {
@@ -793,5 +789,4 @@ function sortByCategoryBtn() {
   }
 }
 
-writeOutDonuts();
 writeOutSortProducts();
