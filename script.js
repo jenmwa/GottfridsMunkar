@@ -489,11 +489,10 @@ function activateCheckoutSection() {
   document.querySelector('#shoppingCartTotalItems').innerHTML = donutAmountAddedShopCart;
   document.querySelector('#amountChoosen').innerHTML = donutAmountAddedShopCart;
   if (donutAmountAddedShopCart == 0){ // Added - IF there is product background color changes.
-    document.querySelector('#amountChoosen').style.backgroundColor = '#fbf2cf';
-    document.querySelector('#amountChoosen').style.boxShadow = 'none';
+    document.querySelector('#amountChoosen').classList.remove('colorsOn')
+   
   } else {
-    document.querySelector('#amountChoosen').style.backgroundColor = '#c6ebc5';
-    document.querySelector('#amountChoosen').style.boxShadow = '0 3px 15px #000';
+    document.querySelector('#amountChoosen').classList.add('colorsOn')
    
   }
 

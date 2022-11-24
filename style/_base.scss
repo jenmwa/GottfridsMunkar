@@ -65,6 +65,11 @@ header {
     border-radius: 50%;
     @include getCentered;
   }
+  .colorsOn{
+    background-color: $specialGreen; 
+    box-shadow: 0 3px 15px #000;
+  
+  }
 }
 
 #shoppingCart:hover i {
@@ -96,6 +101,7 @@ header {
 .hamburgerMenu span:nth-child(3) {
   top: 5px;
 }
+
 
 /*************VARUKORG*************/
 
