@@ -372,70 +372,60 @@ writeOutDonuts(); // Calling the functions to write out the donuts
  ******************************************************************************
  */
 
+ const moving = document.querySelector('.themeBtnMove');
 const themeBtn = document.querySelector('#themeBtn');
 themeBtn.addEventListener('click', toggleTheme);
 
 function toggleTheme() {
   themeBtn.classList.toggle('themeBtnMove');
 
-  if (themeBtn == document.querySelector('.themeBtnMove')) {
+  if (themeBtn == moving) {
     // DARK MODE - Till mörkt tema
     document.body.style.backgroundColor = '#302f2a'; // bakgrund
     document.body.style.color = '#f7f6f2'; // textfärg
     document.querySelector('#shopCartColorTheme').style.color = 'white'; // shoppingcart
 
-    let menu = document.querySelectorAll('.menuBtnColorTheme'); // Hamburgarmenyn
-    menu.forEach(menu => {
+    document.querySelectorAll('.menuBtnColorTheme').forEach(menu => {// hamburgarmeny
       menu.style.backgroundColor = 'white';
     });
-
-    let header = document.querySelectorAll('.headerColorTheme'); // Header och footer
-    header.forEach(header => {
+    document.querySelectorAll('.headerColorTheme').forEach(header => { // header och footer
       header.style.backgroundColor = '#572525';
     });
 
-    let links = document.querySelectorAll('.allColorTheme'); // All textinnehåll med denna class
-    links.forEach(link => {
+    document.querySelectorAll('.allColorTheme').forEach(link => { // All textinnehåll med denna class
       link.style.color = 'white';
     });
 
-    let productCard = document.querySelectorAll('.productCard'); // Alla kategorier med denna class
-    productCard.forEach(card => {
+    document.querySelectorAll('.productCard').forEach(card => { // Alla kategorier med denna class
       card.style.backgroundColor = '#4b5947';
     });
 
-    let munk = document.querySelectorAll('.munk'); // Alla produktkort med denna class
-    munk.forEach(donut => {
+    document.querySelectorAll('.donut').forEach(donut => {  // Alla produktkort med denna class
       donut.style.backgroundColor = '#839183';
     });
-  } else if (themeBtn != document.querySelector('.themeBtnMove')) {
+  } else if (themeBtn != moving) {
     // LIGHT MODE - tillbaka till original
     document.body.style.backgroundColor = '#FBF2CF'; // bakgrundsfärg
     document.body.style.color = 'black'; // Textfärg
     document.querySelector('#shopCartColorTheme').style.color = 'black'; // shoppingcart
 
-    let menu = document.querySelectorAll('.menuBtnColorTheme'); // HamnurgarMenyn
-    menu.forEach(menu => {
+    document.querySelectorAll('.menuBtnColorTheme').forEach(menu => { // HamnurgarMenyn
       menu.style.backgroundColor = 'black';
     });
 
-    links = document.querySelectorAll('.allColorTheme'); // Ändrar färg till svart på allt med classen
-    links.forEach(link => {
+    document.querySelectorAll('.allColorTheme').forEach(link => {// Ändrar färg till svart på allt med classen
       link.style.color = 'black';
     });
 
-    header = document.querySelectorAll('.headerColorTheme'); // Header och footer
-    header.forEach(header => {
+    document.querySelectorAll('.headerColorTheme').forEach(header => {// Header och footer
       header.style.backgroundColor = '#FA7070';
     });
 
-    productCard = document.querySelectorAll('.productCard'); // Alla produktkort med denna class
-    productCard.forEach(card => {
+    document.querySelectorAll('.productCard').forEach(card => {  // Alla produktkort med denna class
       card.style.backgroundColor = '#A1C298';
     });
 
-    munk = document.querySelectorAll('.munk'); // Alla produktkort med denna class
-    munk.forEach(donut => {
+    munk = document.querySelectorAll('.donut').forEach(donut => { // Alla produktkort med denna class
       donut.style.backgroundColor = '#C6EBC5';
     });
   }
