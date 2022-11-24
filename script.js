@@ -220,10 +220,10 @@ function addEvenlisternes(){
 
     // Slideshow buttons
     document.querySelectorAll('button.right').forEach(nextBtn => {
-      nextBtn.addEventListener('click', nextImageBtn);
+      nextBtn.addEventListener('click', nextImage);
     });
     document.querySelectorAll('button.left').forEach(prevBtn => {
-      prevBtn.addEventListener('click', prevImageBtn);
+      prevBtn.addEventListener('click', prevImage);
     });
   });
 }
@@ -318,14 +318,10 @@ function clearValues() {
  ******************************** SLIDESHOW **************************************
  ******************************************************************************
  */
-// Function that collects the Next image buttons-index
-function nextImageBtn(e) {
-  const nxtBtn = e.currentTarget.dataset.id;
-  nextImage(nxtBtn);
-}
 
 // Function that swaps images to the Next image
-function nextImage(nxtBtn) {
+function nextImage(e) {
+  const nxtBtn = e.currentTarget.dataset.id;
   const donutImg1 = document.querySelector(`.donutImg-1-${nxtBtn}`);
   const donutImg2 = document.querySelector(`.donutImg-2-${nxtBtn}`);
 
@@ -359,15 +355,9 @@ function nextImage(nxtBtn) {
 }
   
 
-  
-// Function that swaps images Previous image
-function prevImageBtn(e) {
-  const nxtBtn = e.currentTarget.dataset.id;
-  nextImage(nxtBtn);
-}
-
 // Function that swaps images to the Next image
-function prevImage(nxtBtn) {
+function prevImage(e) {
+  const nxtBtn = e.currentTarget.dataset.id;
   const donutImg1 = document.querySelector(`.donutImg-1-${nxtBtn}`);
   const donutImg2 = document.querySelector(`.donutImg-2-${nxtBtn}`);
 
@@ -399,7 +389,6 @@ function prevImage(nxtBtn) {
     donutImg2.style.opacity = 0;
   }
 }
-
 
 
 writeOutDonuts(); // Calling the functions to write out the donuts
