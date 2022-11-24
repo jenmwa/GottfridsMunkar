@@ -146,9 +146,8 @@ function writeOutDonuts() {
         <button class="right" id="nextImage" data-id="${i}">
           <span class="material-symbols-outlined">chevron_right</span>
         </button>
-        <div class="indicator" id="indicatorDots">${donuts[i].rating}
         </div>
-        </div>
+        <div class="indicator" id="indicatorDots"></div>
         <div class="donutInfo">
             
             <h2>${donuts[i].name}</h2>
@@ -163,14 +162,13 @@ function writeOutDonuts() {
         </div>
         </article>    
         `;
+       
   }
-
-  //<img id="img2" class="img-2 donutImg-2-${i}" src="${donuts[i].src2}" alt="${donuts[i].alt2}" width="100" height="150" />
 
   // Adding Evenlisternes on BTN's
   addEvenlisternes();
-  // Writes out star rating.
-  createDots();
+
+ 
 }
 
 function addEvenlisternes() {
@@ -196,13 +194,20 @@ function addEvenlisternes() {
   });
 }
 
+
+
 // Function for writing out star rating
 function createDots() {
-  document.querySelectorAll('#indicatorDots').forEach(rating => {
-    rating.innerHTML += `
-    <i class="fa-solid fa-star"></i>`;
-  });
+  const dotsContainer = document.querySelectorAll('.indicator');
+  dotsContainer.forEach(dot => {
+  for (let i = 0; i < donuts.length; i++)
+  
+
+      dot.innerHTML += `<span class="dot" ><i class="fa-solid fa-star"></i></span>`;
+
+});
 }
+
 
 // Function that uppdates increase amount
 function updateDonutAmountPlus(e) {
@@ -280,7 +285,6 @@ function nextImage(e) {
 
   const donutImgs = donuts[index].images;
   const altImg = donuts[index].alt;
-  console.log(altImg)
 
   if (picContainer.getAttribute('src') === donutImgs[0]) {
     picContainer.setAttribute('src', donutImgs[1]);
@@ -791,3 +795,4 @@ function sortByCategoryBtn() {
 
 writeOutDonuts();
 writeOutSortProducts();
+createDots();
