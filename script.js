@@ -19,6 +19,10 @@ function toggleShoppingCartOpenState() {
  ******************************************************************************
  */
 
+    // Declare variables
+
+// Grabbing the container from HTML to write out the donuts in.
+const donutContainer = document.querySelector('#donutContainer');
 
  // List with objects of the donuts
 const donuts = [
@@ -29,8 +33,6 @@ const donuts = [
     amount: 0,
     category: 'Julglädje',
     sum: 0,
-    totalAmount: 0,
-    totalSum: 0,
     src1: 'img/donuts_img/brown.jpg',
     alt1: 'vaniljmunk med pepparkakafrosting',
     src2: 'img/smaker_img/pepparkaka.jpg',
@@ -43,8 +45,6 @@ const donuts = [
     amount: 0,
     category: 'Julglädje',
     sum: 0,
-    totalAmount: 0,
-    totalSum: 0,
     src1: 'img/donuts_img/red.jpg',
     alt1: 'vaniljmunk med frosting med smak av nejlika',
     src2: 'img/smaker_img/nejlika.jpg',
@@ -57,8 +57,6 @@ const donuts = [
     amount: 0,
     category: 'Julglädje',
     sum: 0,
-    totalAmount: 0,
-    totalSum: 0,
     src1: 'img/donuts_img/yellow.jpg',
     alt1: 'vaniljmunk med ingefärsfrosting',
     src2: 'img/smaker_img/ingefara.jpg',
@@ -71,8 +69,6 @@ const donuts = [
     amount: 0,
     category: 'Klassiker',
     sum: 0,
-    totalAmount: 0,
-    totalSum: 0,
     src1: 'img/donuts_img/white.jpg',
     alt: 'vaniljmunk med vaniljfrosting',
     src2: 'img/smaker_img/vanilj.jpg',
@@ -85,8 +81,6 @@ const donuts = [
     amount: 0,
     category: 'Klassiker',
     sum: 0,
-    totalAmount: 0,
-    totalSum: 0,
     src1: 'img/donuts_img/brown.jpg',
     alt1: 'vaniljmunk med chokladglaze',
     src2: 'img/smaker_img/choklad.jpg',
@@ -99,8 +93,6 @@ const donuts = [
     amount: 0,
     category: 'Klassiker',
     sum: 0,
-    totalAmount: 0,
-    totalSum: 0,
     src1: 'img/donuts_img/black.jpg',
     alt1: 'vaniljmunk med lakritsfrosting',
     src2: 'img/smaker_img/lakrits.jpg',
@@ -113,8 +105,6 @@ const donuts = [
     amount: 0,
     category: 'Klassiker',
     sum: 0,
-    totalAmount: 0,
-    totalSum: 0,
     src1: 'img/donuts_img/orange.jpg',
     alt1: 'vaniljmunk med apelsinsmak',
     src2: 'img/smaker_img/apelsin.jpg',
@@ -127,8 +117,6 @@ const donuts = [
     amount: 0,
     category: 'Klassiker',
     sum: 0,
-    totalAmount: 0,
-    totalSum: 0,
     src1: 'img/donuts_img/pink.jpg',
     alt1: 'vaniljmunk med hallonfrosting',
     src2: 'img/smaker_img/hallon.jpg',
@@ -141,8 +129,6 @@ const donuts = [
     amount: 0,
     category: 'Limited Edition',
     sum: 0,
-    totalAmount: 0,
-    totalSum: 0,
     src1: 'img/donuts_img/purple.jpg',
     alt1: 'vaniljmunk med champagnefrosting',
     src2: 'img/smaker_img/champagne.jpg',
@@ -155,8 +141,6 @@ const donuts = [
     amount: 0,
     category: 'Limited Edition',
     sum: 0,
-    totalAmount: 0,
-    totalSum: 0,
     src1: 'img/donuts_img/blue.jpg',
     alt1: 'vaniljmunk med frosting med smak av godiset fizzypop',
     src2: 'img/smaker_img/fizzypop.jpg',
@@ -167,8 +151,6 @@ const donuts = [
     price: 29,
     rating: 5,
     amount: 0,
-    totalAmount: 0,
-    totalSum: 0,
     category: 'Limited Edition',
     sum: 0,
     src1: 'img/donuts_img/green2.jpg',
@@ -177,8 +159,6 @@ const donuts = [
     alt2: 'ekologisk päronsplitt',
   },
 ];
-// Grabbing the container from HTML to write out the donuts in.
-const donutContainer = document.querySelector('#donutContainer');
 
 // Function that writes out the donuts in HTML
 function writeOutDonuts() {
@@ -193,7 +173,6 @@ function writeOutDonuts() {
             <img id="img1" class="img-1 donutImg-1-${i}"  src="${donuts[i].src1}" alt="${donuts[i].alt1}" width="100" height="150" />
             <img id="img2" class="img-2 donutImg-2-${i}" src="${donuts[i].src2}" alt="${donuts[i].alt2}" width="100" height="150" />
         </div>
-        
             <div class="controls">
         <button class="left" id="prevImage" data-id="${i}">
           <span  class="material-symbols-outlined">chevron_left</span>
@@ -204,8 +183,6 @@ function writeOutDonuts() {
         </button>
         <div class="indicator" id="indicatorDots">${donuts[i].rating}
         </div>
-    
-        
         </div>
         <div class="donutInfo">
             
@@ -222,7 +199,13 @@ function writeOutDonuts() {
         </article>    
         `;
   }
+  // Adding Evenlisternes on BTN's
+  addEvenlisternes();
+  // Writes out star rating.
+  createDots(); 
+}
 
+function addEvenlisternes(){
   // Decrese button
   document.querySelectorAll('button.minus').forEach(btn => {
     btn.addEventListener('click', updateDonutAmountMinus);
@@ -243,9 +226,9 @@ function writeOutDonuts() {
       prevBtn.addEventListener('click', prevImageBtn);
     });
   });
-  createDots();
 }
 
+ // Function for writing out star rating
 function createDots() {
   document.querySelectorAll('#indicatorDots').forEach(rating =>{
     rating.innerHTML += `
@@ -282,15 +265,7 @@ function sendToCart(e) {
   const addToCartBtn = e.currentTarget.dataset.id;
   const index = addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name);
 
-  // Object that pushes in to shopcartlist with the donut values
-  const addedItem = {
-    anyPrice: donuts[addToCartBtn].price,
-    anyImg: donuts[addToCartBtn].src1,
-    anyAlt: donuts[addToCartBtn].alt1,
-    anyName: donuts[addToCartBtn].name,
-    anyAmount: donuts[addToCartBtn].amount,
-    anySum: donuts[addToCartBtn].sum,
-  };
+
   // IF - the amount is 0 - do nothing
   if (donuts[addToCartBtn].amount == 0) {
     return;
@@ -300,7 +275,14 @@ function sendToCart(e) {
       addShopCartList[index].anyAmount += donuts[addToCartBtn].amount;
       addShopCartList[index].anySum += donuts[addToCartBtn].sum;
     } else { // ELSE - add the donut to the list
-      addShopCartList.push(addedItem); 
+      addShopCartList.push({
+        anyPrice: donuts[addToCartBtn].price,
+        anyImg: donuts[addToCartBtn].src1,
+        anyAlt: donuts[addToCartBtn].alt1,
+        anyName: donuts[addToCartBtn].name,
+        anyAmount: donuts[addToCartBtn].amount,
+        anySum: donuts[addToCartBtn].sum,
+    }); 
     }
   }
 
