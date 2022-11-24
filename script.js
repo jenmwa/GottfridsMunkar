@@ -466,8 +466,6 @@ function activateCheckoutSection() {
 }
 
 
-
-
 // Function print items shoppingCart
 function printOutShopCart(index) {
   document.querySelector('#shopCartContent').innerHTML = '';
