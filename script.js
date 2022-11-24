@@ -39,7 +39,7 @@ const donuts = [
   {
     name: 'Julglädje',
     price: 20,
-    rating: 2.5,
+    rating: 2,
     amount: 0,
     category: 'Julglädje',
     sum: 0,
@@ -202,7 +202,7 @@ function writeOutDonuts() {
         <button class="right" id="nextImage" data-id="${i}">
           <span class="material-symbols-outlined">chevron_right</span>
         </button>
-        <div class="indicator" id="indicatorDots">
+        <div class="indicator" id="indicatorDots">${donuts[i].rating}
         </div>
     
         
@@ -237,13 +237,22 @@ function writeOutDonuts() {
 
     // Slideshow buttons
     document.querySelectorAll('button.right').forEach(nextBtn => {
-      nextBtn.addEventListener('click', nextImage);
+      nextBtn.addEventListener('click', nextImageBtn);
     });
     document.querySelectorAll('button.left').forEach(prevBtn => {
-      prevBtn.addEventListener('click', prevImage);
+      prevBtn.addEventListener('click', prevImageBtn);
     });
   });
+  createDots();
 }
+
+function createDots() {
+  document.querySelectorAll('#indicatorDots').forEach(rating =>{
+    rating.innerHTML += `
+    <i class="fa-solid fa-star"></i>`;
+  })
+      
+  }
 
 
 // Function that uppdates increase amount
@@ -327,60 +336,91 @@ function clearValues() {
  ******************************** SLIDESHOW **************************************
  ******************************************************************************
  */
+// Function that collects the Next image buttons-index
+function nextImageBtn(e) {
+  const nxtBtn = e.currentTarget.dataset.id;
+  nextImage(nxtBtn);
+}
 
 // Function that swaps images to the Next image
-function nextImage(e) {
-  const nxtBtn = e.currentTarget.dataset.id;
-  // Collecting img from HTML document with nxtBtn-index
-  const donutImg1 = document.querySelectorAll(`.donutImg-1-${nxtBtn}`);
-  const donutImg2 = document.querySelectorAll(`.donutImg-2-${nxtBtn}`);
-  
-  
-  if (donutImg2.style.opacity == 0) {
-  
-  donutImg1.style.opacity = '1';
-  
-  } else {
-  // växla till bild1
+function nextImage(nxtBtn) {
+  const donutImg1 = document.querySelector(`.donutImg-1-${nxtBtn}`);
+  const donutImg2 = document.querySelector(`.donutImg-2-${nxtBtn}`);
+
+  // Kolla om style-attributet är satt, eller om det är tomt
+  let donutImg1Opacity = donutImg1.style.opacity;
+  let donutImg2Opacity = donutImg2.style.opacity;
+
+  // Om det är tomt på ovan rader…
+  // Vi kan inte komma åt "opacity" genom ".style" initialt, för elementet har inget style-attribut,
+  // utan stylen är applicerad via CSS och då måste vi använda getComputedStyle, se https://stackoverflow.com/a/9444783
+  // MEN om vi har satt style-attributet, så måste vi kolla .style…
+  // Egentligen bättre att jobba med klasser, "hidden" resp. ta bort "hidden", så slipper man denna "workaround"
+  // dvs. använda element.classList.toggle('hidden')
+  if (donutImg1Opacity === '') {
+    donutImg1Opacity = getComputedStyle(donutImg1).opacity;
   }
 
-writeOutDonuts();
+  if (donutImg2Opacity === '') {
+    donutImg2Opacity = getComputedStyle(donutImg2).opacity;
+  }
+
+  console.log(donutImg1Opacity, donutImg2Opacity);
+
+  if (donutImg1Opacity == 0) {
+    donutImg2.style.opacity = 0;
+    donutImg1.style.opacity = 1;
+  } else {
+    donutImg2.style.opacity = 1;
+    donutImg1.style.opacity = 0;
+  }
 }
+  
+
   
 // Function that swaps images Previous image
-function prevImage(e) {
-  const prevBtn = e.currentTarget.dataset.id;
-  // Collecting img from HTML document with nxtBtn-index
-  const donutImg1 = document.querySelectorAll(`.donutImg-1-${prevBtn}`);
-  const donutImg2 = document.querySelectorAll(`.donutImg-2-${prevBtn}`);
-  console.log(prevBtn)
-  
-  if (donutImg1.style.opacity === 0) {
-  
-  donutImg2.style.opacity = '1';
-  
-  } else {
-  
-  // växla till bild1
-  
+function prevImageBtn(e) {
+  const nxtBtn = e.currentTarget.dataset.id;
+  nextImage(nxtBtn);
+}
+
+// Function that swaps images to the Next image
+function prevImage(nxtBtn) {
+  const donutImg1 = document.querySelector(`.donutImg-1-${nxtBtn}`);
+  const donutImg2 = document.querySelector(`.donutImg-2-${nxtBtn}`);
+
+  // Kolla om style-attributet är satt, eller om det är tomt
+  let donutImg1Opacity = donutImg1.style.opacity;
+  let donutImg2Opacity = donutImg2.style.opacity;
+
+  // Om det är tomt på ovan rader…
+  // Vi kan inte komma åt "opacity" genom ".style" initialt, för elementet har inget style-attribut,
+  // utan stylen är applicerad via CSS och då måste vi använda getComputedStyle, se https://stackoverflow.com/a/9444783
+  // MEN om vi har satt style-attributet, så måste vi kolla .style…
+  // Egentligen bättre att jobba med klasser, "hidden" resp. ta bort "hidden", så slipper man denna "workaround"
+  // dvs. använda element.classList.toggle('hidden')
+  if (donutImg2Opacity === '') {
+    donutImg2Opacity = getComputedStyle(donutImg2).opacity;
   }
-  
+
+  if (donutImg1Opacity === '') {
+    donutImg1Opacity = getComputedStyle(donutImg1).opacity;
+  }
+
+  console.log(donutImg1Opacity, donutImg2Opacity);
+
+  if (donutImg1Opacity == 0) {
+    donutImg1.style.opacity = 0;
+    donutImg2.style.opacity = 1;
+  } else {
+    donutImg1.style.opacity = 1;
+    donutImg2.style.opacity = 0;
+  }
 }
 
-function createDots() {
-  document.querySelectorAll('.indicator').forEach(rating => {
-    for (let i = 0; i < donuts[i].rating; ){
-    rating.innerHTML += `
-    <i class="fa-solid fa-star"></i>`;
-    }
-  });
-
-  
-}
 
 
 writeOutDonuts(); // Calling the functions to write out the donuts
-
 
 
 /******************************************************************************
@@ -825,5 +865,6 @@ function sortByCategoryBtn() {
 }
 writeOutDonuts();
 writeOutSortProducts();
-createDots();
+
+
 
