@@ -5,13 +5,12 @@ let addShopCartList = []; // Lista för munkar som ska till varukorgen
  ******************************************************************************
  */
 
-
-    // Declare variables
+// Declare variables
 
 // Grabbing the container from HTML to write out the donuts in.
 const donutContainer = document.querySelector('#donutContainer');
 
- // List with objects of the donuts
+// List with objects of the donuts
 
 const donuts = [
   {
@@ -21,9 +20,8 @@ const donuts = [
     amount: 0,
     category: 'Julglädje',
     sum: 0,
-    src1: 'img/donuts_img/brown.jpg',
+    images: ['img/donuts_img/brown.jpg', 'img/smaker_img/pepparkaka.jpg'],
     alt1: 'vaniljmunk med pepparkakafrosting',
-    src2: 'img/smaker_img/pepparkaka.jpg',
     alt2: 'pepparkaka',
   },
   {
@@ -33,9 +31,8 @@ const donuts = [
     amount: 0,
     category: 'Julglädje',
     sum: 0,
-    src1: 'img/donuts_img/red.jpg',
+    images: ['img/donuts_img/red.jpg', 'img/smaker_img/nejlika.jpg'],
     alt1: 'vaniljmunk med frosting med smak av nejlika',
-    src2: 'img/smaker_img/nejlika.jpg',
     alt2: 'Kryddnejlikor',
   },
   {
@@ -45,9 +42,8 @@ const donuts = [
     amount: 0,
     category: 'Julglädje',
     sum: 0,
-    src1: 'img/donuts_img/yellow.jpg',
+    images: ['img/donuts_img/yellow.jpg', 'img/smaker_img/ingefara.jpg'],
     alt1: 'vaniljmunk med ingefärsfrosting',
-    src2: 'img/smaker_img/ingefara.jpg',
     alt2: 'ingefära',
   },
   {
@@ -57,9 +53,8 @@ const donuts = [
     amount: 0,
     category: 'Klassiker',
     sum: 0,
-    src1: 'img/donuts_img/white.jpg',
+    images: ['img/donuts_img/white.jpg', 'img/smaker_img/vanilj.jpg'],
     alt: 'vaniljmunk med vaniljfrosting',
-    src2: 'img/smaker_img/vanilj.jpg',
     alt2: 'vaniljstång',
   },
   {
@@ -69,9 +64,8 @@ const donuts = [
     amount: 0,
     category: 'Klassiker',
     sum: 0,
-    src1: 'img/donuts_img/brown.jpg',
+    images: ['img/donuts_img/brown.jpg', 'img/smaker_img/choklad.jpg'],
     alt1: 'vaniljmunk med chokladglaze',
-    src2: 'img/smaker_img/choklad.jpg',
     alt2: 'choklad',
   },
   {
@@ -81,9 +75,8 @@ const donuts = [
     amount: 0,
     category: 'Klassiker',
     sum: 0,
-    src1: 'img/donuts_img/black.jpg',
+    images: ['img/donuts_img/black.jpg', 'img/smaker_img/lakrits.jpg'],
     alt1: 'vaniljmunk med lakritsfrosting',
-    src2: 'img/smaker_img/lakrits.jpg',
     alt2: 'sötlakrits',
   },
   {
@@ -93,9 +86,8 @@ const donuts = [
     amount: 0,
     category: 'Klassiker',
     sum: 0,
-    src1: 'img/donuts_img/orange.jpg',
+    images: ['img/donuts_img/orange.jpg', 'img/smaker_img/apelsin.jpg'],
     alt1: 'vaniljmunk med apelsinsmak',
-    src2: 'img/smaker_img/apelsin.jpg',
     alt2: 'apelsiner',
   },
   {
@@ -105,9 +97,8 @@ const donuts = [
     amount: 0,
     category: 'Klassiker',
     sum: 0,
-    src1: 'img/donuts_img/pink.jpg',
+    images: ['img/donuts_img/pink.jpg', 'img/smaker_img/hallon.jpg'],
     alt1: 'vaniljmunk med hallonfrosting',
-    src2: 'img/smaker_img/hallon.jpg',
     alt2: 'hallon i skål',
   },
   {
@@ -117,9 +108,10 @@ const donuts = [
     amount: 0,
     category: 'Limited Edition',
     sum: 0,
-    src1: 'img/donuts_img/purple.jpg',
+    images: ['img/donuts_img/purple.jpg', 'img/smaker_img/champagne.jpg'],
+    // src1:
     alt1: 'vaniljmunk med champagnefrosting',
-    src2: 'img/smaker_img/champagne.jpg',
+    //src2: ,
     alt2: 'flaska med champagne',
   },
   {
@@ -129,9 +121,8 @@ const donuts = [
     amount: 0,
     category: 'Limited Edition',
     sum: 0,
-    src1: 'img/donuts_img/blue.jpg',
+    images: ['img/donuts_img/blue.jpg', 'img/smaker_img/fizzypop.jpg'],
     alt1: 'vaniljmunk med frosting med smak av godiset fizzypop',
-    src2: 'img/smaker_img/fizzypop.jpg',
     alt2: 'godiset fizzypop',
   },
   {
@@ -141,9 +132,8 @@ const donuts = [
     amount: 0,
     category: 'Limited Edition',
     sum: 0,
-    src1: 'img/donuts_img/green2.jpg',
+    images: ['img/donuts_img/green2.jpg', 'img/smaker_img/paronsplitt.jpg'],
     alt1: 'vaniljmunk med päronsplitt-frosting',
-    src2: 'img/smaker_img/paronsplitt.jpg',
     alt2: 'ekologisk päronsplitt',
   },
 ];
@@ -158,8 +148,8 @@ function writeOutDonuts() {
     <article class="donut">
         <div class="slideshow" id="slideshow">
         <div class="images">
-            <img id="img1" class="img-1 donutImg-1-${i}"  src="${donuts[i].src1}" alt="${donuts[i].alt1}" width="100" height="150" />
-            <img id="img2" class="img-2 donutImg-2-${i}" src="${donuts[i].src2}" alt="${donuts[i].alt2}" width="100" height="150" />
+            <img id="img1" class="img-1 donutImg-1-${i}"  src="${donuts[i].images[0]}" alt="${donuts[i].alt1}" width="100" height="150" />
+            
         </div>
             <div class="controls">
         <button class="left" id="prevImage" data-id="${i}">
@@ -187,13 +177,16 @@ function writeOutDonuts() {
         </article>    
         `;
   }
+
+  //<img id="img2" class="img-2 donutImg-2-${i}" src="${donuts[i].src2}" alt="${donuts[i].alt2}" width="100" height="150" />
+
   // Adding Evenlisternes on BTN's
   addEvenlisternes();
   // Writes out star rating.
-  createDots(); 
+  createDots();
 }
 
-function addEvenlisternes(){
+function addEvenlisternes() {
   // Decrese button
   document.querySelectorAll('button.minus').forEach(btn => {
     btn.addEventListener('click', updateDonutAmountMinus);
@@ -216,14 +209,13 @@ function addEvenlisternes(){
   });
 }
 
- // Function for writing out star rating
+// Function for writing out star rating
 function createDots() {
-  document.querySelectorAll('#indicatorDots').forEach(rating =>{
+  document.querySelectorAll('#indicatorDots').forEach(rating => {
     rating.innerHTML += `
     <i class="fa-solid fa-star"></i>`;
-  })
-      
-  }
+  });
+}
 
 // Function that uppdates increase amount
 function updateDonutAmountPlus(e) {
@@ -252,7 +244,6 @@ function sendToCart(e) {
   const addToCartBtn = e.currentTarget.dataset.id;
   const index = addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name);
 
-
   // IF - the amount is 0 - do nothing
   if (donuts[addToCartBtn].amount == 0) {
     return;
@@ -261,8 +252,8 @@ function sendToCart(e) {
     if (index > -1) {
       addShopCartList[index].anyAmount += donuts[addToCartBtn].amount;
       addShopCartList[index].anySum += donuts[addToCartBtn].sum;
-
-    } else { // ELSE - add the donut to the list
+    } else {
+      // ELSE - add the donut to the list
       addShopCartList.push({
         anyPrice: donuts[addToCartBtn].price,
         anyImg: donuts[addToCartBtn].src1,
@@ -270,8 +261,7 @@ function sendToCart(e) {
         anyName: donuts[addToCartBtn].name,
         anyAmount: donuts[addToCartBtn].amount,
         anySum: donuts[addToCartBtn].sum,
-    }); 
-
+      });
     }
   }
 
@@ -280,7 +270,6 @@ function sendToCart(e) {
   activateCheckoutSection();
   updateShopCartTotal();
 }
-
 
 // Function that clears the values for the donuts when clicking the buy-button
 function clearValues() {
@@ -298,70 +287,31 @@ function clearValues() {
 
 // Function that swaps images to the Next image
 function nextImage(e) {
-  const nxtBtn = e.currentTarget.dataset.id;
-  const donutImg1 = document.querySelector(`.donutImg-1-${nxtBtn}`);
-  const donutImg2 = document.querySelector(`.donutImg-2-${nxtBtn}`);
+  const index = e.currentTarget.dataset.id;
 
-  // Kolla om style-attributet är satt, eller om det är tomt
-  let donutImg1Opacity = donutImg1.style.opacity;
-  let donutImg2Opacity = donutImg2.style.opacity;
+  const picContainer = document.querySelector(`.donutImg-1-${index}`);
 
-  // Om det är tomt på ovan rader…
-  // Vi kan inte komma åt "opacity" genom ".style" initialt, för elementet har inget style-attribut,
-  // utan stylen är applicerad via CSS och då måste vi använda getComputedStyle, se https://stackoverflow.com/a/9444783
-  // MEN om vi har satt style-attributet, så måste vi kolla .style…
-  // Egentligen bättre att jobba med klasser, "hidden" resp. ta bort "hidden", så slipper man denna "workaround"
-  // dvs. använda element.classList.toggle('hidden')
-  if (donutImg1Opacity === '') {
-    donutImg1Opacity = getComputedStyle(donutImg1).opacity;
-  }
+  const donutImgs = donuts[index].images;
 
-  if (donutImg2Opacity === '') {
-    donutImg2Opacity = getComputedStyle(donutImg2).opacity;
-  }
-
-  console.log(donutImg1Opacity, donutImg2Opacity);
-
-  if (donutImg1Opacity == 0) {
-    donutImg2.style.opacity = 0;
-    donutImg1.style.opacity = 1;
+  if (picContainer.getAttribute('src') === donutImgs[0]) {
+    picContainer.setAttribute('src', donutImgs[1]);
   } else {
-    donutImg2.style.opacity = 1;
-    donutImg1.style.opacity = 0;
+    picContainer.setAttribute('src', donutImgs[0]);
   }
 }
 
 // Function that swaps images to the Next image
 function prevImage(e) {
-  const nxtBtn = e.currentTarget.dataset.id;
-  const donutImg1 = document.querySelector(`.donutImg-1-${nxtBtn}`);
-  const donutImg2 = document.querySelector(`.donutImg-2-${nxtBtn}`);
+  const index = e.currentTarget.dataset.id;
 
-  // Kolla om style-attributet är satt, eller om det är tomt
-  let donutImg1Opacity = donutImg1.style.opacity;
-  let donutImg2Opacity = donutImg2.style.opacity;
+  const picContainer = document.querySelector(`.donutImg-1-${index}`);
 
-  // Om det är tomt på ovan rader…
-  // Vi kan inte komma åt "opacity" genom ".style" initialt, för elementet har inget style-attribut,
-  // utan stylen är applicerad via CSS och då måste vi använda getComputedStyle, se https://stackoverflow.com/a/9444783
-  // MEN om vi har satt style-attributet, så måste vi kolla .style…
-  // Egentligen bättre att jobba med klasser, "hidden" resp. ta bort "hidden", så slipper man denna "workaround"
-  // dvs. använda element.classList.toggle('hidden')
-  if (donutImg2Opacity === '') {
-    donutImg2Opacity = getComputedStyle(donutImg2).opacity;
-  }
+  const donutImgs = donuts[index].images;
 
-  if (donutImg1Opacity === '') {
-    donutImg1Opacity = getComputedStyle(donutImg1).opacity;
-  }
-
-
-  if (donutImg2Opacity == 0) {
-    donutImg1.style.opacity = 0;
-    donutImg2.style.opacity = 1;
+  if (picContainer.getAttribute('src') === donutImgs[1]) {
+    picContainer.setAttribute('src', donutImgs[0]);
   } else {
-    donutImg1.style.opacity = 1;
-    donutImg2.style.opacity = 0;
+    picContainer.setAttribute('src', donutImgs[1]);
   }
 }
 
@@ -376,7 +326,6 @@ const themeBtn = document.querySelector('#themeBtn');
 themeBtn.addEventListener('click', toggleTheme);
 
 function toggleTheme() {
-
   themeBtn.classList.toggle('themeBtnMove');
 
   if (themeBtn == document.querySelector('.themeBtnMove')) {
@@ -385,19 +334,24 @@ function toggleTheme() {
     document.body.style.color = '#f7f6f2'; // textfärg
     document.querySelector('#shopCartColorTheme').style.color = 'white'; // shoppingcart
 
-    document.querySelectorAll('.menuBtnColorTheme').forEach(menu => {// hamburgarmeny
+    document.querySelectorAll('.menuBtnColorTheme').forEach(menu => {
+      // hamburgarmeny
       menu.style.backgroundColor = 'white';
     });
-    document.querySelectorAll('.headerColorTheme').forEach(header => { // header och footer
+    document.querySelectorAll('.headerColorTheme').forEach(header => {
+      // header och footer
       header.style.backgroundColor = '#572525';
     });
-    document.querySelectorAll('.allColorTheme').forEach(link => { // All textinnehåll med denna class
+    document.querySelectorAll('.allColorTheme').forEach(link => {
+      // All textinnehåll med denna class
       link.style.color = 'white';
     });
-    document.querySelectorAll('.productCard').forEach(card => { // Alla kategorier med denna class
+    document.querySelectorAll('.productCard').forEach(card => {
+      // Alla kategorier med denna class
       card.style.backgroundColor = '#4b5947';
     });
-    document.querySelectorAll('.donut').forEach(donut => {  // Alla produktkort med denna class
+    document.querySelectorAll('.donut').forEach(donut => {
+      // Alla produktkort med denna class
       donut.style.backgroundColor = '#839183';
     });
   } else if (themeBtn != document.querySelector('.themeBtnMove')) {
@@ -406,19 +360,24 @@ function toggleTheme() {
     document.body.style.color = 'black'; // Textfärg
     document.querySelector('#shopCartColorTheme').style.color = 'black'; // shoppingcart
 
-    document.querySelectorAll('.menuBtnColorTheme').forEach(menu => { // HamnurgarMenyn
+    document.querySelectorAll('.menuBtnColorTheme').forEach(menu => {
+      // HamnurgarMenyn
       menu.style.backgroundColor = 'black';
     });
-    document.querySelectorAll('.allColorTheme').forEach(link => {// Ändrar färg till svart på allt med classen
+    document.querySelectorAll('.allColorTheme').forEach(link => {
+      // Ändrar färg till svart på allt med classen
       link.style.color = 'black';
     });
-    document.querySelectorAll('.headerColorTheme').forEach(header => {// Header och footer
+    document.querySelectorAll('.headerColorTheme').forEach(header => {
+      // Header och footer
       header.style.backgroundColor = '#FA7070';
     });
-    document.querySelectorAll('.productCard').forEach(card => {  // Alla produktkort med denna class
+    document.querySelectorAll('.productCard').forEach(card => {
+      // Alla produktkort med denna class
       card.style.backgroundColor = '#A1C298';
     });
-    munk = document.querySelectorAll('.donut').forEach(donut => { // Alla produktkort med denna class
+    munk = document.querySelectorAll('.donut').forEach(donut => {
+      // Alla produktkort med denna class
       donut.style.backgroundColor = '#C6EBC5';
     });
   }
@@ -463,20 +422,18 @@ function activateCheckoutSection() {
   removeAllBtn.classList.add('open');
 }
 
- //Updates total amount in shopCart & shopcartIcon
- function updateShopCartTotal() {
-
+//Updates total amount in shopCart & shopcartIcon
+function updateShopCartTotal() {
   const donutAmountAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
     return addShopCartList.anyAmount + previousValue;
   }, 0);
   document.querySelector('#shoppingCartTotalItems').innerHTML = donutAmountAddedShopCart;
   document.querySelector('#amountChoosen').innerHTML = donutAmountAddedShopCart;
-  if (donutAmountAddedShopCart == 0){ // Added - IF there is product background color changes.
+  if (donutAmountAddedShopCart == 0) {
+    // Added - IF there is product background color changes.
     document.querySelector('#amountChoosen').classList.remove('colorsOn');
-   
   } else {
     document.querySelector('#amountChoosen').classList.add('colorsOn');
-   
   }
 
   //Updates total sum in shopCart

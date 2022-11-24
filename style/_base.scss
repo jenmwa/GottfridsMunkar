@@ -65,10 +65,9 @@ header {
     border-radius: 50%;
     @include getCentered;
   }
-  .colorsOn{
-    background-color: $specialGreen; 
+  .colorsOn {
+    background-color: $specialGreen;
     box-shadow: 0 3px 15px #000;
-  
   }
 }
 
@@ -101,7 +100,6 @@ header {
 .hamburgerMenu span:nth-child(3) {
   top: 5px;
 }
-
 
 /*************VARUKORG*************/
 
@@ -366,22 +364,18 @@ header {
 
 /**********SORT BY HEADING ***********/
 
-.sortByHeading{
+.sortByHeading {
   margin: auto;
   text-align: center;
   width: 60%;
   background-color: $specialRed;
-  box-shadow: 0 3px 15px rgba(0,0,0, 0.7);
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.7);
 
-  .sortByText{
-  font-size: 1.2rem;
-  font-family: 'Britannic Bold', sans-serif;
-
-
+  .sortByText {
+    font-size: 1.2rem;
+    font-family: 'Britannic Bold', sans-serif;
   }
-
 }
-
 
 /*************CHECKOUT FORM***********/
 
@@ -485,40 +479,37 @@ input.error {
   .slideshow {
     width: 100%;
     height: auto;
-  
 
-  .images {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-
-    img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      position: absolute;
+    .images {
+      position: relative;
       top: 0;
       left: 0;
-      transition: opacity 1s ease;
-      outline: 1px solid black;
-      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      height: auto;
+
+      img {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity 1s ease;
+        outline: 1px solid black;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+      }
+      .img-2 {
+        opacity: 0;
+      }
     }
-    .img-2 {
-      opacity: 0;
-    }
-  }
-  
   }
 
-    
-    .indicator {
-      display: inline-block;
+  .indicator {
+    display: inline-block;
     position: relative;
     top: 250px;
     padding-bottom: $padding;
-    }
+  }
 
   .left,
   .right {
@@ -534,7 +525,7 @@ input.error {
     transition: color 0.3s ease-in-out;
     &:hover {
       color: #000;
-      text-shadow: 0 3px 5px rgb(0,0,0,);
+      text-shadow: 0 3px 5px rgb(0, 0, 0);
     }
     &.left {
       left: 0;
@@ -562,7 +553,6 @@ input.error {
 
       .category {
         font-size: 0.9rem;
-        
       }
 
       span {
