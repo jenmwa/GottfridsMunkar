@@ -390,7 +390,6 @@ function prevImage(e) {
   }
 }
 
-
 writeOutDonuts(); // Calling the functions to write out the donuts
 
 
