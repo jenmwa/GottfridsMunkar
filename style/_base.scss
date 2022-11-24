@@ -358,6 +358,25 @@ header {
   }
 }
 
+/**********SORT BY HEADING ***********/
+
+.sortByHeading{
+  margin: auto;
+  text-align: center;
+  width: 60%;
+  background-color: $specialRed;
+  box-shadow: 0 3px 15px rgba(0,0,0, 0.7);
+
+  .sortByText{
+  font-size: 1.2rem;
+  font-family: 'Britannic Bold', sans-serif;
+
+
+  }
+
+}
+
+
 /*************CHECKOUT FORM***********/
 
 .formOrder {
@@ -509,6 +528,7 @@ input.error {
     transition: color 0.3s ease-in-out;
     &:hover {
       color: #000;
+      text-shadow: 0 3px 5px rgb(0,0,0,);
     }
     &.left {
       left: 0;

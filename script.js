@@ -355,9 +355,8 @@ function prevImage(e) {
     donutImg1Opacity = getComputedStyle(donutImg1).opacity;
   }
 
-  console.log(donutImg1Opacity, donutImg2Opacity);
 
-  if (donutImg1Opacity == 0) {
+  if (donutImg2Opacity == 0) {
     donutImg1.style.opacity = 0;
     donutImg2.style.opacity = 1;
   } else {
@@ -489,6 +488,14 @@ function activateCheckoutSection() {
   }, 0);
   document.querySelector('#shoppingCartTotalItems').innerHTML = donutAmountAddedShopCart;
   document.querySelector('#amountChoosen').innerHTML = donutAmountAddedShopCart;
+  if (donutAmountAddedShopCart == 0){ // Added - IF there is product background color changes.
+    document.querySelector('#amountChoosen').style.backgroundColor = '#fbf2cf';
+    document.querySelector('#amountChoosen').style.boxShadow = 'none';
+  } else {
+    document.querySelector('#amountChoosen').style.backgroundColor = '#c6ebc5';
+    document.querySelector('#amountChoosen').style.boxShadow = '0 3px 15px #000';
+   
+  }
 
   //Updates total sum in shopCart
   const donutSumAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
@@ -745,9 +752,8 @@ function writeOutSortProducts() {
   sortContainer.innerHTML += `
   <h3 id="sortBy">Sortera efter</h3>
   <ul aria-labelledby="sortBy">
-    <li>
-      <button id="sortByName" class="allColorTheme" aria-label="Sortera efter namn">
-        <i class="fa-solid fa-arrow-down-a-z"></i>
+    <li><button id="sortByName" class="allColorTheme" aria-label="Sortera efter namn">
+          <i class="fa-solid fa-arrow-down-a-z"></i>
       </button>
     </li>
     <li>
@@ -762,7 +768,7 @@ function writeOutSortProducts() {
       <button id="sortByCategory" class="allColorTheme" aria-label="Sortera efter Kategori"><i class="fa-solid fa-up-down"></i></button>
     </li>
   </ul>
-  <div id="sortByHeading"></div>`;
+  <div id="sortByHeading" class="sortByHeading"></div>`;
 
   // Declare variables for the HTML
   const sortByName = document.querySelector('#sortByName');
@@ -788,7 +794,7 @@ let categorySort = true;
 
 function sortByNameBtn() {
   sortByHeading.innerHTML = `
-  <p>Sorterar efter Namn</p>
+  <p class="sortByText">Sorterar efter Namn</p>
   `;
   if (nameSort) {
     donuts.sort((a, b) => a.name < b.name);
@@ -804,7 +810,7 @@ function sortByNameBtn() {
 
 function sortByGradeBtn() {
   sortByHeading.innerHTML = `
-  <p>Sorterar efter Betyg</p>
+  <p class="sortByText" >Sorterar efter Betyg</p>
   `;
   if (gradeSort) {
     donuts.sort((a, b) => a.rating - b.rating);
@@ -820,14 +826,14 @@ function sortByGradeBtn() {
 function sortByPriceBtn() {
   if (priceSort) {
     sortByHeading.innerHTML = `
-    <p>Sorterar efter Pris stigande</p>
+    <p class="sortByText">Sorterar efter Pris stigande</p>
     `;
     donuts.sort((a, b) => a.price - b.price);
     priceSort = false;
     writeOutDonuts();
   } else if (priceSort == false) {
     sortByHeading.innerHTML = `
-      <p>Sorterar efter Pris fallande</p>
+      <p class="sortByText">Sorterar efter Pris fallande</p>
       `;
     donuts.sort((a, b) => b.price - a.price);
     priceSort = true;
@@ -837,7 +843,7 @@ function sortByPriceBtn() {
 
 function sortByCategoryBtn() {
   sortByHeading.innerHTML = `
-  <p>Sorterar efter Kategori</p>
+  <p class="sortByText">Sorterar efter Kategori</p>
   `;
 
   if (categorySort) {
