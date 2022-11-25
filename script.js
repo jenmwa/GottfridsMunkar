@@ -795,7 +795,8 @@ function sortByCategoryBtn() {
  ******************************************************************************
 */
 
-
-// Calling the functions to write out the donuts
+// Function-call to write out donuts
 writeOutDonuts(); 
+
+// Function-call to write out sorting-iconsw
 writeOutSortProducts();
