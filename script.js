@@ -1,9 +1,11 @@
-/******************************************************************************
+/* eslint-disable max-len */
+/* eslint-disable no-use-before-define */
+/** ****************************************************************************
  ******************************** VARIABLES **************************************
  ******************************************************************************
-*/
+ */
 
-/******************** DONUT VARIABLES ***************************************/
+/** ****************** DONUT VARIABLES ************************************** */
 
 // Grabbing the container from HTML to write out the donuts in.
 const donutContainer = document.querySelector('#donutContainer');
@@ -122,30 +124,31 @@ const donuts = [
   },
 ];
 
-/******************** SHOPPING CART VARIABLES *******************************/
+/** ****************** SHOPPING CART VARIABLES ****************************** */
 
 const shoppingCart = document.querySelector('#shoppingCart');
 const sectionShoppingCart = document.querySelector('#sectionShoppingCart');
 const shoppingClose = document.querySelector('.shoppingAction');
 
 // Shopping cart array
-let addShopCartList = [];
+const addShopCartList = [];
 
 // Empty shopping cart button
 const removeShoppingCart = document.querySelector('#shoppingRemove');
 
-/******************** SORTING VARIABLES ***************************************/
+/** ****************** SORTING VARIABLES ************************************** */
+
 
 let nameSort = true;
 let gradeSort = true;
 let priceSort = true;
 let categorySort = true;
 
-/******************** THEME TOGGLE VARIABLES ***************************************/
+/** ****************** THEME TOGGLE VARIABLES ************************************** */
 
 const themeBtn = document.querySelector('#themeBtn');
 
-/******************** FORM VARIABLES ***************************************/
+/** ****************** FORM VARIABLES ************************************** */
 
 // Form inputs
 const formOrderInputs = Array.from(document.querySelector('.formOrder').querySelectorAll('input'));
@@ -176,13 +179,12 @@ let isInvoice = false;
 let isSocialSecurity = false;
 let isGdpr = false;
 
-/******************************************************************************
-******************************** FUNCTIONS **************************************
-******************************************************************************
-*/
+/** ****************************************************************************
+ ******************************** FUNCTIONS **************************************
+ ******************************************************************************
+ */
 
-/******************** DONUT FUNCTIONS ***************************************/
-
+/** ****************** DONUT FUNCTIONS ************************************** */
 
 // Function that writes out the donuts in HTML
 function writeOutDonuts() {
@@ -190,25 +192,17 @@ function writeOutDonuts() {
 
   for (let i = 0; i < donuts.length; i++) {
     donutContainer.innerHTML += `
-
-    <article class="donut">
+      <article class="donut">
         <div class="slideshow" id="slideshow">
-        <div class="images">
-            <img id="img1" class="img-1 donutImg-1-${i}"  src="${donuts[i].images[0]}" alt="${donuts[i].alt[0]}" width="100" height="150" />
-            
-        </div>
-            <div class="controls">
-        <button class="left" id="prevImage" data-id="${i}">
-          <span  class="material-symbols-outlined">chevron_left</span>
-        </button>
-
-        <button class="right" id="nextImage" data-id="${i}">
-          <span class="material-symbols-outlined">chevron_right</span>
-        </button>
-        </div>
-        <div class="indicator" id="indicatorDots"></div>
-        <div class="donutInfo">
-            
+          <div class="images">
+            <img id="img1" class="img-1 donutImg-1-${i}"  src="${donuts[i].images[0]}" alt="${donuts[i].alt[0]}" width="100" height="150">
+          </div>
+          <div class="controls">
+            <button class="left" id="prevImage" data-id="${i}"><span  class="material-symbols-outlined">chevron_left</span></button>
+            <button class="right" id="nextImage" data-id="${i}"><span class="material-symbols-outlined">chevron_right</span></button>
+          </div>
+          <div class="indicator" id="indicatorDots"></div>
+          <div class="donutInfo"> 
             <h2>${donuts[i].name}</h2>
             <span class="price">${donuts[i].price} kr/st</span><br>
             <span>Antal:</span> <span class="amount">${donuts[i].amount} st</span><br>
@@ -216,10 +210,9 @@ function writeOutDonuts() {
             <button class="minus" data-id="${i}">-</button>
             <button class="plus" data-id="${i}">+</button>
             <button class="addToCart" data-id="${i}">Köp</button><br>
-            <span class="category" >Kategori: <span class="category">${donuts[i].category}</span></span>
-            
-        </div>
-        </article>    
+            <span class="category" >Kategori: <span class="category">${donuts[i].category}</span></span>  
+          </div>
+      </article>    
         `;
   }
 
@@ -256,9 +249,9 @@ function addEvenlisternes() {
 function createDots() {
   // Collecting all html in one list
   const dotsContainer = document.querySelectorAll('.indicator');
-  
+
   for (let i = 0; i < donuts.length; i++) {
-    const ratingNumber = donuts[i].rating;  // variable for donutrating
+    const ratingNumber = donuts[i].rating; // variable for donutrating
     const stars = '<span class="dot" ><i class="fa-solid fa-star"></i></span>'; // variable for stars
 
     dotsContainer[i].innerHTML += stars.repeat(ratingNumber); // repeating amount of stars in rating.
@@ -280,7 +273,7 @@ function updateDonutAmountMinus(e) {
   const btnMinus = e.currentTarget.dataset.id;
 
   if (donuts[btnMinus].amount > 0) {
-    donuts[btnMinus].amount = donuts[btnMinus].amount - 1;
+    donuts[btnMinus].amount -= 1;
   }
   donuts[btnMinus].sum = donuts[btnMinus].amount * donuts[btnMinus].price;
 
@@ -293,25 +286,25 @@ function sendToCart(e) {
   const index = addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name);
 
   // IF - the amount is 0 - do nothing
-  if (donuts[addToCartBtn].amount == 0) {
+  if (donuts[addToCartBtn].amount === 0) {
     return;
+  } 
+  // IF- the donut already exist in the shopcartlist - add amount and sum
+  if (index > -1) {
+    addShopCartList[index].anyAmount += donuts[addToCartBtn].amount;
+    addShopCartList[index].anySum += donuts[addToCartBtn].sum;
   } else {
-    // IF- the donut already exist in the shopcartlist - add amount and sum
-    if (index > -1) {
-      addShopCartList[index].anyAmount += donuts[addToCartBtn].amount;
-      addShopCartList[index].anySum += donuts[addToCartBtn].sum;
-    } else {
-      // ELSE - add the donut to the list
-      addShopCartList.push({
-        anyPrice: donuts[addToCartBtn].price,
-        anyImg: donuts[addToCartBtn].images[0],
-        anyAlt: donuts[addToCartBtn].alt1,
-        anyName: donuts[addToCartBtn].name,
-        anyAmount: donuts[addToCartBtn].amount,
-        anySum: donuts[addToCartBtn].sum,
-      });
-    }
+    // ELSE - add the donut to the list
+    addShopCartList.push({
+      anyPrice: donuts[addToCartBtn].price,
+      anyImg: donuts[addToCartBtn].images[0],
+      anyAlt: donuts[addToCartBtn].alt1,
+      anyName: donuts[addToCartBtn].name,
+      anyAmount: donuts[addToCartBtn].amount,
+      anySum: donuts[addToCartBtn].sum,
+    });
   }
+  
 
   printOutShopCart(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
   setTimeout(clearValues, 500);
@@ -321,14 +314,14 @@ function sendToCart(e) {
 
 // Function that clears the values for the donuts when clicking the buy-button
 function clearValues() {
-  for (i = 0; i < donuts.length; i++) {
+  for (let i = 0; i < donuts.length; i++) {
     donuts[i].amount = 0;
     donuts[i].sum = 0;
   }
   writeOutDonuts();
 }
 
-/******************** SLIDESHOW FUNCTIONS ***************************************/
+/** ****************** SLIDESHOW FUNCTIONS ************************************** */
 
 // Function that swaps images to the Next image
 function nextImage(e) {
@@ -366,7 +359,7 @@ function prevImage(e) {
   }
 }
 
-/******************** SHOPPING CART FUNCTIONS ***************************************/
+/** ****************** SHOPPING CART FUNCTIONS ************************************** */
 
 // Function open shoppingCart
 function toggleShoppingCartOpenState() {
@@ -376,9 +369,9 @@ function toggleShoppingCartOpenState() {
 
 // Function empty shoppingCart
 function emptyCart() {
-  if (addShopCartList == 0) {
+  if (addShopCartList === 0) {
     document.querySelector('#shopCartContent').innerHTML = 'Varukorgen är tom.';
-    //rad 313-316 + 322-325 går att förenkla och kombinera?
+    // rad 313-316 + 322-325 går att förenkla och kombinera?
     const checkoutContainer = document.querySelector('#checkoutContainer');
     checkoutContainer.classList.remove('open');
     const removeAllBtn = document.querySelector('#shoppingRemove');
@@ -394,24 +387,20 @@ function activateCheckoutSection() {
   removeAllBtn.classList.add('open');
 }
 
-//Updates total amount in shopCart & shopcartIcon
+// Updates total amount in shopCart & shopcartIcon
 function updateShopCartTotal() {
-  const donutAmountAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
-    return addShopCartList.anyAmount + previousValue;
-  }, 0);
+  const donutAmountAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => addShopCartList.anyAmount + previousValue, 0);
   document.querySelector('#shoppingCartTotalItems').innerHTML = donutAmountAddedShopCart;
   document.querySelector('#amountChoosen').innerHTML = donutAmountAddedShopCart;
-  if (donutAmountAddedShopCart == 0) {
+  if (donutAmountAddedShopCart === 0) {
     // Added - IF there is product background color changes.
     document.querySelector('#amountChoosen').classList.remove('colorsOn');
   } else {
     document.querySelector('#amountChoosen').classList.add('colorsOn');
   }
 
-  //Updates total sum in shopCart
-  const donutSumAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => {
-    return addShopCartList.anySum + previousValue;
-  }, 0);
+  // Updates total sum in shopCart
+  const donutSumAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => addShopCartList.anySum + previousValue, 0);
   document.querySelector('#shoppingCartTotalAmount').innerHTML = donutSumAddedShopCart;
 }
 
@@ -419,9 +408,9 @@ function updateShopCartTotal() {
 function printOutShopCart(index) {
   document.querySelector('#shopCartContent').innerHTML = '';
 
-  /*if (addShopCartList[index].anyAmount > 10) { // om du beställer mer än 10 munkar får du 10% rabatt
+  /* if (addShopCartList[index].anyAmount > 10) { // om du beställer mer än 10 munkar får du 10% rabatt
     addShopCartList[index].anySum = Math.round(addShopCartList[index].anySum * 0.9);
-  }*/
+  } */
 
   for (let i = 0; i < addShopCartList.length; i++) {
     document.querySelector('#shopCartContent').innerHTML += `
@@ -435,7 +424,7 @@ function printOutShopCart(index) {
         </div>`;
   }
 
-  //Remove donuts per article ShopCart
+  // Remove donuts per article ShopCart
   const removeDonuts = Array.from(document.querySelectorAll('#shopCartContent button'));
   removeDonuts.forEach(item => {
     item.addEventListener('click', removeAddedDonut);
@@ -459,15 +448,14 @@ function emptyShoppingCart() {
   emptyCart();
 }
 
-/******************** SPECIAL PRICE FUNCTIONS ***************************************/
+/** ****************** SPECIAL PRICE FUNCTIONS ************************************** */
 
-
-/******************** TOGGLE THEME FUNCTIONS ***************************************/
+/** ****************** TOGGLE THEME FUNCTIONS ************************************** */
 
 function toggleTheme() {
   themeBtn.classList.toggle('themeBtnMove');
 
-  if (themeBtn == document.querySelector('.themeBtnMove')) {
+  if (themeBtn === document.querySelector('.themeBtnMove')) {
     // DARK MODE - Till mörkt tema
     document.body.style.backgroundColor = '#302f2a'; // bakgrund
     document.body.style.color = '#f7f6f2'; // textfärg
@@ -522,7 +510,7 @@ function toggleTheme() {
   }
 }
 
-/******************** FORM FUNCTIONS ***************************************/
+/** ****************** FORM FUNCTIONS ************************************** */
 
 // Open form function
 function formOrderOpen() {
@@ -671,31 +659,20 @@ function removeError(e) {
   e.target.parentElement.querySelector('.errorMessage').innerHTML = '';
 }
 
-/******************** SORT-BY FUNCTIONS ***************************************/
+/** ****************** SORT-BY FUNCTIONS ************************************** */
 
 // Function that writes out the HTML
 function writeOutSortProducts() {
-  let sortContainer = document.querySelector('#sortProducts');
+  const sortContainer = document.querySelector('#sortProducts');
 
   sortContainer.innerHTML += `
   <h3 id="sortBy">Sortera efter</h3>
-  <ul aria-labelledby="sortBy">
-    <li><button id="sortByName" class="allColorTheme" aria-label="Sortera efter namn">
-          <i class="fa-solid fa-arrow-down-a-z"></i>
-      </button>
-    </li>
-    <li>
-      <button id="sortByGrade" class="allColorTheme" aria-label="Sortera efter betyg"><i class="fa-solid fa-star"></i></button>
-    </li>
-    <li>
-      <button id="sortByPrice"class="allColorTheme" aria-label="Sortera efter pris fallande eller stigande">
-        <i class="fa-solid fa-arrow-down-wide-short"></i>
-      </button>
-    </li>
-    <li>
-      <button id="sortByCategory" class="allColorTheme" aria-label="Sortera efter Kategori"><i class="fa-solid fa-up-down"></i></button>
-    </li>
-  </ul>
+    <ul aria-labelledby="sortBy">
+      <li><button id="sortByName" class="allColorTheme" aria-label="Sortera efter namn"><i class="fa-solid fa-arrow-down-a-z"></i></button></li>
+      <li><button id="sortByGrade" class="allColorTheme" aria-label="Sortera efter betyg"><i class="fa-solid fa-star"></i></button></li>
+      <li><button id="sortByPrice"class="allColorTheme" aria-label="Sortera efter pris fallande eller stigande"><i class="fa-solid fa-arrow-down-wide-short"></i></button></li>
+      <li><button id="sortByCategory" class="allColorTheme" aria-label="Sortera efter Kategori"><i class="fa-solid fa-up-down"></i></button></li>
+    </ul>
   <div id="sortByHeading" class="sortByHeading"></div>`;
 
   // Declare variables for the HTML
@@ -704,7 +681,8 @@ function writeOutSortProducts() {
   const sortByPrice = document.querySelector('#sortByPrice');
   const sortByCategory = document.querySelector('#sortByCategory');
 
-  let sortByHeading = document.querySelector('#sortByheading');
+  // MessageBox for -sorting message
+  const sortByHeading = document.querySelector('#sortByheading');
 
   //  Adding eventlisteners to buttons
   sortByName.addEventListener('click', sortByNameBtn);
@@ -713,6 +691,7 @@ function writeOutSortProducts() {
   sortByCategory.addEventListener('click', sortByCategoryBtn);
 }
 
+
 function sortByNameBtn() {
   sortByHeading.innerHTML = `
   <p class="sortByText">Sorterar efter Namn</p>
@@ -720,12 +699,9 @@ function sortByNameBtn() {
   if (nameSort) {
     donuts.sort((a, b) => a.name < b.name);
     nameSort = false;
-
-    writeOutDonuts();
-  } else if (nameSort == false) {
+  } else if (nameSort === false) {
     donuts.sort((a, b) => a.name > b.name);
     nameSort = true;
-    writeOutDonuts();
   }
 }
 
@@ -736,11 +712,9 @@ function sortByGradeBtn() {
   if (gradeSort) {
     donuts.sort((a, b) => a.rating - b.rating);
     gradeSort = false;
-    writeOutDonuts();
-  } else if (gradeSort == false) {
+  } else if (gradeSort === false) {
     donuts.sort((a, b) => b.rating - a.rating);
     gradeSort = true;
-    writeOutDonuts();
   }
 }
 
@@ -751,14 +725,12 @@ function sortByPriceBtn() {
     `;
     donuts.sort((a, b) => a.price - b.price);
     priceSort = false;
-    writeOutDonuts();
-  } else if (priceSort == false) {
+  } else if (priceSort === false) {
     sortByHeading.innerHTML = `
       <p class="sortByText">Sorterar efter Pris fallande</p>
       `;
     donuts.sort((a, b) => b.price - a.price);
     priceSort = true;
-    writeOutDonuts();
   }
 }
 
@@ -770,17 +742,15 @@ function sortByCategoryBtn() {
   if (categorySort) {
     donuts.sort((a, b) => a.category < b.category);
     categorySort = false;
-    writeOutDonuts();
-  } else if (categorySort == false) {
+  } else if (categorySort === false) {
     donuts.reverse();
-    writeOutDonuts();
   }
 }
 
-/******************************************************************************
+/** ****************************************************************************
  ******************************** LOGIC **************************************
  ******************************************************************************
-*/
+ */
 
 // ShoppingCart open/close eventlisteners
 shoppingCart.addEventListener('click', toggleShoppingCartOpenState);
@@ -804,7 +774,7 @@ for (let i = 0; i < formOrderInputs.length; i++) {
 }
 
 // Function-call to write out donuts
-writeOutDonuts(); 
+writeOutDonuts();
 
 // Function-call to write out sorting-iconsw
 writeOutSortProducts();
