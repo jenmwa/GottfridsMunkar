@@ -1,17 +1,14 @@
-let addShopCartList = []; // Lista för munkar som ska till varukorgen
-
 /******************************************************************************
- ******************************** DONUTS **************************************
+ ******************************** VARIABLES **************************************
  ******************************************************************************
- */
+*/
 
-// Declare variables
+/******************** DONUT VARIABLES ***************************************/
 
 // Grabbing the container from HTML to write out the donuts in.
 const donutContainer = document.querySelector('#donutContainer');
 
 // List with objects of the donuts
-
 const donuts = [
   {
     name: 'Pepparkaka',
@@ -125,6 +122,26 @@ const donuts = [
   },
 ];
 
+/******************** SHOPPING CART VARIABLES *******************************/
+
+// Shopping cart array
+let addShopCartList = [];
+
+/******************** SORTING VARIABLES ***************************************/
+
+let nameSort = true;
+let gradeSort = true;
+let priceSort = true;
+let categorySort = true;
+
+ /******************************************************************************
+ ******************************** FUNCTIONS **************************************
+ ******************************************************************************
+*/
+
+/******************** DONUT FUNCTIONS ***************************************/
+
+
 // Function that writes out the donuts in HTML
 function writeOutDonuts() {
   donutContainer.innerHTML = '';
@@ -169,6 +186,7 @@ function writeOutDonuts() {
   createDots();
 }
 
+// Add eventlisteners after writeOutDonuts
 function addEvenlisternes() {
   // Decrese button
   document.querySelectorAll('button.minus').forEach(btn => {
@@ -309,7 +327,7 @@ function prevImage(e) {
   }
 }
 
-writeOutDonuts(); // Calling the functions to write out the donuts
+
 
 /******************************************************************************
  ***************************THEME-TOGGLE***************************************
@@ -672,10 +690,6 @@ function removeError(e) {
   e.target.parentElement.querySelector('.errorMessage').innerHTML = '';
 }
 
-/******************************************************************************
- ********************************SORT-BY***************************************
- ******************************************************************************
- */
 
 // Function that writes out the HTML
 
@@ -718,10 +732,7 @@ function writeOutSortProducts() {
   sortByCategory.addEventListener('click', sortByCategoryBtn);
 }
 
-let nameSort = true;
-let gradeSort = true;
-let priceSort = true;
-let categorySort = true;
+
 
 // Functions for Sort-by
 
@@ -789,4 +800,12 @@ function sortByCategoryBtn() {
   }
 }
 
+/******************************************************************************
+ ******************************** LOGIC **************************************
+ ******************************************************************************
+*/
+
+
+// Calling the functions to write out the donuts
+writeOutDonuts(); 
 writeOutSortProducts();
