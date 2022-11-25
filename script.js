@@ -134,9 +134,24 @@ let gradeSort = true;
 let priceSort = true;
 let categorySort = true;
 
- /******************************************************************************
- ******************************** FUNCTIONS **************************************
- ******************************************************************************
+/******************** FORM VARIABLES ***************************************/
+
+//declare boolean variables for every validated input
+let isFirstname = false;
+let isLastname = false;
+let isAdress = false;
+let isZipcode = false;
+let isCity = false;
+let isTelephone = false;
+let isEmail = false;
+let isDebitKredit = false;
+let isInvoice = false;
+let isSocialSecurity = false;
+let isGdpr = false;
+
+/******************************************************************************
+******************************** FUNCTIONS **************************************
+******************************************************************************
 */
 
 /******************** DONUT FUNCTIONS ***************************************/
@@ -286,10 +301,8 @@ function clearValues() {
   writeOutDonuts();
 }
 
-/******************************************************************************
- ******************************** SLIDESHOW **************************************
- ******************************************************************************
- */
+/******************** SLIDESHOW FUNCTIONS ***************************************/
+
 
 // Function that swaps images to the Next image
 function nextImage(e) {
@@ -327,12 +340,7 @@ function prevImage(e) {
   }
 }
 
-
-
-/******************************************************************************
- ***************************THEME-TOGGLE***************************************
- ******************************************************************************
- */
+/******************** TOGGLE THEME FUNCTIONS ***************************************/
 
 const themeBtn = document.querySelector('#themeBtn');
 themeBtn.addEventListener('click', toggleTheme);
@@ -395,10 +403,8 @@ function toggleTheme() {
   }
 }
 
-/******************************************************************************
- ******************************** SHOPPINGCART ********************************
- ******************************************************************************
- */
+/******************** SHOPPING CART FUNCTIONS ***************************************/
+
 
 // shoppingCart open-close
 const shoppingCart = document.querySelector('#shoppingCart');
@@ -503,13 +509,9 @@ function emptyShoppingCart() {
   emptyCart();
 }
 
-/******************************************************************************
- ******************************INPUT-FORM**************************************
- ******************************************************************************
- */
+/******************** FORM FUNCTIONS ***************************************/
 
 // ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
-
 const formOpenBtn = document.querySelector('.checkoutButton');
 const formOrder = document.querySelector('.formOrder');
 const formCloseBtn = document.querySelector('.formCloseBtn');
@@ -528,7 +530,6 @@ function formOrderClose() {
 }
 
 // ÖPPNA STÄNGA KORT OCH FAKTURAALTERNATIV
-
 const cardRadio = document.querySelector('#debitKredit');
 const invoiceRadio = document.querySelector('#invoice');
 const cardPayment = document.querySelector('.cardPayment');
@@ -558,18 +559,7 @@ for (let i = 0; i < formOrderInputs.length; i++) {
   formOrderInputs[i].addEventListener('change', checkInputNotEmpty);
 }
 
-//declare boolean variables for every validated input
-let isFirstname = false;
-let isLastname = false;
-let isAdress = false;
-let isZipcode = false;
-let isCity = false;
-let isTelephone = false;
-let isEmail = false;
-let isDebitKredit = false;
-let isInvoice = false;
-let isSocialSecurity = false;
-let isGdpr = false;
+
 
 // function to check if specifik input is valid
 function checkInputNotEmpty(e) {
