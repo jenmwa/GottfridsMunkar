@@ -124,8 +124,15 @@ const donuts = [
 
 /******************** SHOPPING CART VARIABLES *******************************/
 
+const shoppingCart = document.querySelector('#shoppingCart');
+const sectionShoppingCart = document.querySelector('#sectionShoppingCart');
+const shoppingClose = document.querySelector('.shoppingAction');
+
 // Shopping cart array
 let addShopCartList = [];
+
+// Empty shopping cart button
+const removeShoppingCart = document.querySelector('#shoppingRemove');
 
 /******************** SORTING VARIABLES ***************************************/
 
@@ -134,9 +141,29 @@ let gradeSort = true;
 let priceSort = true;
 let categorySort = true;
 
+/******************** THEME TOGGLE VARIABLES ***************************************/
+
+const themeBtn = document.querySelector('#themeBtn');
+
 /******************** FORM VARIABLES ***************************************/
 
-//declare boolean variables for every validated input
+// Form inputs
+const formOrderInputs = Array.from(document.querySelector('.formOrder').querySelectorAll('input'));
+
+// Form open buttons
+const formOpenBtn = document.querySelector('.checkoutButton');
+const formOrder = document.querySelector('.formOrder');
+const formCloseBtn = document.querySelector('.formCloseBtn');
+
+// Card/invoice buttons
+const cardRadio = document.querySelector('#debitKredit');
+const invoiceRadio = document.querySelector('#invoice');
+
+// Card/invoice inputs
+const cardPayment = document.querySelector('.cardPayment');
+const fakturaPayment = document.querySelector('.fakturaPayment');
+
+// Declare boolean variables for every validated input
 let isFirstname = false;
 let isLastname = false;
 let isAdress = false;
@@ -303,7 +330,6 @@ function clearValues() {
 
 /******************** SLIDESHOW FUNCTIONS ***************************************/
 
-
 // Function that swaps images to the Next image
 function nextImage(e) {
   const index = e.currentTarget.dataset.id;
@@ -340,79 +366,7 @@ function prevImage(e) {
   }
 }
 
-/******************** TOGGLE THEME FUNCTIONS ***************************************/
-
-const themeBtn = document.querySelector('#themeBtn');
-themeBtn.addEventListener('click', toggleTheme);
-
-function toggleTheme() {
-  themeBtn.classList.toggle('themeBtnMove');
-
-  if (themeBtn == document.querySelector('.themeBtnMove')) {
-    // DARK MODE - Till mörkt tema
-    document.body.style.backgroundColor = '#302f2a'; // bakgrund
-    document.body.style.color = '#f7f6f2'; // textfärg
-    document.querySelector('#shopCartColorTheme').style.color = 'white'; // shoppingcart
-
-    document.querySelectorAll('.menuBtnColorTheme').forEach(menu => {
-      // hamburgarmeny
-      menu.style.backgroundColor = 'white';
-    });
-    document.querySelectorAll('.headerColorTheme').forEach(header => {
-      // header och footer
-      header.style.backgroundColor = '#572525';
-    });
-    document.querySelectorAll('.allColorTheme').forEach(link => {
-      // All textinnehåll med denna class
-      link.style.color = 'white';
-    });
-    document.querySelectorAll('.productCard').forEach(card => {
-      // Alla kategorier med denna class
-      card.style.backgroundColor = '#4b5947';
-    });
-    document.querySelectorAll('.donut').forEach(donut => {
-      // Alla produktkort med denna class
-      donut.style.backgroundColor = '#839183';
-    });
-  } else if (themeBtn != document.querySelector('.themeBtnMove')) {
-    // LIGHT MODE - tillbaka till original
-    document.body.style.backgroundColor = '#FBF2CF'; // bakgrundsfärg
-    document.body.style.color = 'black'; // Textfärg
-    document.querySelector('#shopCartColorTheme').style.color = 'black'; // shoppingcart
-
-    document.querySelectorAll('.menuBtnColorTheme').forEach(menu => {
-      // HamnurgarMenyn
-      menu.style.backgroundColor = 'black';
-    });
-    document.querySelectorAll('.allColorTheme').forEach(link => {
-      // Ändrar färg till svart på allt med classen
-      link.style.color = 'black';
-    });
-    document.querySelectorAll('.headerColorTheme').forEach(header => {
-      // Header och footer
-      header.style.backgroundColor = '#FA7070';
-    });
-    document.querySelectorAll('.productCard').forEach(card => {
-      // Alla produktkort med denna class
-      card.style.backgroundColor = '#A1C298';
-    });
-    munk = document.querySelectorAll('.donut').forEach(donut => {
-      // Alla produktkort med denna class
-      donut.style.backgroundColor = '#C6EBC5';
-    });
-  }
-}
-
 /******************** SHOPPING CART FUNCTIONS ***************************************/
-
-
-// shoppingCart open-close
-const shoppingCart = document.querySelector('#shoppingCart');
-const sectionShoppingCart = document.querySelector('#sectionShoppingCart');
-const shoppingClose = document.querySelector('.shoppingAction');
-
-shoppingCart.addEventListener('click', toggleShoppingCartOpenState);
-shoppingClose.addEventListener('click', toggleShoppingCartOpenState);
 
 // Function open shoppingCart
 function toggleShoppingCartOpenState() {
@@ -477,7 +431,7 @@ function printOutShopCart(index) {
         <p>${addShopCartList[i].anyPrice}kr/st</p>
         <p>${addShopCartList[i].anySum}kr</p></span>
         <button class="material-symbols-outlined" data-id="${i}">
-        delete_forever
+        delete_forever</button>
         </div>`;
   }
 
@@ -499,51 +453,98 @@ function printOutShopCart(index) {
   }
 }
 
-// Remove everything in ShoppingCart
-const removeShoppingCart = document.querySelector('#shoppingRemove');
-removeShoppingCart.addEventListener('click', emptyShoppingCart);
-
 function emptyShoppingCart() {
   addShopCartList.length = 0;
   updateShopCartTotal();
   emptyCart();
 }
 
+/******************** SPECIAL PRICE FUNCTIONS ***************************************/
+
+
+/******************** TOGGLE THEME FUNCTIONS ***************************************/
+
+function toggleTheme() {
+  themeBtn.classList.toggle('themeBtnMove');
+
+  if (themeBtn == document.querySelector('.themeBtnMove')) {
+    // DARK MODE - Till mörkt tema
+    document.body.style.backgroundColor = '#302f2a'; // bakgrund
+    document.body.style.color = '#f7f6f2'; // textfärg
+    document.querySelector('#shopCartColorTheme').style.color = 'white'; // shoppingcart
+
+    document.querySelectorAll('.menuBtnColorTheme').forEach(menu => {
+      // hamburgarmeny
+      menu.style.backgroundColor = 'white';
+    });
+    document.querySelectorAll('.headerColorTheme').forEach(header => {
+      // header och footer
+      header.style.backgroundColor = '#572525';
+    });
+    document.querySelectorAll('.allColorTheme').forEach(link => {
+      // All textinnehåll med denna class
+      link.style.color = 'white';
+    });
+    document.querySelectorAll('.productCard').forEach(card => {
+      // Alla kategorier med denna class
+      card.style.backgroundColor = '#4b5947';
+    });
+    document.querySelectorAll('.donut').forEach(donut => {
+      // Alla produktkort med denna class
+      donut.style.backgroundColor = '#839183';
+    });
+  } else if (themeBtn != document.querySelector('.themeBtnMove')) {
+    // LIGHT MODE - tillbaka till original
+    document.body.style.backgroundColor = '#FBF2CF'; // bakgrundsfärg
+    document.body.style.color = 'black'; // Textfärg
+    document.querySelector('#shopCartColorTheme').style.color = 'black'; // shoppingcart
+
+    document.querySelectorAll('.menuBtnColorTheme').forEach(menu => {
+      // HamnurgarMenyn
+      menu.style.backgroundColor = 'black';
+    });
+    document.querySelectorAll('.allColorTheme').forEach(link => {
+      // Ändrar färg till svart på allt med classen
+      link.style.color = 'black';
+    });
+    document.querySelectorAll('.headerColorTheme').forEach(header => {
+      // Header och footer
+      header.style.backgroundColor = '#FA7070';
+    });
+    document.querySelectorAll('.productCard').forEach(card => {
+      // Alla produktkort med denna class
+      card.style.backgroundColor = '#A1C298';
+    });
+    munk = document.querySelectorAll('.donut').forEach(donut => {
+      // Alla produktkort med denna class
+      donut.style.backgroundColor = '#C6EBC5';
+    });
+  }
+}
+
 /******************** FORM FUNCTIONS ***************************************/
 
-// ÖPPNA STÄNGA BESTÄLLNINGSFORMULÄR
-const formOpenBtn = document.querySelector('.checkoutButton');
-const formOrder = document.querySelector('.formOrder');
-const formCloseBtn = document.querySelector('.formCloseBtn');
-
-formOpenBtn.addEventListener('click', formOrderOpen);
-formCloseBtn.addEventListener('click', formOrderClose);
-
+// Open form function
 function formOrderOpen() {
   formOrder.classList.add('formOrderOpen');
   formCloseBtn.classList.add('formCloseBtnOpen');
 }
 
+// Close form function
 function formOrderClose() {
   formOrder.classList.remove('formOrderOpen');
   formCloseBtn.classList.remove('formCloseBtnOpen');
 }
 
-// ÖPPNA STÄNGA KORT OCH FAKTURAALTERNATIV
-const cardRadio = document.querySelector('#debitKredit');
-const invoiceRadio = document.querySelector('#invoice');
-const cardPayment = document.querySelector('.cardPayment');
-const fakturaPayment = document.querySelector('.fakturaPayment');
-
-cardRadio.addEventListener('change', cardPaymentOpen);
-invoiceRadio.addEventListener('change', fakturaPaymentOpen);
-
+// Open card payment option
 function cardPaymentOpen(e) {
   if (cardRadio.checked) {
     cardPayment.classList.add('paymentOpen');
     fakturaPayment.classList.remove('paymentOpen');
   }
 }
+
+// Open invoice payment option
 function fakturaPaymentOpen(e) {
   if (invoiceRadio.checked) {
     fakturaPayment.classList.add('paymentOpen');
@@ -551,17 +552,7 @@ function fakturaPaymentOpen(e) {
   }
 }
 
-//get form inputs with queryselector
-const formOrderInputs = Array.from(document.querySelector('.formOrder').querySelectorAll('input'));
-
-// loop form inputs, add event listeners
-for (let i = 0; i < formOrderInputs.length; i++) {
-  formOrderInputs[i].addEventListener('change', checkInputNotEmpty);
-}
-
-
-
-// function to check if specifik input is valid
+// Function to check if specifik input is valid
 function checkInputNotEmpty(e) {
   const getId = e.target.id;
   const getValue = e.target.value;
@@ -641,7 +632,7 @@ function checkInputNotEmpty(e) {
   checkFormValid();
 }
 
-// function to check if all inputs are valid, make submit button enabled
+// Function to check if all inputs are valid, make submit button enabled
 function checkFormValid() {
   const submitBtn = document.querySelector('#submit');
 
@@ -662,7 +653,7 @@ function checkFormValid() {
   }
 }
 
-// function to add error message to non-valid input
+// Function to add error message to non-valid input
 function addErrorMessage(e, string) {
   const getErrorMessage = e.target.parentElement.querySelector('.errorMessage');
 
@@ -674,15 +665,15 @@ function addErrorMessage(e, string) {
   getErrorMessage.appendChild(addParagraph);
 }
 
-// function to remove error message after input get valid
+// Function to remove error message after input get valid
 function removeError(e) {
   e.target.classList.remove('error');
   e.target.parentElement.querySelector('.errorMessage').innerHTML = '';
 }
 
+/******************** SORT-BY FUNCTIONS ***************************************/
 
 // Function that writes out the HTML
-
 function writeOutSortProducts() {
   let sortContainer = document.querySelector('#sortProducts');
 
@@ -721,10 +712,6 @@ function writeOutSortProducts() {
   sortByPrice.addEventListener('click', sortByPriceBtn);
   sortByCategory.addEventListener('click', sortByCategoryBtn);
 }
-
-
-
-// Functions for Sort-by
 
 function sortByNameBtn() {
   sortByHeading.innerHTML = `
@@ -794,6 +781,27 @@ function sortByCategoryBtn() {
  ******************************** LOGIC **************************************
  ******************************************************************************
 */
+
+// ShoppingCart open/close eventlisteners
+shoppingCart.addEventListener('click', toggleShoppingCartOpenState);
+shoppingClose.addEventListener('click', toggleShoppingCartOpenState);
+
+// Remove donut from shopping cart eventlistener
+removeShoppingCart.addEventListener('click', emptyShoppingCart);
+
+// Theme toggle eventlistener
+themeBtn.addEventListener('click', toggleTheme);
+
+// Form eventlisteners
+formOpenBtn.addEventListener('click', formOrderOpen);
+formCloseBtn.addEventListener('click', formOrderClose);
+cardRadio.addEventListener('change', cardPaymentOpen);
+invoiceRadio.addEventListener('change', fakturaPaymentOpen);
+
+// Form inputs, add event listeners
+for (let i = 0; i < formOrderInputs.length; i++) {
+  formOrderInputs[i].addEventListener('change', checkInputNotEmpty);
+}
 
 // Function-call to write out donuts
 writeOutDonuts(); 
