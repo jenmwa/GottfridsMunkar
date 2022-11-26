@@ -136,6 +136,11 @@ const addShopCartList = [];
 // Empty shopping cart button
 const removeShoppingCart = document.querySelector('#shoppingRemove');
 
+const total = {
+  amount: 0,
+  price: 0
+}
+
 /** ****************** SORTING VARIABLES ************************************** */
 
 
@@ -390,10 +395,10 @@ function activateCheckoutSection() {
 
 // Updates total amount in shopCart & shopcartIcon
 function updateShopCartTotal() {
-  const donutAmountAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => addShopCartList.anyAmount + previousValue, 0);
-  document.querySelector('#shoppingCartTotalItems').innerHTML = donutAmountAddedShopCart;
-  document.querySelector('#amountChoosen').innerHTML = donutAmountAddedShopCart;
-  if (donutAmountAddedShopCart === 0) {
+  total.amount = addShopCartList.reduce((previousValue, addShopCartList) => addShopCartList.anyAmount + previousValue, 0);
+  document.querySelector('#shoppingCartTotalItems').innerHTML = total.amount;
+  document.querySelector('#amountChoosen').innerHTML = total.amount;
+  if (total.amount === 0) {
     // Added - IF there is product background color changes.
     document.querySelector('#amountChoosen').classList.remove('colorsOn');
   } else {
@@ -401,8 +406,9 @@ function updateShopCartTotal() {
   }
 
   // Updates total sum in shopCart
-  const donutSumAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => addShopCartList.anySum + previousValue, 0);
-  document.querySelector('#shoppingCartTotalAmount').innerHTML = donutSumAddedShopCart;
+  total.price = addShopCartList.reduce((previousValue, addShopCartList) => addShopCartList.anySum + previousValue, 0);
+  mondaySpecial();
+  document.querySelector('#shoppingCartTotalAmount').innerHTML = total.price;
 }
 
 // Function print items shoppingCart
@@ -460,7 +466,6 @@ function manySingleDonutsDiscount() {
       cartItem.anySum = Math.round(cartItem.anySum * 0.9);
       cartItem.discountMessage = '10% rabatt';
     }
-  
   }
 
   
@@ -472,7 +477,11 @@ function manySingleDonutsDiscount() {
 }
 
 function mondaySpecial() {
+  const date = new Date();
 
+  if (date.getDay() === 1 && date.getHours() < 10) {
+    total.price = Math.round(total.price * 0.9);
+  }
 }
 
 /** ****************** TOGGLE THEME FUNCTIONS ************************************** */
