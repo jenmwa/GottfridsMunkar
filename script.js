@@ -409,6 +409,7 @@ function updateShopCartTotal() {
   // Updates total sum in shopCart
   total.price = addShopCartList.reduce((previousValue, addShopCartList) => addShopCartList.anySum + previousValue, 0);
   mondaySpecial();
+  toHighforInvoice();
   document.querySelector('#shoppingCartTotalAmount').innerHTML = total.price;
 }
 
@@ -443,7 +444,7 @@ function printOutShopCart() {
       addShopCartList.splice(j, 1);
       updateShopCartTotal();
     }
-    
+
     printOutShopCart();
     emptyCart();
   }
@@ -457,6 +458,7 @@ function emptyShoppingCart() {
 
 /** ****************** SPECIAL PRICE FUNCTIONS ************************************** */
 
+// 10% off per donut when ordering 10x of same donut
 function manySingleDonutsDiscount() {
   
   for (let i = 0; i < addShopCartList.length; i++) {
@@ -478,6 +480,7 @@ function manySingleDonutsDiscount() {
   
 }
 
+// 10% off if monday before 10am
 function mondaySpecial() {
   const date = new Date();
   const discountMessageContainer = document.querySelector('.checkoutContainer .discountMessage');
@@ -488,6 +491,33 @@ function mondaySpecial() {
 
     total.price = Math.round(total.price * 0.9);
     discountMessageContainer.innerHTML = total.discountMessage;
+  }
+}
+
+// 15% added price between friday 15pm and monday 3am
+function specialPriceWeekend() {
+  const date = new Date();
+  const day = date.getDay();
+  const hour = date.getHours();
+  
+  if ((day === 5 && hour > 15) || day === 6 || day === 0 || (day === 1 && hour < 3)) {
+    for (let i = 0; i < donuts.length; i++) {
+      const donut = donuts[i];
+      donut.price = Math.round(donut.price * 1.15);
+    }
+  }
+}
+
+// Invoice disabled when total price over 800
+function toHighforInvoice() {
+  if (total.price > 800) {
+    invoiceRadio.disabled = true;
+    invoiceRadio.checked = false;
+    invoiceRadio.setAttribute('title', 'Disabled when total price is over 800:-');
+    cardRadio.checked = true;
+  } else {
+    invoiceRadio.disabled = false;
+    invoiceRadio.removeAttribute('title')
   }
 }
 
@@ -813,6 +843,8 @@ invoiceRadio.addEventListener('change', fakturaPaymentOpen);
 for (let i = 0; i < formOrderInputs.length; i++) {
   formOrderInputs[i].addEventListener('change', checkInputNotEmpty);
 }
+// Function-call higher donut price on weekend
+specialPriceWeekend();
 
 // Function-call to write out donuts
 writeOutDonuts();
