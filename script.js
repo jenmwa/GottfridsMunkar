@@ -302,11 +302,12 @@ function sendToCart(e) {
       anyName: donuts[addToCartBtn].name,
       anyAmount: donuts[addToCartBtn].amount,
       anySum: donuts[addToCartBtn].sum,
+      discountMessage: "",
     });
   }
   
-
-  printOutShopCart(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
+  manySingleDonutsDiscount();
+  printOutShopCart();
   setTimeout(clearValues, 500);
   activateCheckoutSection();
   updateShopCartTotal();
@@ -405,20 +406,18 @@ function updateShopCartTotal() {
 }
 
 // Function print items shoppingCart
-function printOutShopCart(index) {
+function printOutShopCart() {
   document.querySelector('#shopCartContent').innerHTML = '';
 
-  /* if (addShopCartList[index].anyAmount > 10) { // om du beställer mer än 10 munkar får du 10% rabatt
-    addShopCartList[index].anySum = Math.round(addShopCartList[index].anySum * 0.9);
-  } */
-
   for (let i = 0; i < addShopCartList.length; i++) {
+
     document.querySelector('#shopCartContent').innerHTML += `
         <div id="shopCartAddedDiv"><img class="imgInCart" src="${addShopCartList[i].anyImg}" alt="${addShopCartList[i].anyAlt}"  width="55" height="55"></img>
         <span class="text"><h4>${addShopCartList[i].anyName}</h4><br>
         <p>${addShopCartList[i].anyAmount}st</p>
         <p>${addShopCartList[i].anyPrice}kr/st</p>
-        <p>${addShopCartList[i].anySum}kr</p></span>
+        <p>${addShopCartList[i].anySum}kr</p><br>
+        <p class="discountMessage">${addShopCartList[i].discountMessage}</p></span>
         <button class="material-symbols-outlined" data-id="${i}">
         delete_forever</button>
         </div>`;
@@ -449,6 +448,32 @@ function emptyShoppingCart() {
 }
 
 /** ****************** SPECIAL PRICE FUNCTIONS ************************************** */
+
+function manySingleDonutsDiscount() {
+  
+  for (let i = 0; i < addShopCartList.length; i++) {
+    const cartItem = addShopCartList[i];
+    
+    cartItem.anySum = cartItem.anyAmount * cartItem.anyPrice;
+
+    if (cartItem.anyAmount >= 10) {
+      cartItem.anySum = Math.round(cartItem.anySum * 0.9);
+      cartItem.discountMessage = '10% rabatt';
+    }
+  
+  }
+
+  
+  // if (addShopCartList[i].anyAmount > 9) {
+  //   addShopCartList[i].anySum = addShopCartList[i].anySum * 0.9;
+  //   console.log('hej')
+  // }
+  
+}
+
+function mondaySpecial() {
+
+}
 
 /** ****************** TOGGLE THEME FUNCTIONS ************************************** */
 
