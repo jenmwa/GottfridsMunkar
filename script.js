@@ -1,5 +1,8 @@
 /* eslint-disable max-len */
 /* eslint-disable no-use-before-define */
+
+
+
 /** ****************************************************************************
  ******************************** VARIABLES **************************************
  ******************************************************************************
@@ -146,7 +149,9 @@ let categorySort = true;
 
 /** ****************** THEME TOGGLE VARIABLES ************************************** */
 
-const themeBtn = document.querySelector('#themeBtn');
+const themeToggleCont = document.querySelector('#themeToggle');
+
+
 
 /** ****************** FORM VARIABLES ************************************** */
 
@@ -234,15 +239,15 @@ function addEventListeners() {
   // Buy Button
   document.querySelectorAll('button.addToCart').forEach(btn => {
     btn.addEventListener('click', sendToCart);
-
-    // Slideshow buttons
-    document.querySelectorAll('button.right').forEach(nextBtn => {
-      nextBtn.addEventListener('click', nextImage);
-    });
-    document.querySelectorAll('button.left').forEach(prevBtn => {
-      prevBtn.addEventListener('click', prevImage);
-    });
   });
+  // Slideshow buttons
+  document.querySelectorAll('button.right').forEach(nextBtn => {
+    nextBtn.addEventListener('click', nextImage);
+  });
+  document.querySelectorAll('button.left').forEach(prevBtn => {
+    prevBtn.addEventListener('click', prevImage);
+  });
+
 }
 
 // Function for writing out star rating
@@ -324,7 +329,10 @@ function clearValues() {
 /** ****************** SLIDESHOW FUNCTIONS ************************************** */
 
 // Function that swaps images to the Next image
+
+
 function nextImage(e) {
+ 
   const index = e.currentTarget.dataset.id;
 
   const picContainer = document.querySelector(`.donutImg-1-${index}`);
@@ -335,6 +343,7 @@ function nextImage(e) {
   if (picContainer.getAttribute('src') === donutImgs[0]) {
     picContainer.setAttribute('src', donutImgs[1]);
     picContainer.setAttribute('alt', altImg[1]);
+   
   } else {
     picContainer.setAttribute('src', donutImgs[0]);
     picContainer.setAttribute('alt', altImg[0]);
@@ -452,63 +461,42 @@ function emptyShoppingCart() {
 
 /** ****************** TOGGLE THEME FUNCTIONS ************************************** */
 
-function toggleTheme() {
-  themeBtn.classList.toggle('themeBtnMove');
-
-  if (themeBtn === document.querySelector('.themeBtnMove')) {
-    // DARK MODE - Till mörkt tema
-    document.body.style.backgroundColor = '#302f2a'; // bakgrund
-    document.body.style.color = '#f7f6f2'; // textfärg
-    document.querySelector('#shopCartColorTheme').style.color = 'white'; // shoppingcart
-
-    document.querySelectorAll('.menuBtnColorTheme').forEach(menu => {
-      // hamburgarmeny
-      menu.style.backgroundColor = 'white';
-    });
-    document.querySelectorAll('.headerColorTheme').forEach(header => {
-      // header och footer
-      header.style.backgroundColor = '#572525';
-    });
-    document.querySelectorAll('.allColorTheme').forEach(link => {
-      // All textinnehåll med denna class
-      link.style.color = 'white';
-    });
-    document.querySelectorAll('.productCard').forEach(card => {
-      // Alla kategorier med denna class
-      card.style.backgroundColor = '#4b5947';
-    });
-    document.querySelectorAll('.donut').forEach(donut => {
-      // Alla produktkort med denna class
-      donut.style.backgroundColor = '#839183';
-    });
-  } else if (themeBtn != document.querySelector('.themeBtnMove')) {
-    // LIGHT MODE - tillbaka till original
-    document.body.style.backgroundColor = '#FBF2CF'; // bakgrundsfärg
-    document.body.style.color = 'black'; // Textfärg
-    document.querySelector('#shopCartColorTheme').style.color = 'black'; // shoppingcart
-
-    document.querySelectorAll('.menuBtnColorTheme').forEach(menu => {
-      // HamnurgarMenyn
-      menu.style.backgroundColor = 'black';
-    });
-    document.querySelectorAll('.allColorTheme').forEach(link => {
-      // Ändrar färg till svart på allt med classen
-      link.style.color = 'black';
-    });
-    document.querySelectorAll('.headerColorTheme').forEach(header => {
-      // Header och footer
-      header.style.backgroundColor = '#FA7070';
-    });
-    document.querySelectorAll('.productCard').forEach(card => {
-      // Alla produktkort med denna class
-      card.style.backgroundColor = '#A1C298';
-    });
-    munk = document.querySelectorAll('.donut').forEach(donut => {
-      // Alla produktkort med denna class
-      donut.style.backgroundColor = '#C6EBC5';
-    });
-  }
+function writeOutToggleTheme() {
+  themeToggleCont.innerHTML +=`
+  <div class="themeToggleContainer">
+    <span><i class="fa-solid fa-lightbulb"></i></span>
+     <button class="themeBtn" id="themeBtn"></button>
+    <span><i class="fa-solid fa-lightbulb"></i></span>
+  </div>
+  `;
+  const themeBtn = document.querySelector('#themeBtn')
+  themeBtn.addEventListener('click', toggleTheme);
 }
+
+function toggleTheme(){
+  themeBtn.classList.toggle('themeBtnMove');
+  const header = document.querySelector('#header');
+  const footer = document.querySelector('#footer');
+  const linksColorTheme = document.querySelectorAll('.allColorTheme');
+  const shopCartColorTheme = document.querySelector('#shopCartColorTheme');
+  const donutDarkTheme = document.querySelectorAll('.donut');
+  
+
+  document.body.classList.toggle('darkThemebg');
+  formOrder.classList.toggle('darkThemebg');
+  header.classList.toggle('darkThemeRed');
+  footer.classList.toggle('darkThemeRed');
+  linksColorTheme.forEach(link => {
+    link.classList.toggle('darkThemeText');
+  })
+  shopCartColorTheme.classList.toggle('darkThemeIcon');
+  donutContainer.classList.toggle('darkThemebg');
+
+  donutDarkTheme.forEach(donut => {
+    donut.classList.toggle('darkThemeBg');
+  })
+
+} 
 
 /** ****************** FORM FUNCTIONS ************************************** */
 
@@ -668,10 +656,10 @@ function writeOutSortProducts() {
   sortContainer.innerHTML += `
   <h3 id="sortBy">Sortera efter</h3>
     <ul aria-labelledby="sortBy">
-      <li><button id="sortByName" class="allColorTheme" aria-label="Sortera efter namn"><i class="fa-solid fa-arrow-down-a-z"></i></button></li>
-      <li><button id="sortByGrade" class="allColorTheme" aria-label="Sortera efter betyg"><i class="fa-solid fa-star"></i></button></li>
-      <li><button id="sortByPrice"class="allColorTheme" aria-label="Sortera efter pris fallande eller stigande"><i class="fa-solid fa-arrow-down-wide-short"></i></button></li>
-      <li><button id="sortByCategory" class="allColorTheme" aria-label="Sortera efter Kategori"><i class="fa-solid fa-up-down"></i></button></li>
+      <li><button id="sortByName" aria-label="Sortera efter namn"><i class="fa-solid fa-arrow-down-a-z allColorTheme"></i></button></li>
+      <li><button id="sortByGrade" aria-label="Sortera efter betyg"><i class="fa-solid fa-star allColorTheme"></i></button></li>
+      <li><button id="sortByPrice" aria-label="Sortera efter pris fallande eller stigande"><i class="fa-solid fa-arrow-down-wide-short allColorTheme"></i></button></li>
+      <li><button id="sortByCategory" aria-label="Sortera efter Kategori"><i class="fa-solid fa-up-down allColorTheme"></i></button></li>
     </ul>
   <div id="sortByHeading" class="sortByHeading"></div>`;
 
@@ -759,8 +747,7 @@ shoppingClose.addEventListener('click', toggleShoppingCartOpenState);
 // Remove donut from shopping cart eventlistener
 removeShoppingCart.addEventListener('click', emptyShoppingCart);
 
-// Theme toggle eventlistener
-themeBtn.addEventListener('click', toggleTheme);
+
 
 // Form eventlisteners
 formOpenBtn.addEventListener('click', formOrderOpen);
@@ -778,3 +765,5 @@ writeOutDonuts();
 
 // Function-call to write out sorting-iconsw
 writeOutSortProducts();
+// Function Call to wtie out theme-toggle
+writeOutToggleTheme();
