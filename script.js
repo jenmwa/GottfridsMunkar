@@ -217,12 +217,12 @@ function writeOutDonuts() {
   }
 
   // Adding Evenlisternes on BTN's
-  addEvenlisternes();
+  addEventListeners();
   createDots();
 }
 
 // Add eventlisteners after writeOutDonuts
-function addEvenlisternes() {
+function addEventListeners() {
   // Decrese button
   document.querySelectorAll('button.minus').forEach(btn => {
     btn.addEventListener('click', updateDonutAmountMinus);
@@ -433,7 +433,7 @@ function printOutShopCart(index) {
   // Function remove donuts per article shopCart
   function removeAddedDonut(e) {
     const j = e.currentTarget.dataset.id;
-    if (i > -1) {
+    if (j > -1) {
       addShopCartList.splice(j, 1);
       updateShopCartTotal();
     }
