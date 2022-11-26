@@ -138,7 +138,8 @@ const removeShoppingCart = document.querySelector('#shoppingRemove');
 
 const total = {
   amount: 0,
-  price: 0
+  price: 0,
+  discountMessage: ''
 }
 
 /** ****************** SORTING VARIABLES ************************************** */
@@ -442,6 +443,7 @@ function printOutShopCart() {
       addShopCartList.splice(j, 1);
       updateShopCartTotal();
     }
+    
     printOutShopCart();
     emptyCart();
   }
@@ -478,9 +480,14 @@ function manySingleDonutsDiscount() {
 
 function mondaySpecial() {
   const date = new Date();
+  const discountMessageContainer = document.querySelector('.checkoutContainer .discountMessage');
+  discountMessageContainer.innerHTML = '';
 
   if (date.getDay() === 1 && date.getHours() < 10) {
+    total.discountMessage = 'Måndagsrabatt: 10 % på hela beställningen';
+
     total.price = Math.round(total.price * 0.9);
+    discountMessageContainer.innerHTML = total.discountMessage;
   }
 }
 
