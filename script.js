@@ -197,8 +197,8 @@ function writeOutDonuts() {
 
   for (let i = 0; i < donuts.length; i++) {
     donutContainer.innerHTML += `
-      <article class="donut">
-        <div class="slideshow" id="slideshow">
+      <article class="donut allColorTheme" >
+        <div class="slideshow " id="slideshow">
           <div class="images">
             <img id="img1" class="img-1 donutImg-1-${i}"  src="${donuts[i].images[0]}" alt="${donuts[i].alt[0]}" width="100" height="150">
           </div>
@@ -271,6 +271,7 @@ function updateDonutAmountPlus(e) {
   donuts[btnPlus].sum = donuts[btnPlus].amount * donuts[btnPlus].price;
 
   writeOutDonuts();
+ 
 }
 
 // Function that uppdates decrease amount
@@ -475,27 +476,13 @@ function writeOutToggleTheme() {
 
 function toggleTheme(){
   themeBtn.classList.toggle('themeBtnMove');
-  const header = document.querySelector('#header');
-  const footer = document.querySelector('#footer');
-  const linksColorTheme = document.querySelectorAll('.allColorTheme');
-  const shopCartColorTheme = document.querySelector('#shopCartColorTheme');
-  const donutDarkTheme = document.querySelectorAll('.donut');
-  
+  const colorTheme = document.querySelectorAll('.allColorTheme');
 
-  document.body.classList.toggle('darkThemebg');
+  document.body.classList.toggle('darkTheme');
   formOrder.classList.toggle('darkThemebg');
-  header.classList.toggle('darkThemeRed');
-  footer.classList.toggle('darkThemeRed');
-  linksColorTheme.forEach(link => {
-    link.classList.toggle('darkThemeText');
-  })
-  shopCartColorTheme.classList.toggle('darkThemeIcon');
-  donutContainer.classList.toggle('darkThemebg');
-
-  donutDarkTheme.forEach(donut => {
-    donut.classList.toggle('darkThemeBg');
-  })
-
+  colorTheme.forEach(theme => {
+    theme.classList.toggle('darkTheme');
+  });
 } 
 
 /** ****************** FORM FUNCTIONS ************************************** */
@@ -762,8 +749,8 @@ for (let i = 0; i < formOrderInputs.length; i++) {
 
 // Function-call to write out donuts
 writeOutDonuts();
-
 // Function-call to write out sorting-iconsw
 writeOutSortProducts();
 // Function Call to wtie out theme-toggle
 writeOutToggleTheme();
+

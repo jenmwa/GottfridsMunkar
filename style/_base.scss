@@ -55,7 +55,7 @@ header {
     font-size: 1.5rem;
     color: black;
   }
-  i.darkThemeIcon{
+  i.darkTheme{
     color: $specialBeige;
    }
   div {
@@ -90,7 +90,7 @@ header {
     background-color: black;
     border-radius: 5px;
   }
-  span.darkThemeText{
+  span.darkTheme{
     background-color: $specialBeige;
   }
 }
@@ -365,7 +365,7 @@ header {
         font-size: 1.2rem;
         margin-right: 10px;
       }
-      i.darkThemeText{
+      i.darkTheme{
         color: $specialBeige;
       }
     }
@@ -467,7 +467,6 @@ form {
     margin: 0;
   }
 }
-
 input.error {
   border-color: red;
 }
@@ -487,7 +486,7 @@ section.darkThemebg{
   padding: 50px;
   background-color: $specialGreen;
    
-  article.darkThemebg{
+  article.darkTheme{
     background-color: #839183;
   }
 
@@ -566,7 +565,8 @@ section.darkThemebg{
     margin-bottom: 40px;
     padding: 20px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-   
+
+
     .donutInfo {
       text-align: center;
       position: relative;
@@ -640,21 +640,23 @@ footer {
 }
 
 /********** DARKTHEME ********/
-header.darkThemeRed{
+header.darkTheme{
  background-color: #3b1919;
 }
-footer.darkThemeRed{
+footer.darkTheme{
   background-color: #3b1919;
  }
- body.darkThemebg{
+body.darkTheme{
   background-color: #302f2a;
   color: $specialBeige;
 }
-a.darkThemeText{
+a.darkTheme{
   color: $specialBeige;
 }
-div.darkThemebg{
+div.darkTheme{
   background-color: #4b5947;
 }
+
+
 
 
