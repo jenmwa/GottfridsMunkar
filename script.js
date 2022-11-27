@@ -265,7 +265,11 @@ function updateDonutAmountPlus(e) {
 
   donuts[btnPlus].sum = donuts[btnPlus].amount * donuts[btnPlus].price;
 
-  writeOutDonuts();
+  const donutAmount = document.querySelectorAll('.amount');
+  donutAmount[btnPlus].innerHTML = `${donuts[btnPlus].amount} st`;
+
+  const donutSum = document.querySelectorAll('.sum');
+  donutSum[btnPlus].innerHTML = `${donuts[btnPlus].sum} kr`;
 }
 
 // Function that uppdates decrease amount
@@ -277,7 +281,11 @@ function updateDonutAmountMinus(e) {
   }
   donuts[btnMinus].sum = donuts[btnMinus].amount * donuts[btnMinus].price;
 
-  writeOutDonuts();
+  const donutAmount = document.querySelectorAll('.amount');
+  donutAmount[btnMinus].innerHTML = `${donuts[btnMinus].amount} st`;
+
+  const donutSum = document.querySelectorAll('.sum');
+  donutSum[btnMinus].innerHTML = `${donuts[btnMinus].sum} kr`;
 }
 
 // Function that pushes the donut-object to a Shopcartlist
@@ -306,18 +314,18 @@ function sendToCart(e) {
   }
 
   printOutShopCart(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
-  setTimeout(clearValues, 500);
+  setTimeout(clearValues, 500, addToCartBtn);
   activateCheckoutSection();
   updateShopCartTotal();
 }
 
 // Function that clears the values for the donuts when clicking the buy-button
-function clearValues() {
-  for (let i = 0; i < donuts.length; i++) {
-    donuts[i].amount = 0;
-    donuts[i].sum = 0;
-  }
-  writeOutDonuts();
+function clearValues(addToCartBtn) {
+  const donutSum = document.querySelectorAll('.sum');
+  donutSum[addToCartBtn].innerHTML = `0 kr`;
+  const donutAmount = document.querySelectorAll('.amount');
+  donutAmount[addToCartBtn].innerHTML = `0 st`;
+
 }
 
 /** ****************** SLIDESHOW FUNCTIONS ************************************** */
