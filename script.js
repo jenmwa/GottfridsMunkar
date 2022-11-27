@@ -513,11 +513,11 @@ function toHighforInvoice() {
   if (total.price > 800) {
     invoiceRadio.disabled = true;
     invoiceRadio.checked = false;
-    invoiceRadio.setAttribute('title', 'Disabled when total price is over 800:-');
+    invoiceRadio.parentElement.setAttribute('title', 'Fakturering möjligt endast vid beställningar under 800:-');
     cardRadio.checked = true;
   } else {
     invoiceRadio.disabled = false;
-    invoiceRadio.removeAttribute('title')
+    invoiceRadio.parentElement.removeAttribute('title');
   }
 }
 
