@@ -2,7 +2,6 @@
 /* eslint-disable no-use-before-define */
 
 
-
 /** ****************************************************************************
  ******************************** VARIABLES **************************************
  ******************************************************************************
@@ -141,7 +140,6 @@ const removeShoppingCart = document.querySelector('#shoppingRemove');
 
 /** ****************** SORTING VARIABLES ************************************** */
 
-
 let nameSort = true;
 let gradeSort = true;
 let priceSort = true;
@@ -150,8 +148,6 @@ let categorySort = true;
 /** ****************** THEME TOGGLE VARIABLES ************************************** */
 
 const themeToggleCont = document.querySelector('#themeToggle');
-
-
 
 /** ****************** FORM VARIABLES ************************************** */
 
@@ -247,7 +243,6 @@ function addEventListeners() {
   document.querySelectorAll('button.left').forEach(prevBtn => {
     prevBtn.addEventListener('click', prevImage);
   });
-
 }
 
 // Function for writing out star rating
@@ -271,7 +266,6 @@ function updateDonutAmountPlus(e) {
   donuts[btnPlus].sum = donuts[btnPlus].amount * donuts[btnPlus].price;
 
   writeOutDonuts();
- 
 }
 
 // Function that uppdates decrease amount
@@ -294,7 +288,7 @@ function sendToCart(e) {
   // IF - the amount is 0 - do nothing
   if (donuts[addToCartBtn].amount === 0) {
     return;
-  } 
+  }
   // IF- the donut already exist in the shopcartlist - add amount and sum
   if (index > -1) {
     addShopCartList[index].anyAmount += donuts[addToCartBtn].amount;
@@ -310,7 +304,6 @@ function sendToCart(e) {
       anySum: donuts[addToCartBtn].sum,
     });
   }
-  
 
   printOutShopCart(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
   setTimeout(clearValues, 500);
@@ -331,9 +324,7 @@ function clearValues() {
 
 // Function that swaps images to the Next image
 
-
 function nextImage(e) {
- 
   const index = e.currentTarget.dataset.id;
 
   const picContainer = document.querySelector(`.donutImg-1-${index}`);
@@ -344,7 +335,6 @@ function nextImage(e) {
   if (picContainer.getAttribute('src') === donutImgs[0]) {
     picContainer.setAttribute('src', donutImgs[1]);
     picContainer.setAttribute('alt', altImg[1]);
-   
   } else {
     picContainer.setAttribute('src', donutImgs[0]);
     picContainer.setAttribute('alt', altImg[0]);
@@ -399,7 +389,10 @@ function activateCheckoutSection() {
 
 // Updates total amount in shopCart & shopcartIcon
 function updateShopCartTotal() {
-  const donutAmountAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => addShopCartList.anyAmount + previousValue, 0);
+  const donutAmountAddedShopCart = addShopCartList.reduce(
+    (previousValue, addShopCartList) => addShopCartList.anyAmount + previousValue,
+    0
+  );
   document.querySelector('#shoppingCartTotalItems').innerHTML = donutAmountAddedShopCart;
   document.querySelector('#amountChoosen').innerHTML = donutAmountAddedShopCart;
   if (donutAmountAddedShopCart === 0) {
@@ -410,7 +403,10 @@ function updateShopCartTotal() {
   }
 
   // Updates total sum in shopCart
-  const donutSumAddedShopCart = addShopCartList.reduce((previousValue, addShopCartList) => addShopCartList.anySum + previousValue, 0);
+  const donutSumAddedShopCart = addShopCartList.reduce(
+    (previousValue, addShopCartList) => addShopCartList.anySum + previousValue,
+    0
+  );
   document.querySelector('#shoppingCartTotalAmount').innerHTML = donutSumAddedShopCart;
 }
 
@@ -463,18 +459,18 @@ function emptyShoppingCart() {
 /** ****************** TOGGLE THEME FUNCTIONS ************************************** */
 
 function writeOutToggleTheme() {
-  themeToggleCont.innerHTML +=`
+  themeToggleCont.innerHTML += `
   <div class="themeToggleContainer">
     <span><i class="fa-solid fa-lightbulb"></i></span>
      <button class="themeBtn" id="themeBtn"></button>
     <span><i class="fa-solid fa-lightbulb"></i></span>
   </div>
   `;
-  const themeBtn = document.querySelector('#themeBtn')
+  const themeBtn = document.querySelector('#themeBtn');
   themeBtn.addEventListener('click', toggleTheme);
 }
 
-function toggleTheme(){
+function toggleTheme() {
   themeBtn.classList.toggle('themeBtnMove');
   const colorTheme = document.querySelectorAll('.allColorTheme');
 
@@ -483,7 +479,7 @@ function toggleTheme(){
   colorTheme.forEach(theme => {
     theme.classList.toggle('darkTheme');
   });
-} 
+}
 
 /** ****************** FORM FUNCTIONS ************************************** */
 
@@ -666,7 +662,6 @@ function writeOutSortProducts() {
   sortByCategory.addEventListener('click', sortByCategoryBtn);
 }
 
-
 function sortByNameBtn() {
   sortByHeading.innerHTML = `
   <p class="sortByText">Sorterar efter Namn</p>
@@ -738,8 +733,6 @@ shoppingClose.addEventListener('click', toggleShoppingCartOpenState);
 // Remove donut from shopping cart eventlistener
 removeShoppingCart.addEventListener('click', emptyShoppingCart);
 
-
-
 // Form eventlisteners
 formOpenBtn.addEventListener('click', formOrderOpen);
 formCloseBtn.addEventListener('click', formOrderClose);
@@ -757,4 +750,3 @@ writeOutDonuts();
 writeOutSortProducts();
 // Function Call to wtie out theme-toggle
 writeOutToggleTheme();
-

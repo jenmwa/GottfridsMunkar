@@ -288,6 +288,21 @@ header {
   }
 }
 
+.headingDonuts{
+  position: relative;
+  top: 120px;
+  text-align: center;
+  h1{
+    margin: 0;
+    text-transform: uppercase;
+
+    .svgDonut{
+      width: 30px;
+      height: auto;
+    }
+  }
+}
+
 /*****THEME TOGGLE**********/
 
 .themeToggle {
@@ -297,6 +312,7 @@ header {
 
   .themeToggleContainer {
     position: relative;
+    top: 40px;
     z-index: 1;
     display: flex;
     justify-content: space-around;
