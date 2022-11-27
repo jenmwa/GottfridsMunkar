@@ -139,6 +139,7 @@ const removeShoppingCart = document.querySelector('#shoppingRemove');
 const total = {
   amount: 0,
   price: 0,
+  freight: 0,
   discountMessage: ''
 }
 
@@ -317,6 +318,7 @@ function sendToCart(e) {
   setTimeout(clearValues, 500);
   activateCheckoutSection();
   updateShopCartTotal();
+  freightCost();
 }
 
 // Function that clears the values for the donuts when clicking the buy-button
@@ -518,6 +520,19 @@ function toHighforInvoice() {
   } else {
     invoiceRadio.disabled = false;
     invoiceRadio.parentElement.removeAttribute('title');
+  }
+}
+
+// Calculating freight costs
+function freightCost() {
+  const freightCostContainer = document.querySelector('.freightCost');
+
+  if (total.amount > 15) {
+    total.freight = 0;
+    freightCostContainer.innerHTML = 'Gratis frakt';
+  } else {
+    total.freight = Math.round(25 + (total.price * 0.1));
+    freightCostContainer.innerHTML = `+${total.freight} frakt`;
   }
 }
 
