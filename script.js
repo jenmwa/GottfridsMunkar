@@ -678,6 +678,7 @@ function sortByNameBtn() {
     donuts.sort((a, b) => a.name > b.name);
     nameSort = true;
   }
+  writeOutDonuts();
 }
 
 function sortByGradeBtn() {
@@ -691,6 +692,7 @@ function sortByGradeBtn() {
     donuts.sort((a, b) => b.rating - a.rating);
     gradeSort = true;
   }
+  writeOutDonuts();
 }
 
 function sortByPriceBtn() {
@@ -707,6 +709,7 @@ function sortByPriceBtn() {
     donuts.sort((a, b) => b.price - a.price);
     priceSort = true;
   }
+  writeOutDonuts();
 }
 
 function sortByCategoryBtn() {
@@ -720,6 +723,7 @@ function sortByCategoryBtn() {
   } else if (categorySort === false) {
     donuts.reverse();
   }
+  writeOutDonuts();
 }
 
 /** ****************************************************************************
