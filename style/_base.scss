@@ -29,7 +29,7 @@ header {
   height: 75px;
   position: fixed;
   padding: 0 20px;
-  z-index: 5;
+  z-index: 7;
   background-color: $specialRed;
   display: flex;
   justify-content: space-between;
@@ -507,8 +507,27 @@ input.error {
 }
 section.darkThemebg{
   background-color: #302f2a;
-  
 }
+
+article.orderConfirmation{
+
+.confirmContatiner{
+  margin-left: 15%;
+  background-color: $specialRed;
+  width: 70%;
+  min-height: 60vh;
+  position: fixed;
+  top: 200px;
+  z-index: 6;
+  display: block;
+  outline: 2px solid rgba(0,0,0, 0.7);
+  box-shadow: 0 3px 15px rgba(0,0,0, 0.7);
+  
+
+}
+}
+
+
 /*************PRODUKTKORT*************/
 
 .donutContainer {
