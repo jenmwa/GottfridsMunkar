@@ -797,9 +797,8 @@ function writeOutFormConfirmation() {
     <p>Du har beställt: ${total.amount} Stycken munkar <p>
     <p>Totalsumman för ordern är: ${total.price} kr</p>
     <p>Fraktkostnaden landar på: ${total.freight} kr </p>
-    <p>Beställningen kommer levereras till: <br>
-    <span> ${formOrderAdress} ${formOrderZipcode} ${formOrderCity}</span></p>
-    <p> ${total.delivery}</p>
+    <p>Beställningen kommer levereras till: ${formOrderAdress} ${formOrderZipcode} ${formOrderCity}</p>
+    <p>${total.delivery}</p>
     <a href="index.html">Tillbaka till startsidan</a>
     </div>
   `;
