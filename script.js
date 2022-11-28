@@ -313,6 +313,7 @@ function sendToCart(e) {
     });
   }
   
+  luciaSpecial();
   manySingleDonutsDiscount();
   printOutShopCart();
   setTimeout(clearValues, 500);
@@ -473,13 +474,6 @@ function manySingleDonutsDiscount() {
       cartItem.discountMessage = '10% rabatt';
     }
   }
-
-  
-  // if (addShopCartList[i].anyAmount > 9) {
-  //   addShopCartList[i].anySum = addShopCartList[i].anySum * 0.9;
-  //   console.log('hej')
-  // }
-  
 }
 
 // 10% off if monday before 10am
@@ -506,6 +500,29 @@ function specialPriceWeekend() {
     for (let i = 0; i < donuts.length; i++) {
       const donut = donuts[i];
       donut.price = Math.round(donut.price * 1.15);
+    }
+  }
+}
+
+// Free lucia donut on dec 13th
+function luciaSpecial() {
+  const date = new Date();
+  const luciaIndex = addShopCartList.findIndex(element => element.anyName === 'Luciamunk');
+
+  if (date.getDate() === 28 && date.getMonth() === 10) {
+    if (addShopCartList.length > 0 && luciaIndex === -1) {
+      addShopCartList.push({
+        anyPrice: 0,
+        anyImg: 'img/donuts_img/white.jpg',
+        anyAlt: 'Luciamunk',
+        anyName: 'Luciamunk',
+        anyAmount: 1,
+        anySum: 0,
+        discountMessage: "Glad lucia, vi skickar med en gratis Luciamunk.",
+      });
+      addShopCartList.push(addShopCartList.splice(luciaIndex, 1)[0]);
+    } else if (luciaIndex > -1) {
+      addShopCartList.push(addShopCartList.splice(luciaIndex, 1)[0]);
     }
   }
 }
