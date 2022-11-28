@@ -138,6 +138,16 @@ const addShopCartList = [];
 // Empty shopping cart button
 const removeShoppingCart = document.querySelector('#shoppingRemove');
 
+const total = {
+  amount: 0,
+  price: 0,
+  freight: 0,
+  discountMessage: ''
+}
+
+// Checkout discount message container
+const discountMessageContainer = document.querySelector('.checkoutContainer .discountMessage');
+
 /** ****************** SORTING VARIABLES ************************************** */
 
 let nameSort = true;
@@ -219,7 +229,9 @@ function writeOutDonuts() {
 
   // Adding Evenlisternes on BTN's
   addEventListeners();
+
   createDots();
+  christmasSpecial();
 }
 
 // Add eventlisteners after writeOutDonuts
@@ -310,13 +322,17 @@ function sendToCart(e) {
       anyName: donuts[addToCartBtn].name,
       anyAmount: donuts[addToCartBtn].amount,
       anySum: donuts[addToCartBtn].sum,
+      discountMessage: "",
     });
   }
-
+  
+  luciaSpecial();
+  manySingleDonutsDiscount();
   printOutShopCart(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
   setTimeout(clearValues, 500, addToCartBtn);
   activateCheckoutSection();
   updateShopCartTotal();
+  freightCost();
 }
 
 // Function that clears the values for the donuts when clicking the buy-button
@@ -397,13 +413,10 @@ function activateCheckoutSection() {
 
 // Updates total amount in shopCart & shopcartIcon
 function updateShopCartTotal() {
-  const donutAmountAddedShopCart = addShopCartList.reduce(
-    (previousValue, addShopCartList) => addShopCartList.anyAmount + previousValue,
-    0
-  );
-  document.querySelector('#shoppingCartTotalItems').innerHTML = donutAmountAddedShopCart;
-  document.querySelector('#amountChoosen').innerHTML = donutAmountAddedShopCart;
-  if (donutAmountAddedShopCart === 0) {
+  total.amount = addShopCartList.reduce((previousValue, addShopCartList) => addShopCartList.anyAmount + previousValue, 0);
+  document.querySelector('#shoppingCartTotalItems').innerHTML = total.amount;
+  document.querySelector('#amountChoosen').innerHTML = total.amount;
+  if (total.amount === 0) {
     // Added - IF there is product background color changes.
     document.querySelector('#amountChoosen').classList.remove('colorsOn');
   } else {
@@ -411,28 +424,26 @@ function updateShopCartTotal() {
   }
 
   // Updates total sum in shopCart
-  const donutSumAddedShopCart = addShopCartList.reduce(
-    (previousValue, addShopCartList) => addShopCartList.anySum + previousValue,
-    0
-  );
-  document.querySelector('#shoppingCartTotalAmount').innerHTML = donutSumAddedShopCart;
+  total.price = addShopCartList.reduce((previousValue, addShopCartList) => addShopCartList.anySum + previousValue, 0);
+  mondaySpecial();
+  evenWeekTuesday();
+  toHighforInvoice();
+  document.querySelector('#shoppingCartTotalAmount').innerHTML = total.price;
 }
 
 // Function print items shoppingCart
-function printOutShopCart(index) {
+function printOutShopCart() {
   document.querySelector('#shopCartContent').innerHTML = '';
 
-  /* if (addShopCartList[index].anyAmount > 10) { // om du beställer mer än 10 munkar får du 10% rabatt
-    addShopCartList[index].anySum = Math.round(addShopCartList[index].anySum * 0.9);
-  } */
-
   for (let i = 0; i < addShopCartList.length; i++) {
+
     document.querySelector('#shopCartContent').innerHTML += `
         <div id="shopCartAddedDiv"><img class="imgInCart" src="${addShopCartList[i].anyImg}" alt="${addShopCartList[i].anyAlt}"  width="55" height="55"></img>
         <span class="text"><h4>${addShopCartList[i].anyName}</h4><br>
         <p>${addShopCartList[i].anyAmount}st</p>
         <p>${addShopCartList[i].anyPrice}kr/st</p>
-        <p>${addShopCartList[i].anySum}kr</p></span>
+        <p>${addShopCartList[i].anySum}kr</p><br>
+        <p class="discountMessage">${addShopCartList[i].discountMessage}</p></span>
         <button class="material-symbols-outlined" data-id="${i}">
         delete_forever</button>
         </div>`;
@@ -451,6 +462,7 @@ function printOutShopCart(index) {
       addShopCartList.splice(j, 1);
       updateShopCartTotal();
     }
+
     printOutShopCart();
     emptyCart();
   }
@@ -463,6 +475,127 @@ function emptyShoppingCart() {
 }
 
 /** ****************** SPECIAL PRICE FUNCTIONS ************************************** */
+
+// 10% off per donut when ordering 10x of same donut
+function manySingleDonutsDiscount() {
+  
+  for (let i = 0; i < addShopCartList.length; i++) {
+    const cartItem = addShopCartList[i];
+    
+    cartItem.anySum = cartItem.anyAmount * cartItem.anyPrice;
+
+    if (cartItem.anyAmount >= 10) {
+      cartItem.anySum = Math.round(cartItem.anySum * 0.9);
+      cartItem.discountMessage = '10% rabatt';
+    }
+  }
+}
+
+// 10% off if monday before 10am
+function mondaySpecial() {
+  const date = new Date();
+  discountMessageContainer.innerHTML = '';
+
+  if (date.getDay() === 1 && date.getHours() < 10) {
+    total.discountMessage = 'Måndagsrabatt: 10 % på hela beställningen';
+
+    total.price = Math.round(total.price * 0.9);
+    discountMessageContainer.innerHTML = total.discountMessage;
+  }
+}
+
+// 25kr discount on even week tuesday
+function evenWeekTuesday() {
+  const date = new Date();
+  const startDate = new Date(date.getFullYear(), 0, 1);
+  const days = Math.floor((date - startDate) / (24 * 60 * 60 * 1000));
+  const weekNumber = Math.ceil(days / 7);
+
+  discountMessageContainer.innerHTML = '';
+
+  if (weekNumber % 2 === 0 && date.getDay() === 2 && total.price > 25) {
+    total.discountMessage = 'Jämn vecka tisdagsrabatt: 25kr rabatt';
+
+    total.price = Math.round(total.price - 25);
+    discountMessageContainer.innerHTML = total.discountMessage;
+  }
+}
+
+// 15% added price between friday 15pm and monday 3am
+function specialPriceWeekend() {
+  const date = new Date();
+  const day = date.getDay();
+  const hour = date.getHours();
+  
+  if ((day === 5 && hour > 15) || day === 6 || day === 0 || (day === 1 && hour < 3)) {
+    for (let i = 0; i < donuts.length; i++) {
+      const donut = donuts[i];
+      donut.price = Math.round(donut.price * 1.15);
+    }
+  }
+}
+
+// Free lucia donut on dec 13th
+function luciaSpecial() {
+  const date = new Date();
+  const luciaIndex = addShopCartList.findIndex(element => element.anyName === 'Luciamunk');
+
+  if (date.getDate() === 13 && date.getMonth() === 11) {
+    if (addShopCartList.length > 0 && luciaIndex === -1) {
+      addShopCartList.push({
+        anyPrice: 0,
+        anyImg: 'img/donuts_img/white.jpg',
+        anyAlt: 'Luciamunk',
+        anyName: 'Luciamunk',
+        anyAmount: 1,
+        anySum: 0,
+        discountMessage: "Glad lucia, vi skickar med en gratis Luciamunk.",
+      });
+      addShopCartList.push(addShopCartList.splice(luciaIndex, 1)[0]);
+    } else if (luciaIndex > -1) {
+      addShopCartList.push(addShopCartList.splice(luciaIndex, 1)[0]);
+    }
+  }
+}
+
+// Invoice disabled when total price over 800
+function toHighforInvoice() {
+  if (total.price > 800) {
+    invoiceRadio.disabled = true;
+    invoiceRadio.checked = false;
+    invoiceRadio.parentElement.setAttribute('title', 'Fakturering möjligt endast vid beställningar under 800:-');
+    cardRadio.checked = true;
+  } else {
+    invoiceRadio.disabled = false;
+    invoiceRadio.parentElement.removeAttribute('title');
+  }
+}
+
+// Calculating freight costs
+function freightCost() {
+  const freightCostContainer = document.querySelector('.freightCost');
+
+  if (total.amount > 15) {
+    total.freight = 0;
+    freightCostContainer.innerHTML = 'Gratis frakt';
+  } else {
+    total.freight = Math.round(25 + (total.price * 0.1));
+    freightCostContainer.innerHTML = `+${total.freight} frakt`;
+  }
+}
+
+// Change background and price color on dec 24th
+function christmasSpecial() {
+  const date = new Date();
+  const priceContainers = document.querySelectorAll('.price');
+
+  if (date.getDate() === 24 && date.getMonth() === 11) {
+    document.querySelector('body').classList.add('christmasSpecial');
+    document.querySelector('.sortProducts').classList.add('christmasSpecial');
+
+    priceContainers.forEach(price => price.classList.add('christmasSpecial'));
+  }
+}
 
 /** ****************** TOGGLE THEME FUNCTIONS ************************************** */
 
@@ -751,6 +884,8 @@ invoiceRadio.addEventListener('change', fakturaPaymentOpen);
 for (let i = 0; i < formOrderInputs.length; i++) {
   formOrderInputs[i].addEventListener('change', checkInputNotEmpty);
 }
+// Function-call higher donut price on weekend
+specialPriceWeekend();
 
 // Function-call to write out donuts
 writeOutDonuts();
@@ -758,3 +893,5 @@ writeOutDonuts();
 writeOutSortProducts();
 // Function Call to wtie out theme-toggle
 writeOutToggleTheme();
+
+christmasSpecial();

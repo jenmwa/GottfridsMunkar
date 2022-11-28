@@ -6,6 +6,21 @@ body {
   background-color: $specialBeige;
 }
 
+/*************CHRISTMAS SPECIAL******/
+
+body.christmasSpecial {
+  background-image: url('../img/christmas_bg.jpeg') !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important; 
+}
+
+.price.christmasSpecial{
+  color: red !important;
+}
+
+.sortProducts.christmasSpecial, .sortProducts.christmasSpecial i {
+  color: white !important;
+}
 
 /*************HEADER*************/
 
@@ -215,6 +230,10 @@ header {
       right: 3.5rem;
     }
   }
+}
+
+.discountMessage {
+  color: red;
 }
 
 /*CHECKOUT*/
