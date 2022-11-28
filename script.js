@@ -393,7 +393,7 @@ function toggleShoppingCartOpenState() {
 
 // Function empty shoppingCart
 function emptyCart() {
-  if (addShopCartList === 0) {
+  if (addShopCartList == 0) {
     document.querySelector('#shopCartContent').innerHTML = 'Varukorgen är tom.';
     // rad 313-316 + 322-325 går att förenkla och kombinera?
     const checkoutContainer = document.querySelector('#checkoutContainer');
