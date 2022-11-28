@@ -228,7 +228,9 @@ function writeOutDonuts() {
 
   // Adding Evenlisternes on BTN's
   addEventListeners();
+
   createDots();
+  christmasSpecial();
 }
 
 // Add eventlisteners after writeOutDonuts
@@ -573,6 +575,19 @@ function freightCost() {
   }
 }
 
+// Change background and price color on dec 24th
+function christmasSpecial() {
+  const date = new Date();
+  const priceContainers = document.querySelectorAll('.price');
+
+  if (date.getDate() === 24 && date.getMonth() === 11) {
+    document.querySelector('body').classList.add('christmasSpecial');
+    document.querySelector('.sortProducts').classList.add('christmasSpecial');
+
+    priceContainers.forEach(price => price.classList.add('christmasSpecial'));
+  }
+}
+
 /** ****************** TOGGLE THEME FUNCTIONS ************************************** */
 
 function toggleTheme() {
@@ -903,3 +918,5 @@ writeOutDonuts();
 
 // Function-call to write out sorting-iconsw
 writeOutSortProducts();
+
+christmasSpecial();
