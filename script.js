@@ -509,7 +509,7 @@ function luciaSpecial() {
   const date = new Date();
   const luciaIndex = addShopCartList.findIndex(element => element.anyName === 'Luciamunk');
 
-  if (date.getDate() === 28 && date.getMonth() === 10) {
+  if (date.getDate() === 13 && date.getMonth() === 11) {
     if (addShopCartList.length > 0 && luciaIndex === -1) {
       addShopCartList.push({
         anyPrice: 0,
