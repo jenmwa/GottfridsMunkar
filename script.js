@@ -143,6 +143,9 @@ const total = {
   discountMessage: ''
 }
 
+// Checkout discount message container
+const discountMessageContainer = document.querySelector('.checkoutContainer .discountMessage');
+
 /** ****************** SORTING VARIABLES ************************************** */
 
 
@@ -412,6 +415,7 @@ function updateShopCartTotal() {
   // Updates total sum in shopCart
   total.price = addShopCartList.reduce((previousValue, addShopCartList) => addShopCartList.anySum + previousValue, 0);
   mondaySpecial();
+  evenWeekTuesday();
   toHighforInvoice();
   document.querySelector('#shoppingCartTotalAmount').innerHTML = total.price;
 }
@@ -479,13 +483,29 @@ function manySingleDonutsDiscount() {
 // 10% off if monday before 10am
 function mondaySpecial() {
   const date = new Date();
-  const discountMessageContainer = document.querySelector('.checkoutContainer .discountMessage');
   discountMessageContainer.innerHTML = '';
 
   if (date.getDay() === 1 && date.getHours() < 10) {
     total.discountMessage = 'Måndagsrabatt: 10 % på hela beställningen';
 
     total.price = Math.round(total.price * 0.9);
+    discountMessageContainer.innerHTML = total.discountMessage;
+  }
+}
+
+// 25kr discount on even week tuesday
+function evenWeekTuesday() {
+  const date = new Date();
+  const startDate = new Date(date.getFullYear(), 0, 1);
+  const days = Math.floor((date - startDate) / (24 * 60 * 60 * 1000));
+  const weekNumber = Math.ceil(days / 7);
+
+  discountMessageContainer.innerHTML = '';
+
+  if (weekNumber % 2 === 0 && date.getDay() === 2 && total.price > 25) {
+    total.discountMessage = 'Jämn vecka tisdagsrabatt: 25kr rabatt';
+
+    total.price = Math.round(total.price - 25);
     discountMessageContainer.innerHTML = total.discountMessage;
   }
 }
