@@ -70,6 +70,9 @@ header {
     font-size: 1.5rem;
     color: black;
   }
+  i.darkTheme{
+    color: $specialBeige;
+   }
   div {
     height: 20px;
     width: 20px;
@@ -101,6 +104,9 @@ header {
     height: 5px;
     background-color: black;
     border-radius: 5px;
+  }
+  span.darkTheme{
+    background-color: $specialBeige;
   }
 }
 
@@ -301,6 +307,21 @@ header {
   }
 }
 
+.headingDonuts{
+  position: relative;
+  top: 120px;
+  text-align: center;
+  h1{
+    margin: 0;
+    text-transform: uppercase;
+
+    .svgDonut{
+      width: 30px;
+      height: auto;
+    }
+  }
+}
+
 /*****THEME TOGGLE**********/
 
 .themeToggle {
@@ -310,6 +331,7 @@ header {
 
   .themeToggleContainer {
     position: relative;
+    top: 40px;
     z-index: 1;
     display: flex;
     justify-content: space-around;
@@ -378,6 +400,9 @@ header {
         font-size: 1.2rem;
         margin-right: 10px;
       }
+      i.darkTheme{
+        color: $specialBeige;
+      }
     }
   }
 }
@@ -412,6 +437,7 @@ header {
   width: 1px;
   height: 1px;
   z-index: 6;
+
 
   input {
     margin: 5px 0;
@@ -476,11 +502,13 @@ form {
     margin: 0;
   }
 }
-
 input.error {
   border-color: red;
 }
-
+section.darkThemebg{
+  background-color: #302f2a;
+  
+}
 /*************PRODUKTKORT*************/
 
 .donutContainer {
@@ -492,6 +520,11 @@ input.error {
   width: 90%;
   padding: 50px;
   background-color: $specialGreen;
+   
+  article.darkTheme{
+    background-color: #839183;
+  }
+
 
   h2 {
     margin: 3px;
@@ -568,6 +601,7 @@ input.error {
     padding: 20px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 
+
     .donutInfo {
       text-align: center;
       position: relative;
@@ -606,8 +640,11 @@ input.error {
         }
       }
     }
+   
   }
+
 }
+
 
 /***********FOOTER****************/
 
@@ -636,3 +673,25 @@ footer {
     text-shadow: 1px 1px 2px black;
   }
 }
+
+/********** DARKTHEME ********/
+header.darkTheme{
+ background-color: #3b1919;
+}
+footer.darkTheme{
+  background-color: #3b1919;
+ }
+body.darkTheme{
+  background-color: #302f2a;
+  color: $specialBeige;
+}
+a.darkTheme{
+  color: $specialBeige;
+}
+div.darkTheme{
+  background-color: #4b5947;
+}
+
+
+
+
