@@ -625,12 +625,15 @@ function writeOutToggleTheme() {
 function toggleTheme() {
   themeBtn.classList.toggle('themeBtnMove');
   const colorTheme = document.querySelectorAll('.allColorTheme');
+  const formColorTheme = document.querySelector('.confirmContainer');
 
   document.body.classList.toggle('darkTheme');
   formOrder.classList.toggle('darkThemebg');
   colorTheme.forEach(theme => {
     theme.classList.toggle('darkTheme');
   });
+  formColorTheme.classList.toggle('darkThemeBg');
+  
 }
 
 /** ****************** FORM FUNCTIONS ************************************** */
@@ -787,7 +790,7 @@ function removeError(e) {
 
 function writeOutFormConfirmation() {
   formConfirmation.innerHTML +=`
-    <div class="confirmContatiner">
+    <div class="confirmContainer" id="confirmContainer">
     <h4>Tack för din order ${formOrderFirstName}!
     <p>Ordernummer: ${orderNumber}
     <p>Du har beställt: ${total.amount} Stycken munkar <p>

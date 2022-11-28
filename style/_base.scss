@@ -511,7 +511,7 @@ section.darkThemebg{
 
 article.orderConfirmation{
 
-.confirmContatiner{
+.confirmContainer{
   margin-left: 15%;
   background-color: $specialRed;
   width: 70%;
@@ -522,10 +522,15 @@ article.orderConfirmation{
   display: block;
   outline: 2px solid rgba(0,0,0, 0.7);
   box-shadow: 0 3px 15px rgba(0,0,0, 0.7);
+  }
+  div.darkThemeBg{
+    background-color: #3b1919;
+  }
   
+}
 
-}
-}
+
+
 
 
 /*************PRODUKTKORT*************/
@@ -710,7 +715,5 @@ a.darkTheme{
 div.darkTheme{
   background-color: #4b5947;
 }
-
-
 
 
