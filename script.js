@@ -144,7 +144,7 @@ const total = {
   amount: 0,
   price: 0,
   freight: 0,
-  delivery: 30,
+  delivery: 'Leveranstiden är 30 minuter',
   discountMessage: ''
 }
 
@@ -789,8 +789,7 @@ function removeError(e) {
 /** ******************WRITE OUT FORM CONFIRMATION FUNCTION ******************** */
 
 function writeOutFormConfirmation() {
-  const deliveryMsg = document.querySelector('#deliveryMsg')
- 
+
   formConfirmation.innerHTML +=`
     <div class="confirmContainer" id="confirmContainer">
     <h4>Tack för din order ${formOrderFirstName}!
@@ -800,27 +799,27 @@ function writeOutFormConfirmation() {
     <p>Fraktkostnaden landar på: ${total.freight} kr </p>
     <p>Beställningen kommer levereras till: <br>
     <span> ${formOrderAdress} ${formOrderZipcode} ${formOrderCity}</span></p>
-    <p id="deliveryMsg">Leveranstiden är ${total.delivery} minuter.</p>
+    <p> ${total.delivery}</p>
     <a href="index.html">Tillbaka till startsidan</a>
     </div>
   `;
+ 
 } 
 
 /** ****************** SPECIAL DELIVERY FUNCTION ****************************** */
-
 function specialDelivery(){
   const date = new Date();
   const day = date.getDay();
   const hour = date.getHours();
-
+  
   if ( day === 6 || day === 0){
-    total.delivery = 90;
+    total.delivery = 'Leveranstiden är 90 minuter.';
   }
   if(hour > 23  || hour < 2){
-    total.delivery = 45;
+    total.delivery = 'Leveranstiden är 45 minuter.';
   }
   if (day === 5 && hour > 11 && hour < 13){
-    deliveryMsg.innerHTML = `Vi sitter i möte Leverans sker efter kl 15.00`
+    total.delivery = 'Vi sitter i möte leveransen sker 15.00.'
   } 
   writeOutFormConfirmation();
 }
