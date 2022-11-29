@@ -365,15 +365,15 @@ function sendToCart(e) {
 
 // Function that clears the values for the donuts when clicking the buy-button
 function clearValues(addToCartBtn) {
-  const sum = document.querySelector('.sum');
-  const amount = document.querySelector('.amount');
+  const sum = document.querySelectorAll('.sum');
+  const amount = document.querySelectorAll('.amount');
 
   for ( let i = 0; i < donuts.length; i++) {
     donuts[addToCartBtn].sum = 0;
     donuts[addToCartBtn].amount = 0;
   }
-  sum.innerHTML = `${donuts[addToCartBtn].sum} kr`;
-  amount.innerHTML = `${donuts[addToCartBtn].amount} st`;
+  sum[addToCartBtn].innerHTML = `${donuts[addToCartBtn].sum} kr`;
+  amount[addToCartBtn].innerHTML = `${donuts[addToCartBtn].amount} st`;
 
 }
 
