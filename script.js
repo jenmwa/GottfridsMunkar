@@ -250,6 +250,7 @@ function writeOutDonuts() {
             <button class="addToCart" data-id="${i}">Köp</button><br>
             <span class="category" >Kategori: <span class="category">${donuts[i].category}</span></span>  
           </div>
+          </div>
       </article>    
         `;
   }
