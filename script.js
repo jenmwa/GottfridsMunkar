@@ -151,6 +151,9 @@ const total = {
 // Checkout discount message container
 const discountMessageContainer = document.querySelector('.checkoutContainer .discountMessage');
 
+// Discount code Btn
+const discountCodeBtn = document.querySelector('#discountCodeBtn');
+
 /** ****************** SORTING VARIABLES ************************************** */
 
 let nameSort = true;
@@ -340,11 +343,12 @@ function sendToCart(e) {
   
   luciaSpecial();
   manySingleDonutsDiscount();
-  printOutShopCart(addShopCartList.findIndex(element => element.anyName === donuts[addToCartBtn].name));
+  printOutShopCart();
   setTimeout(clearValues, 500, addToCartBtn);
   activateCheckoutSection();
   updateShopCartTotal();
   freightCost();
+  printCartTotal();
 }
 
 // Function that clears the values for the donuts when clicking the buy-button
@@ -440,6 +444,9 @@ function updateShopCartTotal() {
   mondaySpecial();
   evenWeekTuesday();
   toHighforInvoice();
+}
+
+function printCartTotal() {
   document.querySelector('#shoppingCartTotalAmount').innerHTML = total.price;
 }
 
@@ -487,6 +494,23 @@ function emptyShoppingCart() {
 }
 
 /** ****************** SPECIAL PRICE FUNCTIONS ************************************** */
+
+// 100% when entering super secret code
+function superDiscountCode() {
+  const discountCodeInput = document.querySelector('#discountCodeInput');
+  const discountCode = 'a_damn_fine-cup_of-coffee';
+  const freightCostContainer = document.querySelector('.freightCost');
+  
+  if (discountCodeInput.value === discountCode) {
+    total.price = 0;
+    total.freight = 0;
+    freightCostContainer.innerHTML = 'Gratis frakt';
+    discountMessageContainer.innerHTML = 'WOW, FREE MUCH?!';
+  } else {
+    return;
+  }
+  printCartTotal();
+}
 
 // 10% off per donut when ordering 10x of same donut
 function manySingleDonutsDiscount() {
@@ -925,6 +949,9 @@ shoppingClose.addEventListener('click', toggleShoppingCartOpenState);
 
 // Remove donut from shopping cart eventlistener
 removeShoppingCart.addEventListener('click', emptyShoppingCart);
+
+// Discount code eventlistener
+discountCodeBtn.addEventListener('click', superDiscountCode);
 
 // Form eventlisteners
 formOpenBtn.addEventListener('click', formOrderOpen);
