@@ -2,6 +2,8 @@
 /* eslint-disable no-use-before-define */
 
 
+
+
 /** ****************************************************************************
  ******************************** VARIABLES **************************************
  ******************************************************************************
@@ -147,6 +149,7 @@ const total = {
   amount: 0,
   price: 0,
   freight: 0,
+  delivery: 'Leveranstiden är 30 minuter',
   discountMessage: ''
 };
 
@@ -171,6 +174,10 @@ const themeToggleCont = document.querySelector('#themeToggle');
 
 // Form inputs
 const formOrderInputs = Array.from(document.querySelector('.formOrder').querySelectorAll('input'));
+const formOrderFirstName = document.querySelector('#firstname').value;
+const formOrderAdress = document.querySelector('#adress').value;
+const formOrderZipcode = document.querySelector('#zipcode').value;
+const formOrderCity = document.querySelector('#city').value;
 
 // Form open buttons
 const formOpenBtn = document.querySelector('.checkoutButton');
@@ -197,6 +204,11 @@ let isDebitKredit = false;
 let isInvoice = false;
 let isSocialSecurity = false;
 let isGdpr = false;
+
+// Declare variable for form confirmation 
+const formConfirmation = document.querySelector('#orderConfirmation');
+// Declare a variable for random ordernumber
+const orderNumber = Math.round((Math.random() * 100000));
 
 /** ****************************************************************************
  ******************************** FUNCTIONS **************************************
@@ -650,12 +662,15 @@ function writeOutToggleTheme() {
 function toggleTheme() {
   themeBtn.classList.toggle('themeBtnMove');
   const colorTheme = document.querySelectorAll('.allColorTheme');
+  const formColorTheme = document.querySelector('.confirmContainer');
 
   document.body.classList.toggle('darkTheme');
   formOrder.classList.toggle('darkThemebg');
   colorTheme.forEach(theme => {
     theme.classList.toggle('darkTheme');
   });
+  formColorTheme.classList.toggle('darkThemeBg');
+  
 }
 
 /** ****************** FORM FUNCTIONS ************************************** */
@@ -771,7 +786,7 @@ function checkInputNotEmpty(e) {
 // Function to check if all inputs are valid, make submit button enabled
 function checkFormValid() {
   const submitBtn = document.querySelector('#submit');
-
+  submitBtn.addEventListener('click', specialDelivery);
   if (
     isFirstname &&
     isLastname &&
@@ -787,6 +802,7 @@ function checkFormValid() {
   } else {
     submitBtn.disabled = true;
   }
+  
 }
 
 // Function to add error message to non-valid input
@@ -805,6 +821,42 @@ function addErrorMessage(e, string) {
 function removeError(e) {
   e.target.classList.remove('error');
   e.target.parentElement.querySelector('.errorMessage').innerHTML = '';
+}
+/** ******************WRITE OUT FORM CONFIRMATION FUNCTION ******************** */
+
+function writeOutFormConfirmation() {
+
+  formConfirmation.innerHTML +=`
+    <div class="confirmContainer" id="confirmContainer">
+    <h4>Tack för din order ${formOrderFirstName}!
+    <p>Ordernummer: ${orderNumber}
+    <p>Du har beställt: ${total.amount} Stycken munkar <p>
+    <p>Totalsumman för ordern är: ${total.price} kr</p>
+    <p>Fraktkostnaden landar på: ${total.freight} kr </p>
+    <p>Beställningen kommer levereras till: ${formOrderAdress} ${formOrderZipcode} ${formOrderCity}</p>
+    <p>${total.delivery}</p>
+    <a href="index.html">Tillbaka till startsidan</a>
+    </div>
+  `;
+ 
+} 
+
+/** ****************** SPECIAL DELIVERY FUNCTION ****************************** */
+function specialDelivery(){
+  const date = new Date();
+  const day = date.getDay();
+  const hour = date.getHours();
+  
+  if ( day === 6 || day === 0){
+    total.delivery = 'Leveranstiden är 90 minuter.';
+  }
+  if(hour > 23  || hour < 2){
+    total.delivery = 'Leveranstiden är 45 minuter.';
+  }
+  if (day === 5 && hour > 11 && hour < 13){
+    total.delivery = 'Vi sitter i möte leveransen sker 15.00.'
+  } 
+  writeOutFormConfirmation();
 }
 
 /** ****************** SORT-BY FUNCTIONS ************************************** */
@@ -922,18 +974,19 @@ formCloseBtn.addEventListener('click', formOrderClose);
 cardRadio.addEventListener('change', cardPaymentOpen);
 invoiceRadio.addEventListener('change', fakturaPaymentOpen);
 
+
 // Form inputs, add event listeners
 for (let i = 0; i < formOrderInputs.length; i++) {
   formOrderInputs[i].addEventListener('change', checkInputNotEmpty);
 }
 // Function-call higher donut price on weekend
 specialPriceWeekend();
-
 // Function-call to write out donuts
 writeOutDonuts();
 // Function-call to write out sorting-iconsw
 writeOutSortProducts();
 // Function Call to wtie out theme-toggle
 writeOutToggleTheme();
+
 
 christmasSpecial();
