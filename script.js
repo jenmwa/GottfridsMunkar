@@ -377,10 +377,6 @@ function clearValues(addToCartBtn) {
 
 }
 
-/*
-
-*/
-
 
 /** ****************** SLIDESHOW FUNCTIONS ************************************** */
 
