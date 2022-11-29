@@ -29,7 +29,7 @@ header {
   height: 75px;
   position: fixed;
   padding: 0 20px;
-  z-index: 5;
+  z-index: 4;
   background-color: $specialRed;
   display: flex;
   justify-content: space-between;
@@ -42,11 +42,83 @@ header {
     text-transform: uppercase;
   }
   nav {
-    display: none;
-    a {
-      color: black;
+    position: fixed;
+    right: -100%;
+    width: 100%;
+    height: 50px;
+    top: 75px;
+    background-color: $specialGreen;
+    transition: ease-in-out .3s;
+
+    ul {
+      display: flex;
+      justify-items: baseline;
+      align-items:center;
+      margin:0;
+
+      li {
+        padding: 10px;
+        list-style-type: none;
+
+        ::before {
+          content: '';
+          display: inline-block;
+          height: 1.5rem;
+          width: 1.5rem;
+          background-image: url('/img/svg/donut-bite.svg');
+          margin-right: 5px;
+        }
+
+        a {
+          padding-bottom: 50px;
+          font-weight: 600;
+          color: black;
+          font-size: 1rem;
+   
+        }
+      }
     }
   }
+
+  nav.open {
+    display: block;
+    width: 100%;
+    height:50px;
+    background-color: $specialGreen;
+    position: absolute;
+    top: 75px;
+    right: 0; 
+    
+    ul {
+      display: flex;
+      justify-items: baseline;
+      align-items:center;
+      margin:0;
+
+      li {
+        padding: 10px;
+        list-style-type: none;
+
+        ::before {
+          content: '';
+          display: inline-block;
+          height: 1.5rem;
+          width: 1.5rem;
+          background-image: url('/img/svg/donut-bite.svg');
+          margin-right: 5px;
+        }
+
+        a {
+          padding-bottom: 50px;
+          font-weight: 600;
+
+        }
+      }  
+
+    }
+    
+  }
+
   button {
     display: block;
     height: 45px;
@@ -131,10 +203,10 @@ header {
 
 #sectionShoppingCart.open {
   display: block;
-  top: 0;
+  top: 75px;
   right: 0;
   bottom: 0;
-  z-index: 4;
+  z-index: 5;
   position: fixed;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -142,7 +214,6 @@ header {
 }
 
 .shoppingContainer {
-  margin: 75px 0 0 0;
   background-color: $specialLightGreen;
   border: 4px solid $specialGreen;
   box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
@@ -244,6 +315,8 @@ header {
 
 .checkoutContainer.open {
   display: block;
+  margin: 0;
+  padding: 0;
 
   .cartCheckout {
     margin: 0 auto 2rem auto;
@@ -309,9 +382,11 @@ header {
 
 .headingDonuts{
   position: relative;
-  top: 120px;
+  top: 150px;
   text-align: center;
+
   h1{
+
     margin: 0;
     text-transform: uppercase;
 
@@ -327,7 +402,7 @@ header {
 .themeToggle {
   display: flex;
   justify-content: right;
-  padding-top: 100px;
+  padding-top: 150px;
 
   .themeToggleContainer {
     position: relative;
@@ -650,7 +725,7 @@ section.darkThemebg{
 
 footer {
   width: 100%;
-  height: 100px;
+  height: 150px;
   background-color: $specialRed;
   display: flex;
   justify-content: space-between;

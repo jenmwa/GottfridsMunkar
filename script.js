@@ -126,6 +126,11 @@ const donuts = [
   },
 ];
 
+/** ****************** NAV VARIABLES ****************************** */
+const hamburgerMenu = document.querySelector('#hamburgerMenu');
+const nav = document.querySelector('#nav'); 
+;
+
 /** ****************** SHOPPING CART VARIABLES ****************************** */
 
 const shoppingCart = document.querySelector('#shoppingCart');
@@ -143,7 +148,7 @@ const total = {
   price: 0,
   freight: 0,
   discountMessage: ''
-}
+};
 
 // Checkout discount message container
 const discountMessageContainer = document.querySelector('.checkoutContainer .discountMessage');
@@ -197,6 +202,13 @@ let isGdpr = false;
  ******************************** FUNCTIONS **************************************
  ******************************************************************************
  */
+
+/** ****************** NAV FUNCTIONS ************************************** */
+
+// Function open Menu
+function toggleMenu(e) {
+  nav.classList.toggle('open'); //metod toggle adds/remove klass
+}
 
 /** ****************** DONUT FUNCTIONS ************************************** */
 
@@ -890,6 +902,9 @@ function sortByCategoryBtn() {
  ******************************** LOGIC **************************************
  ******************************************************************************
  */
+
+ //Nav menu open
+ hamburgerMenu.addEventListener('click', toggleMenu);
 
 // ShoppingCart open/close eventlisteners
 shoppingCart.addEventListener('click', toggleShoppingCartOpenState);
