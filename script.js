@@ -219,7 +219,7 @@ const orderNumber = Math.round((Math.random() * 100000));
 
 // Function open Menu
 function toggleMenu(e) {
-  nav.classList.toggle('open'); //metod toggle adds/remove klass
+  nav.classList.toggle('open'); // metod toggle adds/remove klass
 }
 
 /** ****************** DONUT FUNCTIONS ************************************** */
@@ -955,8 +955,8 @@ function sortByCategoryBtn() {
  ******************************************************************************
  */
 
- //Nav menu open
- hamburgerMenu.addEventListener('click', toggleMenu);
+// Nav menu open
+hamburgerMenu.addEventListener('click', toggleMenu);
 
 // ShoppingCart open/close eventlisteners
 shoppingCart.addEventListener('click', toggleShoppingCartOpenState);
