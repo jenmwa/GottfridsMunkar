@@ -834,14 +834,17 @@ function writeOutFormConfirmation() {
 
   formConfirmation.innerHTML +=`
     <div class="confirmContainer" id="confirmContainer">
-    <h4>Tack för din order ${formOrderFirstName}!
-    <p>Ordernummer: ${orderNumber}
-    <p>Du har beställt: ${total.amount} Stycken munkar <p>
-    <p>Totalsumman för ordern är: ${total.price} kr</p>
-    <p>Fraktkostnaden landar på: ${total.freight} kr </p>
-    <p>Beställningen kommer levereras till: ${formOrderAdress} ${formOrderZipcode} ${formOrderCity}</p>
-    <p>${total.delivery}</p>
-    <a href="index.html">Tillbaka till startsidan</a>
+    <h2>Orderbekräftelse</h2>
+    <h4>Tack för din order ${formOrderFirstName}!</h4>
+    <div>
+        <p>Ordernummer: ${orderNumber}
+        <p>Du har beställt:<span class="inhance"> ${total.amount} Stycken munkar</span><p>
+        <p>Totalsumman för ordern är:<span class="inhance"> ${total.price} kr </span></p>
+        <p>Fraktkostnaden landar på:<span class="inhance"> ${total.freight} kr </span></p>
+        <p>Beställningen kommer levereras till:<span class="inhance"> ${formOrderAdress} ${formOrderZipcode} ${formOrderCity}</span></p>
+        <p>${total.delivery}</p>
+    </div>
+      <button><a href=""index.html">Tillbaka till startsidan</a></button>
     </div>
   `;
  
@@ -996,3 +999,4 @@ writeOutToggleTheme();
 
 
 christmasSpecial();
+
