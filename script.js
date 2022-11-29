@@ -128,6 +128,11 @@ const donuts = [
   },
 ];
 
+/** ****************** NAV VARIABLES ****************************** */
+const hamburgerMenu = document.querySelector('#hamburgerMenu');
+const nav = document.querySelector('#nav'); 
+;
+
 /** ****************** SHOPPING CART VARIABLES ****************************** */
 
 const shoppingCart = document.querySelector('#shoppingCart');
@@ -146,7 +151,7 @@ const total = {
   freight: 0,
   delivery: 'Leveranstiden är 30 minuter',
   discountMessage: ''
-}
+};
 
 // Checkout discount message container
 const discountMessageContainer = document.querySelector('.checkoutContainer .discountMessage');
@@ -209,6 +214,13 @@ const orderNumber = Math.round((Math.random() * 100000));
  ******************************** FUNCTIONS **************************************
  ******************************************************************************
  */
+
+/** ****************** NAV FUNCTIONS ************************************** */
+
+// Function open Menu
+function toggleMenu(e) {
+  nav.classList.toggle('open'); //metod toggle adds/remove klass
+}
 
 /** ****************** DONUT FUNCTIONS ************************************** */
 
@@ -942,6 +954,9 @@ function sortByCategoryBtn() {
  ******************************** LOGIC **************************************
  ******************************************************************************
  */
+
+ //Nav menu open
+ hamburgerMenu.addEventListener('click', toggleMenu);
 
 // ShoppingCart open/close eventlisteners
 shoppingCart.addEventListener('click', toggleShoppingCartOpenState);
