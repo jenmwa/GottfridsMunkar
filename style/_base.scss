@@ -599,6 +599,31 @@ article.orderConfirmation{
   display: block;
   outline: 2px solid rgba(0,0,0, 0.7);
   box-shadow: 0 3px 15px rgba(0,0,0, 0.7);
+  text-align: center;
+
+  div{
+    p{
+      font-size: 1.1rem;
+    }
+    .inhance{
+      font-weight: 700;
+    }
+    
+  }
+  button{
+    cursor: pointer;
+    background-color: $specialBeige;
+    padding: 5px;
+    border: 3px solid $specialGreen;
+    &:hover{
+      background-color: $specialGreen;
+      border: 3px solid $specialBeige;
+    }
+    a{
+      text-decoration: none;
+      color: black;
+    }
+  }
   }
   div.darkThemeBg{
     background-color: #3b1919;
