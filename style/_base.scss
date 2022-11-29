@@ -147,21 +147,22 @@ header {
   i.darkTheme{
     color: $specialBeige;
    }
-  div {
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    margin: 0;
-    top: -5px;
-    left: 30px;
-    background-color: #fbf2cf;
-    border-radius: 50%;
-    @include getCentered;
-  }
-  .colorsOn {
-    background-color: $specialGreen;
-    box-shadow: 0 3px 15px #000;
-  }
+}
+.cartItem{
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: -15px;
+  right: 20px;
+  margin: 0;
+  background-color: #fbf2cf;
+  border-radius: 50%;
+  @include getCentered;
+
+}
+.colorsOn {
+  background-color: $specialGreen;
+  box-shadow: 0 3px 15px #000;
 }
 
 #shoppingCart:hover i {
@@ -586,7 +587,7 @@ section.darkThemebg{
   background-color: #302f2a;
 }
 
-article.orderConfirmation{
+div.orderConfirmation{
 
 .confirmContainer{
   margin-left: 15%;

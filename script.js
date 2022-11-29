@@ -231,15 +231,15 @@ function writeOutDonuts() {
   for (let i = 0; i < donuts.length; i++) {
     donutContainer.innerHTML += `
       <article class="donut allColorTheme" >
-        <div class="slideshow " id="slideshow">
+        <div class="slideshow " id="slideshow-${i}">
           <div class="images">
-            <img id="img1" class="img-1 donutImg-1-${i}"  src="${donuts[i].images[0]}" alt="${donuts[i].alt[0]}" width="100" height="150">
+            <img id="img1-${i}" class="img-1 donutImg-1-${i}"  src="${donuts[i].images[0]}" alt="${donuts[i].alt[0]}" width="100" height="150">
           </div>
           <div class="controls">
-            <button class="left" id="prevImage" data-id="${i}"><span  class="material-symbols-outlined">chevron_left</span></button>
-            <button class="right" id="nextImage" data-id="${i}"><span class="material-symbols-outlined">chevron_right</span></button>
+            <button class="left" id="prevImage-${i}" data-id="${i}"><span  class="material-symbols-outlined">chevron_left</span></button>
+            <button class="right" id="nextImage-${i}" data-id="${i}"><span class="material-symbols-outlined">chevron_right</span></button>
           </div>
-          <div class="indicator" id="indicatorDots"></div>
+          <div class="indicator" id="indicatorDots-${i}"></div>
           <div class="donutInfo"> 
             <h2>${donuts[i].name}</h2>
             <span class="price">${donuts[i].price} kr/st</span><br>
@@ -477,7 +477,7 @@ function printOutShopCart() {
 
     document.querySelector('#shopCartContent').innerHTML += `
         <div id="shopCartAddedDiv"><img class="imgInCart" src="${addShopCartList[i].anyImg}" alt="${addShopCartList[i].anyAlt}"  width="55" height="55"></img>
-        <span class="text"><h4>${addShopCartList[i].anyName}</h4><br>
+        <h4 class="text">${addShopCartList[i].anyName}</h4><br>
         <p>${addShopCartList[i].anyAmount}st</p>
         <p>${addShopCartList[i].anyPrice}kr/st</p>
         <p>${addShopCartList[i].anySum}kr</p><br>

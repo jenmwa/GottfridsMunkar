@@ -53,8 +53,8 @@
 
         <button aria-label="Kundkorg" class="shoppingCart" id="shoppingCart">
           <i class="fa-solid fa-cart-shopping allColorTheme"></i>
-          <div class="cartItems" id="amountChoosen">0</div>
         </button>
+        <p class="cartItem" id="amountChoosen">0</p>
         <button aria-label="Meny knapp" class="hamburgerMenu" id="hamburgerMenu">
           <span class="allColorTheme"></span>
           <span class="allColorTheme"></span>
@@ -94,8 +94,8 @@
                 <div class="discountMessage"></div>
                 <label class="checkoutLabel"
                   >Har du en rabattkod? <input type="text" id="discountCodeInput" placeholder="Rabattkod" />
-                  <button id="discountCodeBtn">aktivera</button>
                 </label>
+                <button id="discountCodeBtn">aktivera</button>
                 <button class="checkoutButton" id="checkoutButton">Beställ</button>
               </div>
             </div>
@@ -106,7 +106,7 @@
 
     <!-- FORMORDER -->
 
-    <section id="formOrder" class="formOrder">
+    <div id="formOrder" class="formOrder">
       <button class="formCloseBtn">
         <i class="fa-solid fa-x"></i>
       </button>
@@ -116,25 +116,25 @@
 
         <div class="flexForm">
           <label>
-            <div class="errorMessage"></div>
+            <span class="errorMessage"></span>
             <span>Förnamn:*</span><br />
             <input type="text" id="firstname" name="firstname" required /><br />
           </label>
 
           <label>
-            <div class="errorMessage"></div>
+            <span class="errorMessage"></span>
             <span>Efternamn:*</span><br />
             <input type="text" id="lastname" name="lastname" required /><br />
           </label>
 
           <label>
-            <div class="errorMessage"></div>
+            <span class="errorMessage"></span>
             <span>Adress(gata):*</span><br />
             <input type="text" id="adress" name="adress" required /><br />
           </label>
 
           <label>
-            <div class="errorMessage"></div>
+            <span class="errorMessage"></span>
             <span>Postnummer:*</span><br />
             <input
               type="text"
@@ -148,25 +148,25 @@
           </label>
 
           <label>
-            <div class="errorMessage"></div>
+            <span class="errorMessage"></span>
             <span>Postort:*</span><br />
             <input type="text" id="city" name="city" required /><br />
           </label>
 
           <label>
-            <div class="errorMessage"></div>
+            <span class="errorMessage"></span>
             <span>Ev. portkod:</span><br />
             <input type="text" id="portkod" name="portkod" /><br />
           </label>
 
           <label>
-            <div class="errorMessage"></div>
+            <span class="errorMessage"></span>
             <span>Telefon(mobil):*</span><br />
             <input type="tel" id="telephone" name="telephone" required /><br />
           </label>
 
           <label>
-            <div class="errorMessage"></div>
+            <span class="errorMessage"></span>
             <span>E-post:*</span><br />
             <input type="email" id="email" name="email" placeholder="exempel@exempel.se" required /><br />
           </label>
@@ -204,7 +204,7 @@
 
           <div class="fakturaPayment">
             <label>
-              <div class="errorMessage"></div>
+              <span class="errorMessage"></span>
               <span>Personnummer:*</span><br />
               <input
                 type="text"
@@ -230,13 +230,13 @@
       </form>  
       <button type="submit" id="submit" value="Skicka order!" disabled>Skicka order!</button>
 
-    </section>
+    </div>
 
     <!--   CONFIRMCONFAINER FORM-->
     
-    <article id="orderConfirmation" class="orderConfirmation">
+    <div id="orderConfirmation" class="orderConfirmation">
       
-    </article>
+    </div>
 
     <div class="headingDonuts" id="headingDonuts">
       <h1>
@@ -358,8 +358,7 @@
           <g></g>
           <g></g>
           <g></g>
-          <g></g></svg
-        >ttfrids munkar!
+          <g></g></svg>ttfrids munkar!
       </h1>
     </div>
     <!-- THEME TOGGLE -->
@@ -370,9 +369,9 @@
 
     <!-- Donuts -->
 
-    <section class="donutSection">
+    <div class="donutSection">
       <div id="donutContainer" class="donutContainer allColorTheme"></div>
-    </section>
+    </div>
 
     <footer class="allColorTheme" id="footer">
       <div class="leftFooter">
