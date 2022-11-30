@@ -177,6 +177,8 @@ const formOrderAdress = document.querySelector('#adress').value;
 const formOrderZipcode = document.querySelector('#zipcode').value;
 const formOrderCity = document.querySelector('#city').value;
 
+const form = document.querySelector('#countDownClear');
+
 // Form open buttons
 const formOpenBtn = document.querySelector('.checkoutButton');
 const formOrder = document.querySelector('.formOrder');
@@ -664,6 +666,7 @@ function writeOutToggleTheme() {
 }
 
 function toggleTheme() {
+  const themeBtn = document.querySelector('#themeBtn');
   themeBtn.classList.toggle('themeBtnMove');
   const colorTheme = document.querySelectorAll('.allColorTheme');
   const formColorTheme = document.querySelector('.confirmContainer');
@@ -682,6 +685,31 @@ function toggleTheme() {
 function formOrderOpen() {
   formOrder.classList.add('formOrderOpen');
   formCloseBtn.classList.add('formCloseBtnOpen');
+  setInterval(clearForm, 15 * 60 * 1000);
+}
+
+// Function to start timer
+function clearForm(){
+  const fname = document.querySelector('#firstname');
+  const lname = document.querySelector('#lastname');
+  const adress = document.querySelector('#adress');
+  const zipcode = document.querySelector('#zipcode');
+  const city = document.querySelector('#city');
+  const pcode = document.querySelector('#portkod');
+  const telephone = document.querySelector('#telephone');
+  const email = document.querySelector('#email');
+
+  fname.value = '';
+  lname.value = '';
+  adress.value = '';
+  zipcode.value = '';
+  city.value = '';
+  pcode.value = '';
+  telephone.value = '';
+  email.value = '';
+  
+  // Writing out message when form is cleared
+  form.innerHTML = `Det tog för lång tid att fylla i dina uppgifter, du har 15 minuter på dig!`;
 }
 
 // Close form function
