@@ -4,12 +4,9 @@
 
     nav {
       right: 0;
-      display: relative;
-      background-color: none;
       width: 100%;
       height: 0;
       top: 0;
-      background-color: none;
       transition: none;
 
       ul {
@@ -18,7 +15,6 @@
         justify-content: right;
         margin-right: 100px;
         margin-top: 10px;
-
       }
       li {
         padding: 0 10px;
@@ -36,7 +32,7 @@
   nav.open {
     display: none;
     background-color: red;
-}
+  }
 
   .hamburgerMenu {
     display: none;

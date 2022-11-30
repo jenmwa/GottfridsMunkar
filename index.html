@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html lang="sv">
   <head>
-    <meta charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
       content="Gottfrids fantastiska munkar - nu tillgängliga 24/7 genom Gottfrids nya webbshop! Du har inte testat riktiga munkar förrän du testat Gottfrids hantverks-munkar! "
-    >
-    <meta name="author" content="Gottfrid Jästson" >
-    <meta name="robots" content="all" >
-    <meta name="theme-color" content="#a1c298" >
+    />
+    <meta name="author" content="Gottfrid Jästson" />
+    <meta name="robots" content="all" />
+    <meta name="theme-color" content="#a1c298" />
 
-    <meta property="og:title" content="Gottfrids Fantastiska Munkar | DONUT WORRY - be happy!" >
-    <meta property="og:url" content="https://gottfridsmunkar.se" >
-    <meta property="og:description" content="Gottfrids fantastiska Munkar- nu med egen webbshop!" >
-    <meta property="og:type" content="website" >
-    <meta property="og:image" content="https://gottfridsmunkar.se/img/gottfrids-fantastiska-donuts.jpg" >
+    <meta property="og:title" content="Gottfrids Fantastiska Munkar | DONUT WORRY - be happy!" />
+    <meta property="og:url" content="https://gottfridsmunkar.se" />
+    <meta property="og:description" content="Gottfrids fantastiska Munkar- nu med egen webbshop!" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://gottfridsmunkar.se/img/gottfrids-fantastiska-donuts.jpg" />
 
-    <link rel="stylesheet" type="text/css" href="style/style.css" >
-    <link rel="preconnect" href="https://fonts.googleapis.com" >
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
+    <link rel="stylesheet" type="text/css" href="style/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;0,900;1,300;1,600;1,700&display=swap"
       rel="stylesheet"
-    >
+    />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
-    >
-    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png" >
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png" >
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png" >
-    <link rel="manifest" href="img/favicon/site.webmanifest" >
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png" />
+    <link rel="manifest" href="img/favicon/site.webmanifest" />
     <script src="https://kit.fontawesome.com/a90d7c3579.js" crossorigin="anonymous"></script>
 
     <title>Gottfrids fantastiska munkar</title>
@@ -53,8 +53,8 @@
 
         <button aria-label="Kundkorg" class="shoppingCart" id="shoppingCart">
           <i class="fa-solid fa-cart-shopping allColorTheme"></i>
-          <div class="cartItems" id="amountChoosen">0</div>
         </button>
+        <p class="cartItem" id="amountChoosen">0</p>
         <button aria-label="Meny knapp" class="hamburgerMenu" id="hamburgerMenu">
           <span class="allColorTheme"></span>
           <span class="allColorTheme"></span>
@@ -94,8 +94,8 @@
                 <div class="discountMessage"></div>
                 <label class="checkoutLabel"
                   >Har du en rabattkod? <input type="text" id="discountCodeInput" placeholder="Rabattkod" />
-                  <button id="discountCodeBtn">aktivera</button>
                 </label>
+                <button id="discountCodeBtn">aktivera</button>
                 <button class="checkoutButton" id="checkoutButton">Beställ</button>
               </div>
             </div>
@@ -106,7 +106,7 @@
 
     <!-- FORMORDER -->
 
-    <section id="formOrder" class="formOrder">
+    <div id="formOrder" class="formOrder">
       <button class="formCloseBtn">
         <i class="fa-solid fa-x"></i>
       </button>
@@ -116,25 +116,25 @@
 
         <div class="flexForm">
           <label>
-            <div class="errorMessage"></div>
+            <span class="errorMessage"></span>
             <span>Förnamn:*</span><br />
             <input type="text" id="firstname" name="firstname" required /><br />
           </label>
 
           <label>
-            <div class="errorMessage"></div>
+            <span class="errorMessage"></span>
             <span>Efternamn:*</span><br />
             <input type="text" id="lastname" name="lastname" required /><br />
           </label>
 
           <label>
-            <div class="errorMessage"></div>
+            <span class="errorMessage"></span>
             <span>Adress(gata):*</span><br />
             <input type="text" id="adress" name="adress" required /><br />
           </label>
 
           <label>
-            <div class="errorMessage"></div>
+            <span class="errorMessage"></span>
             <span>Postnummer:*</span><br />
             <input
               type="text"
@@ -148,25 +148,25 @@
           </label>
 
           <label>
-            <div class="errorMessage"></div>
+            <span class="errorMessage"></span>
             <span>Postort:*</span><br />
             <input type="text" id="city" name="city" required /><br />
           </label>
 
           <label>
-            <div class="errorMessage"></div>
+            <span class="errorMessage"></span>
             <span>Ev. portkod:</span><br />
             <input type="text" id="portkod" name="portkod" /><br />
           </label>
 
           <label>
-            <div class="errorMessage"></div>
+            <span class="errorMessage"></span>
             <span>Telefon(mobil):*</span><br />
             <input type="tel" id="telephone" name="telephone" required /><br />
           </label>
 
           <label>
-            <div class="errorMessage"></div>
+            <span class="errorMessage"></span>
             <span>E-post:*</span><br />
             <input type="email" id="email" name="email" placeholder="exempel@exempel.se" required /><br />
           </label>
@@ -204,7 +204,7 @@
 
           <div class="fakturaPayment">
             <label>
-              <div class="errorMessage"></div>
+              <span class="errorMessage"></span>
               <span>Personnummer:*</span><br />
               <input
                 type="text"
@@ -227,16 +227,13 @@
           <input type="checkbox" id="newsletter" name="newsletter" checked />
           <span>Få vårat nyhetsbrev en gång i veckan för alla nyheter och erbjudanden.</span><br />
         </label>
-      </form>  
+      </form>
       <button type="submit" id="submit" value="Skicka order!" disabled>Skicka order!</button>
-
-    </section>
+    </div>
 
     <!--   CONFIRMCONFAINER FORM-->
-    
-    <article id="orderConfirmation" class="orderConfirmation">
-      
-    </article>
+
+    <div id="orderConfirmation" class="orderConfirmation"></div>
 
     <div class="headingDonuts" id="headingDonuts">
       <h1>
@@ -358,8 +355,8 @@
           <g></g>
           <g></g>
           <g></g>
-          <g></g></svg
-        >ttfrids munkar!
+          <g></g>
+          </svg>ttfrids munkar!
       </h1>
     </div>
     <!-- THEME TOGGLE -->
@@ -370,9 +367,9 @@
 
     <!-- Donuts -->
 
-    <section class="donutSection">
+    <div class="donutSection">
       <div id="donutContainer" class="donutContainer allColorTheme"></div>
-    </section>
+    </div>
 
     <footer class="allColorTheme" id="footer">
       <div class="leftFooter">

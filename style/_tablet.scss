@@ -1,5 +1,4 @@
 @media screen and (min-width: 600px) {
-
   .flexForm {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -11,7 +10,6 @@
 }
 
 @media screen and (min-width: 768px) {
-
   #sectionShoppingCart.open {
     bottom: unset;
     overflow-y: hidden;

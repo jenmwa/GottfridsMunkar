@@ -11,14 +11,15 @@ body {
 body.christmasSpecial {
   background-image: url('../img/christmas_bg.jpeg') !important;
   background-repeat: no-repeat !important;
-  background-size: cover !important; 
+  background-size: cover !important;
 }
 
-.price.christmasSpecial{
+.price.christmasSpecial {
   color: red !important;
 }
 
-.sortProducts.christmasSpecial, .sortProducts.christmasSpecial i {
+.sortProducts.christmasSpecial,
+.sortProducts.christmasSpecial i {
   color: white !important;
 }
 
@@ -50,13 +51,13 @@ header {
     height: 50px;
     top: 75px;
     background-color: $specialGreen;
-    transition: ease-in-out .3s;
+    transition: ease-in-out 0.3s;
 
     ul {
       display: flex;
       justify-items: baseline;
-      align-items:center;
-      margin:0;
+      align-items: center;
+      margin: 0;
 
       li {
         padding: 10px;
@@ -76,7 +77,6 @@ header {
           font-weight: 600;
           color: black;
           font-size: 1rem;
-   
         }
       }
     }
@@ -85,17 +85,17 @@ header {
   nav.open {
     display: block;
     width: 100%;
-    height:50px;
+    height: 50px;
     background-color: $specialGreen;
     position: absolute;
     top: 75px;
-    right: 0; 
-    
+    right: 0;
+
     ul {
       display: flex;
       justify-items: baseline;
-      align-items:center;
-      margin:0;
+      align-items: center;
+      margin: 0;
 
       li {
         padding: 10px;
@@ -113,12 +113,9 @@ header {
         a {
           padding-bottom: 50px;
           font-weight: 600;
-
         }
-      }  
-
+      }
     }
-    
   }
 
   button {
@@ -144,24 +141,24 @@ header {
     font-size: 1.5rem;
     color: black;
   }
-  i.darkTheme{
+  i.darkTheme {
     color: $specialBeige;
-   }
-  div {
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    margin: 0;
-    top: -5px;
-    left: 30px;
-    background-color: #fbf2cf;
-    border-radius: 50%;
-    @include getCentered;
   }
-  .colorsOn {
-    background-color: $specialGreen;
-    box-shadow: 0 3px 15px #000;
-  }
+}
+.cartItem {
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: -15px;
+  right: 20px;
+  margin: 0;
+  background-color: #fbf2cf;
+  border-radius: 50%;
+  @include getCentered;
+}
+.colorsOn {
+  background-color: $specialGreen;
+  box-shadow: 0 3px 15px #000;
 }
 
 #shoppingCart:hover i {
@@ -179,7 +176,7 @@ header {
     background-color: black;
     border-radius: 5px;
   }
-  span.darkTheme{
+  span.darkTheme {
     background-color: $specialBeige;
   }
 }
@@ -382,17 +379,16 @@ header {
   }
 }
 
-.headingDonuts{
+.headingDonuts {
   position: relative;
   top: 150px;
   text-align: center;
 
-  h1{
-
+  h1 {
     margin: 0;
     text-transform: uppercase;
 
-    .svgDonut{
+    .svgDonut {
       width: 30px;
       height: auto;
     }
@@ -477,7 +473,7 @@ header {
         font-size: 1.2rem;
         margin-right: 10px;
       }
-      i.darkTheme{
+      i.darkTheme {
         color: $specialBeige;
       }
     }
@@ -514,7 +510,6 @@ header {
   width: 1px;
   height: 1px;
   z-index: 6;
-
 
   input {
     margin: 5px 0;
@@ -582,58 +577,51 @@ form {
 input.error {
   border-color: red;
 }
-section.darkThemebg{
+section.darkThemebg {
   background-color: #302f2a;
 }
 
-article.orderConfirmation{
+div.orderConfirmation {
+  .confirmContainer {
+    margin-left: 15%;
+    background-color: $specialRed;
+    width: 70%;
+    min-height: 60vh;
+    position: fixed;
+    top: 200px;
+    z-index: 6;
+    display: block;
+    outline: 2px solid rgba(0, 0, 0, 0.7);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.7);
+    text-align: center;
 
-.confirmContainer{
-  margin-left: 15%;
-  background-color: $specialRed;
-  width: 70%;
-  min-height: 60vh;
-  position: fixed;
-  top: 200px;
-  z-index: 6;
-  display: block;
-  outline: 2px solid rgba(0,0,0, 0.7);
-  box-shadow: 0 3px 15px rgba(0,0,0, 0.7);
-  text-align: center;
-
-  div{
-    p{
-      font-size: 1.1rem;
+    div {
+      p {
+        font-size: 1.1rem;
+      }
+      .inhance {
+        font-weight: 700;
+      }
     }
-    .inhance{
-      font-weight: 700;
-    }
-    
-  }
-  button{
-    cursor: pointer;
-    background-color: $specialBeige;
-    padding: 5px;
-    border: 3px solid $specialGreen;
-    &:hover{
-      background-color: $specialGreen;
-      border: 3px solid $specialBeige;
-    }
-    a{
-      text-decoration: none;
-      color: black;
+    button {
+      cursor: pointer;
+      background-color: $specialBeige;
+      padding: 5px;
+      border: 3px solid $specialGreen;
+      &:hover {
+        background-color: $specialGreen;
+        border: 3px solid $specialBeige;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+      }
     }
   }
-  }
-  div.darkThemeBg{
+  div.darkThemeBg {
     background-color: #3b1919;
   }
-  
 }
-
-
-
-
 
 /*************PRODUKTKORT*************/
 
@@ -646,11 +634,10 @@ article.orderConfirmation{
   width: 90%;
   padding: 50px;
   background-color: $specialGreen;
-   
-  article.darkTheme{
+
+  article.darkTheme {
     background-color: #839183;
   }
-
 
   h2 {
     margin: 3px;
@@ -727,7 +714,6 @@ article.orderConfirmation{
     padding: 20px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 
-
     .donutInfo {
       text-align: center;
       position: relative;
@@ -766,11 +752,8 @@ article.orderConfirmation{
         }
       }
     }
-   
   }
-
 }
-
 
 /***********FOOTER****************/
 
@@ -801,21 +784,19 @@ footer {
 }
 
 /********** DARKTHEME ********/
-header.darkTheme{
- background-color: #3b1919;
-}
-footer.darkTheme{
+header.darkTheme {
   background-color: #3b1919;
- }
-body.darkTheme{
+}
+footer.darkTheme {
+  background-color: #3b1919;
+}
+body.darkTheme {
   background-color: #302f2a;
   color: $specialBeige;
 }
-a.darkTheme{
+a.darkTheme {
   color: $specialBeige;
 }
-div.darkTheme{
+div.darkTheme {
   background-color: #4b5947;
 }
-
-
