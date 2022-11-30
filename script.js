@@ -125,6 +125,9 @@ const donuts = [
   },
 ];
 
+
+
+
 /** ****************** NAV VARIABLES ****************************** */
 const hamburgerMenu = document.querySelector('#hamburgerMenu');
 const nav = document.querySelector('#nav');
@@ -881,9 +884,6 @@ function writeOutSortProducts() {
   const sortByPrice = document.querySelector('#sortByPrice');
   const sortByCategory = document.querySelector('#sortByCategory');
 
-  // MessageBox for -sorting message
-  const sortByHeading = document.querySelector('#sortByheading');
-
   //  Adding eventlisteners to buttons
   sortByName.addEventListener('click', sortByNameBtn);
   sortByGrade.addEventListener('click', sortByGradeBtn);
@@ -892,9 +892,10 @@ function writeOutSortProducts() {
 }
 
 function sortByNameBtn() {
+  const sortByHeading = document.querySelector('#sortByHeading');
   sortByHeading.innerHTML = `
   <p class="sortByText">Sorterar efter Namn</p>
-  `;
+  `; 
   if (nameSort) {
     donuts.sort((a, b) => a.name < b.name);
     nameSort = false;
@@ -906,8 +907,9 @@ function sortByNameBtn() {
 }
 
 function sortByGradeBtn() {
+  const sortByHeading = document.querySelector('#sortByHeading');
   sortByHeading.innerHTML = `
-  <p class="sortByText" >Sorterar efter Betyg</p>
+  <p class="sortByText">Sorterar efter Betyg</p>
   `;
   if (gradeSort) {
     donuts.sort((a, b) => a.rating - b.rating);
@@ -920,6 +922,7 @@ function sortByGradeBtn() {
 }
 
 function sortByPriceBtn() {
+  const sortByHeading = document.querySelector('#sortByHeading');
   if (priceSort) {
     sortByHeading.innerHTML = `
     <p class="sortByText">Sorterar efter Pris stigande</p>
@@ -937,6 +940,7 @@ function sortByPriceBtn() {
 }
 
 function sortByCategoryBtn() {
+  const sortByHeading = document.querySelector('#sortByHeading');
   sortByHeading.innerHTML = `
   <p class="sortByText">Sorterar efter Kategori</p>
   `;
