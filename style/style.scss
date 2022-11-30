@@ -1,14 +1,14 @@
 @import '_normalize.scss';
 
-$specialRed: #FA7070;
-$specialBeige: #FBF2CF;
-$specialLightGreen: #C6EBC5;
-$specialGreen: #A1C298;
+$specialRed: #fa7070;
+$specialBeige: #fbf2cf;
+$specialLightGreen: #c6ebc5;
+$specialGreen: #a1c298;
 
 @mixin getCentered() {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @import '_base.scss';

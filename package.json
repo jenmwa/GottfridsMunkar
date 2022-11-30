@@ -1,0 +1,23 @@
+{
+  "name": "eslint",
+  "version": "1.0.0",
+  "description": "EsLint",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx prettier --write ."
+  },
+  "author": "CeciliaL1",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.2",
+    "prettier": "2.7.1"
+  },
+  "dependencies": {
+    "-": "^0.0.1",
+    "gsap": "^3.11.3"
+  }
+}

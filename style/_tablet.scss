@@ -1,10 +1,29 @@
-.shoppingOpen{
-    width: 90%;
+@media screen and (min-width: 600px) {
+  .flexForm {
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    label {
+      flex-basis: 25%;
+    }
+  }
 }
-.containerMaster{
+
+@media screen and (min-width: 768px) {
+  #sectionShoppingCart.open {
+    bottom: unset;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+
+  .itemsCheckoutWrapper {
     display: flex;
   }
 
-.container1, .cartContainer {
-    width: 50%;
+  .itemsContainer {
+    width: 60%;
+  }
+  .checkoutContainer {
+    width: 40%;
+  }
 }
