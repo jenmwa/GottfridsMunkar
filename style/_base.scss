@@ -291,7 +291,9 @@ header {
   }
 }
 .shopCartAddedDivTwo{
-
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   p {
     display: inline;
     margin-right: 8px;
@@ -301,8 +303,6 @@ header {
     width: 44px;
     height: 40px;
     margin: 0;
-    position: absolute;
-    right: 3.5rem;
     background-color: $specialBeige;
     cursor: pointer;
     &:hover{
@@ -708,6 +708,8 @@ div.orderConfirmation {
     background: transparent;
     color: transparentize(#000000, 0.3);
     transition: color 0.3s ease-in-out;
+    position: relative;
+    top: 120px;
     &:hover {
       color: #000;
       text-shadow: 0 3px 5px rgb(0, 0, 0);
