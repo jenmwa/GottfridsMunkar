@@ -925,10 +925,10 @@ function sortByNameBtn() {
   <p class="sortByText">Sorterar efter Namn</p>
   `; 
   if (nameSort) {
-    donuts.sort((a, b) => a.name < b.name);
-    nameSort = false;
+    donuts.sort((a, b) => a.name.localeCompare(b.name));
+    nameSort = false; 
   } else if (nameSort === false) {
-    donuts.sort((a, b) => a.name > b.name);
+    donuts.sort((a, b) => b.name.localeCompare(a.name));
     nameSort = true;
   }
   writeOutDonuts();
@@ -974,10 +974,11 @@ function sortByCategoryBtn() {
   `;
 
   if (categorySort) {
-    donuts.sort((a, b) => a.category < b.category);
+    donuts.sort((a, b) => a.category.localeCompare(b.category));
     categorySort = false;
   } else if (categorySort === false) {
-    donuts.reverse();
+    donuts.sort((a, b) => b.category.localeCompare(a.category));
+    categorySort = true;
   }
   writeOutDonuts();
 }
