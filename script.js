@@ -1,6 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable no-use-before-define */
-
 /** ****************************************************************************
  ******************************** VARIABLES **************************************
  ******************************************************************************
@@ -124,9 +121,6 @@ const donuts = [
     alt: ['vaniljmunk med päronsplitt-frosting', 'ekologisk päronsplitt'],
   },
 ];
-
-
-
 
 /** ****************** NAV VARIABLES ****************************** */
 const hamburgerMenu = document.querySelector('#hamburgerMenu');
@@ -694,7 +688,7 @@ function formOrderOpen() {
 }
 
 // Function to start timer
-function clearForm(){
+function clearForm() {
   const fname = document.querySelector('#firstname');
   const lname = document.querySelector('#lastname');
   const adress = document.querySelector('#adress');
@@ -712,7 +706,7 @@ function clearForm(){
   pcode.value = '';
   telephone.value = '';
   email.value = '';
-  
+
   // Writing out message when form is cleared
   form.innerHTML = `Det tog för lång tid att fylla i dina uppgifter, du har 15 minuter på dig!`;
 }
@@ -927,10 +921,10 @@ function sortByNameBtn() {
   const sortByHeading = document.querySelector('#sortByHeading');
   sortByHeading.innerHTML = `
   <p class="sortByText">Sorterar efter Namn</p>
-  `; 
+  `;
   if (nameSort) {
     donuts.sort((a, b) => a.name.localeCompare(b.name));
-    nameSort = false; 
+    nameSort = false;
   } else if (nameSort === false) {
     donuts.sort((a, b) => b.name.localeCompare(a.name));
     nameSort = true;
@@ -1010,7 +1004,6 @@ function toggleTheme() {
   colorTheme.forEach(theme => {
     theme.classList.toggle('darkTheme');
   });
-
 }
 
 /** ****************************************************************************

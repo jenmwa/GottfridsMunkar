@@ -270,8 +270,7 @@ header {
   box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
 }
 
-.shopNewItem{
-
+.shopNewItem {
   padding: 10px;
   margin: 10px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
@@ -283,14 +282,14 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  
+
   .imgInCart {
     background-size: cover;
     outline: 1px solid black;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
   }
 }
-.shopCartAddedDivTwo{
+.shopCartAddedDivTwo {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -305,13 +304,11 @@ header {
     margin: 0;
     background-color: $specialBeige;
     cursor: pointer;
-    &:hover{
+    &:hover {
       background-color: $specialRed;
     }
-
   }
 }
-
 
 .discountMessage {
   color: red;
@@ -339,8 +336,8 @@ header {
 
   .cartTotal {
     width: 100%;
-    
-    div.darkTheme{
+
+    div.darkTheme {
       color: #fbf2cf;
     }
   }
@@ -362,7 +359,7 @@ header {
     font-weight: 900;
     color: #202020;
   }
-  div.darkTheme{
+  div.darkTheme {
     color: #fbf2cf;
   }
   .checkoutLabel {
@@ -629,7 +626,7 @@ div.orderConfirmation {
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.7);
     text-align: center;
     padding: 30px;
-   
+
     div {
       p {
         font-size: 1.1rem;
@@ -652,7 +649,6 @@ div.orderConfirmation {
         color: black;
       }
     }
-  
   }
 }
 
@@ -834,4 +830,3 @@ a.darkTheme {
 div.darkTheme {
   background-color: #4b5947;
 }
-
