@@ -657,32 +657,6 @@ function christmasSpecial() {
   }
 }
 
-function writeOutToggleTheme() {
-  themeToggleCont.innerHTML += `
-  <div class="themeToggleContainer">
-    <span><i class="fa-solid fa-lightbulb"></i></span>
-     <button class="themeBtn" id="themeBtn"></button>
-    <span><i class="fa-solid fa-lightbulb"></i></span>
-  </div>
-  `;
-  const themeBtn = document.querySelector('#themeBtn');
-  themeBtn.addEventListener('click', toggleTheme);
-}
-
-function toggleTheme() {
-  const themeBtn = document.querySelector('#themeBtn');
-  themeBtn.classList.toggle('themeBtnMove');
-  const colorTheme = document.querySelectorAll('.allColorTheme');
-  const formColorTheme = document.querySelector('.confirmContainer');
-
-  document.body.classList.toggle('darkTheme');
-  formOrder.classList.toggle('darkThemebg');
-  colorTheme.forEach(theme => {
-    theme.classList.toggle('darkTheme');
-  });
-  formColorTheme.classList.toggle('darkThemeBg');
-}
-
 /** ****************** FORM FUNCTIONS ************************************** */
 
 // Open form function
@@ -698,7 +672,7 @@ function coundownTimer() {
   let liveSeconds = totalSeconds % 60;
 
   if (liveSeconds < 10) {
-    liveSeconds = '0' + liveSeconds;
+    liveSeconds = `0${  liveSeconds}`;
   } else {
     liveSeconds;
   }
