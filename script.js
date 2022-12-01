@@ -182,7 +182,7 @@ const form = document.querySelector('#countDownClear');
 // Form open buttons
 const formOpenBtn = document.querySelector('.checkoutButton');
 const formOrder = document.querySelector('.formOrder');
-const formCloseBtn = document.querySelector('.formCloseBtn');
+const formCloseBtn = document.querySelector('.formCloseBtnCnt');
 
 // Card/invoice buttons
 const cardRadio = document.querySelector('#debitKredit');
@@ -719,8 +719,7 @@ function clearForm(){
 
 // Close form function
 function formOrderClose() {
-  formOrder.classList.remove('formOrderOpen');
-  formCloseBtn.classList.remove('formCloseBtnOpen');
+  window.location.href = window.location.href;
 }
 
 // Open card payment option
