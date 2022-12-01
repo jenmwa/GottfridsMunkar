@@ -1,1 +1,21 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=9232409&assignment_repo_type=AssignmentRepo)
+# GOTTFRIDS FANTASTISKA MUNKAR - WEBBSHOP.
+Fiktiv webbplats för Gottfrid Jästsons företag med munkar.
+
+
+## Valideringsrapporter 
+
+
+#### HTML
+Valideringen är gjord på  https://validator.w3.org/
+
+#### CSS
+Valideringen är gjord på https://jigsaw.w3.org/css-validator/
+
+## Lighthouse analys
+
+## Länk till Live - verisionen
+
+## Lista teknikstack
+- Vanilla JavaScript
+- sass
+- HTML
