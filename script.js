@@ -125,6 +125,9 @@ const donuts = [
   },
 ];
 
+
+
+
 /** ****************** NAV VARIABLES ****************************** */
 const hamburgerMenu = document.querySelector('#hamburgerMenu');
 const nav = document.querySelector('#nav');
@@ -173,6 +176,8 @@ const formOrderFirstName = document.querySelector('#firstname').value;
 const formOrderAdress = document.querySelector('#adress').value;
 const formOrderZipcode = document.querySelector('#zipcode').value;
 const formOrderCity = document.querySelector('#city').value;
+
+const form = document.querySelector('#countDownClear');
 
 // Form open buttons
 const formOpenBtn = document.querySelector('.checkoutButton');
@@ -661,6 +666,7 @@ function writeOutToggleTheme() {
 }
 
 function toggleTheme() {
+  const themeBtn = document.querySelector('#themeBtn');
   themeBtn.classList.toggle('themeBtnMove');
   const colorTheme = document.querySelectorAll('.allColorTheme');
   const formColorTheme = document.querySelector('.confirmContainer');
@@ -679,6 +685,31 @@ function toggleTheme() {
 function formOrderOpen() {
   formOrder.classList.add('formOrderOpen');
   formCloseBtn.classList.add('formCloseBtnOpen');
+  setInterval(clearForm, 15 * 60 * 1000);
+}
+
+// Function to start timer
+function clearForm(){
+  const fname = document.querySelector('#firstname');
+  const lname = document.querySelector('#lastname');
+  const adress = document.querySelector('#adress');
+  const zipcode = document.querySelector('#zipcode');
+  const city = document.querySelector('#city');
+  const pcode = document.querySelector('#portkod');
+  const telephone = document.querySelector('#telephone');
+  const email = document.querySelector('#email');
+
+  fname.value = '';
+  lname.value = '';
+  adress.value = '';
+  zipcode.value = '';
+  city.value = '';
+  pcode.value = '';
+  telephone.value = '';
+  email.value = '';
+  
+  // Writing out message when form is cleared
+  form.innerHTML = `Det tog för lång tid att fylla i dina uppgifter, du har 15 minuter på dig!`;
 }
 
 // Close form function
@@ -881,9 +912,6 @@ function writeOutSortProducts() {
   const sortByPrice = document.querySelector('#sortByPrice');
   const sortByCategory = document.querySelector('#sortByCategory');
 
-  // MessageBox for -sorting message
-  const sortByHeading = document.querySelector('#sortByheading');
-
   //  Adding eventlisteners to buttons
   sortByName.addEventListener('click', sortByNameBtn);
   sortByGrade.addEventListener('click', sortByGradeBtn);
@@ -892,22 +920,24 @@ function writeOutSortProducts() {
 }
 
 function sortByNameBtn() {
+  const sortByHeading = document.querySelector('#sortByHeading');
   sortByHeading.innerHTML = `
   <p class="sortByText">Sorterar efter Namn</p>
-  `;
+  `; 
   if (nameSort) {
-    donuts.sort((a, b) => a.name < b.name);
-    nameSort = false;
+    donuts.sort((a, b) => a.name.localeCompare(b.name));
+    nameSort = false; 
   } else if (nameSort === false) {
-    donuts.sort((a, b) => a.name > b.name);
+    donuts.sort((a, b) => b.name.localeCompare(a.name));
     nameSort = true;
   }
   writeOutDonuts();
 }
 
 function sortByGradeBtn() {
+  const sortByHeading = document.querySelector('#sortByHeading');
   sortByHeading.innerHTML = `
-  <p class="sortByText" >Sorterar efter Betyg</p>
+  <p class="sortByText">Sorterar efter Betyg</p>
   `;
   if (gradeSort) {
     donuts.sort((a, b) => a.rating - b.rating);
@@ -920,6 +950,7 @@ function sortByGradeBtn() {
 }
 
 function sortByPriceBtn() {
+  const sortByHeading = document.querySelector('#sortByHeading');
   if (priceSort) {
     sortByHeading.innerHTML = `
     <p class="sortByText">Sorterar efter Pris stigande</p>
@@ -937,15 +968,17 @@ function sortByPriceBtn() {
 }
 
 function sortByCategoryBtn() {
+  const sortByHeading = document.querySelector('#sortByHeading');
   sortByHeading.innerHTML = `
   <p class="sortByText">Sorterar efter Kategori</p>
   `;
 
   if (categorySort) {
-    donuts.sort((a, b) => a.category < b.category);
+    donuts.sort((a, b) => a.category.localeCompare(b.category));
     categorySort = false;
   } else if (categorySort === false) {
-    donuts.reverse();
+    donuts.sort((a, b) => b.category.localeCompare(a.category));
+    categorySort = true;
   }
   writeOutDonuts();
 }
