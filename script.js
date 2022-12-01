@@ -905,7 +905,7 @@ function writeOutSortProducts() {
   const sortContainer = document.querySelector('#sortProducts');
 
   sortContainer.innerHTML += `
-  <h3 id="sortBy">Sortera efter</h3>
+  <h2 id="sortBy">Sortera efter</h2>
     <ul aria-labelledby="sortBy">
       <li><button id="sortByName" aria-label="Sortera efter namn"><i class="fa-solid fa-arrow-down-a-z allColorTheme"></i></button></li>
       <li><button id="sortByGrade" aria-label="Sortera efter betyg"><i class="fa-solid fa-star allColorTheme"></i></button></li>
@@ -997,7 +997,7 @@ function writeOutToggleTheme() {
   themeToggleCont.innerHTML += `
   <div class="themeToggleContainer">
     <span><i class="fa-solid fa-lightbulb"></i></span>
-     <button class="themeBtn" id="themeBtn"></button>
+     <button aria-label="Färgtema knapp" class="themeBtn" id="themeBtn"></button>
     <span><i class="fa-solid fa-lightbulb"></i></span>
   </div>
   `;
