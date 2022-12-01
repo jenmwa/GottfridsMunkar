@@ -179,6 +179,11 @@ const formOrderCity = document.querySelector('#city').value;
 
 const form = document.querySelector('#countDownClear');
 
+// Timer variables 
+const startingMinutes = 15;
+totalSeconds = startingMinutes * 60;
+let timerInterval;
+
 // Form open buttons
 const formOpenBtn = document.querySelector('.checkoutButton');
 const formOrder = document.querySelector('.formOrder');
@@ -690,7 +695,38 @@ function toggleTheme() {
 function formOrderOpen() {
   formOrder.classList.add('formOrderOpen');
   formCloseBtn.classList.add('formCloseBtnOpen');
-  setInterval(clearForm, 15 * 60 * 1000);
+  timerInterval = setInterval(coundownTimer, 1000);
+}
+
+function coundownTimer() {
+  const countdownTimerEl = document.querySelector('#countdownTimer');
+  const liveMinutes = Math.floor(totalSeconds / 60);
+  let liveSeconds = totalSeconds % 60;
+
+  if (liveSeconds < 10) {
+    liveSeconds = '0' + liveSeconds;
+  } else {
+    liveSeconds;
+  }
+
+  if (totalSeconds > 59) {
+    countdownTimerEl.innerHTML = `${liveMinutes}:${liveSeconds} minuter`;
+  } else {
+    countdownTimerEl.innerHTML = `${liveMinutes}:${liveSeconds} sekunder`;
+  }
+
+  if (totalSeconds === 0) {
+    clearInterval(timerInterval);
+    clearForm();
+    setTimeout(resetTimer, 5000);
+  }
+  totalSeconds--;
+}
+
+function resetTimer() {
+  form.innerHTML = `Var vänlig och fyll i fomuläret inom <span id="countdownTimer">15:00 minuter</span>.`;
+  totalSeconds = startingMinutes * 60;
+  timerInterval = setInterval(coundownTimer, 1000);
 }
 
 // Function to start timer
