@@ -173,7 +173,7 @@ const formOrderCity = document.querySelector('#city').value;
 
 const form = document.querySelector('#countDownClear');
 
-// Timer variables 
+// Timer variables
 const startingMinutes = 15;
 totalSeconds = startingMinutes * 60;
 let timerInterval;
@@ -657,32 +657,6 @@ function christmasSpecial() {
   }
 }
 
-function writeOutToggleTheme() {
-  themeToggleCont.innerHTML += `
-  <div class="themeToggleContainer">
-    <span><i class="fa-solid fa-lightbulb"></i></span>
-     <button class="themeBtn" id="themeBtn"></button>
-    <span><i class="fa-solid fa-lightbulb"></i></span>
-  </div>
-  `;
-  const themeBtn = document.querySelector('#themeBtn');
-  themeBtn.addEventListener('click', toggleTheme);
-}
-
-function toggleTheme() {
-  const themeBtn = document.querySelector('#themeBtn');
-  themeBtn.classList.toggle('themeBtnMove');
-  const colorTheme = document.querySelectorAll('.allColorTheme');
-  const formColorTheme = document.querySelector('.confirmContainer');
-
-  document.body.classList.toggle('darkTheme');
-  formOrder.classList.toggle('darkThemebg');
-  colorTheme.forEach(theme => {
-    theme.classList.toggle('darkTheme');
-  });
-  formColorTheme.classList.toggle('darkThemeBg');
-}
-
 /** ****************** FORM FUNCTIONS ************************************** */
 
 // Open form function
@@ -698,7 +672,7 @@ function coundownTimer() {
   let liveSeconds = totalSeconds % 60;
 
   if (liveSeconds < 10) {
-    liveSeconds = '0' + liveSeconds;
+    liveSeconds = `0${liveSeconds}`;
   } else {
     liveSeconds;
   }
@@ -931,7 +905,7 @@ function writeOutSortProducts() {
   const sortContainer = document.querySelector('#sortProducts');
 
   sortContainer.innerHTML += `
-  <h3 id="sortBy">Sortera efter</h3>
+  <h2 id="sortBy">Sortera efter</h2>
     <ul aria-labelledby="sortBy">
       <li><button id="sortByName" aria-label="Sortera efter namn"><i class="fa-solid fa-arrow-down-a-z allColorTheme"></i></button></li>
       <li><button id="sortByGrade" aria-label="Sortera efter betyg"><i class="fa-solid fa-star allColorTheme"></i></button></li>
@@ -1023,7 +997,7 @@ function writeOutToggleTheme() {
   themeToggleCont.innerHTML += `
   <div class="themeToggleContainer">
     <span><i class="fa-solid fa-lightbulb"></i></span>
-     <button class="themeBtn" id="themeBtn"></button>
+     <button aria-label="Färgtema knapp" class="themeBtn" id="themeBtn"></button>
     <span><i class="fa-solid fa-lightbulb"></i></span>
   </div>
   `;
