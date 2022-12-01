@@ -13,5 +13,6 @@ module.exports = {
     'curly': ['error', 'all'],
     'indent': ['error', 2, { SwitchCase: 1 }],
     'max-len': ['error', { code: 180 }],
-    'eslint no-use-before-define': "ignore"  },
+    'eslint no-use-before-define': 'ignore',
+  },
 };

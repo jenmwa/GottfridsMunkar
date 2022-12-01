@@ -173,7 +173,7 @@ const formOrderCity = document.querySelector('#city').value;
 
 const form = document.querySelector('#countDownClear');
 
-// Timer variables 
+// Timer variables
 const startingMinutes = 15;
 totalSeconds = startingMinutes * 60;
 let timerInterval;
@@ -672,7 +672,7 @@ function coundownTimer() {
   let liveSeconds = totalSeconds % 60;
 
   if (liveSeconds < 10) {
-    liveSeconds = `0${  liveSeconds}`;
+    liveSeconds = `0${liveSeconds}`;
   } else {
     liveSeconds;
   }
