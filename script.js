@@ -476,15 +476,22 @@ function printOutShopCart() {
 
   for (let i = 0; i < addShopCartList.length; i++) {
     document.querySelector('#shopCartContent').innerHTML += `
-        <div id="shopCartAddedDiv"><img class="imgInCart" src="${addShopCartList[i].anyImg}" alt="${addShopCartList[i].anyAlt}"  width="55" height="55"></img>
-        <h4 class="text">${addShopCartList[i].anyName}</h4><br>
+      <article class="shopNewItem">
+        <div id="shopCartAddedDiv">
+         <img class="imgInCart" src="${addShopCartList[i].anyImg}" alt="${addShopCartList[i].anyAlt}"  width="55" height="55"></img>
+          <h4 class="text">${addShopCartList[i].anyName}</h4><br>
+        </div>
+        <div class="shopCartAddedDivTwo">
         <p>${addShopCartList[i].anyAmount}st</p>
         <p>${addShopCartList[i].anyPrice}kr/st</p>
         <p>${addShopCartList[i].anySum}kr</p><br>
         <p class="discountMessage">${addShopCartList[i].discountMessage}</p></span>
         <button class="material-symbols-outlined" data-id="${i}">
         delete_forever</button>
-        </div>`;
+        </div>
+      </article>
+        
+        `;
   }
 
   // Remove donuts per article ShopCart
@@ -650,8 +657,6 @@ function christmasSpecial() {
     priceContainers.forEach(price => price.classList.add('christmasSpecial'));
   }
 }
-
-/** ****************** TOGGLE THEME FUNCTIONS ************************************** */
 
 function writeOutToggleTheme() {
   themeToggleCont.innerHTML += `
@@ -981,6 +986,32 @@ function sortByCategoryBtn() {
     categorySort = true;
   }
   writeOutDonuts();
+}
+
+/** ****************** TOGGLE THEME FUNCTIONS ************************************** */
+
+function writeOutToggleTheme() {
+  themeToggleCont.innerHTML += `
+  <div class="themeToggleContainer">
+    <span><i class="fa-solid fa-lightbulb"></i></span>
+     <button class="themeBtn" id="themeBtn"></button>
+    <span><i class="fa-solid fa-lightbulb"></i></span>
+  </div>
+  `;
+  const themeBtn = document.querySelector('#themeBtn');
+  themeBtn.addEventListener('click', toggleTheme);
+}
+
+function toggleTheme() {
+  themeBtn.classList.toggle('themeBtnMove');
+  const colorTheme = document.querySelectorAll('.allColorTheme');
+
+  document.body.classList.toggle('darkTheme');
+  formOrder.classList.toggle('darkThemebg');
+  colorTheme.forEach(theme => {
+    theme.classList.toggle('darkTheme');
+  });
+
 }
 
 /** ****************************************************************************
