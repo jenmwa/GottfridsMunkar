@@ -2,6 +2,11 @@
   box-sizing: border-box;
   font-family: 'Teko', sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: $specialBeige;
 }
