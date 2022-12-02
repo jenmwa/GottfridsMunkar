@@ -36,4 +36,4 @@ https://medieinstitutet.github.io/fed22d-js-grundkurs-gruppuppgift-webbshop-morg
 
 ## Förbättringar
 
-- Vi har börjar på en förbättring av formuläret + validering med regEx. Ligger i branchen som heter regEx - 
+- Vi har börjar på en förbättring av formuläret + validering med regEx. Ligger i branchen som heter regEx - https://github.com/Medieinstitutet/fed22d-js-grundkurs-gruppuppgift-webbshop-morgonpigg/tree/82-regex
