@@ -23,6 +23,8 @@ Valideringen är gjord på https://jigsaw.w3.org/css-validator/<br>
 
 ## Länk till Live - verisionen
 
+https://medieinstitutet.github.io/fed22d-js-grundkurs-gruppuppgift-webbshop-morgonpigg/index.html
+
 ## Lista teknikstack
 
 - Vanilla JavaScript
