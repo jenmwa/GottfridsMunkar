@@ -9,7 +9,7 @@ body {
 /*************CHRISTMAS SPECIAL******/
 
 body.christmasSpecial {
-  background-image: url('../img/christmas_bg.jpeg') !important;
+  background-image: url("../img/christmas_bg.jpeg") !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
 }
@@ -68,7 +68,7 @@ header {
           display: inline-block;
           height: 1.5rem;
           width: 1.5rem;
-          background-image: url('/img/svg/donut-bite.svg');
+          background-image: url("../img/SVG/donut-bite.svg");
           margin-right: 5px;
         }
 
