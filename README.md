@@ -2,7 +2,10 @@
 
 Fiktiv webbplats för Gottfrid Jästsons företag med munkar.
 
+
+
 ## Valideringsrapporter
+
 
 #### HTML
 
@@ -21,3 +24,6 @@ Valideringen är gjord på https://jigsaw.w3.org/css-validator/
 - Vanilla JavaScript
 - sass
 - HTML
+- Prettier
+- Eslint
+
