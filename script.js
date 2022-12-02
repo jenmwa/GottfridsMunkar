@@ -1,6 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable no-use-before-define */
-
 /** ****************************************************************************
  ******************************** VARIABLES **************************************
  ******************************************************************************
@@ -174,10 +171,17 @@ const formOrderAdress = document.querySelector('#adress').value;
 const formOrderZipcode = document.querySelector('#zipcode').value;
 const formOrderCity = document.querySelector('#city').value;
 
+const form = document.querySelector('#countDownClear');
+
+// Timer variables
+const startingMinutes = 15;
+totalSeconds = startingMinutes * 60;
+let timerInterval;
+
 // Form open buttons
 const formOpenBtn = document.querySelector('.checkoutButton');
 const formOrder = document.querySelector('.formOrder');
-const formCloseBtn = document.querySelector('.formCloseBtn');
+const formCloseBtn = document.querySelector('.formCloseBtnCnt');
 
 // Card/invoice buttons
 const cardRadio = document.querySelector('#debitKredit');
@@ -471,15 +475,22 @@ function printOutShopCart() {
 
   for (let i = 0; i < addShopCartList.length; i++) {
     document.querySelector('#shopCartContent').innerHTML += `
-        <div id="shopCartAddedDiv"><img class="imgInCart" src="${addShopCartList[i].anyImg}" alt="${addShopCartList[i].anyAlt}"  width="55" height="55"></img>
-        <h4 class="text">${addShopCartList[i].anyName}</h4><br>
+      <article class="shopNewItem">
+        <div id="shopCartAddedDiv">
+         <img class="imgInCart" src="${addShopCartList[i].anyImg}" alt="${addShopCartList[i].anyAlt}"  width="55" height="55"></img>
+          <h4 class="text">${addShopCartList[i].anyName}</h4><br>
+        </div>
+        <div class="shopCartAddedDivTwo">
         <p>${addShopCartList[i].anyAmount}st</p>
         <p>${addShopCartList[i].anyPrice}kr/st</p>
         <p>${addShopCartList[i].anySum}kr</p><br>
         <p class="discountMessage">${addShopCartList[i].discountMessage}</p></span>
         <button class="material-symbols-outlined" data-id="${i}">
         delete_forever</button>
-        </div>`;
+        </div>
+      </article>
+        
+        `;
   }
 
   // Remove donuts per article ShopCart
@@ -646,45 +657,73 @@ function christmasSpecial() {
   }
 }
 
-/** ****************** TOGGLE THEME FUNCTIONS ************************************** */
-
-function writeOutToggleTheme() {
-  themeToggleCont.innerHTML += `
-  <div class="themeToggleContainer">
-    <span><i class="fa-solid fa-lightbulb"></i></span>
-     <button class="themeBtn" id="themeBtn"></button>
-    <span><i class="fa-solid fa-lightbulb"></i></span>
-  </div>
-  `;
-  const themeBtn = document.querySelector('#themeBtn');
-  themeBtn.addEventListener('click', toggleTheme);
-}
-
-function toggleTheme() {
-  themeBtn.classList.toggle('themeBtnMove');
-  const colorTheme = document.querySelectorAll('.allColorTheme');
-  const formColorTheme = document.querySelector('.confirmContainer');
-
-  document.body.classList.toggle('darkTheme');
-  formOrder.classList.toggle('darkThemebg');
-  colorTheme.forEach(theme => {
-    theme.classList.toggle('darkTheme');
-  });
-  formColorTheme.classList.toggle('darkThemeBg');
-}
-
 /** ****************** FORM FUNCTIONS ************************************** */
 
 // Open form function
 function formOrderOpen() {
   formOrder.classList.add('formOrderOpen');
   formCloseBtn.classList.add('formCloseBtnOpen');
+  timerInterval = setInterval(coundownTimer, 1000);
+}
+
+function coundownTimer() {
+  const countdownTimerEl = document.querySelector('#countdownTimer');
+  const liveMinutes = Math.floor(totalSeconds / 60);
+  let liveSeconds = totalSeconds % 60;
+
+  if (liveSeconds < 10) {
+    liveSeconds = `0${liveSeconds}`;
+  } else {
+    liveSeconds;
+  }
+
+  if (totalSeconds > 59) {
+    countdownTimerEl.innerHTML = `${liveMinutes}:${liveSeconds} minuter`;
+  } else {
+    countdownTimerEl.innerHTML = `${liveMinutes}:${liveSeconds} sekunder`;
+  }
+
+  if (totalSeconds === 0) {
+    clearInterval(timerInterval);
+    clearForm();
+    setTimeout(resetTimer, 5000);
+  }
+  totalSeconds--;
+}
+
+function resetTimer() {
+  form.innerHTML = `Var vänlig och fyll i fomuläret inom <span id="countdownTimer">15:00 minuter</span>.`;
+  totalSeconds = startingMinutes * 60;
+  timerInterval = setInterval(coundownTimer, 1000);
+}
+
+// Function to start timer
+function clearForm() {
+  const fname = document.querySelector('#firstname');
+  const lname = document.querySelector('#lastname');
+  const adress = document.querySelector('#adress');
+  const zipcode = document.querySelector('#zipcode');
+  const city = document.querySelector('#city');
+  const pcode = document.querySelector('#portkod');
+  const telephone = document.querySelector('#telephone');
+  const email = document.querySelector('#email');
+
+  fname.value = '';
+  lname.value = '';
+  adress.value = '';
+  zipcode.value = '';
+  city.value = '';
+  pcode.value = '';
+  telephone.value = '';
+  email.value = '';
+
+  // Writing out message when form is cleared
+  form.innerHTML = `Det tog för lång tid att fylla i dina uppgifter, du har 15 minuter på dig!`;
 }
 
 // Close form function
 function formOrderClose() {
-  formOrder.classList.remove('formOrderOpen');
-  formCloseBtn.classList.remove('formCloseBtnOpen');
+  window.location.href = window.location.href;
 }
 
 // Open card payment option
@@ -866,7 +905,7 @@ function writeOutSortProducts() {
   const sortContainer = document.querySelector('#sortProducts');
 
   sortContainer.innerHTML += `
-  <h3 id="sortBy">Sortera efter</h3>
+  <h2 id="sortBy">Sortera efter</h2>
     <ul aria-labelledby="sortBy">
       <li><button id="sortByName" aria-label="Sortera efter namn"><i class="fa-solid fa-arrow-down-a-z allColorTheme"></i></button></li>
       <li><button id="sortByGrade" aria-label="Sortera efter betyg"><i class="fa-solid fa-star allColorTheme"></i></button></li>
@@ -881,9 +920,6 @@ function writeOutSortProducts() {
   const sortByPrice = document.querySelector('#sortByPrice');
   const sortByCategory = document.querySelector('#sortByCategory');
 
-  // MessageBox for -sorting message
-  const sortByHeading = document.querySelector('#sortByheading');
-
   //  Adding eventlisteners to buttons
   sortByName.addEventListener('click', sortByNameBtn);
   sortByGrade.addEventListener('click', sortByGradeBtn);
@@ -892,22 +928,24 @@ function writeOutSortProducts() {
 }
 
 function sortByNameBtn() {
+  const sortByHeading = document.querySelector('#sortByHeading');
   sortByHeading.innerHTML = `
   <p class="sortByText">Sorterar efter Namn</p>
   `;
   if (nameSort) {
-    donuts.sort((a, b) => a.name < b.name);
+    donuts.sort((a, b) => a.name.localeCompare(b.name));
     nameSort = false;
   } else if (nameSort === false) {
-    donuts.sort((a, b) => a.name > b.name);
+    donuts.sort((a, b) => b.name.localeCompare(a.name));
     nameSort = true;
   }
   writeOutDonuts();
 }
 
 function sortByGradeBtn() {
+  const sortByHeading = document.querySelector('#sortByHeading');
   sortByHeading.innerHTML = `
-  <p class="sortByText" >Sorterar efter Betyg</p>
+  <p class="sortByText">Sorterar efter Betyg</p>
   `;
   if (gradeSort) {
     donuts.sort((a, b) => a.rating - b.rating);
@@ -920,6 +958,7 @@ function sortByGradeBtn() {
 }
 
 function sortByPriceBtn() {
+  const sortByHeading = document.querySelector('#sortByHeading');
   if (priceSort) {
     sortByHeading.innerHTML = `
     <p class="sortByText">Sorterar efter Pris stigande</p>
@@ -937,17 +976,44 @@ function sortByPriceBtn() {
 }
 
 function sortByCategoryBtn() {
+  const sortByHeading = document.querySelector('#sortByHeading');
   sortByHeading.innerHTML = `
   <p class="sortByText">Sorterar efter Kategori</p>
   `;
 
   if (categorySort) {
-    donuts.sort((a, b) => a.category < b.category);
+    donuts.sort((a, b) => a.category.localeCompare(b.category));
     categorySort = false;
   } else if (categorySort === false) {
-    donuts.reverse();
+    donuts.sort((a, b) => b.category.localeCompare(a.category));
+    categorySort = true;
   }
   writeOutDonuts();
+}
+
+/** ****************** TOGGLE THEME FUNCTIONS ************************************** */
+
+function writeOutToggleTheme() {
+  themeToggleCont.innerHTML += `
+  <div class="themeToggleContainer">
+    <span><i class="fa-solid fa-lightbulb"></i></span>
+     <button aria-label="Färgtema knapp" class="themeBtn" id="themeBtn"></button>
+    <span><i class="fa-solid fa-lightbulb"></i></span>
+  </div>
+  `;
+  const themeBtn = document.querySelector('#themeBtn');
+  themeBtn.addEventListener('click', toggleTheme);
+}
+
+function toggleTheme() {
+  themeBtn.classList.toggle('themeBtnMove');
+  const colorTheme = document.querySelectorAll('.allColorTheme');
+
+  document.body.classList.toggle('darkTheme');
+  formOrder.classList.toggle('darkThemebg');
+  colorTheme.forEach(theme => {
+    theme.classList.toggle('darkTheme');
+  });
 }
 
 /** ****************************************************************************

@@ -82,11 +82,11 @@
             <div class="checkoutContainer" id="checkoutContainer">
               <div class="cartCheckout">
                 <div class="cartTotal">
-                  <div class="cartSubtotal">Totalt</div>
-                  <div class="cartItems" id="shoppingCartTotalItems"></div>
+                  <div class="cartSubtotal allColorTheme">Totalt</div>
+                  <div class="cartItems allColorTheme" id="shoppingCartTotalItems"></div>
                   <span> donuts</span>
                 </div>
-                <div class="shoppingCartTotalAmount">
+                <div class="shoppingCartTotalAmount allColorTheme">
                   <span id="shoppingCartTotalAmount"></span>
                   <span> kr</span>
                 </div>
@@ -107,11 +107,15 @@
     <!-- FORMORDER -->
 
     <div id="formOrder" class="formOrder">
-      <button class="formCloseBtn">
-        <i class="fa-solid fa-x"></i>
-      </button>
+      <div class="formCloseBtnCnt">
+        <button class="formCloseBtn">
+          <i class="fa-solid fa-x"></i>
+        </button>
+        <p>DANGER ZONE! Formulär och varukorg kommer tömmas.</p>
+      </div>
 
       <form>
+        <p id="countDownClear">Var vänlig och fyll i fomuläret inom <span id="countdownTimer">15:00 minuter</span>.</p>
         <p>* = Obligatoriskt fält.</p>
 
         <div class="flexForm">
@@ -355,8 +359,8 @@
           <g></g>
           <g></g>
           <g></g>
-          <g></g>
-          </svg>ttfrids munkar!
+          <g></g></svg
+        >ttfrids munkar!
       </h1>
     </div>
     <!-- THEME TOGGLE -->
