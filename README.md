@@ -6,7 +6,6 @@ Fiktiv webbplats för Gottfrid Jästsons företag med munkar.
 
 ## Valideringsrapporter
 
-
 #### HTML
 
 Valideringen är gjord på https://validator.w3.org/nu/#textarea <br>
@@ -20,6 +19,8 @@ Valideringen är gjord på https://jigsaw.w3.org/css-validator/<br>
 
 
 ## Lighthouse analys
+[accessibility-gottfrid.pdf](https://github.com/Medieinstitutet/fed22d-js-grundkurs-gruppuppgift-webbshop-morgonpigg/files/10139564/accessibility-gottfrid.pdf)
+
 
 ## Länk till Live - verisionen
 
