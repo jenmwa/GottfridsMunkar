@@ -9,7 +9,7 @@ Fiktiv webbplats för Gottfrid Jästsons företag med munkar.
 
 #### HTML
 
-Valideringen är gjord på <br>
+Valideringen är gjord på https://validator.w3.org/nu/#textarea <br>
 [HTML-validation-gottfrid.pdf](https://github.com/Medieinstitutet/fed22d-js-grundkurs-gruppuppgift-webbshop-morgonpigg/files/10138961/HTML-validation-gottfrid.pdf)
 
 
