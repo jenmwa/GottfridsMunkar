@@ -114,7 +114,7 @@
         <p>DANGER ZONE! Formulär och varukorg kommer tömmas.</p>
       </div>
 
-      <form>
+      <form onsubmit="specialDelivery();return false">
         <p id="countDownClear">Var vänlig och fyll i fomuläret inom <span id="countdownTimer">15:00 minuter</span>.</p>
         <p>* = Obligatoriskt fält.</p>
 
@@ -229,10 +229,10 @@
 
         <label>
           <input type="checkbox" id="newsletter" name="newsletter" checked />
-          <span>Få vårat nyhetsbrev en gång i veckan för alla nyheter och erbjudanden.</span><br />
+          <span>Få vårat nyhetsbrev en gång i veckan för alla nyheter och erbjudanden.</span><br/>
         </label>
+        <input type="submit" id="submit" value="Skicka order!" disabled>
       </form>
-      <button type="submit" id="submit" value="Skicka order!" disabled>Skicka order!</button>
     </div>
 
     <!--   CONFIRMCONFAINER FORM-->
@@ -359,8 +359,7 @@
           <g></g>
           <g></g>
           <g></g>
-          <g></g></svg
-        >ttfrids munkar!
+          <g></g></svg>ttfrids munkar!
       </h1>
     </div>
     <!-- THEME TOGGLE -->
