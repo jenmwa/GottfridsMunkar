@@ -34,3 +34,6 @@ https://medieinstitutet.github.io/fed22d-js-grundkurs-gruppuppgift-webbshop-morg
 - Prettier
 - Eslint
 
+## Förbättringar
+
+- Vi har börjar på en förbättring av formuläret + validering med regEx. Ligger i branchen som heter regEx - 
