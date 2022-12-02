@@ -902,6 +902,21 @@ function specialDelivery() {
   writeOutFormConfirmation();
 }
 
+/******************************* RESET BTN ****************************************/
+
+const resetBtn = document.querySelector('#reset');
+
+resetBtn.addEventListener('click', function resetForm() {
+
+  const formInputs = document.querySelectorAll(
+    '#firstname, #lastname, #adress, #zipcode, #paymentOptions, #city, #portkod, #telephone, #email, #socialSecurity ');
+  formInputs.forEach(input => {
+    input.value = '';
+  });
+  document.getElementById("gdpr").disabled = true;
+
+});
+
 /** ****************** SORT-BY FUNCTIONS ************************************** */
 
 // Function that writes out the HTML
