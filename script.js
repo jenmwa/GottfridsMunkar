@@ -825,7 +825,7 @@ function checkInputNotEmpty(e) {
 // Function to check if all inputs are valid, make submit button enabled
 function checkFormValid() {
   const submitBtn = document.querySelector('#submit');
-  submitBtn.addEventListener('click', specialDelivery);
+//  submitBtn.addEventListener('click', specialDelivery);
   if (
     isFirstname &&
     isLastname &&
