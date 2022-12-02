@@ -656,6 +656,17 @@ div.orderConfirmation {
     }
   }
 }
+.formBtn{
+  background-color: $specialGreen;
+  padding: 10px;
+  border: 2px solid $specialRed;
+  box-shadow: 0 3px 15px rgba(0,0,0, 0.7);
+  cursor: pointer;
+  &:hover{
+    background-color: $specialRed;
+    border: 2px solid $specialGreen;
+  }
+}
 
 /*************PRODUKTKORT*************/
 
