@@ -863,6 +863,10 @@ function removeError(e) {
 /** ******************WRITE OUT FORM CONFIRMATION FUNCTION ******************** */
 
 function writeOutFormConfirmation() {
+  const formOrderAdress = document.querySelector('#adress').value;
+  const formOrderZipcode = document.querySelector('#zipcode').value;
+  const formOrderCity = document.querySelector('#city').value;
+  
   formConfirmation.innerHTML += `
     <div class="confirmContainer" id="confirmContainer">
     <h2>Orderbekräftelse</h2>
