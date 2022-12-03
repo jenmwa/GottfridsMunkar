@@ -144,6 +144,7 @@ const total = {
   amount: 0,
   price: 0,
   freight: 0,
+  delivery: 30,
   discountMessage: ''
 }
 
@@ -749,8 +750,7 @@ function checkInputNotEmpty(e) {
 // Function to check if all inputs are valid, make submit button enabled
 function checkFormValid() {
   const submitBtn = document.querySelector('#submit');
-  submitBtn.addEventListener('click', writeOutFormConfirmation);
-
+  submitBtn.addEventListener('click', specialDelivery);
   if (
     isFirstname &&
     isLastname &&
@@ -789,6 +789,8 @@ function removeError(e) {
 /** ******************WRITE OUT FORM CONFIRMATION FUNCTION ******************** */
 
 function writeOutFormConfirmation() {
+  const deliveryMsg = document.querySelector('#deliveryMsg')
+ 
   formConfirmation.innerHTML +=`
     <div class="confirmContainer" id="confirmContainer">
     <h4>Tack för din order ${formOrderFirstName}!
@@ -797,11 +799,32 @@ function writeOutFormConfirmation() {
     <p>Totalsumman för ordern är: ${total.price} kr</p>
     <p>Fraktkostnaden landar på: ${total.freight} kr </p>
     <p>Beställningen kommer levereras till: <br>
-    <span> ${formOrderAdress} ${formOrderZipcode} ${formOrderCity}</span><p>
+    <span> ${formOrderAdress} ${formOrderZipcode} ${formOrderCity}</span></p>
+    <p id="deliveryMsg">Leveranstiden är ${total.delivery} minuter.</p>
     <a href="index.html">Tillbaka till startsidan</a>
     </div>
   `;
 } 
+
+/** ****************** SPECIAL DELIVERY FUNCTION ****************************** */
+
+function specialDelivery(){
+  const date = new Date();
+  const day = date.getDay();
+  const hour = date.getHours();
+
+  if ( day === 6 || day === 0){
+    total.delivery = 90;
+  }
+  if(hour > 23  || hour < 2){
+    total.delivery = 45;
+  }
+  if (day === 5 && hour > 11 && hour < 13){
+    deliveryMsg.innerHTML = `Vi sitter i möte Leverans sker efter kl 15.00`
+  } 
+  writeOutFormConfirmation();
+}
+
 /** ****************** SORT-BY FUNCTIONS ************************************** */
 
 // Function that writes out the HTML
