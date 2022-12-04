@@ -37,12 +37,12 @@ https://medieinstitutet.github.io/fed22d-js-grundkurs-gruppuppgift-webbshop-morg
 ## Prinscreens
 desktop:<br>
 
-<img width="700" alt="gottfrid_desktop-start" src="https://user-images.githubusercontent.com/113125376/205498369-ea5e9ecc-5620-4215-8469-e3d6aaba8fb6.png"><br>
-<img width="700" alt="gottfrid_desktop-varukorg" src="https://user-images.githubusercontent.com/113125376/205498429-a9daf6ab-19d3-427e-b768-3b80904286ad.png"> <br>
-<img width="700" alt="gottfrid_desktop-orderform" src="https://user-images.githubusercontent.com/113125376/205498848-126cbde4-9b10-461d-8467-a3bb8503f45d.png">
+<img width="500" alt="gottfrid_desktop-start" src="https://user-images.githubusercontent.com/113125376/205498369-ea5e9ecc-5620-4215-8469-e3d6aaba8fb6.png">
+<img width="500" alt="gottfrid_desktop-varukorg" src="https://user-images.githubusercontent.com/113125376/205498429-a9daf6ab-19d3-427e-b768-3b80904286ad.png"> <br>
+<img width="500" alt="gottfrid_desktop-orderform" src="https://user-images.githubusercontent.com/113125376/205498848-126cbde4-9b10-461d-8467-a3bb8503f45d.png">
 <br>
-<img width="700" alt="gottfrid-desktop_orderconfirmation" src="https://user-images.githubusercontent.com/113125376/205498532-651d7b93-3dcc-4a68-aa74-1d2f4f57b8fc.png"> <br>
-<img width="700" alt="gottfrid_darkmode-start" src="https://user-images.githubusercontent.com/113125376/205498558-dffc1511-67cc-4222-a234-786923c31d24.png">
+<img width="500" alt="gottfrid-desktop_orderconfirmation" src="https://user-images.githubusercontent.com/113125376/205498532-651d7b93-3dcc-4a68-aa74-1d2f4f57b8fc.png"> <br>
+<img width="500" alt="gottfrid_darkmode-start" src="https://user-images.githubusercontent.com/113125376/205498558-dffc1511-67cc-4222-a234-786923c31d24.png">
 <br><br><br>
 mobile:<br>
 ![gottfrids](https://user-images.githubusercontent.com/113125376/205499992-3fe5b375-c6e1-45e9-9c22-b35a3e78c637.png)
