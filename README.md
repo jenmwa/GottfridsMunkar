@@ -45,7 +45,8 @@ desktop:<br>
 <img width="500" alt="gottfrid_darkmode-start" src="https://user-images.githubusercontent.com/113125376/205498558-dffc1511-67cc-4222-a234-786923c31d24.png">
 <br><br><br>
 mobile:<br>
-![gottfrids](https://user-images.githubusercontent.com/113125376/205500114-112aa950-37cf-426f-88ec-9a4051733974.png)
+<img width="500" alt="gottdrids_mobile" src="https://user-images.githubusercontent.com/113125376/205500190-f5a4fd03-5fe1-4ee9-9847-bb98f24d9ab2.jpg">
+
 
 
 
