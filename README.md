@@ -42,13 +42,12 @@ desktop:<br>
 <img width="700" alt="gottfrid-desktop_order" src="https://user-images.githubusercontent.com/113125376/205498481-4df54e7c-2acf-440b-809c-56da8a6af61c.png">
 <br>
 <img width="700" alt="gottfrid-desktop_orderconfirmation" src="https://user-images.githubusercontent.com/113125376/205498532-651d7b93-3dcc-4a68-aa74-1d2f4f57b8fc.png"> <br>
-<img width="1435" alt="gottfrid_darkmode-start" src="https://user-images.githubusercontent.com/113125376/205498558-dffc1511-67cc-4222-a234-786923c31d24.png">
+<img width="700" alt="gottfrid_darkmode-start" src="https://user-images.githubusercontent.com/113125376/205498558-dffc1511-67cc-4222-a234-786923c31d24.png">
 <br><br><br>
 mobile:<br>
-<img width="479" alt="gottfrid_mobile-start" src="https://user-images.githubusercontent.com/113125376/205498676-92a0d0e5-2f2c-4da9-8703-1789cdf009e0.png">
-<br>
-<img width="492" alt="gottfrid-mobile_varukorg" src="https://user-images.githubusercontent.com/113125376/205498611-a7909cb1-0ff2-47ae-8aad-f7d057b901c4.png"> <br>
-<img width="492" alt="gottfrid-mobile_varukorg" src="https://user-images.githubusercontent.com/113125376/205498602-2a4c10f3-7138-4c7f-ae1e-859c085b3e0f.png">
+<img width="450" alt="gottfrid_mobile-start" src="https://user-images.githubusercontent.com/113125376/205498676-92a0d0e5-2f2c-4da9-8703-1789cdf009e0.png">
+<img width="450" alt="gottfrid-mobile_varukorg" src="https://user-images.githubusercontent.com/113125376/205498611-a7909cb1-0ff2-47ae-8aad-f7d057b901c4.png"> <br>
+<img width="450" alt="gottfrid-mobile_varukorg" src="https://user-images.githubusercontent.com/113125376/205498602-2a4c10f3-7138-4c7f-ae1e-859c085b3e0f.png">
 
 
 ## Förbättringar
