@@ -1,8 +1,13 @@
 # GOTTFRIDS FANTASTISKA MUNKAR - WEBBSHOP.
 
+Grupparbete i kursen Javascript- grundkurs, hösten 2022, FED22, Medieinstitutet.
+Skapad av: Alen Gusinac, Cecilia Lepik och Jenny Waller.
+
 Fiktiv webbplats för Gottfrid Jästsons företag med munkar.
-
-
+En produktsida med 10 olika munkar, där antal munkar vid klick på köp hamnar i varukorgen.
+I varukorgen ser du som användare både artiklar, antal och summa per artikel, totalsumma, totalantal samt fraktkostnad och rabatter beroende på dag och tid, och kan även applicera egen rabattkod.
+Vid beställ kommer du som användare till orderformulär, som valideras, och som aktiverar "skicka order" vid korrekt inskrivna data.
+Vid "Skicka order!" får du som användare en orderbekrästelse med leveranstid.
 
 ## Valideringsrapporter
 
